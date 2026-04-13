@@ -94,8 +94,8 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case 'Easy': return '#10b981';
-            case 'Medium': return '#f59e0b';
+            case 'Easy': return '#22c55e';
+            case 'Medium': return '#eab308';
             case 'Hard': return '#ef4444';
             default: return '#6366f1';
         }
@@ -177,9 +177,9 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                             alignItems: 'center',
                             gap: '0.5rem',
                             padding: '0.75rem 1.5rem',
-                            backgroundColor: isCompleted ? 'rgba(16, 185, 129, 0.1)' : 'var(--primary-color)',
-                            color: isCompleted ? '#10b981' : 'white',
-                            border: isCompleted ? '1px solid #10b981' : 'none',
+                            backgroundColor: isCompleted ? 'rgba(34, 197, 94, 0.1)' : 'var(--primary-color)',
+                            color: isCompleted ? '#22c55e' : 'white',
+                            border: isCompleted ? '1px solid #22c55e' : 'none',
                             borderRadius: '8px',
                             fontWeight: '600',
                             fontSize: '0.95rem',
@@ -208,7 +208,7 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                         <span style={{ color: 'var(--text-muted)' }}>{topic.examples.length} Examples</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
-                        <Trophy size={18} color="#f59e0b" />
+                        <Trophy size={18} color="#eab308" />
                         <span style={{ color: 'var(--text-muted)' }}>{topic.problems.length} Practice Problems</span>
                     </div>
                 </div>
@@ -287,8 +287,8 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
 
                             {/* Advantages vs Disadvantages */}
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
-                                <div className="glass" style={{ padding: '2rem', borderLeft: '4px solid #10b981' }}>
-                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#10b981' }}>✓ Advantages</h3>
+                                <div className="glass" style={{ padding: '2rem', borderLeft: '4px solid #22c55e' }}>
+                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#22c55e' }}>✓ Advantages</h3>
                                     <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingLeft: '1.25rem', fontSize: '0.9rem' }}>
                                         {topic.advantages.map((adv, idx) => (
                                             <li key={idx} style={{ color: 'var(--text-muted)', lineHeight: '1.5' }}>{adv}</li>
@@ -514,7 +514,7 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                                                 style={{
                                                     background: 'transparent',
                                                     border: 'none',
-                                                    color: isProblemCompleted(problem.id) ? '#10b981' : 'var(--text-muted)',
+                                                    color: isProblemCompleted(problem.id) ? '#22c55e' : 'var(--text-muted)',
                                                     cursor: 'pointer',
                                                     padding: 0,
                                                     display: 'flex',

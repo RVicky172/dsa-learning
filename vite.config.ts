@@ -13,8 +13,8 @@ export default defineConfig({
         name: 'DSA Master',
         short_name: 'DSAMaster',
         description: 'Master Data Structures and Algorithms with interactive platforms',
-        theme_color: '#0f172a',
-        background_color: '#0f172a',
+        theme_color: '#060b18',
+        background_color: '#060b18',
         display: 'standalone',
         icons: [
           {

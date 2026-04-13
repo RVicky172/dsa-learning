@@ -57,8 +57,8 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                 border: `1px solid var(--glass-border)`,
                 backgroundImage: `
                     var(--glass-bg),
-                    linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.08), rgba(16, 185, 129, 0.05), rgba(236, 72, 153, 0.06)),
-                    radial-gradient(circle at ${mousePosition.x / window.innerWidth * 100}% ${mousePosition.y / window.innerHeight * 100}%, rgba(var(--primary-color-rgb), 0.12) 0%, transparent 50%)
+                    linear-gradient(135deg, rgba(var(--primary-rgb), 0.08), rgba(20, 184, 166, 0.05), rgba(244, 63, 94, 0.04)),
+                    radial-gradient(circle at ${mousePosition.x / window.innerWidth * 100}% ${mousePosition.y / window.innerHeight * 100}%, rgba(var(--primary-rgb), 0.12) 0%, transparent 50%)
                 `,
                 backgroundClip: 'padding-box, border-box, padding-box',
                 backgroundOrigin: 'padding-box, border-box, padding-box',
@@ -71,10 +71,10 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                 className="holographic-overlay"
                 animate={{
                     background: [
-                        'linear-gradient(45deg, transparent 30%, rgba(var(--primary-color-rgb), 0.08) 50%, transparent 70%)',
-                        'linear-gradient(45deg, transparent 20%, rgba(16, 185, 129, 0.06) 50%, transparent 80%)',
-                        'linear-gradient(45deg, transparent 25%, rgba(236, 72, 153, 0.05) 50%, transparent 75%)',
-                        'linear-gradient(45deg, transparent 30%, rgba(var(--primary-color-rgb), 0.08) 50%, transparent 70%)'
+                        'linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.08) 50%, transparent 70%)',
+                        'linear-gradient(45deg, transparent 20%, rgba(20, 184, 166, 0.06) 50%, transparent 80%)',
+                        'linear-gradient(45deg, transparent 25%, rgba(244, 63, 94, 0.05) 50%, transparent 75%)',
+                        'linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.08) 50%, transparent 70%)'
                     ]
                 }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
@@ -94,10 +94,10 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                 className="neon-border"
                 animate={{
                     boxShadow: [
-                        'inset 0 0 0 1px rgba(var(--primary-color-rgb), 0.25), 0 0 20px rgba(var(--primary-color-rgb), 0.15)',
-                        'inset 0 0 0 1px rgba(16, 185, 129, 0.25), 0 0 30px rgba(16, 185, 129, 0.18)',
-                        'inset 0 0 0 1px rgba(236, 72, 153, 0.25), 0 0 25px rgba(236, 72, 153, 0.15)',
-                        'inset 0 0 0 1px rgba(var(--primary-color-rgb), 0.25), 0 0 20px rgba(var(--primary-color-rgb), 0.15)'
+                        'inset 0 0 0 1px rgba(139, 92, 246, 0.25), 0 0 20px rgba(139, 92, 246, 0.15)',
+                        'inset 0 0 0 1px rgba(20, 184, 166, 0.25), 0 0 30px rgba(20, 184, 166, 0.18)',
+                        'inset 0 0 0 1px rgba(244, 63, 94, 0.25), 0 0 25px rgba(244, 63, 94, 0.15)',
+                        'inset 0 0 0 1px rgba(139, 92, 246, 0.25), 0 0 20px rgba(139, 92, 246, 0.15)'
                     ]
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -130,9 +130,9 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             boxShadow: `
-                                0 12px 35px rgba(var(--primary-color-rgb), 0.4),
-                                0 6px 15px rgba(16, 185, 129, 0.3),
-                                0 3px 8px rgba(236, 72, 153, 0.2),
+                                0 12px 35px rgba(139, 92, 246, 0.4),
+                                0 6px 15px rgba(20, 184, 166, 0.3),
+                                0 3px 8px rgba(244, 63, 94, 0.2),
                                 inset 0 1px 0 rgba(255, 255, 255, 0.2)
                             `,
                             position: 'relative',
@@ -143,10 +143,10 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                         <motion.div
                             animate={{
                                 boxShadow: [
-                                    '0 0 10px rgba(var(--primary-color-rgb), 0.6)',
-                                    '0 0 20px rgba(16, 185, 129, 0.5)',
-                                    '0 0 15px rgba(236, 72, 153, 0.4)',
-                                    '0 0 10px rgba(var(--primary-color-rgb), 0.6)'
+                                    '0 0 10px rgba(139, 92, 246, 0.6)',
+                                    '0 0 20px rgba(20, 184, 166, 0.5)',
+                                    '0 0 15px rgba(244, 63, 94, 0.4)',
+                                    '0 0 10px rgba(139, 92, 246, 0.6)'
                                 ]
                             }}
                             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
@@ -168,16 +168,16 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                             fontWeight: '900',
                             letterSpacing: '-0.8px',
                             margin: 0,
-                            textShadow: '0 0 20px rgba(245, 158, 11, 0.5)',
+                            textShadow: '0 0 20px rgba(139, 92, 246, 0.5)',
                             position: 'relative'
                         }}
                         whileHover={{ scale: 1.05 }}
                         animate={{
                             textShadow: [
-                                '0 0 20px rgba(var(--primary-color-rgb), 0.5)',
-                                '0 0 25px rgba(16, 185, 129, 0.4)',
-                                '0 0 20px rgba(236, 72, 153, 0.3)',
-                                '0 0 20px rgba(var(--primary-color-rgb), 0.5)'
+                                '0 0 20px rgba(139, 92, 246, 0.5)',
+                                '0 0 25px rgba(20, 184, 166, 0.4)',
+                                '0 0 20px rgba(244, 63, 94, 0.3)',
+                                '0 0 20px rgba(139, 92, 246, 0.5)'
                             ]
                         }}
                         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -217,15 +217,15 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                     borderRadius: '12px',
                                     position: 'relative',
                                     overflow: 'hidden',
-                                    textShadow: activeSection === item.id ? '0 0 10px rgba(var(--primary-color-rgb), 0.8)' : 'none',
+                                    textShadow: activeSection === item.id ? '0 0 10px rgba(139, 92, 246, 0.8)' : 'none',
                                     background: activeSection === item.id
-                                        ? 'linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.15), rgba(16, 185, 129, 0.1))'
+                                        ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(20, 184, 166, 0.1))'
                                         : 'transparent',
                                     border: activeSection === item.id
-                                        ? '1px solid rgba(var(--primary-color-rgb), 0.4)'
+                                        ? '1px solid rgba(139, 92, 246, 0.4)'
                                         : '1px solid transparent',
                                     boxShadow: activeSection === item.id
-                                        ? '0 8px 25px rgba(var(--primary-color-rgb), 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                                        ? '0 8px 25px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                                         : 'none'
                                 }}
                                 onHoverStart={(e) => {
@@ -258,7 +258,7 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                         left: 0,
                                         right: 0,
                                         bottom: 0,
-                                        background: 'linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.1), rgba(16, 185, 129, 0.08))',
+                                        background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.08))',
                                         borderRadius: '12px',
                                         pointerEvents: 'none'
                                     }}
@@ -302,10 +302,10 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                             left: 0,
                                             right: 0,
                                             boxShadow: [
-                                                '0 0 10px rgba(var(--primary-color-rgb), 0.8)',
-                                                '0 0 15px rgba(16, 185, 129, 0.6)',
-                                                '0 0 10px rgba(236, 72, 153, 0.5)',
-                                                '0 0 10px rgba(var(--primary-color-rgb), 0.8)'
+                                                '0 0 10px rgba(139, 92, 246, 0.8)',
+                                                '0 0 15px rgba(20, 184, 166, 0.6)',
+                                                '0 0 10px rgba(244, 63, 94, 0.5)',
+                                                '0 0 10px rgba(139, 92, 246, 0.8)'
                                             ]
                                         }}
                                         transition={{
@@ -343,9 +343,9 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                 cursor: 'pointer',
                                 border: 'none',
                                 boxShadow: `
-                                    0 8px 25px rgba(245, 158, 11, 0.4),
-                                    0 4px 12px rgba(16, 185, 129, 0.2),
-                                    0 2px 6px rgba(236, 72, 153, 0.1),
+                                    0 8px 25px rgba(139, 92, 246, 0.4),
+                                    0 4px 12px rgba(20, 184, 166, 0.2),
+                                    0 2px 6px rgba(244, 63, 94, 0.1),
                                     inset 0 1px 0 rgba(255, 255, 255, 0.2)
                                 `,
                                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -436,8 +436,8 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                 stiffness: 300
                             }}
                             style={{
-                                background: 'linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.2), rgba(16, 185, 129, 0.15), rgba(236, 72, 153, 0.1))',
-                                border: '1px solid rgba(var(--primary-color-rgb), 0.4)',
+                                background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(20, 184, 166, 0.15), rgba(244, 63, 94, 0.1))',
+                                border: '1px solid rgba(139, 92, 246, 0.4)',
                                 color: 'var(--text-main)',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -449,23 +449,23 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                 transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                                 position: 'relative',
                                 overflow: 'hidden',
-                                boxShadow: '0 8px 25px rgba(var(--primary-color-rgb), 0.3)'
+                                boxShadow: '0 8px 25px rgba(139, 92, 246, 0.3)'
                             }}
                             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
                             onHoverStart={(e) => {
                                 const target = e.currentTarget as HTMLElement | null;
                                 if (target) {
-                                    target.style.background = 'linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.3), rgba(16, 185, 129, 0.2), rgba(236, 72, 153, 0.15))';
-                                    target.style.boxShadow = '0 0 25px rgba(var(--primary-color-rgb), 0.5), 0 0 40px rgba(16, 185, 129, 0.3)';
-                                    target.style.borderColor = 'rgba(var(--primary-color-rgb), 0.6)';
+                                    target.style.background = 'linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(20, 184, 166, 0.2), rgba(244, 63, 94, 0.15))';
+                                    target.style.boxShadow = '0 0 25px rgba(139, 92, 246, 0.5), 0 0 40px rgba(20, 184, 166, 0.3)';
+                                    target.style.borderColor = 'rgba(139, 92, 246, 0.6)';
                                 }
                             }}
                             onHoverEnd={(e) => {
                                 const target = e.currentTarget as HTMLElement | null;
                                 if (target) {
-                                    target.style.background = 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(16, 185, 129, 0.15), rgba(236, 72, 153, 0.1))';
-                                    target.style.boxShadow = '0 8px 25px rgba(245, 158, 11, 0.3)';
-                                    target.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+                                    target.style.background = 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(20, 184, 166, 0.15), rgba(244, 63, 94, 0.1))';
+                                    target.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.3)';
+                                    target.style.borderColor = 'rgba(139, 92, 246, 0.4)';
                                 }
                             }}
                         >
@@ -473,10 +473,10 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                             <motion.div
                                 animate={{
                                     boxShadow: [
-                                        '0 0 10px rgba(var(--primary-color-rgb), 0.4)',
-                                        '0 0 15px rgba(16, 185, 129, 0.3)',
-                                        '0 0 10px rgba(236, 72, 153, 0.2)',
-                                        '0 0 10px rgba(var(--primary-color-rgb), 0.4)'
+                                        '0 0 10px rgba(139, 92, 246, 0.4)',
+                                        '0 0 15px rgba(20, 184, 166, 0.3)',
+                                        '0 0 10px rgba(244, 63, 94, 0.2)',
+                                        '0 0 10px rgba(139, 92, 246, 0.4)'
                                     ]
                                 }}
                                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -508,8 +508,8 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                         whileHover={{ scale: 1.1, rotate: 10 }}
                         whileTap={{ scale: 0.9 }}
                         style={{
-                            background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(16, 185, 129, 0.15))',
-                            border: '1px solid rgba(245, 158, 11, 0.3)',
+                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(20, 184, 166, 0.15))',
+                            border: '1px solid rgba(139, 92, 246, 0.3)',
                             color: 'var(--text-main)',
                             display: 'flex',
                             alignItems: 'center',
@@ -518,7 +518,7 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                             height: '40px',
                             borderRadius: '50%',
                             cursor: 'pointer',
-                            boxShadow: '0 4px 15px rgba(245, 158, 11, 0.3)',
+                            boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
                             transition: 'all 0.3s ease'
                         }}
                     >
@@ -529,14 +529,14 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       style={{
-                        background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(16, 185, 129, 0.1))',
-                        border: '1px solid rgba(245, 158, 11, 0.2)',
+                        background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(20, 184, 166, 0.1))',
+                        border: '1px solid rgba(139, 92, 246, 0.2)',
                         color: 'var(--text-main)',
                         cursor: 'pointer',
                         padding: '0.6rem',
                         borderRadius: '12px',
                         transition: 'all 0.3s ease',
-                        boxShadow: '0 4px 15px rgba(245, 158, 11, 0.2)',
+                        boxShadow: '0 4px 15px rgba(139, 92, 246, 0.2)',
                         position: 'relative',
                         overflow: 'hidden'
                       }}
@@ -573,10 +573,10 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                   <motion.div
                     animate={{
                       boxShadow: [
-                        'inset 0 0 20px rgba(var(--primary-color-rgb), 0.08)',
-                        'inset 0 0 30px rgba(16, 185, 129, 0.06)',
-                        'inset 0 0 20px rgba(236, 72, 153, 0.05)',
-                        'inset 0 0 20px rgba(var(--primary-color-rgb), 0.08)'
+                        'inset 0 0 20px rgba(139, 92, 246, 0.08)',
+                        'inset 0 0 30px rgba(20, 184, 166, 0.06)',
+                        'inset 0 0 20px rgba(244, 63, 94, 0.05)',
+                        'inset 0 0 20px rgba(139, 92, 246, 0.08)'
                       ]
                     }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -618,15 +618,15 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                       fontSize: '1.1rem',
                                       fontWeight: activeSection === item.id ? '700' : '500',
                                       color: activeSection === item.id ? 'var(--primary-color)' : 'var(--text-main)',
-                                      textShadow: activeSection === item.id ? '0 0 10px rgba(var(--primary-color-rgb), 0.8)' : 'none',
+                                      textShadow: activeSection === item.id ? '0 0 10px rgba(139, 92, 246, 0.8)' : 'none',
                                       padding: '0.75rem 1rem',
                                       borderRadius: '12px',
                                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                                       background: activeSection === item.id
-                                        ? 'linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.15), rgba(16, 185, 129, 0.1))'
+                                        ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(20, 184, 166, 0.1))'
                                         : 'transparent',
                                       border: activeSection === item.id
-                                        ? '1px solid rgba(var(--primary-color-rgb), 0.3)'
+                                        ? '1px solid rgba(139, 92, 246, 0.3)'
                                         : '1px solid transparent',
                                       position: 'relative',
                                       overflow: 'hidden'
@@ -670,7 +670,7 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                         height: '8px',
                                         borderRadius: '50%',
                                         background: 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))',
-                                        boxShadow: '0 0 10px rgba(var(--primary-color-rgb), 0.8)'
+                                        boxShadow: '0 0 10px rgba(139, 92, 246, 0.8)'
                                       }}
                                     />
                                   )}
@@ -688,8 +688,8 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                               whileHover={{ scale: 1.05, y: -2 }}
                               whileTap={{ scale: 0.95 }}
                               style={{
-                                  background: 'linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ec4899 100%)',
-                                  color: '#000',
+                                  background: 'linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #14b8a6 100%)',
+                                  color: '#fff',
                                   padding: '0.9rem 2rem',
                                   borderRadius: '15px',
                                   fontWeight: '900',
@@ -699,11 +699,11 @@ const Navbar = ({ onNavigate, activeSection }: NavbarProps) => {
                                   border: '1px solid rgba(255, 255, 255, 0.2)',
                                   textTransform: 'uppercase',
                                   letterSpacing: '0.5px',
-                                  boxShadow: '0 8px 25px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+                                  boxShadow: '0 8px 25px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
                                   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                                   position: 'relative',
                                   overflow: 'hidden',
-                                  textShadow: '0 0 10px rgba(255, 255, 255, 0.8)'
+                                  textShadow: '0 0 10px rgba(139, 92, 246, 0.8)'
                               }}
                           >
                               {/* Mobile button glow */}

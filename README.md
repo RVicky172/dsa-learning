@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+<div align="center">
+  <h1>🚀 DSA Master</h1>
+  <p>Your ultimate interactive guide to mastering Data Structures, Algorithms, and Big-O Notation.</p>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br />
 
-Currently, two official plugins are available:
+<div align="center">
+  <!-- Badges -->
+  <img src="https://img.shields.io/badge/React-19-blue.svg?style=flat&logo=react" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-5.9-blue.svg?style=flat&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Vite-7.2-646CFF.svg?style=flat&logo=vite" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC.svg?style=flat&logo=tailwind-css" alt="Tailwind CSS" />
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br />
 
-## React Compiler
+## 📖 About The Project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+DSA Master is a modern, highly interactive web application designed to help learners and professionals strengthen their foundational knowledge of Data Structures and Algorithms. With a clear UI built using React 19, Tailwind CSS, and Framer Motion, studying for coding interviews and understanding complex data concepts has never been more engaging.
 
-## Expanding the ESLint configuration
+### ✨ Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **📚 Topic Learning**: Deep dive into essential DSA concepts (Arrays, Linked Lists, Trees, Graphs, DP, etc.).
+- **⏱️ Big-O Notation Guide**: Master time & space complexity with rich, visual explanations.
+- **💻 Problem Practice**: Test your skills against a curated list of algorithmic challenges.
+- **🗺️ Learning Roadmap**: Follow a structured pathway from beginner to advanced.
+- **⚡ Blazing Fast**: Built with Vite and React lazy loading for immediate interactions and zero-lag rendering.
+- **🌙 Theming Support**: Sleek UI tailored for comfortable reading and focused learning.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Framework**: [React 19](https://react.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+---
+
+## 🚀 Getting Started
+
+Follow these instructions to set up the project locally on your machine.
+
+### Prerequisites
+
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18.0.0 or higher is recommended)
+- `npm` (usually comes with Node.js)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd dsa-learning
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   *The server will start at `http://localhost:5173/` (or the port shown in your terminal). Open it in your browser.*
+
+---
+
+## 📂 Project Structure
+
+```text
+dsa-learning/
+├── public/                 # Static assets
+└── src/
+    ├── components/         # Reusable React UI components
+    ├── contexts/           # Global React Context providers
+    ├── data/               # Static models, topics, and problem lists
+    ├── hooks/              # Custom React hooks
+    ├── pages/              # Main page views
+    ├── types/              # Global TypeScript interfaces
+    ├── App.tsx             # Root React component & routing logic
+    └── main.tsx            # React application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📜 Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `npm run dev`: Starts the local development server.
+- `npm run build`: Type-checks codebase and builds for production.
+- `npm run preview`: Previews the local production build.
+- `npm run lint`: Runs ESLint to evaluate code quality.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Whether it's adding new problems, fixing typos, or optimizing the code, please feel free to:
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is open-source and available under the terms of the MIT License.

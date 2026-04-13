@@ -1,32 +1,33 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, Clock, HardDrive, Calculator, Zap, Target } from 'lucide-react';
+import { Clock, HardDrive, Calculator, Zap, Target, BookOpen, Search } from 'lucide-react';
 
 const complexities = [
     {
         label: 'O(1)',
         name: 'Constant Time',
-        color: '#10b981',
+        color: '#14b8a6',
         desc: 'Performance is independent of input size.',
         example: 'Array access by index: arr[5]',
         realWorld: 'Dictionary lookup, Hash table access',
-        operations: '1 operation regardless of input size'
+        operations: '1 operation regardless'
     },
     {
         label: 'O(log n)',
         name: 'Logarithmic Time',
-        color: '#f97316',
+        color: '#0ea5e9',
         desc: 'Execution time increases logarithmically.',
-        example: 'Binary search in sorted array',
-        realWorld: 'Finding a word in dictionary, Database indexing',
-        operations: 'Reduces problem size by half each step'
+        example: 'Binary search',
+        realWorld: 'Finding a word in dictionary',
+        operations: 'Reduces size by half each step'
     },
     {
         label: 'O(n)',
         name: 'Linear Time',
         color: '#6366f1',
         desc: 'Directly proportional to input size.',
-        example: 'Finding maximum in unsorted array',
-        realWorld: 'Linear search, Printing all elements',
+        example: 'Finding maximum in array',
+        realWorld: 'Linear search, Printing all',
         operations: 'One operation per element'
     },
     {
@@ -34,14 +35,14 @@ const complexities = [
         name: 'Linearithmic Time',
         color: '#8b5cf6',
         desc: 'Efficient sorting algorithms.',
-        example: 'Merge Sort, Quick Sort, Heap Sort',
-        realWorld: 'Most practical sorting algorithms',
+        example: 'Merge Sort, Quick Sort',
+        realWorld: 'Practical sorting algorithms',
         operations: 'n × log₂(n) operations'
     },
     {
         label: 'O(n²)',
         name: 'Quadratic Time',
-        color: '#f59e0b',
+        color: '#eab308',
         desc: 'Nested loops over the same input.',
         example: 'Bubble Sort, Selection Sort',
         realWorld: 'Checking all pairs in a set',
@@ -50,17 +51,122 @@ const complexities = [
     {
         label: 'O(2ⁿ)',
         name: 'Exponential Time',
-        color: '#ef4444',
+        color: '#f43f5e',
         desc: 'Growth doubles with each addition.',
-        example: 'Solving Tower of Hanoi, Subset generation',
+        example: 'Solving Tower of Hanoi',
         realWorld: 'Brute force password cracking',
-        operations: '2^n operations (grows extremely fast)'
+        operations: '2^n operations'
     },
 ];
 
+const MathProofInteractive = () => {
+    const [constantC, setConstantC] = useState(2);
+    const [startN, setStartN] = useState(5);
+
+    // Simple plotting logic for interactive proof f(n) <= c * g(n) for n >= n0
+    // Let's say f(n) = n^2 + 5n + 10
+    // g(n) = n^2
+    const generatePath = (fn: (x: number) => number) => {
+        let path = '';
+        for (let i = 0; i <= 20; i++) {
+            const x = (i / 20) * 100;
+            // Scale y to roughly fit 0-500 into 100 units
+            const val = Math.min(fn(i), 500); 
+            const y = 100 - (val / 500) * 100;
+            if (i === 0) path += `M ${x} ${y} `;
+            else path += `L ${x} ${y} `;
+        }
+        return path;
+    };
+
+    const f_n = (n: number) => n * n + 5 * n + 10;
+    const cg_n = (n: number) => constantC * (n * n);
+
+    return (
+        <div className="glass" style={{ padding: '2.5rem', marginBottom: '4rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div>
+                <h3 style={{ fontSize: '2rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <Calculator className="gradient-text" /> 
+                    Interactive Proof: Big O Definition
+                </h3>
+                <p style={{ color: 'var(--text-muted)' }}>
+                    Proof that <span style={{ color: '#14b8a6' }}>f(n) = n² + 5n + 10</span> is O(n²) because we can find constants <strong>c</strong> and <strong>n₀</strong> such that <span style={{ color: '#f43f5e' }}>f(n) ≤ c · n²</span> for all n ≥ n₀.
+                </p>
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(250px, 1fr) 2fr', gap: '2rem', alignItems: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', padding: '1.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div>
+                        <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', color: 'var(--text-main)', fontWeight: '600' }}>
+                            <span>Constant (c):</span>
+                            <span style={{ color: '#f43f5e' }}>{constantC}</span>
+                        </label>
+                        <input 
+                            type="range" min="1" max="10" step="0.5" value={constantC} 
+                            onChange={e => setConstantC(parseFloat(e.target.value))}
+                            style={{ width: '100%', accentColor: '#f43f5e' }}
+                        />
+                    </div>
+                    <div>
+                        <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', color: 'var(--text-main)', fontWeight: '600' }}>
+                            <span>Starting n (n₀):</span>
+                            <span style={{ color: '#eab308' }}>{startN}</span>
+                        </label>
+                        <input 
+                            type="range" min="1" max="15" step="1" value={startN} 
+                            onChange={e => setStartN(parseInt(e.target.value))}
+                            style={{ width: '100%', accentColor: '#eab308' }}
+                        />
+                    </div>
+                    
+                    <div style={{ marginTop: '1rem', padding: '1rem', borderRadius: '8px', background: 'rgba(0,0,0,0.2)' }}>
+                        <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Current State:</div>
+                        {f_n(startN) <= cg_n(startN) ? (
+                            <div style={{ color: '#14b8a6', fontWeight: 'bold' }}>✓ Equation holds at n₀ = {startN}</div>
+                        ) : (
+                            <div style={{ color: '#f43f5e', fontWeight: 'bold' }}>✗ Increase c or n₀</div>
+                        )}
+                    </div>
+                </div>
+
+                <div style={{ position: 'relative', height: '250px', background: 'rgba(0,0,0,0.3)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', padding: '1.5rem' }}>
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
+                        {/* Grid lines */}
+                        <defs>
+                            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100" height="100" fill="url(#grid)" />
+                        
+                        {/* Axis bounds */}
+                        <line x1="0" y1="100" x2="100" y2="100" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+                        <line x1="0" y1="0" x2="0" y2="100" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+
+                        {/* f(n) */}
+                        <path d={generatePath(f_n)} fill="none" stroke="#14b8a6" strokeWidth="2" strokeDasharray="3 3"/>
+                        
+                        {/* c * g(n) */}
+                        <path d={generatePath(cg_n)} fill="none" stroke="#f43f5e" strokeWidth="2.5" />
+
+                        {/* n0 line */}
+                        <line 
+                            x1={(startN / 20) * 100} y1="0" 
+                            x2={(startN / 20) * 100} y2="100" 
+                            stroke="#eab308" strokeWidth="1" strokeDasharray="4 4" 
+                        />
+                    </svg>
+
+                    <div style={{ position: 'absolute', bottom: '0', right: '10px', color: 'var(--text-muted)', fontSize: '0.8rem' }}>Input Size (n)</div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const BigOTheory = () => {
     return (
-        <section id="big-o" className="container" style={{ padding: '8rem 0' }}>
+        <section id="big-o" className="container" style={{ padding: '6rem 1rem' }}>
             {/* Hero Section */}
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -69,12 +175,21 @@ const BigOTheory = () => {
                 transition={{ duration: 0.8 }}
                 style={{ textAlign: 'center', marginBottom: '5rem' }}
             >
-                <h2 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
+                <motion.div
+                    initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1.25rem', borderRadius: '99px', background: 'var(--primary-gradient)', color: 'white', marginBottom: '2rem', boxShadow: '0 4px 20px rgba(139, 92, 246, 0.3)' }}
+                >
+                    <BookOpen size={16} fill="currentColor" />
+                    <span style={{ fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Theoretical Foundation</span>
+                </motion.div>
+
+                <h2 style={{ fontSize: '4rem', marginBottom: '1.5rem', lineHeight: '1.1', letterSpacing: '-0.02em' }}>
                     Mastering <span className="gradient-text">Big O Notation</span>
                 </h2>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.2rem', lineHeight: '1.6' }}>
-                    The language of algorithm efficiency. Learn to analyze time and space complexity to write
-                    scalable, high-performance code that handles real-world data at any scale.
+                <p style={{ color: 'var(--text-muted)', maxWidth: '750px', margin: '0 auto', fontSize: '1.25rem', lineHeight: '1.7' }}>
+                    The universal language for algorithm efficiency. Learn to analyze time and space complexity to write scalable, high-performance code that handles real-world data at any scale.
                 </p>
             </motion.div>
 
@@ -88,55 +203,151 @@ const BigOTheory = () => {
                 style={{ padding: '3rem', marginBottom: '4rem' }}
             >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                    <Calculator size={32} style={{ color: 'var(--primary-color)' }} />
+                    <Calculator size={32} style={{ color: '#8b5cf6' }} />
                     <h3 style={{ fontSize: '2rem', margin: 0 }}>What is Big O?</h3>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) minmax(300px, 1fr)', gap: '3rem', alignItems: 'start' }}>
                     <div>
-                        <h4 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                            Mathematical Definition
+                        <h4 style={{ color: '#8b5cf6', marginBottom: '1rem', fontSize: '1.3rem' }}>
+                            Mathematical Upper Bound
                         </h4>
                         <p style={{ lineHeight: '1.7', marginBottom: '1.5rem' }}>
                             Big O notation describes the <strong>upper bound</strong> of an algorithm's growth rate.
                             It tells us the <em>worst-case scenario</em> for how an algorithm's performance scales
-                            as input size increases.
+                            as input size approaches infinity.
                         </p>
-                        <div className="glass" style={{ padding: '1.5rem', marginBottom: '1.5rem' }}>
-                            <h5 style={{ color: 'var(--secondary-color)', marginBottom: '0.5rem' }}>Formal Definition</h5>
+                        <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', padding: '1.5rem', borderRadius: '12px' }}>
+                            <h5 style={{ color: '#14b8a6', marginBottom: '0.5rem', fontSize: '1rem' }}>Formal Definition</h5>
                             <code style={{
-                                background: 'rgba(245, 158, 11, 0.1)',
-                                padding: '0.5rem',
-                                borderRadius: '6px',
+                                color: 'var(--text-main)',
                                 display: 'block',
-                                fontFamily: 'monospace'
+                                fontFamily: 'var(--font-mono)',
+                                lineHeight: '1.5'
                             }}>
-                                f(n) = O(g(n)) ⟺ ∃ c, n₀ &gt; 0 such that ∀ n ≥ n₀: f(n) ≤ c × g(n)
+                                f(n) = O(g(n)) ⟺ <br/>
+                                ∃ c, n₀ &gt; 0 such that<br/>
+                                ∀ n ≥ n₀: f(n) ≤ c × g(n)
                             </code>
                         </div>
                     </div>
                     <div>
-                        <h4 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '1.3rem' }}>
+                        <h4 style={{ color: '#8b5cf6', marginBottom: '1rem', fontSize: '1.3rem' }}>
                             Why It Matters
                         </h4>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                <Clock size={20} style={{ color: 'var(--secondary-color)' }} />
-                                <span><strong>Time Complexity:</strong> How execution time scales</span>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            <div style={{ display: 'flex', gap: '1rem' }}>
+                                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(20, 184, 166, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                    <Clock size={20} color="#14b8a6" />
+                                </div>
+                                <div>
+                                    <strong style={{ display: 'block', marginBottom: '0.25rem', fontSize: '1.1rem' }}>Time Complexity</strong>
+                                    <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>How execution time scales with data.</span>
+                                </div>
                             </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                <HardDrive size={20} style={{ color: 'var(--accent-color)' }} />
-                                <span><strong>Space Complexity:</strong> Memory usage patterns</span>
+                            <div style={{ display: 'flex', gap: '1rem' }}>
+                                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                    <HardDrive size={20} color="#8b5cf6" />
+                                </div>
+                                <div>
+                                    <strong style={{ display: 'block', marginBottom: '0.25rem', fontSize: '1.1rem' }}>Space Complexity</strong>
+                                    <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Auxiliary memory usage patterns.</span>
+                                </div>
                             </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                <Target size={20} style={{ color: 'var(--primary-color)' }} />
-                                <span><strong>Scalability:</strong> Performance with large datasets</span>
+                            <div style={{ display: 'flex', gap: '1rem' }}>
+                                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(244, 63, 94, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                    <Target size={20} color="#f43f5e" />
+                                </div>
+                                <div>
+                                    <strong style={{ display: 'block', marginBottom: '0.25rem', fontSize: '1.1rem' }}>Scalability Insights</strong>
+                                    <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Predicting bottlenecks in production.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </motion.div>
 
-            {/* Complexity Classes */}
+            {/* Interactive Proof */}
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+            >
+                <MathProofInteractive />
+            </motion.div>
+
+            {/* Understanding Logarithms */}
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.35 }}
+                className="glass"
+                style={{ padding: '3rem', marginBottom: '4rem', background: 'linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(14, 165, 233, 0.02) 100%)', border: '1px solid rgba(14, 165, 233, 0.2)' }}
+            >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                    <div style={{ padding: '0.75rem', background: 'rgba(14, 165, 233, 0.1)', borderRadius: '12px' }}>
+                        <Target size={28} color="#0ea5e9" />
+                    </div>
+                    <h3 style={{ fontSize: '2rem', margin: 0, color: '#0ea5e9' }}>Understanding Logarithms <span style={{ opacity: 0.5 }}>O(log n)</span></h3>
+                </div>
+                
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+                    <div>
+                        <p style={{ fontSize: '1.1rem', color: 'var(--text-main)', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                            A logarithm is simply the inverse of exponentiation. If exponentiation is <strong>"how many times do I multiply by 2 to get N?"</strong>, a logarithm is <strong>"how many times can I divide N by 2 until I reach 1?"</strong>
+                        </p>
+                        <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: '1.7', marginBottom: '2rem' }}>
+                            In Computer Science, we usually assume Base 2: <code>log₂(N)</code>. This is incredibly powerful because it means as your data grows exponentially, your operations only grow linearly!
+                        </p>
+                        
+                        <div style={{ background: 'rgba(0,0,0,0.3)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid #0ea5e9' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
+                                <span style={{ color: 'var(--text-muted)' }}>Calculation</span>
+                                <span style={{ fontWeight: 'bold' }}>Operations (log₂N)</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                                <span>N = 16</span>
+                                <span style={{ color: '#0ea5e9', fontFamily: 'var(--font-mono)' }}>4</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                                <span>N = 1,024 <span style={{ color: 'var(--text-dim)', fontSize: '0.8rem' }}>(1k)</span></span>
+                                <span style={{ color: '#0ea5e9', fontFamily: 'var(--font-mono)' }}>10</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                                <span>N = 1,048,576 <span style={{ color: 'var(--text-dim)', fontSize: '0.8rem' }}>(1M)</span></span>
+                                <span style={{ color: '#0ea5e9', fontFamily: 'var(--font-mono)' }}>20</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <span>N = 1 Trillion</span>
+                                <span style={{ color: '#0ea5e9', fontFamily: 'var(--font-mono)' }}>~40</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                            <h4 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <Search size={18} color="#0ea5e9" /> Code Example: Binary Search
+                            </h4>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                                Searching a phonebook with 1,000,000 names takes at most <strong>20 steps</strong> because you rip the book in half every time.
+                            </p>
+                            <code style={{ display: 'block', padding: '1rem', background: '#0a0a0a', borderRadius: '8px', color: '#c9d1d9', fontSize: '0.85rem' }}>
+                                <span style={{ color: '#ff7b72' }}>while</span> (left &lt;= right) {'{\n'}
+                                {'  '}<span style={{ color: '#79c0ff' }}>mid</span> = Math.floor((left + right) / <span style={{ color: '#a5d6ff' }}>2</span>);\n
+                                {'  '}<span style={{ color: '#ff7b72' }}>if</span> (arr[mid] === target) <span style={{ color: '#ff7b72' }}>return</span> mid;\n
+                                {'  '}// The magic of log(n):\n
+                                {'  '}// We eliminate 50% of elements!\n
+                                {'}'}
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* Complexity Classes Overview */}
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -144,10 +355,14 @@ const BigOTheory = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 style={{ marginBottom: '4rem' }}
             >
-                <h3 style={{ fontSize: '2.5rem', textAlign: 'center', marginBottom: '3rem' }}>
-                    Complexity Classes
-                </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                    <h3 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
+                        Core Complexity Classes
+                    </h3>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>From best to worst performance capabilities.</p>
+                </div>
+                
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
                     {complexities.map((item, index) => (
                         <motion.div
                             key={index}
@@ -159,70 +374,41 @@ const BigOTheory = () => {
                             className="glass"
                             style={{
                                 padding: '2rem',
-                                borderLeft: `4px solid ${item.color}`,
+                                borderTop: `4px solid ${item.color}`,
                                 position: 'relative',
-                                overflow: 'hidden'
+                                overflow: 'hidden',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '1rem'
                             }}
                         >
-                            {/* Subtle background gradient */}
-                            <div style={{
-                                position: 'absolute',
-                                top: 0,
-                                right: 0,
-                                width: '100px',
-                                height: '100px',
-                                background: `radial-gradient(circle, ${item.color}15 0%, transparent 70%)`,
-                                borderRadius: '50%',
-                                transform: 'translate(30px, -30px)'
-                            }} />
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                <h4 style={{ color: item.color, fontSize: '1.5rem', margin: 0, fontWeight: '800' }}>
+                                    {item.label}
+                                </h4>
+                                <span style={{
+                                    background: `${item.color}20`,
+                                    color: item.color,
+                                    padding: '0.3rem 0.8rem',
+                                    borderRadius: '20px',
+                                    fontSize: '0.8rem',
+                                    fontWeight: '700'
+                                }}>
+                                    {item.name}
+                                </span>
+                            </div>
 
-                            <div style={{ position: 'relative', zIndex: 1 }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                                    <h4 style={{ color: item.color, fontSize: '1.5rem', margin: 0, fontWeight: '700' }}>
-                                        {item.label}
-                                    </h4>
-                                    <span style={{
-                                        background: `${item.color}20`,
-                                        color: item.color,
-                                        padding: '0.25rem 0.75rem',
-                                        borderRadius: '20px',
-                                        fontSize: '0.75rem',
-                                        fontWeight: '600'
-                                    }}>
-                                        {item.name}
-                                    </span>
+                            <p style={{ color: 'var(--text-main)', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
+                                {item.desc}
+                            </p>
+
+                            <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                                <div style={{ marginBottom: '0.75rem' }}>
+                                    <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>Example:</strong>
+                                    <code style={{ fontSize: '0.85rem', color: item.color }}>{item.example}</code>
                                 </div>
-
-                                <p style={{ color: 'var(--text-main)', marginBottom: '1rem', lineHeight: '1.6' }}>
-                                    {item.desc}
-                                </p>
-
-                                <div style={{ marginBottom: '1rem' }}>
-                                    <h5 style={{ color: 'var(--primary-color)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
-                                        Example Algorithm:
-                                    </h5>
-                                    <code style={{
-                                        background: 'rgba(245, 158, 11, 0.1)',
-                                        padding: '0.5rem 0.75rem',
-                                        borderRadius: '6px',
-                                        fontSize: '0.85rem',
-                                        display: 'block'
-                                    }}>
-                                        {item.example}
-                                    </code>
-                                </div>
-
-                                <div style={{ marginBottom: '1rem' }}>
-                                    <h5 style={{ color: 'var(--secondary-color)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
-                                        Real World Use:
-                                    </h5>
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>
-                                        {item.realWorld}
-                                    </p>
-                                </div>
-
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <Zap size={14} style={{ color: 'var(--accent-color)' }} />
+                                    <Zap size={14} style={{ color: item.color }} />
                                     <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                                         {item.operations}
                                     </span>
@@ -230,239 +416,6 @@ const BigOTheory = () => {
                             </div>
                         </motion.div>
                     ))}
-                </div>
-            </motion.div>
-
-            {/* Visual Comparison */}
-            <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="glass"
-                style={{ padding: '3rem', marginBottom: '4rem' }}
-            >
-                <div style={{ marginBottom: '2rem' }}>
-                    <h3 style={{ fontSize: '2rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <TrendingUp size={28} style={{ color: 'var(--primary-color)' }} />
-                        Growth Rate Comparison
-                    </h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
-                        Visualizing how different complexities scale with input size (n)
-                    </p>
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-                    <div style={{ height: '350px', width: '100%', position: 'relative', borderBottom: '2px solid var(--border-color)', borderLeft: '2px solid var(--border-color)' }}>
-                        <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
-                            {/* Grid lines */}
-                            <defs>
-                                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="var(--border-color)" strokeWidth="0.2" opacity="0.3"/>
-                                </pattern>
-                            </defs>
-                            <rect width="100" height="100" fill="url(#grid)" />
-
-                            {/* O(2^n) - Exponential */}
-                            <motion.path
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 2, delay: 0.5 }}
-                                d="M 0 100 Q 20 80 40 40 Q 60 10 80 0 Q 90 -5 100 -10"
-                                fill="transparent"
-                                stroke="#ef4444"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                            />
-
-                            {/* O(n²) - Quadratic */}
-                            <motion.path
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 2, delay: 0.3 }}
-                                d="M 0 100 Q 50 100 100 0"
-                                fill="transparent"
-                                stroke="#f59e0b"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                            />
-
-                            {/* O(n log n) - Linearithmic */}
-                            <motion.path
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 2, delay: 0.2 }}
-                                d="M 0 100 Q 30 85 60 60 Q 80 40 100 25"
-                                fill="transparent"
-                                stroke="#8b5cf6"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                            />
-
-                            {/* O(n) - Linear */}
-                            <motion.path
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 2, delay: 0.1 }}
-                                d="M 0 100 L 100 20"
-                                fill="transparent"
-                                stroke="#6366f1"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                            />
-
-                            {/* O(log n) - Logarithmic */}
-                            <motion.path
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 2 }}
-                                d="M 0 100 Q 0 60 100 60"
-                                fill="transparent"
-                                stroke="#f97316"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                            />
-
-                            {/* O(1) - Constant */}
-                            <motion.path
-                                initial={{ pathLength: 0 }}
-                                whileInView={{ pathLength: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 1.5 }}
-                                d="M 0 95 L 100 90"
-                                fill="transparent"
-                                stroke="#10b981"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                            />
-                        </svg>
-
-                        <div style={{ position: 'absolute', bottom: '-30px', left: '50%', transform: 'translateX(-50%)', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                            Input Size (n) →
-                        </div>
-                        <div style={{ position: 'absolute', top: '50%', left: '-60px', transform: 'translateY(-50%) rotate(-90deg)', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                            Operations ↑
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 style={{ fontSize: '1.3rem', marginBottom: '1.5rem', color: 'var(--primary-color)' }}>
-                            Performance Rankings
-                        </h4>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {[
-                                { label: 'O(1)', desc: 'Best - Instantaneous', color: '#10b981' },
-                                { label: 'O(log n)', desc: 'Excellent - Very fast', color: '#f97316' },
-                                { label: 'O(n)', desc: 'Good - Linear scaling', color: '#6366f1' },
-                                { label: 'O(n log n)', desc: 'Fair - Acceptable for sorting', color: '#8b5cf6' },
-                                { label: 'O(n²)', desc: 'Poor - Avoid for large n', color: '#f59e0b' },
-                                { label: 'O(2ⁿ)', desc: 'Worst - Exponential growth', color: '#ef4444' }
-                            ].map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '1rem',
-                                        padding: '0.75rem',
-                                        borderRadius: '8px',
-                                        background: `linear-gradient(135deg, ${item.color}10, ${item.color}05)`
-                                    }}
-                                >
-                                    <div style={{
-                                        width: '12px',
-                                        height: '12px',
-                                        backgroundColor: item.color,
-                                        borderRadius: '50%',
-                                        flexShrink: 0
-                                    }} />
-                                    <div>
-                                        <strong style={{ color: item.color }}>{item.label}</strong>
-                                        <span style={{ color: 'var(--text-muted)', marginLeft: '0.5rem', fontSize: '0.9rem' }}>
-                                            {item.desc}
-                                        </span>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </motion.div>
-
-            {/* Common Mistakes & Tips */}
-            <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="glass"
-                style={{ padding: '3rem' }}
-            >
-                <h3 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center' }}>
-                    Common Pitfalls & Best Practices
-                </h3>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
-                    <div>
-                        <h4 style={{ color: '#ef4444', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            ⚠️ Common Mistakes
-                        </h4>
-                        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            <li style={{ padding: '1rem', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', borderLeft: '3px solid #ef4444' }}>
-                                <strong>Counting operations instead of growth rate</strong>
-                                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                    Big O ignores constants and lower-order terms
-                                </p>
-                            </li>
-                            <li style={{ padding: '1rem', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', borderLeft: '3px solid #ef4444' }}>
-                                <strong>Confusing worst-case with average-case</strong>
-                                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                    Big O typically refers to worst-case analysis
-                                </p>
-                            </li>
-                            <li style={{ padding: '1rem', background: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', borderLeft: '3px solid #ef4444' }}>
-                                <strong>Focusing only on time complexity</strong>
-                                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                    Space complexity is equally important
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 style={{ color: '#10b981', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            ✅ Best Practices
-                        </h4>
-                        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            <li style={{ padding: '1rem', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '8px', borderLeft: '3px solid #10b981' }}>
-                                <strong>Focus on scalability</strong>
-                                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                    Consider how your algorithm performs with large inputs
-                                </p>
-                            </li>
-                            <li style={{ padding: '1rem', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '8px', borderLeft: '3px solid #10b981' }}>
-                                <strong>Balance time and space</strong>
-                                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                    Sometimes O(n²) time with O(1) space beats O(n) time with O(n²) space
-                                </p>
-                            </li>
-                            <li style={{ padding: '1rem', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '8px', borderLeft: '3px solid #10b981' }}>
-                                <strong>Understand the problem constraints</strong>
-                                <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                    Choose algorithms that fit your specific use case and data size
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </motion.div>
         </section>

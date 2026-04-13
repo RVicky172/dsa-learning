@@ -176,7 +176,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <motion.button
-              whileHover={{ y: -3, boxShadow: '0 20px 50px rgba(0, 217, 255, 0.4)' }}
+              whileHover={{ y: -3, boxShadow: '0 20px 50px rgba(139, 92, 246, 0.4)' }}
               onClick={() => onNavigate('topics')}
               style={{
                 background: 'linear-gradient(135deg, var(--primary-color), var(--primary-hover))',
@@ -187,14 +187,14 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
                 fontSize: '1.1rem',
                 border: 'none',
                 cursor: 'pointer',
-                boxShadow: '0 15px 40px rgba(0, 217, 255, 0.3)',
+                boxShadow: '0 15px 40px rgba(139, 92, 246, 0.3)',
                 transition: 'all 0.3s ease'
               }}
             >
               🚀 Start Learning Free
             </motion.button>
             <motion.button
-              whileHover={{ y: -3, backgroundColor: 'rgba(255, 140, 0, 0.1)' }}
+              whileHover={{ y: -3, backgroundColor: 'rgba(20, 184, 166, 0.1)' }}
               onClick={() => onNavigate('problems')}
               style={{
                 backgroundColor: 'transparent',

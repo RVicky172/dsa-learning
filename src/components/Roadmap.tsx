@@ -161,9 +161,9 @@ const roadmapData: RoadmapNode[] = [
 ];
 
 const difficultyColors: Record<string, string> = {
-    'Beginner': '#10b981',
+    'Beginner': '#22c55e',
     'Intermediate': '#f97316',
-    'Advanced': '#f59e0b',
+    'Advanced': '#eab308',
     'Expert': '#ef4444'
 };
 
@@ -197,7 +197,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
 
     const getStatusColor = (status: RoadmapNode['status']) => {
         switch (status) {
-            case 'completed': return '#10b981';
+            case 'completed': return '#22c55e';
             case 'current': return 'var(--primary-color)';
             case 'locked': return 'var(--text-muted)';
         }
@@ -439,7 +439,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
             {/* Progress Stats */}
             <div className="glass" style={{ padding: '2rem', marginBottom: '3rem', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '1rem' }}>
                 <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize: '2.5rem', fontWeight: '700', color: '#10b981' }}>
+                    <p style={{ fontSize: '2.5rem', fontWeight: '700', color: '#22c55e' }}>
                         {roadmapData.filter(n => getDynamicStatus(n) === 'completed').length}
                     </p>
                     <p style={{ color: 'var(--text-muted)' }}>Completed</p>
@@ -457,7 +457,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                     <p style={{ color: 'var(--text-muted)' }}>Remaining</p>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize: '2.5rem', fontWeight: '700', color: '#f59e0b' }}>
+                    <p style={{ fontSize: '2.5rem', fontWeight: '700', color: '#eab308' }}>
                         {Math.round((roadmapData.filter(n => getDynamicStatus(n) === 'completed').length / roadmapData.length) * 100)}%
                     </p>
                     <p style={{ color: 'var(--text-muted)' }}>Progress</p>
@@ -601,7 +601,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                                     }}
                                     onMouseEnter={(e) => {
                                         e.currentTarget.style.transform = 'translateY(-2px)';
-                                        e.currentTarget.style.boxShadow = '0 10px 25px rgba(245, 158, 11, 0.3)';
+                                        e.currentTarget.style.boxShadow = '0 10px 25px rgba(234, 179, 8, 0.3)';
                                     }}
                                     onMouseLeave={(e) => {
                                         e.currentTarget.style.transform = 'translateY(0)';
@@ -623,7 +623,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                                         width: '100%',
                                         padding: '0.75rem',
                                         borderRadius: '8px',
-                                        background: '#10b981',
+                                        background: '#22c55e',
                                         color: 'white',
                                         border: 'none',
                                         cursor: 'pointer',
@@ -633,7 +633,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                                     }}
                                     onMouseEnter={(e) => {
                                         e.currentTarget.style.transform = 'translateY(-2px)';
-                                        e.currentTarget.style.boxShadow = '0 10px 25px rgba(16, 185, 129, 0.3)';
+                                        e.currentTarget.style.boxShadow = '0 10px 25px rgba(34, 197, 94, 0.3)';
                                     }}
                                     onMouseLeave={(e) => {
                                         e.currentTarget.style.transform = 'translateY(0)';
@@ -659,13 +659,13 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                         </p>
                     </div>
                     <div>
-                        <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#10b981' }}>Understand, Don't Memorize</h4>
+                        <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#22c55e' }}>Understand, Don't Memorize</h4>
                         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                             Focus on understanding patterns, not memorizing solutions.
                         </p>
                     </div>
                     <div>
-                        <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#f59e0b' }}>Review Regularly</h4>
+                        <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#eab308' }}>Review Regularly</h4>
                         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                             Revisit completed topics to reinforce your understanding.
                         </p>

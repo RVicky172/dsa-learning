@@ -13,9 +13,9 @@ import type { Problem } from '../types/topic';
 import { useProgress } from '../hooks/useProgress';
 
 const difficultyColors: Record<string, string> = {
-    'Easy': '#10b981',
+    'Easy': '#22c55e',
     'Medium': '#f97316',
-    'Hard': '#f59e0b',
+    'Hard': '#eab308',
     'Expert': '#ef4444'
 };
 
@@ -170,13 +170,13 @@ const ProblemsPage = () => {
             {/* Stats */}
             <div className="glass" style={{ marginTop: '3rem', padding: '2rem', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '1rem' }}>
                 <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize: '2rem', fontWeight: '700', color: '#10b981' }}>
+                    <p style={{ fontSize: '2rem', fontWeight: '700', color: '#22c55e' }}>
                         {allProblems.filter(p => p.difficulty === 'Easy').length}
                     </p>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Easy</p>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize: '2rem', fontWeight: '700', color: '#f59e0b' }}>
+                    <p style={{ fontSize: '2rem', fontWeight: '700', color: '#eab308' }}>
                         {allProblems.filter(p => p.difficulty === 'Medium').length}
                     </p>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Medium</p>
@@ -234,7 +234,7 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                         style={{
                             background: 'transparent',
                             border: 'none',
-                            color: isCompleted ? '#10b981' : 'var(--text-muted)',
+                            color: isCompleted ? '#22c55e' : 'var(--text-muted)',
                             cursor: 'pointer',
                             padding: 0,
                             display: 'flex',
@@ -305,7 +305,7 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                                 </div>
                                 <div style={{ marginBottom: ex.explanation ? '0.5rem' : 0 }}>
                                     <span style={{ color: 'var(--text-muted)' }}>Output: </span>
-                                    <code style={{ color: '#10b981' }}>{ex.output}</code>
+                                    <code style={{ color: '#22c55e' }}>{ex.output}</code>
                                 </div>
                                 {ex.explanation && (
                                     <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontStyle: 'italic', margin: 0 }}>
@@ -326,8 +326,8 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                                 gap: '0.5rem',
                                 padding: '0.75rem 1.5rem',
                                 borderRadius: '8px',
-                                background: solutionVisible ? '#10b981' : 'rgba(16, 185, 129, 0.15)',
-                                color: solutionVisible ? 'white' : '#10b981',
+                                background: solutionVisible ? '#22c55e' : 'rgba(34, 197, 94, 0.15)',
+                                color: solutionVisible ? 'white' : '#22c55e',
                                 border: 'none',
                                 cursor: 'pointer',
                                 fontWeight: '600',
@@ -345,12 +345,12 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             style={{
-                                borderLeft: `4px solid #10b981`,
+                                borderLeft: `4px solid #22c55e`,
                                 paddingLeft: '1.5rem'
                             }}
                         >
                             <h4 style={{
-                                color: '#10b981',
+                                color: '#22c55e',
                                 marginBottom: '1rem'
                             }}>
                                 ⚡ Solution Approach
@@ -383,9 +383,9 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                     <div>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                                            <Clock size={16} color="#10b981" />
+                                            <Clock size={16} color="#22c55e" />
                                             <span style={{ fontWeight: '600' }}>Time:</span>
-                                            <code style={{ color: '#10b981', fontWeight: '700' }}>
+                                            <code style={{ color: '#22c55e', fontWeight: '700' }}>
                                                 {problem.solution.timeComplexity}
                                             </code>
                                         </div>

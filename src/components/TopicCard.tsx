@@ -36,7 +36,7 @@ const TopicCard = ({ title, description, icon, complexity, delay = 0, id }: Topi
                     width: '48px',
                     height: '48px',
                     borderRadius: '12px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                    backgroundColor: 'rgba(139, 92, 246, 0.08)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

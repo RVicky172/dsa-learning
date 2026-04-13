@@ -270,7 +270,7 @@ const LearningPathComponent = () => {
                 background: status === 'locked'
                   ? 'rgba(0, 0, 0, 0.2)'
                   : status === 'completed'
-                  ? 'rgba(16, 185, 129, 0.05)'
+                  ? 'rgba(34, 197, 94, 0.05)'
                   : 'rgba(99, 102, 241, 0.05)',
                 cursor: status === 'locked' ? 'not-allowed' : 'pointer',
                 opacity: status === 'locked' ? 0.6 : 1,
@@ -323,13 +323,13 @@ const LearningPathComponent = () => {
                       fontSize: '0.75rem',
                       fontWeight: '700',
                       backgroundColor:
-                        node.difficulty === 'Beginner' ? 'rgba(16, 185, 129, 0.2)' :
-                        node.difficulty === 'Intermediate' ? 'rgba(245, 158, 11, 0.2)' :
+                        node.difficulty === 'Beginner' ? 'rgba(34, 197, 94, 0.2)' :
+                        node.difficulty === 'Intermediate' ? 'rgba(234, 179, 8, 0.2)' :
                         node.difficulty === 'Advanced' ? 'rgba(239, 68, 68, 0.2)' :
                         'rgba(139, 92, 246, 0.2)',
                       color:
-                        node.difficulty === 'Beginner' ? '#10b981' :
-                        node.difficulty === 'Intermediate' ? '#f59e0b' :
+                        node.difficulty === 'Beginner' ? '#22c55e' :
+                        node.difficulty === 'Intermediate' ? '#eab308' :
                         node.difficulty === 'Advanced' ? '#ef4444' :
                         '#a78bfa',
                       textTransform: 'uppercase'
@@ -418,7 +418,7 @@ const LearningPathComponent = () => {
                   alignItems: 'center',
                   gap: '0.5rem',
                   fontSize: '0.85rem',
-                  color: '#f59e0b'
+                  color: '#eab308'
                 }}>
                   {React.createElement(AlertCircle, { size: 16 })}
                   Complete prerequisites to unlock

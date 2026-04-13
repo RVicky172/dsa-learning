@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Pause, RotateCcw, Clock, HardDrive, Zap, Info, TrendingUp, BookOpen, Code, Activity, Search, Database, Layers, CheckCircle2 } from 'lucide-react';
+import { Play, Pause, RotateCcw, Clock, HardDrive, Zap, TrendingUp, BookOpen, Activity, Search, Database, Layers, CheckCircle2, Eye } from 'lucide-react';
+import { ResponsiveContainer, LineChart, Line, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
 interface ComplexityExample {
     id: string;
@@ -20,7 +21,7 @@ const complexityExamples: ComplexityExample[] = [
         id: 'constant',
         name: 'O(1) - Constant Time',
         complexity: 'O(1)',
-        color: '#10b981',
+        color: '#22c55e',
         code: `function getFirstElement(arr) {
   return arr[0];  // Direct memory access
 }
@@ -134,7 +135,7 @@ function swap(a, b) {
         id: 'quadratic',
         name: 'O(n²) - Quadratic Time',
         complexity: 'O(n²)',
-        color: '#f59e0b',
+        color: '#eab308',
         code: `function bubbleSort(arr) {
   const n = arr.length;
   
@@ -163,7 +164,7 @@ function swap(a, b) {
         id: 'cubic',
         name: 'O(n³) - Cubic Time',
         complexity: 'O(n³)',
-        color: '#ec4899',
+        color: '#f43f5e',
         code: `function matrixMultiply(A, B) {
   const n = A.length;
   const C = new Array(n).fill().map(() => new Array(n).fill(0));
@@ -245,414 +246,263 @@ function swap(a, b) {
 ];
 
 const ComplexityGraph = () => {
-    const width = 600;
-    const height = 400;
-    const padding = 50;
     const [hoveredComplexity, setHoveredComplexity] = useState<string | null>(null);
+    const [hiddenLines, setHiddenLines] = useState<Set<string>>(new Set());
+
+    const toggleLine = (complexity: string) => {
+        setHiddenLines(prev => {
+            const next = new Set(prev);
+            if (next.has(complexity)) next.delete(complexity);
+            else next.add(complexity);
+            return next;
+        });
+    };
 
     const factorial = (n: number): number => {
         if (n <= 1) return 1;
         return n * factorial(n - 1);
     };
 
-    const generatePath = (complexity: string, color: string, isHovered: boolean = false) => {
-        const points: [number, number][] = [];
-        const nSteps = 60;
-        const maxN = 20;
-
-        for (let i = 0; i <= nSteps; i++) {
-            const n = (i / nSteps) * maxN;
-            let y = 0;
-
-            switch (complexity) {
-                case 'O(1)': y = 1; break;
-                case 'O(log n)': y = Math.log2(n + 1); break;
-                case 'O(n)': y = n; break;
-                case 'O(n log n)': y = n * Math.log2(n + 1); break;
-                case 'O(n²)': y = n * n; break;
-                case 'O(n³)': y = n * n * n; break;
-                case 'O(2ⁿ)': y = Math.pow(2, n); break;
-                case 'O(n!)': y = factorial(n); break;
-            }
-
-            // Normalize Y using log scale for better visualization
-            const logY = Math.log10(y + 1);
-            const maxLogY = Math.log10(Math.pow(2, maxN) + 1);
-            const mappedX = padding + (n / maxN) * (width - 2 * padding);
-            const mappedY = height - padding - (logY / maxLogY) * (height - 2 * padding);
-
-            if (mappedY >= padding) {
-                points.push([mappedX, mappedY]);
-            }
-        }
-
-        return (
-            <g>
-                {/* Main path */}
-                <motion.path
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 2.5, ease: "easeInOut", delay: complexityExamples.findIndex(ex => ex.complexity === complexity) * 0.1 }}
-                    d={`M ${points.map(p => p.join(',')).join(' L ')}`}
-                    fill="none"
-                    stroke={color}
-                    strokeWidth={isHovered ? "4" : "3"}
-                    strokeLinecap="round"
-                    filter={isHovered ? "drop-shadow(0 0 8px rgba(255,255,255,0.3))" : "none"}
-                    style={{ cursor: 'pointer' }}
-                    onMouseEnter={() => setHoveredComplexity(complexity)}
-                    onMouseLeave={() => setHoveredComplexity(null)}
-                />
-
-                {/* Data points for interactivity */}
-                {points.filter((_, i) => i % 10 === 0).map((point, i) => (
-                    <circle
-                        key={i}
-                        cx={point[0]}
-                        cy={point[1]}
-                        r={isHovered ? "3" : "2"}
-                        fill={color}
-                        opacity={isHovered ? 0.8 : 0.4}
-                        style={{ transition: 'all 0.2s ease' }}
-                    />
-                ))}
-            </g>
-        );
-    };
+    // Cap at n=12 so O(n!) and O(2^n) don't explode the scale. Values are capped at 10M.
+    const CAP = 10_000_000;
+    const chartData = Array.from({ length: 13 }, (_, i) => {
+        const n = i + 1;
+        return {
+            n,
+            'O(1)': 1,
+            'O(log n)': parseFloat(Math.log2(n + 1).toFixed(2)),
+            'O(n)': n,
+            'O(n log n)': parseFloat((n * Math.log2(n + 1)).toFixed(2)),
+            'O(n²)': n * n,
+            'O(n³)': Math.min(n * n * n, CAP),
+            'O(2ⁿ)': Math.min(Math.pow(2, n), CAP),
+            'O(n!)': Math.min(factorial(n), CAP),
+        };
+    });
 
     const getComplexityInfo = (complexity: string) => {
         return complexityExamples.find(ex => ex.complexity === complexity);
     };
 
+    const formatYAxis = (val: number) => {
+        if (val >= 1_000_000) return (val / 1_000_000).toFixed(0) + 'M';
+        if (val >= 1_000) return (val / 1_000).toFixed(0) + 'k';
+        return val.toString();
+    };
+
+    const activeInfo = hoveredComplexity ? getComplexityInfo(hoveredComplexity) : null;
+
     return (
         <div className="glass" style={{
-            padding: '2.5rem',
+            padding: '2rem',
             position: 'relative',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-            border: '1px solid rgba(255,255,255,0.1)',
-            borderRadius: '20px',
+            background: 'linear-gradient(135deg, rgba(15,15,30,0.9) 0%, rgba(20,20,40,0.8) 100%)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: '24px',
             backdropFilter: 'blur(20px)'
         }}>
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
-                marginBottom: '2.5rem',
-                padding: '1rem 1.5rem',
-                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%)',
-                borderRadius: '15px',
-                border: '1px solid rgba(99, 102, 241, 0.2)'
-            }}>
+            {/* Header */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '12px',
+                    width: '44px', height: '44px', borderRadius: '12px',
                     background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 32px rgba(99, 102, 241, 0.4)'
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    boxShadow: '0 4px 20px rgba(99,102,241,0.5)'
                 }}>
-                    <TrendingUp size={24} color="white" />
+                    <TrendingUp size={22} color="white" />
                 </div>
                 <div>
-                    <h3 style={{
-                        fontSize: '2rem',
-                        margin: 0,
-                        background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        fontWeight: '800'
-                    }}>
+                    <h3 style={{ fontSize: '1.5rem', margin: 0, fontWeight: '800', color: 'var(--text-main)' }}>
                         Growth Rate Visualization
                     </h3>
-                    <p style={{
-                        margin: '0.5rem 0 0 0',
-                        color: 'var(--text-muted)',
-                        fontSize: '1rem'
-                    }}>
-                        Interactive comparison • Hover to highlight • Logarithmic scale
+                    <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                        Logarithmic scale · n = 1 → 13 · Click legend to toggle lines
                     </p>
                 </div>
             </div>
 
-            <div style={{ position: 'relative', height: '450px', width: '100%', marginTop: '1rem' }}>
-                <svg viewBox={`0 0 ${width} ${height}`} style={{
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'visible',
-                    filter: 'drop-shadow(0 12px 40px rgba(0,0,0,0.15))'
-                }}>
-                    {/* Enhanced Background */}
-                    <defs>
-                        <linearGradient id="graphBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="rgba(99, 102, 241, 0.08)" />
-                            <stop offset="50%" stopColor="rgba(168, 85, 247, 0.06)" />
-                            <stop offset="100%" stopColor="rgba(236, 72, 153, 0.04)" />
-                        </linearGradient>
-                        <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stopColor="rgba(99, 102, 241, 0.1)" />
-                            <stop offset="100%" stopColor="transparent" />
-                        </radialGradient>
-                        <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1"/>
-                        </pattern>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
+            {/* Info banner when hovering */}
+            <div style={{
+                height: '56px',
+                marginBottom: '1rem',
+                padding: '0.75rem 1.25rem',
+                borderRadius: '12px',
+                background: activeInfo ? `${activeInfo.color}18` : 'rgba(255,255,255,0.03)',
+                border: `1px solid ${activeInfo ? activeInfo.color + '40' : 'rgba(255,255,255,0.06)'}`,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                transition: 'all 0.3s ease'
+            }}>
+                {activeInfo ? (
+                    <>
+                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: activeInfo.color, boxShadow: `0 0 10px ${activeInfo.color}`, flexShrink: 0 }} />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                            <span style={{ color: activeInfo.color, fontWeight: '700', fontSize: '0.9rem' }}>{activeInfo.name}</span>
+                            <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginLeft: '0.75rem' }}>
+                                {activeInfo.realWorld.split(',')[0]}
+                            </span>
+                        </div>
+                    </>
+                ) : (
+                    <span style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>
+                        ↑ Hover over the legend buttons or chart lines to highlight a complexity class
+                    </span>
+                )}
+            </div>
 
-                    {/* Background with subtle grid */}
-                    <rect
-                        x={padding - 20}
-                        y={padding - 20}
-                        width={width - 2 * padding + 40}
-                        height={height - 2 * padding + 40}
-                        fill="url(#graphBg)"
-                        rx="20"
-                    />
-                    <rect
-                        x={padding - 20}
-                        y={padding - 20}
-                        width={width - 2 * padding + 40}
-                        height={height - 2 * padding + 40}
-                        fill="url(#centerGlow)"
-                        rx="20"
-                    />
-                    <rect
-                        x={padding}
-                        y={padding}
-                        width={width - 2 * padding}
-                        height={height - 2 * padding}
-                        fill="url(#gridPattern)"
-                        opacity="0.3"
-                    />
-
-                    {/* Enhanced Grid Lines */}
-                    {Array.from({ length: 8 }, (_, i) => (
-                        <g key={i}>
-                            <line
-                                x1={padding}
-                                y1={padding + (i * (height - 2 * padding) / 7)}
-                                x2={width - padding}
-                                y2={padding + (i * (height - 2 * padding) / 7)}
-                                stroke="rgba(255,255,255,0.08)"
-                                strokeWidth="1"
-                                strokeDasharray="1,3"
-                            />
-                            <text
-                                x={padding - 25}
-                                y={padding + (i * (height - 2 * padding) / 7) + 4}
-                                fill="var(--text-dim)"
-                                fontSize="11"
-                                textAnchor="end"
-                                fontWeight="500"
-                            >
-                                {Math.round(Math.pow(10, (7 - i) * 0.4))}
-                            </text>
-                        </g>
-                    ))}
-
-                    {/* Vertical grid lines */}
-                    {Array.from({ length: 6 }, (_, i) => (
-                        <line
-                            key={i}
-                            x1={padding + (i * (width - 2 * padding) / 5)}
-                            y1={padding}
-                            x2={padding + (i * (width - 2 * padding) / 5)}
-                            y2={height - padding}
-                            stroke="rgba(255,255,255,0.06)"
-                            strokeWidth="1"
-                            strokeDasharray="1,3"
+            {/* Chart */}
+            <div style={{
+                background: 'rgba(0,0,0,0.35)',
+                borderRadius: '16px',
+                border: '1px solid rgba(255,255,255,0.06)',
+                padding: '0.5rem 0.5rem 0 0',
+                height: '420px',
+                overflow: 'hidden'
+            }}>
+                <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={chartData} margin={{ top: 15, right: 40, left: 60, bottom: 40 }}>
+                        <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.06)" />
+                        <XAxis
+                            dataKey="n"
+                            stroke="rgba(255,255,255,0.2)"
+                            tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 12, fontWeight: 600 }}
+                            tickLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+                            label={{
+                                value: 'Input Size (n)',
+                                position: 'insideBottom',
+                                offset: -22,
+                                fill: 'rgba(255,255,255,0.6)',
+                                fontSize: 13,
+                                fontWeight: 600
+                            }}
                         />
-                    ))}
-
-                    {/* Enhanced Axis lines */}
-                    <line
-                        x1={padding}
-                        y1={height - padding}
-                        x2={width - padding}
-                        y2={height - padding}
-                        stroke="rgba(255,255,255,0.4)"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                    />
-                    <line
-                        x1={padding}
-                        y1={padding}
-                        x2={padding}
-                        y2={height - padding}
-                        stroke="rgba(255,255,255,0.4)"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                    />
-
-                    {/* Complexity Paths */}
-                    {complexityExamples.map(ex => generatePath(ex.complexity, ex.color, hoveredComplexity === ex.complexity))}
-
-                    {/* Enhanced Axis Labels */}
-                    <text
-                        x={width / 2}
-                        y={height - 15}
-                        fill="var(--text-main)"
-                        fontSize="14"
-                        textAnchor="middle"
-                        fontWeight="700"
-                        opacity="0.9"
-                    >
-                        Input Size (n)
-                    </text>
-                    <text
-                        x={20}
-                        y={height / 2}
-                        fill="var(--text-main)"
-                        fontSize="14"
-                        textAnchor="middle"
-                        transform={`rotate(-90, 20, ${height / 2})`}
-                        fontWeight="700"
-                        opacity="0.9"
-                    >
-                        Operations (log scale)
-                    </text>
-
-                    {/* Enhanced X-axis markers */}
-                    {[0, 4, 8, 12, 16, 20].map(n => (
-                        <g key={n}>
-                            <line
-                                x1={padding + (n / 20) * (width - 2 * padding)}
-                                y1={height - padding - 5}
-                                x2={padding + (n / 20) * (width - 2 * padding)}
-                                y2={height - padding + 5}
-                                stroke="var(--text-dim)"
-                                strokeWidth="2"
+                        <YAxis
+                            scale="log"
+                            domain={[1, 'auto']}
+                            stroke="rgba(255,255,255,0.2)"
+                            tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 11 }}
+                            tickLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+                            tickFormatter={formatYAxis}
+                            width={55}
+                            label={{
+                                value: 'Operations (log scale)',
+                                angle: -90,
+                                position: 'insideLeft',
+                                offset: -45,
+                                fill: 'rgba(255,255,255,0.6)',
+                                fontSize: 13,
+                                fontWeight: 600
+                            }}
+                        />
+                        <Tooltip
+                            contentStyle={{
+                                backgroundColor: 'rgba(4, 7, 20, 0.97)',
+                                border: '1px solid rgba(255,255,255,0.12)',
+                                borderRadius: '14px',
+                                boxShadow: '0 12px 48px rgba(0,0,0,0.7)',
+                                color: '#fff',
+                                padding: '12px 16px'
+                            }}
+                            itemStyle={{ fontWeight: '700', fontSize: '0.85rem', padding: '2px 0' }}
+                            labelStyle={{ color: 'rgba(255,255,255,0.5)', marginBottom: '6px', fontSize: '0.8rem' }}
+                            labelFormatter={(label) => `n = ${label}`}
+                            formatter={(value, name) => {
+                                const num = typeof value === 'number' ? value : Number(value);
+                                if (isNaN(num)) return ['—', name];
+                                let display: string;
+                                if (num >= 1_000_000) display = (num / 1_000_000).toFixed(2) + 'M';
+                                else if (num >= 1_000) display = (num / 1_000).toFixed(1) + 'k';
+                                else display = num.toFixed(num < 10 ? 2 : 0);
+                                if (num >= CAP) display += ' (capped)';
+                                return [display, name];
+                            }}
+                        />
+                        {complexityExamples.map(ex => (
+                            <Line
+                                key={ex.id}
+                                type="monotone"
+                                dataKey={ex.complexity}
+                                stroke={ex.color}
+                                strokeWidth={hoveredComplexity === ex.complexity ? 4 : hiddenLines.has(ex.complexity) ? 0 : 2.5}
+                                dot={false}
+                                hide={hiddenLines.has(ex.complexity)}
+                                activeDot={{
+                                    r: hoveredComplexity === ex.complexity ? 8 : 5,
+                                    fill: ex.color,
+                                    stroke: 'white',
+                                    strokeWidth: 2
+                                }}
+                                strokeOpacity={hoveredComplexity && hoveredComplexity !== ex.complexity ? 0.15 : 1}
                             />
-                            <text
-                                x={padding + (n / 20) * (width - 2 * padding)}
-                                y={height - padding + 25}
-                                fill="var(--text-dim)"
-                                fontSize="12"
-                                textAnchor="middle"
-                                fontWeight="600"
-                            >
-                                {n}
-                            </text>
-                        </g>
-                    ))}
-                </svg>
+                        ))}
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
 
-                {/* Enhanced Legend */}
-                <div style={{
-                    position: 'absolute',
-                    top: '20px',
-                    right: '20px',
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '0.5rem',
-                    background: 'rgba(0,0,0,0.6)',
-                    padding: '1.5rem',
-                    borderRadius: '20px',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    boxShadow: '0 12px 40px rgba(0,0,0,0.3)',
-                    maxWidth: '280px'
-                }}>
-                    {complexityExamples.map(ex => (
-                        <motion.div
+            {/* Interactive Legend Chips */}
+            <div style={{
+                marginTop: '1.25rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.6rem',
+            }}>
+                {complexityExamples.map(ex => {
+                    const isHidden = hiddenLines.has(ex.complexity);
+                    const isHighlighted = hoveredComplexity === ex.complexity;
+                    return (
+                        <motion.button
                             key={ex.id}
+                            onClick={() => toggleLine(ex.complexity)}
+                            onMouseEnter={() => setHoveredComplexity(ex.complexity)}
+                            onMouseLeave={() => setHoveredComplexity(null)}
+                            whileHover={{ scale: 1.06 }}
+                            whileTap={{ scale: 0.95 }}
                             style={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '0.75rem',
-                                padding: '0.75rem',
-                                borderRadius: '12px',
+                                gap: '0.5rem',
+                                padding: '0.45rem 1rem',
+                                borderRadius: '99px',
+                                border: isHighlighted ? `1.5px solid ${ex.color}` : isHidden ? '1.5px solid rgba(255,255,255,0.1)' : `1.5px solid ${ex.color}50`,
+                                background: isHighlighted ? `${ex.color}22` : isHidden ? 'rgba(255,255,255,0.04)' : `${ex.color}10`,
+                                color: isHidden ? 'rgba(255,255,255,0.35)' : isHighlighted ? ex.color : 'var(--text-main)',
+                                fontWeight: isHighlighted ? '800' : '600',
+                                fontSize: '0.82rem',
                                 cursor: 'pointer',
-                                background: hoveredComplexity === ex.complexity ? 'rgba(255,255,255,0.15)' : 'transparent',
-                                border: hoveredComplexity === ex.complexity ? `1px solid ${ex.color}40` : '1px solid transparent',
-                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                backdropFilter: hoveredComplexity === ex.complexity ? 'blur(10px)' : 'none'
+                                transition: 'all 0.2s ease',
+                                boxShadow: isHighlighted ? `0 0 18px ${ex.color}40` : 'none',
+                                textDecoration: isHidden ? 'line-through' : 'none',
+                                opacity: isHidden ? 0.5 : 1,
+                                fontFamily: 'var(--font-mono)'
                             }}
-                            onMouseEnter={() => setHoveredComplexity(ex.complexity)}
-                            onMouseLeave={() => setHoveredComplexity(null)}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.98 }}
                         >
                             <div style={{
-                                width: '16px',
-                                height: '16px',
-                                borderRadius: '50%',
-                                background: `linear-gradient(135deg, ${ex.color} 0%, ${ex.color}dd 100%)`,
-                                boxShadow: hoveredComplexity === ex.complexity ? `0 0 16px ${ex.color}60` : `0 0 8px ${ex.color}30`,
-                                transition: 'all 0.3s ease',
-                                border: '2px solid rgba(255,255,255,0.2)'
+                                width: '8px', height: '8px', borderRadius: '50%',
+                                background: isHidden ? 'rgba(255,255,255,0.2)' : ex.color,
+                                boxShadow: isHighlighted ? `0 0 8px ${ex.color}` : 'none',
+                                flexShrink: 0
                             }} />
-                            <span style={{
-                                color: hoveredComplexity === ex.complexity ? ex.color : 'var(--text-main)',
-                                fontWeight: hoveredComplexity === ex.complexity ? '800' : '600',
-                                fontSize: '0.9rem',
-                                transition: 'all 0.3s ease',
-                                textShadow: hoveredComplexity === ex.complexity ? `0 0 8px ${ex.color}40` : 'none'
-                            }}>
-                                {ex.complexity}
-                            </span>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Enhanced Tooltip */}
-                {hoveredComplexity && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 15, scale: 0.9 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 15, scale: 0.9 }}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        style={{
-                            position: 'absolute',
-                            top: '60%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            background: 'rgba(0,0,0,0.95)',
-                            padding: '1.5rem 2rem',
-                            borderRadius: '16px',
-                            border: `2px solid ${getComplexityInfo(hoveredComplexity)?.color}60`,
-                            boxShadow: `0 16px 48px ${getComplexityInfo(hoveredComplexity)?.color}25`,
-                            backdropFilter: 'blur(20px)',
-                            pointerEvents: 'none',
-                            zIndex: 1000,
-                            minWidth: '300px'
-                        }}
-                    >
-                        <div style={{
-                            color: getComplexityInfo(hoveredComplexity)?.color,
-                            fontWeight: '800',
-                            fontSize: '1.3rem',
-                            marginBottom: '0.75rem',
-                            textAlign: 'center',
-                            textShadow: `0 0 12px ${getComplexityInfo(hoveredComplexity)?.color}40`
-                        }}>
-                            {getComplexityInfo(hoveredComplexity)?.name}
-                        </div>
-                        <div style={{
-                            color: 'var(--text-muted)',
-                            fontSize: '0.95rem',
-                            lineHeight: '1.6',
-                            textAlign: 'center'
-                        }}>
-                            {getComplexityInfo(hoveredComplexity)?.realWorld.split(',')[0]}
-                        </div>
-                        <div style={{
-                            width: '100%',
-                            height: '3px',
-                            background: `linear-gradient(90deg, transparent 0%, ${getComplexityInfo(hoveredComplexity)?.color} 50%, transparent 100%)`,
-                            borderRadius: '2px',
-                            marginTop: '1rem'
-                        }} />
-                    </motion.div>
-                )}
+                            {ex.complexity}
+                        </motion.button>
+                    );
+                })}
+                <button
+                    onClick={() => setHiddenLines(new Set())}
+                    style={{
+                        padding: '0.45rem 0.9rem',
+                        borderRadius: '99px',
+                        border: '1.5px solid rgba(255,255,255,0.15)',
+                        background: 'transparent',
+                        color: 'rgba(255,255,255,0.4)',
+                        fontSize: '0.78rem',
+                        cursor: 'pointer',
+                        fontWeight: '600',
+                        transition: 'all 0.2s'
+                    }}
+                >
+                    Show All
+                </button>
             </div>
         </div>
     );
@@ -663,6 +513,16 @@ const BigODetail = () => {
     const [highlightedLine, setHighlightedLine] = useState<number | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
     const [currentAnnotationIndex, setCurrentAnnotationIndex] = useState(0);
+    const [revealedProblems, setRevealedProblems] = useState<Set<number>>(new Set());
+
+    const toggleReveal = (index: number) => {
+        setRevealedProblems(prev => {
+            const next = new Set(prev);
+            if (next.has(index)) next.delete(index);
+            else next.add(index);
+            return next;
+        });
+    };
 
     // Add responsive styles
     const responsiveStyles = `
@@ -672,6 +532,14 @@ const BigODetail = () => {
                     grid-template-columns: 1fr 1fr !important;
                     gap: 2rem !important;
                 }
+            }
+            @media (max-width: 992px) {
+                .dsa-content-row {
+                    grid-template-columns: 1fr !important;
+                }
+            }
+            .hide-scroll::-webkit-scrollbar {
+                display: none;
             }
             @media (max-width: 768px) {
                 .main-content-grid {
@@ -723,1051 +591,868 @@ const BigODetail = () => {
 
     const codeLines = selectedExample.code.split('\n');
 
+    const internalFactorial = (n: number): number => {
+        if (n <= 1) return 1;
+        return n * internalFactorial(n - 1);
+    };
+
+    const minChartCap = 1_000_000_000;
+    const miniChartData = Array.from({ length: 15 }, (_, i) => {
+        const n = i + 1;
+        const comp = selectedExample.complexity;
+        let val = 1;
+        if (comp === 'O(1)') val = 1;
+        else if (comp === 'O(log n)') val = Math.max(1, Math.log2(n + 1));
+        else if (comp === 'O(n)') val = n;
+        else if (comp === 'O(n log n)') val = Math.max(1, n * Math.log2(n + 1));
+        else if (comp === 'O(n²)') val = n * n;
+        else if (comp === 'O(n³)') val = Math.pow(n, 3);
+        else if (comp === 'O(2ⁿ)') val = Math.pow(2, n);
+        else if (comp === 'O(n!)') val = internalFactorial(n);
+
+        return { n, val: Math.min(val, minChartCap) };
+    });
+
     return (
         <>
             <div dangerouslySetInnerHTML={{ __html: responsiveStyles }} />
             <section id="big-o" className="container" style={{ padding: '8rem 0' }}>
-            {/* Big O Hero Section */}
-            <div style={{ marginBottom: '6rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '5rem', position: 'relative' }}>
-                    
-                    {/* Background glowing orb */}
-                    <div style={{ 
-                        position: 'absolute', 
-                        top: '50%', 
-                        left: '50%', 
-                        transform: 'translate(-50%, -50%)', 
-                        width: '600px', 
-                        height: '600px', 
-                        background: 'radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 70%)',
-                        filter: 'blur(60px)',
-                        zIndex: -1,
-                        pointerEvents: 'none'
-                    }} />
+                {/* Big O Hero Section */}
+                <div style={{ marginBottom: '6rem' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '5rem', position: 'relative' }}>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: -20, scale: 0.9 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1.25rem', borderRadius: '99px', background: 'var(--primary-gradient)', color: 'white', marginBottom: '2rem', boxShadow: '0 4px 20px rgba(245, 158, 11, 0.3)' }}
-                    >
-                        <Zap size={16} fill="currentColor" />
-                        <span style={{ fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Foundational Concept</span>
-                    </motion.div>
-                    
-                    <motion.h1 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        style={{ fontSize: '4.5rem', marginBottom: '1.5rem', letterSpacing: '-0.02em', lineHeight: '1.1' }}
-                    >
-                        The Language of <br/>
-                        <span style={{ 
-                            background: 'linear-gradient(135deg, #f59e0b 0%, #ec4899 100%)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
-                            display: 'inline-block'
-                        }}>Efficiency</span>
-                    </motion.h1>
-                    
-                    <motion.p 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        style={{ color: 'var(--text-muted)', fontSize: '1.3rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.8' }}
-                    >
-                        Big O notation is a mathematical tool used to describe the limiting behavior of a function. In computer science, it's the standard for analyzing the <strong style={{ color: 'var(--text-main)' }}>scalability</strong> and <strong style={{ color: 'var(--text-main)' }}>performance</strong> of algorithms as input sizes grow towards infinity.
-                    </motion.p>
-                </div>
+                        {/* Background glowing orb */}
+                        <div style={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: '600px',
+                            height: '600px',
+                            background: 'radial-gradient(circle, rgba(234, 179, 8, 0.15) 0%, rgba(244, 63, 94, 0.05) 50%, transparent 70%)',
+                            filter: 'blur(60px)',
+                            zIndex: -1,
+                            pointerEvents: 'none'
+                        }} />
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '2rem' }}>
-                    <div className="glass" style={{ padding: '2.5rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-                            <Info size={24} className="gradient-text" />
-                            <h3 style={{ fontSize: '1.5rem', margin: 0 }}>Detailed Summary</h3>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                            <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)' }}>
-                                <h4 style={{ color: 'var(--primary-light)', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Why It Matters</h4>
-                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                                    Computers differ in processing power, but Big O remains constant across all hardware. It focuses on how an algorithm's requirements (time or space) grow relative to the input size (n).
-                                </p>
-                            </div>
-                            <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)' }}>
-                                <h4 style={{ color: 'var(--secondary-light)', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Worst-Case Analysis</h4>
-                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                                    While we sometimes use average-case, Big O usually provides a <strong>Worst-Case</strong> guarantee. It ensures that the algorithm will never perform slower than the derived complexity.
-                                </p>
-                            </div>
-                            <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)' }}>
-                                <h4 style={{ color: '#ec4899', marginBottom: '0.5rem', fontSize: '1.1rem' }}>Asymptotic Growth</h4>
-                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                                    When input size is massive, constant factors and lower-order terms become irrelevant. Big O simplifies expressions (e.g., 2n² + 5n + 100 becomes O(n²)) to highlight the dominant trend.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <ComplexityGraph />
-                </div>
-            </div>
-
-            {/* Theoretical Foundations */}
-            <div style={{ marginBottom: '4rem' }}>
-                <div className="glass" style={{ padding: '3rem' }}>
-                    <h3 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center' }}>Theoretical <span className="gradient-text">Foundations</span></h3>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2rem' }}>
-                        <div style={{ padding: '1.5rem', borderLeft: '4px solid #ef4444', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '0 12px 12px 0' }}>
-                            <h4 style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '1.25rem' }}>Big O (O)</h4>
-                            <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Upper Bound (Worst Case)</p>
-                            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                                Describes the <strong>maximum</strong> time an algorithm could take. It guarantees that the algorithm will never be slower than this.
-                            </p>
-                            <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is O(g(n)) if f(n) ≤ c · g(n)"</div>
-                        </div>
-                        <div style={{ padding: '1.5rem', borderLeft: '4px solid #10b981', background: 'rgba(16, 185, 129, 0.05)', borderRadius: '0 12px 12px 0' }}>
-                            <h4 style={{ color: '#10b981', marginBottom: '1rem', fontSize: '1.25rem' }}>Big Omega (Ω)</h4>
-                            <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Lower Bound (Best Case)</p>
-                            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                                Describes the <strong>minimum</strong> time an algorithm could take. It guarantees that the algorithm will never be faster than this.
-                            </p>
-                            <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is Ω(g(n)) if f(n) ≥ c · g(n)"</div>
-                        </div>
-                        <div style={{ padding: '1.5rem', borderLeft: '4px solid #f97316', background: 'rgba(249, 115, 22, 0.05)', borderRadius: '0 12px 12px 0' }}>
-                            <h4 style={{ color: '#f97316', marginBottom: '1rem', fontSize: '1.25rem' }}>Big Theta (Θ)</h4>
-                            <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Tight Bound (Average Case)</p>
-                            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                                Describes the <strong>exact</strong> growth rate. An algorithm is Θ(g(n)) if it is both O(g(n)) and Ω(g(n)).
-                            </p>
-                            <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is Θ(g(n)) if c₁g(n) ≤ f(n) ≤ c₂g(n)"</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Header */}
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                <h2 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
-                    Algorithm <span className="gradient-text">Counting & Analysis</span>
-                </h2>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
-                    Learn to count operations and analyze algorithm efficiency. Click on any complexity to see step-by-step analysis.
-                </p>
-            </div>
-
-            {/* Complexity Selector Array */}
-            <div className="complexity-selector" style={{
-                display: 'flex',
-                gap: '0.75rem',
-                marginBottom: '3rem',
-                overflowX: 'auto',
-                padding: '0.5rem',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-                background: 'rgba(255,255,255,0.02)',
-                borderRadius: '24px',
-                border: '1px solid rgba(255,255,255,0.05)',
-                maxWidth: 'fit-content',
-                margin: '0 auto 4rem auto'
-            }}>
-                {complexityExamples.map((example) => {
-                    const isSelected = selectedExample.id === example.id;
-                    return (
-                        <motion.button
-                            key={example.id}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={() => { setSelectedExample(example); resetAnimation(); }}
-                            style={{
-                                padding: '0.8rem 1.5rem',
-                                borderRadius: '16px',
-                                border: isSelected ? `1px solid ${example.color}50` : '1px solid transparent',
-                                background: isSelected ? `${example.color}15` : 'transparent',
-                                color: isSelected ? example.color : 'var(--text-muted)',
-                                cursor: 'pointer',
-                                fontWeight: isSelected ? '700' : '500',
-                                fontSize: '0.95rem',
-                                transition: 'all 0.3s ease',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                boxShadow: isSelected ? `0 8px 24px ${example.color}20, inset 0 0 12px ${example.color}10` : 'none'
-                            }}
+                        <motion.div
+                            initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1.25rem', borderRadius: '99px', background: 'var(--primary-gradient)', color: 'white', marginBottom: '2rem', boxShadow: '0 4px 20px rgba(234, 179, 8, 0.3)' }}
                         >
-                            <div style={{
-                                width: '8px', height: '8px', borderRadius: '50%', background: example.color,
-                                filter: isSelected ? `drop-shadow(0 0 6px ${example.color})` : 'none',
-                                opacity: isSelected ? 1 : 0.5
-                            }} />
-                            {example.complexity}
-                        </motion.button>
-                    );
-                })}
-            </div>
+                            <Zap size={16} fill="currentColor" />
+                            <span style={{ fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Foundational Concept</span>
+                        </motion.div>
 
-            {/* Main Content Grid - Improved Layout */}
-            <div className="main-content-grid" style={{
-                display: 'grid',
-                gridTemplateColumns: 'minmax(400px, 1.5fr) minmax(300px, 1fr) minmax(350px, 1.2fr)',
-                gap: '2.5rem',
-                alignItems: 'start'
-            }}>
-                {/* Code Panel - Enhanced */}
-                <div className="glass" style={{
-                    padding: '0',
-                    minHeight: '600px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    overflow: 'hidden'
-                }}>
-                    {/* Mac-style Window Header */}
-                    <div style={{
-                        padding: '1rem 1.5rem',
-                        background: 'rgba(0,0,0,0.4)',
-                        borderBottom: '1px solid rgba(255,255,255,0.05)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between'
-                    }}>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
-                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444', boxShadow: 'inset 0 0 2px rgba(0,0,0,0.2)' }}></div>
-                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#f59e0b', boxShadow: 'inset 0 0 2px rgba(0,0,0,0.2)' }}></div>
-                            <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#10b981', boxShadow: 'inset 0 0 2px rgba(0,0,0,0.2)' }}></div>
-                        </div>
-                        <div style={{
-                            fontSize: '0.85rem',
-                            fontFamily: 'var(--font-mono)',
-                            color: 'var(--text-muted)',
-                            background: 'rgba(255,255,255,0.05)',
-                            padding: '0.3rem 1rem',
-                            borderRadius: '99px',
-                            border: '1px solid rgba(255,255,255,0.05)'
-                        }}>
-                            algorithm.js
-                        </div>
-                        <div style={{ width: '48px', display: 'flex', justifyContent: 'flex-end', opacity: 0.5 }}>
-                            <Code size={16} />
-                        </div>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            style={{ fontSize: '4.5rem', marginBottom: '1.5rem', letterSpacing: '-0.02em', lineHeight: '1.1' }}
+                        >
+                            The Language of <br />
+                            <span style={{
+                                background: 'linear-gradient(135deg, #eab308 0%, #f43f5e 100%)',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                backgroundClip: 'text',
+                                display: 'inline-block'
+                            }}>Efficiency</span>
+                        </motion.h1>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            style={{ color: 'var(--text-muted)', fontSize: '1.3rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.8' }}
+                        >
+                            Big O notation is a mathematical tool used to describe the limiting behavior of a function. In computer science, it's the standard for analyzing the <strong style={{ color: 'var(--text-main)' }}>scalability</strong> and <strong style={{ color: 'var(--text-main)' }}>performance</strong> of algorithms as input sizes grow towards infinity.
+                        </motion.p>
                     </div>
 
-                    <div style={{ padding: '2rem 2.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            marginBottom: '1.5rem',
-                            flexWrap: 'wrap',
-                            gap: '1rem'
-                        }}>
-                            <h3 style={{
-                                color: 'var(--text-main)',
-                                fontSize: '1.6rem',
-                                margin: 0,
-                                lineHeight: '1.3',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.75rem',
-                                fontWeight: '700'
-                            }}>
-                                <div style={{
-                                    width: '14px',
-                                    height: '14px',
-                                    borderRadius: '50%',
-                                    background: selectedExample.color,
-                                    boxShadow: `0 0 12px ${selectedExample.color}`,
-                                    position: 'relative'
-                                }}>
-                                    <div style={{
-                                        position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-                                        width: '6px', height: '6px', borderRadius: '50%', background: 'white'
-                                    }}/>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                        {/* Beginner Introduction Section */}
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+                            {/* The Restaurant Analogy */}
+                            <div className="glass" style={{ padding: '2.5rem' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                                    <BookOpen size={28} color="#eab308" />
+                                    <h3 style={{ fontSize: '1.6rem', margin: 0, color: '#fff', fontWeight: '800' }}>The "Pizza" Analogy</h3>
                                 </div>
-                                {selectedExample.name.split(' - ')[0]}
-                            </h3>
-                            <div style={{
-                                display: 'flex',
-                                gap: '0.75rem',
-                                flexShrink: 0
-                            }}>
-                                <button
-                                    onClick={isAnimating ? resetAnimation : startAnimation}
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '0.5rem',
-                                        padding: '0.6rem 1.2rem',
-                                        borderRadius: '10px',
-                                        background: selectedExample.color,
-                                        color: 'white',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        fontWeight: '700',
-                                        fontSize: '0.9rem',
-                                        boxShadow: `0 4px 15px ${selectedExample.color}40`,
-                                        transition: 'all 0.3s ease'
-                                    }}
-                                >
-                                    {isAnimating ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" />}
-                                    {isAnimating ? 'Pause' : 'Animate Analysis'}
-                                </button>
-                                <button
-                                    onClick={resetAnimation}
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '0.5rem',
-                                        padding: '0.6rem 1.2rem',
-                                        borderRadius: '10px',
-                                        background: 'rgba(255,255,255,0.05)',
-                                        color: 'var(--text-main)',
-                                        border: '1px solid rgba(255,255,255,0.1)',
-                                        cursor: 'pointer',
-                                        fontWeight: '600',
-                                        fontSize: '0.9rem',
-                                        transition: 'all 0.3s ease'
-                                    }}
-                                >
-                                    <RotateCcw size={16} />
-                                    Reset
-                                </button>
+                                <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem' }}>
+                                    Abstract math can be confusing. Let's imagine you're dealing with <strong style={{ color: 'var(--text-main)' }}>n</strong> slices of pizza to understand how algorithms scale.
+                                </p>
+                                
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                    <div style={{ background: 'rgba(34, 197, 94, 0.05)', padding: '1.25rem', borderRadius: '12px', borderLeft: '4px solid #22c55e' }}>
+                                        <h4 style={{ color: '#22c55e', margin: '0 0 0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><code style={{ background: 'transparent', padding: 0 }}>O(1)</code> Constant</h4>
+                                        <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                                            <strong>Eating a slice:</strong> No matter if you bought 1 pizza or 1,000 pizzas, taking the first bite takes the exact same amount of time.
+                                        </p>
+                                    </div>
+                                    <div style={{ background: 'rgba(99, 102, 241, 0.05)', padding: '1.25rem', borderRadius: '12px', borderLeft: '4px solid #6366f1' }}>
+                                        <h4 style={{ color: '#6366f1', margin: '0 0 0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><code style={{ background: 'transparent', padding: 0 }}>O(n)</code> Linear</h4>
+                                        <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                                            <strong>Delivering to <span style={{ fontFamily: 'var(--font-mono)' }}>n</span> houses:</strong> If you deliver to 10 houses, it takes 10x longer than delivering to 1 house. The time scales directly with the workload.
+                                        </p>
+                                    </div>
+                                    <div style={{ background: 'rgba(234, 179, 8, 0.05)', padding: '1.25rem', borderRadius: '12px', borderLeft: '4px solid #eab308' }}>
+                                        <h4 style={{ color: '#eab308', margin: '0 0 0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><code style={{ background: 'transparent', padding: 0 }}>O(n²)</code> Quadratic</h4>
+                                        <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                                            <strong>The Block Party:</strong> Every house on the street delivers a pizza to <em>every other house</em>. If there are 10 houses, that's 100 deliveries! As <code style={{ color: '#eab308' }}>n</code> grows, work explodes.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* The 3 Golden Rules */}
+                            <div className="glass" style={{ padding: '2.5rem' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                                    <Zap size={28} color="#f43f5e" />
+                                    <h3 style={{ fontSize: '1.6rem', margin: 0, color: '#fff', fontWeight: '800' }}>The Golden Rules</h3>
+                                </div>
+                                <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem' }}>
+                                    When calculating Big O in an interview, you must follow these absolute core mathematical rules:
+                                </p>
+
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                                    <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', position: 'relative' }}>
+                                        <div style={{ position: 'absolute', top: '-10px', left: '-10px', width: '28px', height: '28px', background: '#f43f5e', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>1</div>
+                                        <h4 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '1.1rem', marginLeft: '0.5rem' }}>Worst-Case Scenario</h4>
+                                        <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: '0 0 0 0.5rem' }}>
+                                            Always assume the absolute worst. If searching an array, assume the item is at the very end or doesn't exist. Big O is about guarantees.
+                                        </p>
+                                    </div>
+                                    <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', position: 'relative' }}>
+                                        <div style={{ position: 'absolute', top: '-10px', left: '-10px', width: '28px', height: '28px', background: '#0ea5e9', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>2</div>
+                                        <h4 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '1.1rem', marginLeft: '0.5rem' }}>Drop Constants</h4>
+                                        <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: '0 0 0 0.5rem' }}>
+                                            Hardware speed varies, so we don't care about fixed multipliers. <code style={{ color: '#0ea5e9' }}>O(2n)</code> or <code style={{ color: '#0ea5e9' }}>O(100n)</code> is entirely simplified to just <code style={{ color: '#0ea5e9', fontWeight: 'bold' }}>O(n)</code>.
+                                        </p>
+                                    </div>
+                                    <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', position: 'relative' }}>
+                                        <div style={{ position: 'absolute', top: '-10px', left: '-10px', width: '28px', height: '28px', background: '#8b5cf6', color: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>3</div>
+                                        <h4 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '1.1rem', marginLeft: '0.5rem' }}>Drop Non-Dominant Terms</h4>
+                                        <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: '0 0 0 0.5rem' }}>
+                                            When <strong style={{ color: '#8b5cf6' }}>n</strong> is extremely large, lower terms are basically zero. <code style={{ color: '#8b5cf6' }}>O(n² + 5n + 100)</code> simply becomes <code style={{ color: '#8b5cf6', fontWeight: 'bold' }}>O(n²)</code>. The fastest growing term always wins.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <ComplexityGraph />
+                    </div>
+                </div>
 
-                        {/* Code with Line Numbers - Improved */}
-                        <div style={{
-                            flex: 1,
-                            overflow: 'hidden',
-                            borderRadius: '12px',
-                            backgroundColor: '#0a0a0a', /* darker background for IDE feel */
-                            border: '1px solid rgba(255,255,255,0.08)',
-                            boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.5)',
-                            position: 'relative'
-                        }}>
-                            <pre style={{
-                                padding: '2rem 0',
-                                margin: 0,
-                                fontSize: '0.95rem',
-                                lineHeight: '1.9',
-                                overflowX: 'auto',
-                                overflowY: 'auto',
-                                maxHeight: '500px',
-                                whiteSpace: 'pre-wrap',
-                                wordWrap: 'break-word',
-                                fontFamily: "'JetBrains Mono', 'Courier New', Courier, monospace"
-                            }}>
-                                {codeLines.map((line, index) => {
-                                    const lineNum = index + 1;
-                                    const annotation = selectedExample.annotations.find(a => a.line === lineNum);
-                                    const isHighlighted = highlightedLine === lineNum;
+                {/* Theoretical Foundations */}
+                <div style={{ marginBottom: '4rem' }}>
+                    <div className="glass" style={{ padding: '3rem' }}>
+                        <h3 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center' }}>Theoretical <span className="gradient-text">Foundations</span></h3>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
+                            <div style={{ padding: '1.5rem', borderLeft: '4px solid #ef4444', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '0 12px 12px 0' }}>
+                                <h4 style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '1.25rem' }}>Big O (O)</h4>
+                                <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Upper Bound (Worst Case)</p>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                                    Describes the <strong>maximum</strong> time an algorithm could take. It guarantees that the algorithm will never be slower than this.
+                                </p>
+                                <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is O(g(n)) if f(n) ≤ c · g(n)"</div>
+                            </div>
+                            <div style={{ padding: '1.5rem', borderLeft: '4px solid #22c55e', background: 'rgba(34, 197, 94, 0.05)', borderRadius: '0 12px 12px 0' }}>
+                                <h4 style={{ color: '#22c55e', marginBottom: '1rem', fontSize: '1.25rem' }}>Big Omega (Ω)</h4>
+                                <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Lower Bound (Best Case)</p>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                                    Describes the <strong>minimum</strong> time an algorithm could take. It guarantees that the algorithm will never be faster than this.
+                                </p>
+                                <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is Ω(g(n)) if f(n) ≥ c · g(n)"</div>
+                            </div>
+                            <div style={{ padding: '1.5rem', borderLeft: '4px solid #f97316', background: 'rgba(249, 115, 22, 0.05)', borderRadius: '0 12px 12px 0' }}>
+                                <h4 style={{ color: '#f97316', marginBottom: '1rem', fontSize: '1.25rem' }}>Big Theta (Θ)</h4>
+                                <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Tight Bound (Average Case)</p>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                                    Describes the <strong>exact</strong> growth rate. An algorithm is Θ(g(n)) if it is both O(g(n)) and Ω(g(n)).
+                                </p>
+                                <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is Θ(g(n)) if c₁g(n) ≤ f(n) ≤ c₂g(n)"</div>
+                            </div>
+                            <div style={{ padding: '1.5rem', borderLeft: '4px solid #8b5cf6', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '0 12px 12px 0' }}>
+                                <h4 style={{ color: '#8b5cf6', marginBottom: '1rem', fontSize: '1.25rem' }}>Amortized Time</h4>
+                                <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Average over time</p>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                                    Guarantees average performance over a sequence of operations. A costly operation is averaged out by many subsequent cheap ones (e.g., resizing a dynamic array).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                    return (
-                                        <div
-                                            key={index}
+                {/* Understanding Logarithms */}
+                <div style={{ marginBottom: '4rem' }}>
+                    <div className="glass" style={{ padding: '3rem', position: 'relative', overflow: 'hidden' }}>
+                        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
+                        <div style={{ position: 'relative', zIndex: 1 }}>
+                            <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(249,115,22,0.4)' }}>
+                                    <TrendingUp size={24} color="white" />
+                                </div>
+                                Understanding <span style={{
+                                    background: 'linear-gradient(135deg, #fdba74 0%, #ea580c 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                    display: 'inline-block'
+                                }}>Logarithms</span>
+                            </h3>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '2.5rem', maxWidth: '900px' }}>
+                                In computer science algorithms, when we see <strong style={{ color: '#f97316' }}>O(log n)</strong>, we are almost always talking about <strong>base-2 logarithms (log₂)</strong>. But what exactly is a logarithm mathematically and practically? 
+                                <br/><br/>
+                                Simply put, while exponential growth means <em>doubling</em> things, logarithmic growth means <em>halving</em> them. Asking for <code>log₂(n)</code> is essentially asking: <strong>"How many times do I need to divide <code style={{ color: '#f97316' }}>n</code> by 2 to get down to 1?"</strong>
+                            </p>
+                            
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+                                <div style={{ background: 'rgba(0,0,0,0.2)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                    <h4 style={{ color: '#fdba74', marginBottom: '1rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        <RotateCcw size={18} /> The Math: Exponents Reversed
+                                    </h4>
+                                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                                        If an exponent tells you how many times to multiply a number by itself (<code style={{ color: 'var(--text-main)' }}>2³ = 8</code>), a logarithm tells you what exponent was used to get a result (<code style={{ color: 'var(--text-main)' }}>log₂(8) = 3</code>).
+                                    </p>
+                                    <div style={{ background: 'rgba(249, 115, 22, 0.1)', padding: '1.25rem', borderRadius: '12px', borderLeft: '4px solid #f97316', fontFamily: 'var(--font-mono)', fontSize: '1rem', display: 'flex', justifyContent: 'center' }}>
+                                        2<sup style={{ fontSize: '0.7em' }}>x</sup> = y &nbsp;&nbsp; ⟺ &nbsp;&nbsp; log₂(y) = x
+                                    </div>
+                                </div>
+                                
+                                <div style={{ background: 'rgba(0,0,0,0.2)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                    <h4 style={{ color: '#fdba74', marginBottom: '1rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        <Layers size={18} /> How to Calculate: log₂(16)
+                                    </h4>
+                                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1rem' }}>Let's see how many times we can divide 16 by 2:</p>
+                                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.8', fontFamily: 'var(--font-mono)' }}>
+                                        <li>Step 1: 16 ÷ 2 = <strong style={{ color: 'var(--text-main)' }}>8</strong></li>
+                                        <li>Step 2:  8 ÷ 2 = <strong style={{ color: 'var(--text-main)' }}>4</strong></li>
+                                        <li>Step 3:  4 ÷ 2 = <strong style={{ color: 'var(--text-main)' }}>2</strong></li>
+                                        <li>Step 4:  2 ÷ 2 = <strong style={{ color: 'var(--text-main)' }}>1</strong></li>
+                                    </ul>
+                                    <div style={{ marginTop: '1rem', fontWeight: '700', color: '#f97316', background: 'rgba(255,255,255,0.03)', padding: '0.75rem', borderRadius: '8px', textAlign: 'center' }}>
+                                        Total Steps = 4 ∴ log₂(16) = 4
+                                    </div>
+                                </div>
+                                
+                                <div style={{ background: 'rgba(0,0,0,0.2)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                    <h4 style={{ color: '#fdba74', marginBottom: '1rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        <Zap size={18} /> Why It's Amazing
+                                    </h4>
+                                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                                        Algorithms with <code style={{ color: '#f97316' }}>O(log n)</code> complexity are incredibly efficient. Even with a massive input size, the number of operations remains staggeringly small because halving destroys data fast.
+                                    </p>
+                                    <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.75rem 1rem', borderRadius: '8px', fontSize: '0.85rem', display: 'flex', justifyContent: 'space-between' }}>
+                                            <span style={{ color: 'var(--text-muted)' }}>n = 1,000</span> <strong style={{ color: '#f97316' }}>≈ 10 operations</strong>
+                                        </div>
+                                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.75rem 1rem', borderRadius: '8px', fontSize: '0.85rem', display: 'flex', justifyContent: 'space-between' }}>
+                                            <span style={{ color: 'var(--text-muted)' }}>n = 1,000,000</span> <strong style={{ color: '#f97316' }}>≈ 20 operations</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style={{ marginTop: '3rem', padding: '2.5rem', borderRadius: '16px', background: 'rgba(249, 115, 22, 0.05)', border: '1px solid rgba(249, 115, 22, 0.2)' }}>
+                                <h4 style={{ color: '#fdba74', marginBottom: '2rem', fontSize: '1.4rem', borderBottom: '1px solid rgba(249, 115, 22, 0.2)', paddingBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                    <Search size={22} color="#f97316" />
+                                    Deep Dive: Where do Logarithms appear in DSA?
+                                </h4>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
+                                    <div>
+                                        <h5 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                            <div style={{ width: '8px', height: '8px', background: '#f97316', borderRadius: '50%' }}></div>
+                                            1. Divide and Conquer
+                                        </h5>
+                                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7' }}>
+                                            Whenever an algorithm divides the problem size by a fraction (typically halving it) at each step, you get <code style={{ color: '#f97316' }}>O(log n)</code>.
+                                            <strong>Binary Search</strong> is the classic example: searching a sorted array not element-by-element, but by splitting it in half repeatedly.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h5 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                            <div style={{ width: '8px', height: '8px', background: '#f97316', borderRadius: '50%' }}></div>
+                                            2. Trees and Hierarchies
+                                        </h5>
+                                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7' }}>
+                                            A perfectly balanced Binary Tree with <code style={{ color: 'var(--text-main)' }}>n</code> nodes has a height of exactly <code style={{ color: '#f97316' }}>log₂(n)</code>. When going down a path from the root to a leaf, the number of steps is proportional to the tree's height. This powers efficient BSTs and Heaps.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h5 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                            <div style={{ width: '8px', height: '8px', background: '#f97316', borderRadius: '50%' }}></div>
+                                            3. Does the Base matter?
+                                        </h5>
+                                        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7' }}>
+                                            In Big O notation, <code style={{ color: '#f97316' }}>O(log₂ n)</code>, <code style={{ color: '#f97316' }}>O(log₁₀ n)</code>, and <code style={{ color: '#f97316' }}>O(ln n)</code> are mathematically equivalent because they only differ by a constant multiplier. Since Big O ignores constants, we usually just write <code style={{ color: '#f97316' }}>O(log n)</code>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                {/* Space Complexity Callout */}
+                <div style={{ marginBottom: '4rem' }}>
+                    <div className="glass" style={{ padding: '2rem 3rem', display: 'flex', alignItems: 'center', gap: '2rem', borderLeft: '4px solid #0ea5e9', flexDirection: 'row', flexWrap: 'wrap' }}>
+                        <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #0ea5e9, #0284c7)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 20px rgba(14,165,233,0.3)' }}>
+                            <HardDrive size={32} color="white" />
+                        </div>
+                        <div style={{ flex: '1 1 300px' }}>
+                            <h3 style={{ fontSize: '1.6rem', marginBottom: '0.5rem', color: '#fff', fontWeight: '800' }}>Don't Forget About <span style={{ color: '#38bdf8' }}>Space Complexity!</span></h3>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6', margin: 0 }}>
+                                While we often obsess over execution speed (Time Complexity), <strong>Space Complexity</strong> measures how much extra memory an algorithm requires as input grows. 
+                                In modern systems with massive datasets, solving problems <code style={{ color: '#38bdf8' }}>in-place (O(1) space)</code> is often just as critical as raw speed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Header */}
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <h2 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+                        Algorithm <span className="gradient-text">Counting & Analysis</span>
+                    </h2>
+                    <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+                        Learn to count operations and analyze algorithm efficiency. Click on any complexity to see step-by-step analysis.
+                    </p>
+                </div>
+
+                {/* Dashboard Layout */}
+                <div className="dsa-dashboard-layout" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '4rem' }}>
+
+                    {/* Premium Horizontal Complexity Selector */}
+                    <div className="hide-scroll" style={{ 
+                        display: 'flex', 
+                        gap: '1rem', 
+                        overflowX: 'auto', 
+                        padding: '0.5rem',
+                        margin: '-0.5rem', // to offset padding for box-shadows
+                        WebkitOverflowScrolling: 'touch',
+                        msOverflowStyle: 'none',
+                        scrollbarWidth: 'none'
+                    }}>
+                        {complexityExamples.map((example) => {
+                            const isSelected = selectedExample.id === example.id;
+                            return (
+                                <motion.button
+                                    key={example.id}
+                                    onClick={() => { setSelectedExample(example); resetAnimation(); }}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    style={{
+                                        display: 'flex', alignItems: 'center', gap: '0.75rem',
+                                        padding: '0.8rem 1.5rem', borderRadius: '99px',
+                                        border: isSelected ? `1px solid ${example.color}` : '1px solid rgba(255,255,255,0.08)',
+                                        background: isSelected ? `${example.color}15` : 'rgba(255,255,255,0.02)',
+                                        color: isSelected ? example.color : 'var(--text-muted)',
+                                        cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                                        boxShadow: isSelected ? `0 0 20px ${example.color}30, inset 0 0 10px ${example.color}10` : 'none',
+                                        whiteSpace: 'nowrap', flexShrink: 0
+                                    }}
+                                >
+                                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: isSelected ? example.color : 'rgba(255,255,255,0.2)', boxShadow: isSelected ? `0 0 8px ${example.color}` : 'none' }} />
+                                    <span style={{ fontWeight: '800', fontFamily: 'var(--font-mono)', fontSize: '1rem' }}>
+                                        {example.complexity}
+                                    </span>
+                                    {isSelected && (
+                                        <span style={{ fontSize: '0.85rem', opacity: 0.9, paddingLeft: '0.25rem', borderLeft: `1px solid ${example.color}40`, marginLeft: '0.25rem' }}>
+                                            {example.name.split(' - ')[1]}
+                                        </span>
+                                    )}
+                                </motion.button>
+                            );
+                        })}
+                    </div>
+
+                    {/* Right Side - Dashboard Main Content */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+
+                        {/* Top Row: Code and Graph */}
+                        <div className="dsa-content-row" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'stretch' }}>
+
+                            {/* ── Code Panel ── */}
+                            <div className="glass" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                {/* Mac-style Window Header */}
+                                <div style={{
+                                    padding: '0.9rem 1.5rem',
+                                    background: 'rgba(0,0,0,0.45)',
+                                    borderBottom: '1px solid rgba(255,255,255,0.06)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    flexWrap: 'wrap',
+                                    gap: '0.75rem'
+                                }}>
+                                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }} />
+                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#eab308' }} />
+                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22c55e' }} />
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                        {/* Selected algorithm title */}
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
+                                            <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: selectedExample.color, boxShadow: `0 0 8px ${selectedExample.color}`, flexShrink: 0 }} />
+                                            <span style={{ color: selectedExample.color, fontWeight: '700', fontSize: '0.9rem' }}>{selectedExample.name}</span>
+                                        </div>
+                                        <div style={{
+                                            fontSize: '0.8rem', fontFamily: 'var(--font-mono)',
+                                            color: 'var(--text-muted)', background: 'rgba(255,255,255,0.05)',
+                                            padding: '0.25rem 0.85rem', borderRadius: '99px', border: '1px solid rgba(255,255,255,0.06)'
+                                        }}>algorithm.js</div>
+                                    </div>
+                                    <div style={{ display: 'flex', gap: '0.6rem' }}>
+                                        <button
+                                            onClick={isAnimating ? resetAnimation : startAnimation}
                                             style={{
-                                                display: 'flex',
-                                                alignItems: 'flex-start',
-                                                backgroundColor: isHighlighted ? `${selectedExample.color}25` : 'transparent',
-                                                padding: '0.3rem 2rem',
-                                                transition: 'all 0.3s ease',
-                                                borderLeft: isHighlighted ? `4px solid ${selectedExample.color}` : '4px solid transparent',
-                                                minHeight: '1.9rem',
-                                                position: 'relative'
+                                                display: 'flex', alignItems: 'center', gap: '0.4rem',
+                                                padding: '0.5rem 1.1rem', borderRadius: '8px',
+                                                background: selectedExample.color, color: 'white', border: 'none',
+                                                cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem',
+                                                boxShadow: `0 4px 12px ${selectedExample.color}50`
                                             }}
                                         >
-                                            <span style={{
-                                                width: '2rem',
-                                                color: isHighlighted ? selectedExample.color : 'rgba(255,255,255,0.2)',
-                                                userSelect: 'none',
-                                                flexShrink: 0,
-                                                fontSize: '0.85rem',
-                                                textAlign: 'right',
-                                                marginRight: '1.5rem',
-                                                fontWeight: isHighlighted ? '700' : '400',
-                                                transition: 'all 0.3s'
-                                            }}>
-                                                {lineNum}
-                                            </span>
-                                            <code style={{
-                                                color: isHighlighted ? '#ffffff' : '#c9d1d9',
-                                                flex: 1,
-                                                fontFamily: 'inherit',
-                                                whiteSpace: 'pre-wrap',
-                                                wordBreak: 'break-all',
-                                                textShadow: isHighlighted ? `0 0 10px ${selectedExample.color}40` : 'none'
-                                            }}>
-                                                {line || '\u00A0'}
-                                            </code>
-                                            {annotation && isHighlighted && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, x: 20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
+                                            {isAnimating ? <Pause size={14} fill="currentColor" /> : <Play size={14} fill="currentColor" />}
+                                            {isAnimating ? 'Pause' : 'Animate'}
+                                        </button>
+                                        <button
+                                            onClick={resetAnimation}
+                                            style={{
+                                                display: 'flex', alignItems: 'center', gap: '0.4rem',
+                                                padding: '0.5rem 1rem', borderRadius: '8px',
+                                                background: 'rgba(255,255,255,0.06)', color: 'var(--text-main)',
+                                                border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
+                                                fontWeight: '600', fontSize: '0.85rem'
+                                            }}
+                                        >
+                                            <RotateCcw size={13} /> Reset
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Code display */}
+                                <div style={{ background: '#090c14', padding: '1.5rem 0' }}>
+                                    <pre style={{
+                                        margin: 0, fontSize: '0.95rem', lineHeight: '1.85',
+                                        overflowX: 'auto', fontFamily: "'JetBrains Mono', 'Courier New', monospace"
+                                    }}>
+                                        {codeLines.map((line, index) => {
+                                            const lineNum = index + 1;
+                                            const annotation = selectedExample.annotations.find(a => a.line === lineNum);
+                                            const isHighlighted = highlightedLine === lineNum;
+                                            return (
+                                                <div
+                                                    key={index}
                                                     style={{
-                                                        marginLeft: '1rem',
-                                                        padding: '0.4rem 1rem',
-                                                        background: `linear-gradient(135deg, ${selectedExample.color} 0%, ${selectedExample.color}dd 100%)`,
-                                                        color: 'white',
-                                                        borderRadius: '8px',
-                                                        fontSize: '0.8rem',
-                                                        fontWeight: '700',
-                                                        whiteSpace: 'nowrap',
-                                                        flexShrink: 0,
-                                                        boxShadow: `0 4px 15px ${selectedExample.color}60`,
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        gap: '0.5rem'
+                                                        display: 'flex', alignItems: 'center',
+                                                        padding: '0.15rem 1.5rem',
+                                                        background: isHighlighted ? `${selectedExample.color}20` : 'transparent',
+                                                        borderLeft: isHighlighted ? `3px solid ${selectedExample.color}` : '3px solid transparent',
+                                                        transition: 'all 0.3s ease'
                                                     }}
                                                 >
-                                                    <Clock size={12} />
-                                                    {annotation.count}
-                                                </motion.div>
-                                            )}
-                                        </div>
-                                    );
-                                })}
-                            </pre>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Mini Graph Panel - Enhanced */}
-                {(() => {
-                    const width = 350;
-                    const height = 250;
-                    const padding = 40;
-                    
-                    const hexToRgb = (hex: string) => {
-                        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-                        return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '99, 102, 241';
-                    };
-
-                    const factorial = (n: number): number => {
-                        if (n <= 1) return 1;
-                        return n * factorial(n - 1);
-                    };
-
-                    const generatePath = (complexity: string, color: string) => {
-                        const points: [number, number][] = [];
-                        const nSteps = 40;
-                        const maxN = 15;
-
-                        for (let i = 0; i <= nSteps; i++) {
-                            const n = (i / nSteps) * maxN;
-                            let y = 0;
-
-                            switch (complexity) {
-                                case 'O(1)': y = 1; break;
-                                case 'O(log n)': y = Math.log2(n + 1); break;
-                                case 'O(n)': y = n; break;
-                                case 'O(n log n)': y = n * Math.log2(n + 1); break;
-                                case 'O(n²)': y = n * n; break;
-                                case 'O(n³)': y = n * n * n; break;
-                                case 'O(2ⁿ)': y = Math.pow(2, n); break;
-                                case 'O(n!)': y = factorial(Math.min(n, 10)); break; // Cap factorial for visibility
-                            }
-
-                            // Normalize Y using log scale for better visualization
-                            const logY = Math.log10(y + 1);
-                            const maxLogY = Math.log10(Math.pow(2, maxN) + 1);
-                            const mappedX = padding + (n / maxN) * (width - 2 * padding);
-                            const mappedY = height - padding - (logY / maxLogY) * (height - 2 * padding);
-
-                            if (mappedY >= padding - 5) {
-                                points.push([mappedX, mappedY]);
-                            }
-                        }
-
-                        return (
-                            <motion.path
-                                initial={{ pathLength: 0 }}
-                                animate={{ pathLength: 1 }}
-                                transition={{ duration: 2, ease: "easeInOut" }}
-                                d={`M ${points.map(p => p.join(',')).join(' L ')}`}
-                                fill="none"
-                                stroke={color}
-                                strokeWidth="3"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                filter="drop-shadow(0 2px 8px rgba(0,0,0,0.2))"
-                            />
-                        );
-                    };
-                    
-                    return (
-                        <div className="glass" style={{
-                            padding: '2rem',
-                            minHeight: '400px',
-                            display: 'flex',
-                            flexDirection: 'column'
-                        }}>
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.75rem',
-                        marginBottom: '1.5rem'
-                    }}>
-                        <div style={{
-                            width: '36px',
-                            height: '36px',
-                            borderRadius: '10px',
-                            background: `linear-gradient(135deg, ${selectedExample.color} 0%, ${selectedExample.color}dd 100%)`,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            boxShadow: `0 4px 15px ${selectedExample.color}40`
-                        }}>
-                            <TrendingUp size={20} color="white" />
-                        </div>
-                        <h4 style={{
-                            fontSize: '1.3rem',
-                            margin: 0,
-                            color: selectedExample.color,
-                            fontWeight: '700'
-                        }}>
-                            {selectedExample.complexity} Growth
-                        </h4>
-                    </div>
-
-                    <div style={{
-                        flex: 1,
-                        position: 'relative',
-                        minHeight: '300px',
-                        background: 'rgba(0,0,0,0.3)',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        overflow: 'hidden'
-                    }}>
-                        <svg viewBox={`0 0 ${width} ${height}`} style={{
-                            width: '100%',
-                            height: '100%',
-                            overflow: 'visible'
-                        }}>
-                            {/* Enhanced background */}
-                            <defs>
-                                <linearGradient id="miniBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stopColor={`rgba(${hexToRgb(selectedExample.color)}, 0.1)`} />
-                                    <stop offset="100%" stopColor={`rgba(${hexToRgb(selectedExample.color)}, 0.05)`} />
-                                </linearGradient>
-                                <pattern id="miniGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1"/>
-                                </pattern>
-                            </defs>
-
-                            {/* Background with grid */}
-                            <rect
-                                x={padding - 10}
-                                y={padding - 10}
-                                width={width - 2 * padding + 20}
-                                height={height - 2 * padding + 20}
-                                fill="url(#miniBg)"
-                                rx="8"
-                            />
-                            <rect
-                                x={padding}
-                                y={padding}
-                                width={width - 2 * padding}
-                                height={height - 2 * padding}
-                                fill="url(#miniGrid)"
-                                opacity="0.5"
-                            />
-
-                            {/* Grid lines */}
-                            <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding}
-                                  stroke="rgba(255,255,255,0.3)" strokeWidth="2" strokeLinecap="round" />
-                            <line x1={padding} y1={padding} x2={padding} y2={height - padding}
-                                  stroke="rgba(255,255,255,0.3)" strokeWidth="2" strokeLinecap="round" />
-
-                            {/* Selected Complexity Path */}
-                            {generatePath(selectedExample.complexity, selectedExample.color)}
-
-                            {/* Enhanced Labels */}
-                            <text x={width - padding + 5} y={height - padding + 5}
-                                  fill="var(--text-muted)" fontSize="12" fontWeight="600">n</text>
-                            <text x={padding - 25} y={padding - 8}
-                                  fill="var(--text-muted)" fontSize="12" fontWeight="600"
-                                  transform={`rotate(-90, ${padding - 25}, ${padding - 8})`}>log T(n)</text>
-
-                            {/* Value markers */}
-                            {[0, 10, 20].map(n => (
-                                <text key={n} x={padding + (n / 20) * (width - 2 * padding)} y={height - padding + 18}
-                                      fill="var(--text-dim)" fontSize="10" textAnchor="middle">{n}</text>
-                            ))}
-                        </svg>
-                    </div>
-
-                    {/* Quick explanation */}
-                    <div style={{
-                        marginTop: '1rem',
-                        padding: '1rem',
-                        background: 'rgba(255,255,255,0.05)',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(255,255,255,0.1)'
-                    }}>
-                        <p style={{
-                            fontSize: '0.9rem',
-                            color: 'var(--text-muted)',
-                            lineHeight: '1.5',
-                            margin: 0,
-                            textAlign: 'center'
-                        }}>
-                            <strong style={{ color: selectedExample.color }}>Visual:</strong> How {selectedExample.complexity} grows with input size
-                        </p>
-                    </div>
-                </div>
-                    );
-                })()}
-
-                {/* Analysis Panel - Enhanced */}
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '2rem',
-                    minHeight: '600px'
-                }}>
-                    {/* Operation Counting - Improved */}
-                    <div className="glass" style={{
-                        padding: '2rem',
-                        flex: 1
-                    }}>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.75rem',
-                            marginBottom: '1.5rem'
-                        }}>
-                            <div style={{
-                                width: '32px',
-                                height: '32px',
-                                borderRadius: '8px',
-                                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                <Clock size={18} color="white" />
+                                                    <span style={{
+                                                        width: '2.2rem', color: isHighlighted ? selectedExample.color : 'rgba(255,255,255,0.18)',
+                                                        userSelect: 'none', fontSize: '0.82rem', flexShrink: 0, textAlign: 'right',
+                                                        marginRight: '1.5rem', fontWeight: isHighlighted ? '700' : '400'
+                                                    }}>{lineNum}</span>
+                                                    <code style={{
+                                                        color: isHighlighted ? '#fff' : '#b0bec5', flex: 1,
+                                                        fontFamily: 'inherit', whiteSpace: 'pre',
+                                                        textShadow: isHighlighted ? `0 0 12px ${selectedExample.color}50` : 'none'
+                                                    }}>{line || '\u00A0'}</code>
+                                                    {annotation && isHighlighted && (
+                                                        <motion.div
+                                                            initial={{ opacity: 0, x: 12 }}
+                                                            animate={{ opacity: 1, x: 0 }}
+                                                            style={{
+                                                                marginLeft: '1.5rem', padding: '0.3rem 0.85rem',
+                                                                background: selectedExample.color, color: 'white',
+                                                                borderRadius: '6px', fontSize: '0.78rem', fontWeight: '700',
+                                                                whiteSpace: 'nowrap', flexShrink: 0,
+                                                                boxShadow: `0 4px 12px ${selectedExample.color}60`,
+                                                                display: 'flex', alignItems: 'center', gap: '0.35rem'
+                                                            }}
+                                                        >
+                                                            <Clock size={11} />{annotation.count}
+                                                        </motion.div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </pre>
+                                </div>
                             </div>
-                            <h4 style={{
-                                fontSize: '1.3rem',
-                                margin: 0,
-                                color: 'var(--text-main)',
-                                fontWeight: '700'
-                            }}>
-                                Operation Counting
-                            </h4>
+
+                            {/* Selected Complexity Graph */}
+                            <div className="glass" style={{ padding: '2rem', display: 'flex', flexDirection: 'column' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
+                                    <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: `${selectedExample.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <Activity size={18} color={selectedExample.color} />
+                                    </div>
+                                    <div>
+                                        <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '800', color: 'var(--text-main)' }}>Growth Curve</h4>
+                                        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>{selectedExample.complexity}</span>
+                                    </div>
+                                </div>
+                                <div style={{ height: '280px', background: 'rgba(0,0,0,0.15)', borderRadius: '12px', padding: '1.5rem 1rem 0.5rem 0', border: '1px solid rgba(255,255,255,0.03)' }}>
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <AreaChart data={miniChartData} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
+                                            <defs>
+                                                <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
+                                                    <stop offset="5%" stopColor={selectedExample.color} stopOpacity={0.4} />
+                                                    <stop offset="95%" stopColor={selectedExample.color} stopOpacity={0} />
+                                                </linearGradient>
+                                            </defs>
+                                            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                                            <XAxis dataKey="n" stroke="rgba(255,255,255,0.2)" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} tickLine={false} />
+                                            <YAxis stroke="rgba(255,255,255,0.2)" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} tickLine={false} scale="log" domain={['dataMin', 'dataMax']} tickFormatter={val => val >= 1000 ? (val / 1000).toFixed(0) + 'k' : val.toString()} width={40} />
+                                            <Tooltip
+                                                contentStyle={{ background: '#0f172a', border: `1px solid ${selectedExample.color}40`, borderRadius: '8px', fontSize: '0.8rem' }}
+                                                itemStyle={{ color: selectedExample.color, fontWeight: '700' }}
+                                                labelStyle={{ color: 'var(--text-muted)' }}
+                                                formatter={(value: unknown) => {
+                                                    const num = typeof value === 'number' ? value : Number(value);
+                                                    if (isNaN(num)) return ['—', 'Operations'];
+                                                    return [num >= 1000000 ? (num / 1000000).toFixed(1) + 'M' : num.toString(), 'Operations'];
+                                                }}
+                                            />
+                                            <Area type="monotone" dataKey="val" name="Operations" stroke={selectedExample.color} strokeWidth={3} fillOpacity={1} fill="url(#colorVal)" />
+                                        </AreaChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <p style={{ marginTop: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+                                    At <strong>n = 15</strong>, this algorithm roughly requires <strong>{miniChartData[14].val >= 1000000 ? (miniChartData[14].val / 1000000).toFixed(1) + 'M' : miniChartData[14].val.toLocaleString()}</strong> operations.
+                                </p>
+                            </div>
                         </div>
 
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '1rem',
-                            maxHeight: '300px',
-                            overflowY: 'auto',
-                            paddingRight: '0.5rem'
-                        }}>
-                            {selectedExample.annotations.map((annotation, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.1 }}
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '1rem',
-                                        padding: '1.2rem',
-                                        borderRadius: '12px',
-                                        border: '1px solid var(--border-color)',
-                                        background: currentAnnotationIndex === index && isAnimating ? `${selectedExample.color}15` : 'rgba(255,255,255,0.02)',
-                                        transition: 'all 0.3s ease',
-                                        cursor: 'pointer'
-                                    }}
-                                    onClick={() => setHighlightedLine(annotation.line)}
-                                >
+                        {/* ── Row 2: Three Info Cards ── */}
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                            {/* Time Complexity */}
+                            <div className="glass" style={{ padding: '1.75rem', borderTop: `3px solid ${selectedExample.color}` }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
                                     <div style={{
-                                        width: '32px',
-                                        height: '32px',
-                                        borderRadius: '50%',
-                                        background: `${selectedExample.color}25`,
-                                        color: selectedExample.color,
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        fontWeight: '800',
-                                        fontSize: '0.9rem',
-                                        flexShrink: 0,
-                                        border: `2px solid ${selectedExample.color}40`
-                                    }}>
-                                        {annotation.line}
-                                    </div>
-                                    <div style={{ flex: 1, minWidth: 0 }}>
-                                        <p style={{
-                                            fontSize: '0.9rem',
-                                            marginBottom: '0.5rem',
-                                            lineHeight: '1.5',
-                                            wordWrap: 'break-word'
-                                        }}>
-                                            {annotation.text}
-                                        </p>
+                                        width: '30px', height: '30px', borderRadius: '8px', flexShrink: 0,
+                                        background: `linear-gradient(135deg, ${selectedExample.color}, ${selectedExample.color}bb)`,
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                    }}><Clock size={16} color="white" /></div>
+                                    <span style={{ fontWeight: '700', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Time Complexity</span>
+                                </div>
+                                <div style={{ fontSize: '2rem', fontWeight: '800', color: selectedExample.color, marginBottom: '0.75rem', fontFamily: 'var(--font-mono)' }}>
+                                    {selectedExample.complexity}
+                                </div>
+                                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
+                                    {selectedExample.totalExplanation}
+                                </p>
+                            </div>
+
+                            {/* Space Complexity */}
+                            <div className="glass" style={{ padding: '1.75rem', borderTop: '3px solid #8b5cf6' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
+                                    <div style={{
+                                        width: '30px', height: '30px', borderRadius: '8px', flexShrink: 0,
+                                        background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                    }}><HardDrive size={16} color="white" /></div>
+                                    <span style={{ fontWeight: '700', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Space Complexity</span>
+                                </div>
+                                <div style={{ fontSize: '2rem', fontWeight: '800', color: '#8b5cf6', marginBottom: '0.75rem', fontFamily: 'var(--font-mono)' }}>
+                                    {selectedExample.spaceComplexity}
+                                </div>
+                                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
+                                    {selectedExample.spaceExplanation}
+                                </p>
+                            </div>
+
+                            {/* Real-World */}
+                            <div className="glass" style={{ padding: '1.75rem', borderTop: '3px solid #0ea5e9' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
+                                    <div style={{
+                                        width: '30px', height: '30px', borderRadius: '8px', flexShrink: 0,
+                                        background: 'linear-gradient(135deg, #0ea5e9, #0284c7)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                    }}><BookOpen size={16} color="white" /></div>
+                                    <span style={{ fontWeight: '700', fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Real-World Use</span>
+                                </div>
+                                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
+                                    {selectedExample.realWorld}
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* ── Row 3: Operation Counting ── */}
+                        <div className="glass" style={{ padding: '2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                                <div style={{
+                                    width: '32px', height: '32px', borderRadius: '8px',
+                                    background: 'linear-gradient(135deg, #eab308, #ca8a04)',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                }}><Clock size={18} color="white" /></div>
+                                <h4 style={{ fontSize: '1.2rem', margin: 0, fontWeight: '700' }}>Operation Counting</h4>
+                                <span style={{ marginLeft: 'auto', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                                    Click a step to jump to that line
+                                </span>
+                            </div>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+                                {selectedExample.annotations.map((annotation, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 12 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.07 }}
+                                        onClick={() => setHighlightedLine(annotation.line)}
+                                        style={{
+                                            display: 'flex', alignItems: 'center', gap: '1rem',
+                                            padding: '1.1rem 1.25rem', borderRadius: '12px',
+                                            border: `1px solid ${currentAnnotationIndex === index && isAnimating ? selectedExample.color + '60' : 'rgba(255,255,255,0.07)'}`,
+                                            background: currentAnnotationIndex === index && isAnimating
+                                                ? `${selectedExample.color}12` : 'rgba(255,255,255,0.02)',
+                                            cursor: 'pointer', transition: 'all 0.3s ease'
+                                        }}
+                                        whileHover={{ scale: 1.02, backgroundColor: `${selectedExample.color}10` }}
+                                    >
+                                        {/* Line number badge */}
                                         <div style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.5rem'
-                                        }}>
-                                            <span style={{
-                                                fontSize: '0.8rem',
-                                                color: 'var(--text-muted)'
-                                            }}>
-                                                Line {annotation.line}:
-                                            </span>
-                                            <code style={{
-                                                padding: '0.3rem 0.8rem',
-                                                background: `${selectedExample.color}20`,
-                                                color: selectedExample.color,
-                                                borderRadius: '6px',
-                                                fontWeight: '700',
-                                                fontSize: '0.85rem',
-                                                border: `1px solid ${selectedExample.color}30`
-                                            }}>
-                                                {annotation.count}
-                                            </code>
+                                            width: '34px', height: '34px', borderRadius: '50%', flexShrink: 0,
+                                            background: `${selectedExample.color}20`, color: selectedExample.color,
+                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                            fontWeight: '800', fontSize: '0.9rem', border: `2px solid ${selectedExample.color}40`
+                                        }}>{annotation.line}</div>
+
+                                        {/* Text */}
+                                        <div style={{ flex: 1, minWidth: 0 }}>
+                                            <p style={{ fontSize: '0.88rem', margin: '0 0 0.3rem 0', lineHeight: '1.4', color: 'var(--text-main)' }}>
+                                                {annotation.text}
+                                            </p>
+                                            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Line {annotation.line}</span>
                                         </div>
+
+                                        {/* Count badge */}
+                                        <code style={{
+                                            padding: '0.3rem 0.75rem', borderRadius: '6px', fontSize: '0.85rem',
+                                            fontWeight: '800', color: selectedExample.color, flexShrink: 0,
+                                            background: `${selectedExample.color}15`, border: `1px solid ${selectedExample.color}30`
+                                        }}>{annotation.count}</code>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* ── Row 4: Quick Counting Rules ── */}
+                        <div className="glass" style={{
+                            padding: '1.5rem 2rem',
+                            background: 'linear-gradient(135deg, rgba(234,179,8,0.06) 0%, rgba(217,119,6,0.03) 100%)',
+                            border: '1px solid rgba(234,179,8,0.18)'
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                                <span style={{ fontSize: '1.2rem' }}>⚡</span>
+                                <h5 style={{ margin: 0, fontSize: '1rem', color: '#eab308', fontWeight: '700' }}>Quick Counting Rules</h5>
+                            </div>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                                {[
+                                    { rule: 'Single loop over n elements', result: 'O(n)', color: '#6366f1' },
+                                    { rule: 'Nested loops', result: 'O(n²)', color: '#eab308' },
+                                    { rule: 'Halving input each step', result: 'O(log n)', color: '#f97316' },
+                                    { rule: 'Fixed set of operations', result: 'O(1)', color: '#22c55e' },
+                                    { rule: 'Loop + halving combined', result: 'O(n log n)', color: '#14b8a6' },
+                                    { rule: 'Recursive branching (2 calls)', result: 'O(2ⁿ)', color: '#ef4444' },
+                                ].map((item, i) => (
+                                    <div key={i} style={{
+                                        display: 'flex', alignItems: 'center', gap: '0.75rem',
+                                        padding: '0.6rem 1.1rem', borderRadius: '99px',
+                                        background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
+                                        fontSize: '0.84rem'
+                                    }}>
+                                        <span style={{ color: 'var(--text-muted)' }}>{item.rule}</span>
+                                        <span style={{ color: 'rgba(255,255,255,0.2)' }}>→</span>
+                                        <code style={{ color: item.color, fontWeight: '700' }}>{item.result}</code>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                    </div> {/* end vertical stack */}
+                </div> {/* end dsa-dashboard-layout */}
+
+
+
+                {/* Complexity Comparison Table */}
+                <div className="glass" style={{ marginTop: '3rem', padding: '0', overflow: 'hidden' }}>
+                    <div style={{ padding: '2.5rem 2.5rem 1rem 2.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <Activity size={24} className="gradient-text" color="var(--primary-color)" />
+                        <h3 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800' }}>Performance Comparison</h3>
+                    </div>
+                    <div style={{ overflowX: 'auto' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem', textAlign: 'left' }}>
+                            <thead>
+                                <tr style={{ background: 'rgba(0,0,0,0.2)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                                    <th style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Complexity</th>
+                                    <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=10</th>
+                                    <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=100</th>
+                                    <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=1,000</th>
+                                    <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=10,000</th>
+                                    <th style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Example Algorithm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {[
+                                    { c: 'O(1)', n10: '1', n100: '1', n1k: '1', n10k: '1', ex: 'Array access, Hash lookup', color: '#22c55e', bg: 'rgba(34, 197, 94, 0.05)' },
+                                    { c: 'O(log n)', n10: '3', n100: '7', n1k: '10', n10k: '13', ex: 'Binary Search', color: '#f97316', bg: 'rgba(249, 115, 22, 0.05)' },
+                                    { c: 'O(n)', n10: '10', n100: '100', n1k: '1,000', n10k: '10,000', ex: 'Linear Search, Find Max', color: '#6366f1', bg: 'rgba(99, 102, 241, 0.05)' },
+                                    { c: 'O(n log n)', n10: '33', n100: '664', n1k: '9,966', n10k: '132,877', ex: 'Merge/Quick Sort', color: '#8b5cf6', bg: 'rgba(139, 92, 246, 0.05)' },
+                                    { c: 'O(n²)', n10: '100', n100: '10,000', n1k: '1,000,000', n10k: '100,000,000', ex: 'Bubble/Selection Sort', color: '#eab308', bg: 'rgba(234, 179, 8, 0.05)' },
+                                    { c: 'O(n³)', n10: '1,000', n100: '1,000,000', n1k: '1×10⁹', n10k: '1×10¹³', ex: 'Matrix Multiplication', color: '#f43f5e', bg: 'rgba(244, 63, 94, 0.05)' },
+                                    { c: 'O(2ⁿ)', n10: '1,024', n100: '1.27×10³⁰', n1k: '∞', n10k: '∞', ex: 'Naive Fibonacci', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.05)' },
+                                    { c: 'O(n!)', n10: '3,628,800', n100: '∞', n1k: '∞', n10k: '∞', ex: 'TSP Brute Force', color: '#7c3aed', bg: 'rgba(124, 58, 237, 0.05)' },
+                                ].map((row, i) => (
+                                    <tr key={row.c} style={{
+                                        borderBottom: i === 7 ? 'none' : '1px solid rgba(255,255,255,0.03)',
+                                        background: i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.1)',
+                                        transition: 'all 0.3s'
+                                    }}
+                                        onMouseEnter={(e) => e.currentTarget.style.background = row.bg}
+                                        onMouseLeave={(e) => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.1)'}
+                                    >
+                                        <td style={{ padding: '1.25rem 2.5rem', color: row.color, fontWeight: '700' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: row.color, boxShadow: `0 0 8px ${row.color}` }} />
+                                                {row.c}
+                                            </div>
+                                        </td>
+                                        <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)' }}>{row.n10}</td>
+                                        <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n100 === '∞' || row.n100.includes('10³⁰') ? row.color : 'inherit' }}>{row.n100}</td>
+                                        <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n1k === '∞' || row.n1k.includes('10⁹') ? row.color : 'inherit' }}>{row.n1k}</td>
+                                        <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n10k === '∞' || row.n10k.includes('10¹³') || row.n10k === '100,000,000' ? row.color : 'inherit' }}>{row.n10k}</td>
+                                        <td style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)' }}>{row.ex}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* Common Patterns Section */}
+                <div style={{ marginTop: '4rem' }}>
+                    <div className="glass" style={{ padding: '3.5rem' }}>
+                        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                            <span style={{ color: 'var(--primary-color)', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.85rem' }}>Algorithms</span>
+                            <h3 style={{ fontSize: '2.5rem', margin: '0.5rem 0', fontWeight: '800' }}>
+                                Common <span className="gradient-text">Patterns</span>
+                            </h3>
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                            <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(34, 197, 94, 0.05)', border: '1px solid rgba(34, 197, 94, 0.2)', position: 'relative', overflow: 'hidden' }}>
+                                <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
+                                <Search size={32} color="#22c55e" style={{ marginBottom: '1rem' }} />
+                                <h4 style={{ color: '#22c55e', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>Divide & Conquer</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                                    Break problem into smaller subproblems, solve recursively, combine solutions.
+                                </p>
+                                <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
+                                    <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> <code style={{ color: '#22c55e' }}>O(n log n)</code> or <code style={{ color: '#22c55e' }}>O(log n)</code></div>
+                                    <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> Merge Sort, Quick Sort</div>
+                                </div>
+                            </motion.div>
+                            <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(99, 102, 241, 0.05)', border: '1px solid rgba(99, 102, 241, 0.2)', position: 'relative', overflow: 'hidden' }}>
+                                <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
+                                <Database size={32} color="#6366f1" style={{ marginBottom: '1rem' }} />
+                                <h4 style={{ color: '#6366f1', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>Dynamic Programming</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                                    Solve complex problems by breaking them down into simpler subproblems and storing results.
+                                </p>
+                                <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
+                                    <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> Often <code style={{ color: '#6366f1' }}>O(n²)</code> or <code style={{ color: '#6366f1' }}>O(n³)</code></div>
+                                    <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> Fibonacci, Knapsack</div>
+                                </div>
+                            </motion.div>
+                            <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(234, 179, 8, 0.05)', border: '1px solid rgba(234, 179, 8, 0.2)', position: 'relative', overflow: 'hidden' }}>
+                                <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
+                                <Zap size={32} color="#eab308" style={{ marginBottom: '1rem' }} />
+                                <h4 style={{ color: '#eab308', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>Greedy Algorithms</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                                    Make locally optimal choices at each step to find global optimum.
+                                </p>
+                                <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
+                                    <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> Usually <code style={{ color: '#eab308' }}>O(n log n)</code></div>
+                                    <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> Dijkstra's, Huffman</div>
+                                </div>
+                            </motion.div>
+                            <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(244, 63, 94, 0.05)', border: '1px solid rgba(244, 63, 94, 0.2)', position: 'relative', overflow: 'hidden' }}>
+                                <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(244, 63, 94, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
+                                <Layers size={32} color="#f43f5e" style={{ marginBottom: '1rem' }} />
+                                <h4 style={{ color: '#f43f5e', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>Tree/Graph Traversal</h4>
+                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                                    Visit all nodes in a tree or graph structure systematically.
+                                </p>
+                                <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
+                                    <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> <code style={{ color: '#f43f5e' }}>O(V + E)</code> or <code style={{ color: '#f43f5e' }}>O(n)</code></div>
+                                    <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> DFS, BFS, Trees</div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Practice Problems Section */}
+                <div style={{ marginTop: '4rem' }}>
+                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                        <h3 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: '800' }}>
+                            Ready to <span className="gradient-text">Practice?</span>
+                        </h3>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>Test your Big O knowledge with these classic algorithmic problems.</p>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+                        {[
+                            { title: 'Two Sum', desc: 'Find two numbers in an array that add up to a target sum.', p1: 'Brute Force:', p1v: 'O(n²)', p2: 'Optimal:', p2v: 'O(n) Hash Map' },
+                            { title: 'Valid Parentheses', desc: 'Check if a string of parentheses is valid using a stack.', p1: 'Time:', p1v: 'O(n) Single pass', p2: 'Space:', p2v: 'O(n) Stack' },
+                            { title: 'Merge Intervals', desc: 'Merge overlapping intervals in a list.', p1: 'Time:', p1v: 'O(n log n) Sort', p2: 'Space:', p2v: 'O(n) Result' },
+                            { title: 'Climbing Stairs', desc: 'Find number of ways to climb n stairs.', p1: 'Recursive:', p1v: 'O(2ⁿ)', p2: 'DP:', p2v: 'O(n) Memoization' }
+                        ].map((prob, i) => {
+                            const isRevealed = revealedProblems.has(i);
+                            return (
+                                <motion.div key={prob.title} whileHover={{ y: -5, boxShadow: '0 12px 40px rgba(0,0,0,0.4)' }} style={{ padding: '2rem', borderRadius: '20px', background: 'var(--surface-color)', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                                        <h4 style={{ color: 'var(--text-main)', margin: 0, fontSize: '1.25rem', fontWeight: '700' }}>{prob.title}</h4>
+                                        <CheckCircle2 size={20} color={isRevealed ? "var(--primary-color)" : "rgba(255,255,255,0.2)"} opacity={isRevealed ? 1 : 0.5} style={{ transition: 'all 0.3s' }} />
+                                    </div>
+                                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem', flex: 1 }}>
+                                        {prob.desc}
+                                    </p>
+                                    <div style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px', fontSize: '0.85rem', position: 'relative', overflow: 'hidden', minHeight: '80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                        {!isRevealed ? (
+                                            <button 
+                                                onClick={() => toggleReveal(i)}
+                                                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', padding: '0.6rem', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontWeight: '600', width: '100%', transition: 'all 0.2s', outline: 'none' }}
+                                                onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                                                onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+                                            >
+                                                <Eye size={16} /> Reveal Solution
+                                            </button>
+                                        ) : (
+                                            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%' }}>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                    <span style={{ color: 'var(--text-muted)' }}>{prob.p1}</span>
+                                                    <span style={{ fontWeight: '600', color: 'var(--text-main)' }}>{prob.p1v}</span>
+                                                </div>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                    <span style={{ color: 'var(--text-muted)' }}>{prob.p2}</span>
+                                                    <span style={{ fontWeight: '600', color: 'var(--text-main)' }}>{prob.p2v}</span>
+                                                </div>
+                                            </motion.div>
+                                        )}
                                     </div>
                                 </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Complexity Summary - Enhanced */}
-                    <div className="glass" style={{
-                        padding: '2rem',
-                        borderLeft: `4px solid ${selectedExample.color}`
-                    }}>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.75rem',
-                            marginBottom: '1.5rem'
-                        }}>
-                            <div style={{
-                                width: '32px',
-                                height: '32px',
-                                borderRadius: '8px',
-                                background: `linear-gradient(135deg, ${selectedExample.color} 0%, ${selectedExample.color}dd 100%)`,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                <Clock size={18} color="white" />
-                            </div>
-                            <h4 style={{
-                                fontSize: '1.2rem',
-                                margin: 0
-                            }}>
-                                Time Complexity:
-                                <code style={{
-                                    color: selectedExample.color,
-                                    marginLeft: '0.5rem',
-                                    fontSize: '1.1rem',
-                                    fontWeight: '800'
-                                }}>
-                                    {selectedExample.complexity}
-                                </code>
-                            </h4>
-                        </div>
-
-                        <p style={{
-                            color: 'var(--text-muted)',
-                            lineHeight: '1.7',
-                            fontSize: '1rem',
-                            marginBottom: '2rem',
-                            wordWrap: 'break-word'
-                        }}>
-                            {selectedExample.totalExplanation}
-                        </p>
-
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.75rem',
-                            marginBottom: '1rem'
-                        }}>
-                            <div style={{
-                                width: '28px',
-                                height: '28px',
-                                borderRadius: '6px',
-                                background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                <HardDrive size={16} color="white" />
-                            </div>
-                            <h5 style={{
-                                margin: 0,
-                                fontSize: '1rem',
-                                fontWeight: '700'
-                            }}>
-                                Space Complexity:
-                                <code style={{
-                                    color: '#8b5cf6',
-                                    marginLeft: '0.5rem',
-                                    fontWeight: '800'
-                                }}>
-                                    {selectedExample.spaceComplexity}
-                                </code>
-                            </h5>
-                        </div>
-
-                        <p style={{
-                            color: 'var(--text-muted)',
-                            lineHeight: '1.7',
-                            fontSize: '0.95rem',
-                            wordWrap: 'break-word'
-                        }}>
-                            {selectedExample.spaceExplanation}
-                        </p>
-                    </div>
-
-                    {/* Real World Impact - Enhanced */}
-                    <div className="glass" style={{
-                        padding: '1.8rem',
-                        borderTop: `4px solid ${selectedExample.color}`
-                    }}>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.75rem',
-                            marginBottom: '1rem'
-                        }}>
-                            <div style={{
-                                width: '28px',
-                                height: '28px',
-                                borderRadius: '6px',
-                                background: `linear-gradient(135deg, ${selectedExample.color} 0%, ${selectedExample.color}dd 100%)`,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                <BookOpen size={16} color="white" />
-                            </div>
-                            <h5 style={{
-                                margin: 0,
-                                fontSize: '1rem',
-                                fontWeight: '700'
-                            }}>
-                                Real-World Application
-                            </h5>
-                        </div>
-
-                        <p style={{
-                            color: 'var(--text-muted)',
-                            fontSize: '0.95rem',
-                            lineHeight: '1.6',
-                            wordWrap: 'break-word',
-                            margin: 0
-                        }}>
-                            {selectedExample.realWorld}
-                        </p>
-                    </div>
-
-                    {/* Quick Tips - Enhanced */}
-                    <div className="glass" style={{
-                        padding: '1.5rem',
-                        background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%)',
-                        border: '1px solid rgba(245, 158, 11, 0.2)'
-                    }}>
-                        <h5 style={{
-                            marginBottom: '1rem',
-                            fontSize: '1rem',
-                            color: '#f59e0b',
-                            fontWeight: '700',
-                            textAlign: 'center'
-                        }}>
-                            ⚡ Quick Counting Rules
-                        </h5>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: '1fr',
-                            gap: '0.75rem',
-                            fontSize: '0.85rem',
-                            color: 'var(--text-muted)',
-                            lineHeight: '1.6'
-                        }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <span style={{ color: '#10b981', fontWeight: '600' }}>•</span>
-                                <span>Single loop over n elements → <code style={{ color: '#6366f1' }}>O(n)</code></span>
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <span style={{ color: '#10b981', fontWeight: '600' }}>•</span>
-                                <span>Nested loops → <code style={{ color: '#f59e0b' }}>O(n²)</code></span>
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <span style={{ color: '#10b981', fontWeight: '600' }}>•</span>
-                                <span>Halving input each step → <code style={{ color: '#f97316' }}>O(log n)</code></span>
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <span style={{ color: '#10b981', fontWeight: '600' }}>•</span>
-                                <span>Fixed operations → <code style={{ color: '#10b981' }}>O(1)</code></span>
-                            </div>
-                        </div>
+                            );
+                        })}
                     </div>
                 </div>
-            </div>
-
-            {/* Complexity Comparison Table */}
-            <div className="glass" style={{ marginTop: '3rem', padding: '0', overflow: 'hidden' }}>
-                <div style={{ padding: '2.5rem 2.5rem 1rem 2.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <Activity size={24} className="gradient-text" color="var(--primary-color)" />
-                    <h3 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800' }}>Performance Comparison</h3>
-                </div>
-                <div style={{ overflowX: 'auto' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem', textAlign: 'left' }}>
-                        <thead>
-                            <tr style={{ background: 'rgba(0,0,0,0.2)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                                <th style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Complexity</th>
-                                <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=10</th>
-                                <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=100</th>
-                                <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=1,000</th>
-                                <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=10,000</th>
-                                <th style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Example Algorithm</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {[
-                                { c: 'O(1)', n10: '1', n100: '1', n1k: '1', n10k: '1', ex: 'Array access, Hash lookup', color: '#10b981', bg: 'rgba(16, 185, 129, 0.05)' },
-                                { c: 'O(log n)', n10: '3', n100: '7', n1k: '10', n10k: '13', ex: 'Binary Search', color: '#f97316', bg: 'rgba(249, 115, 22, 0.05)' },
-                                { c: 'O(n)', n10: '10', n100: '100', n1k: '1,000', n10k: '10,000', ex: 'Linear Search, Find Max', color: '#6366f1', bg: 'rgba(99, 102, 241, 0.05)' },
-                                { c: 'O(n log n)', n10: '33', n100: '664', n1k: '9,966', n10k: '132,877', ex: 'Merge/Quick Sort', color: '#8b5cf6', bg: 'rgba(139, 92, 246, 0.05)' },
-                                { c: 'O(n²)', n10: '100', n100: '10,000', n1k: '1,000,000', n10k: '100,000,000', ex: 'Bubble/Selection Sort', color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.05)' },
-                                { c: 'O(n³)', n10: '1,000', n100: '1,000,000', n1k: '1×10⁹', n10k: '1×10¹³', ex: 'Matrix Multiplication', color: '#ec4899', bg: 'rgba(236, 72, 153, 0.05)' },
-                                { c: 'O(2ⁿ)', n10: '1,024', n100: '1.27×10³⁰', n1k: '∞', n10k: '∞', ex: 'Naive Fibonacci', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.05)' },
-                                { c: 'O(n!)', n10: '3,628,800', n100: '∞', n1k: '∞', n10k: '∞', ex: 'TSP Brute Force', color: '#7c3aed', bg: 'rgba(124, 58, 237, 0.05)' },
-                            ].map((row, i) => (
-                                <tr key={row.c} style={{ 
-                                    borderBottom: i === 7 ? 'none' : '1px solid rgba(255,255,255,0.03)',
-                                    background: i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.1)',
-                                    transition: 'all 0.3s'
-                                }}
-                                onMouseEnter={(e) => e.currentTarget.style.background = row.bg}
-                                onMouseLeave={(e) => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.1)'}
-                                >
-                                    <td style={{ padding: '1.25rem 2.5rem', color: row.color, fontWeight: '700' }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: row.color, boxShadow: `0 0 8px ${row.color}` }} />
-                                            {row.c}
-                                        </div>
-                                    </td>
-                                    <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)' }}>{row.n10}</td>
-                                    <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n100 === '∞' || row.n100.includes('10³⁰') ? row.color : 'inherit' }}>{row.n100}</td>
-                                    <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n1k === '∞' || row.n1k.includes('10⁹') ? row.color : 'inherit' }}>{row.n1k}</td>
-                                    <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n10k === '∞' || row.n10k.includes('10¹³') || row.n10k === '100,000,000' ? row.color : 'inherit' }}>{row.n10k}</td>
-                                    <td style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)' }}>{row.ex}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            {/* Common Patterns Section */}
-            <div style={{ marginTop: '4rem' }}>
-                <div className="glass" style={{ padding: '3.5rem' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <span style={{ color: 'var(--primary-color)', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.85rem' }}>Algorithms</span>
-                        <h3 style={{ fontSize: '2.5rem', margin: '0.5rem 0', fontWeight: '800' }}>
-                            Common <span className="gradient-text">Patterns</span>
-                        </h3>
-                    </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                        <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.2)', position: 'relative', overflow: 'hidden' }}>
-                            <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
-                            <Search size={32} color="#10b981" style={{ marginBottom: '1rem' }} />
-                            <h4 style={{ color: '#10b981', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>Divide & Conquer</h4>
-                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                                Break problem into smaller subproblems, solve recursively, combine solutions.
-                            </p>
-                            <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
-                                <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> <code style={{ color: '#10b981' }}>O(n log n)</code> or <code style={{ color: '#10b981' }}>O(log n)</code></div>
-                                <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> Merge Sort, Quick Sort</div>
-                            </div>
-                        </motion.div>
-                        <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(99, 102, 241, 0.05)', border: '1px solid rgba(99, 102, 241, 0.2)', position: 'relative', overflow: 'hidden' }}>
-                            <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
-                            <Database size={32} color="#6366f1" style={{ marginBottom: '1rem' }} />
-                            <h4 style={{ color: '#6366f1', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>Dynamic Programming</h4>
-                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                                Solve complex problems by breaking them down into simpler subproblems and storing results.
-                            </p>
-                            <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
-                                <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> Often <code style={{ color: '#6366f1' }}>O(n²)</code> or <code style={{ color: '#6366f1' }}>O(n³)</code></div>
-                                <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> Fibonacci, Knapsack</div>
-                            </div>
-                        </motion.div>
-                        <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(245, 158, 11, 0.05)', border: '1px solid rgba(245, 158, 11, 0.2)', position: 'relative', overflow: 'hidden' }}>
-                            <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
-                            <Zap size={32} color="#f59e0b" style={{ marginBottom: '1rem' }} />
-                            <h4 style={{ color: '#f59e0b', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>Greedy Algorithms</h4>
-                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                                Make locally optimal choices at each step to find global optimum.
-                            </p>
-                            <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
-                                <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> Usually <code style={{ color: '#f59e0b' }}>O(n log n)</code></div>
-                                <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> Dijkstra's, Huffman</div>
-                            </div>
-                        </motion.div>
-                        <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(236, 72, 153, 0.05)', border: '1px solid rgba(236, 72, 153, 0.2)', position: 'relative', overflow: 'hidden' }}>
-                            <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
-                            <Layers size={32} color="#ec4899" style={{ marginBottom: '1rem' }} />
-                            <h4 style={{ color: '#ec4899', marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>Tree/Graph Traversal</h4>
-                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                                Visit all nodes in a tree or graph structure systematically.
-                            </p>
-                            <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
-                                <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> <code style={{ color: '#ec4899' }}>O(V + E)</code> or <code style={{ color: '#ec4899' }}>O(n)</code></div>
-                                <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> DFS, BFS, Trees</div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Practice Problems Section */}
-            <div style={{ marginTop: '4rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    <h3 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: '800' }}>
-                        Ready to <span className="gradient-text">Practice?</span>
-                    </h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>Test your Big O knowledge with these classic algorithmic problems.</p>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-                    {[
-                        { title: 'Two Sum', desc: 'Find two numbers in an array that add up to a target sum.', p1: 'Brute Force:', p1v: 'O(n²)', p2: 'Optimal:', p2v: 'O(n) Hash Map' },
-                        { title: 'Valid Parentheses', desc: 'Check if a string of parentheses is valid using a stack.', p1: 'Time:', p1v: 'O(n) Single pass', p2: 'Space:', p2v: 'O(n) Stack' },
-                        { title: 'Merge Intervals', desc: 'Merge overlapping intervals in a list.', p1: 'Time:', p1v: 'O(n log n) Sort', p2: 'Space:', p2v: 'O(n) Result' },
-                        { title: 'Climbing Stairs', desc: 'Find number of ways to climb n stairs.', p1: 'Recursive:', p1v: 'O(2ⁿ)', p2: 'DP:', p2v: 'O(n) Memoization' }
-                    ].map(prob => (
-                        <motion.div key={prob.title} whileHover={{ y: -5, boxShadow: '0 12px 40px rgba(0,0,0,0.4)' }} style={{ padding: '2rem', borderRadius: '20px', background: 'var(--surface-color)', border: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                                <h4 style={{ color: 'var(--text-main)', margin: 0, fontSize: '1.25rem', fontWeight: '700' }}>{prob.title}</h4>
-                                <CheckCircle2 size={20} color="var(--primary-color)" opacity={0.5} />
-                            </div>
-                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem', flex: 1 }}>
-                                {prob.desc}
-                            </p>
-                            <div style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px', fontSize: '0.85rem' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                    <span style={{ color: 'var(--text-muted)' }}>{prob.p1}</span>
-                                    <span style={{ fontWeight: '600', color: 'var(--text-main)' }}>{prob.p1v}</span>
-                                </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <span style={{ color: 'var(--text-muted)' }}>{prob.p2}</span>
-                                    <span style={{ fontWeight: '600', color: 'var(--text-main)' }}>{prob.p2v}</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
+            </section>
         </>
     );
 };

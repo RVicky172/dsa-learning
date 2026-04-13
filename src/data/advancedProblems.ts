@@ -879,9 +879,9 @@ export interface AdvancedProblem {
 }
 
 export const difficultyColors: Record<string, string> = {
-    'Easy': '#10b981',
+    'Easy': '#22c55e',
     'Medium': '#f97316',
-    'Hard': '#f59e0b',
+    'Hard': '#eab308',
     'Expert': '#ef4444'
 };
 

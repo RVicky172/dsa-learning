@@ -26,11 +26,11 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     left: '10%',
                     width: '60px',
                     height: '60px',
-                    background: 'linear-gradient(135deg, #f59e0b, #f97316)',
+                    background: 'linear-gradient(135deg, #8b5cf6, #a78bfa)',
                     borderRadius: '12px',
                     zIndex: -1,
                     opacity: 0.2,
-                    boxShadow: '0 8px 32px rgba(245, 158, 11, 0.3)'
+                    boxShadow: '0 8px 32px rgba(139, 92, 246, 0.3)'
                 }}
                 animate={{
                     y: [0, -20, 0],
@@ -48,11 +48,11 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     right: '15%',
                     width: '80px',
                     height: '80px',
-                    background: 'linear-gradient(135deg, #10b981, #34d399)',
+                    background: 'linear-gradient(135deg, #14b8a6, #2dd4bf)',
                     borderRadius: '16px',
                     zIndex: -1,
                     opacity: 0.15,
-                    boxShadow: '0 12px 40px rgba(16, 185, 129, 0.3)'
+                    boxShadow: '0 12px 40px rgba(20, 184, 166, 0.3)'
                 }}
                 animate={{
                     y: [0, 30, 0],
@@ -71,7 +71,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     left: '5%',
                     width: '100px',
                     height: '100px',
-                    background: 'linear-gradient(135deg, #f59e0b, #10b981)',
+                    background: 'linear-gradient(135deg, #8b5cf6, #14b8a6)',
                     clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
                     zIndex: -1,
                     opacity: 0.1,
@@ -103,7 +103,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                         width: `${60 + i * 20}px`,
                         height: `${60 + i * 20}px`,
                         borderRadius: '50%',
-                        border: `2px solid rgba(245, 158, 11, ${0.2 - i * 0.03})`,
+                        border: `2px solid rgba(139, 92, 246, ${0.2 - i * 0.03})`,
                         zIndex: -1,
                         top: `${25 + i * 5}%`,
                         right: `${10 + i * 3}%`
@@ -118,7 +118,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                 left: '0%',
                 width: '400px',
                 height: '400px',
-                background: 'radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
                 borderRadius: '50%',
                 zIndex: -1,
                 filter: 'blur(40px)'
@@ -129,7 +129,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                 right: '-5%',
                 width: '350px',
                 height: '350px',
-                background: 'radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, transparent 70%)',
                 borderRadius: '50%',
                 zIndex: -1,
                 filter: 'blur(40px)'
@@ -221,7 +221,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                             borderRadius: '12px',
                             fontWeight: '700',
                             fontSize: '1.1rem',
-                            boxShadow: '0 15px 40px rgba(124, 58, 237, 0.3)',
+                            boxShadow: '0 15px 40px rgba(139, 92, 246, 0.3)',
                             cursor: 'pointer',
                             border: 'none',
                             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -230,12 +230,12 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = 'translateY(-3px)';
-                            e.currentTarget.style.boxShadow = '0 20px 50px rgba(124, 58, 237, 0.4)';
+                            e.currentTarget.style.boxShadow = '0 20px 50px rgba(139, 92, 246, 0.4)';
                             e.currentTarget.style.filter = 'brightness(1.1)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 15px 40px rgba(124, 58, 237, 0.3)';
+                            e.currentTarget.style.boxShadow = '0 15px 40px rgba(139, 92, 246, 0.3)';
                             e.currentTarget.style.filter = 'brightness(1)';
                         }}
                     >
@@ -252,13 +252,13 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                             border: '2px solid var(--border-color)',
                             borderRadius: '12px',
                             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                            background: 'rgba(21, 29, 61, 0.4)',
+                            background: 'rgba(10, 17, 40, 0.4)',
                             color: 'var(--text-main)'
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = 'translateY(-3px)';
                             e.currentTarget.style.borderColor = 'var(--primary-color)';
-                            e.currentTarget.style.boxShadow = '0 15px 40px rgba(124, 58, 237, 0.3)';
+                            e.currentTarget.style.boxShadow = '0 15px 40px rgba(139, 92, 246, 0.3)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
@@ -271,7 +271,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     <button
                         onClick={() => scrollToSection('problems')}
                         style={{
-                            backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                            backgroundColor: 'rgba(244, 63, 94, 0.1)',
                             color: 'var(--accent-light)',
                             padding: '1rem 2.5rem',
                             borderRadius: '12px',
@@ -283,12 +283,12 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = 'translateY(-3px)';
-                            e.currentTarget.style.background = 'rgba(236, 72, 153, 0.2)';
-                            e.currentTarget.style.boxShadow = '0 15px 40px rgba(236, 72, 153, 0.2)';
+                            e.currentTarget.style.background = 'rgba(244, 63, 94, 0.2)';
+                            e.currentTarget.style.boxShadow = '0 15px 40px rgba(244, 63, 94, 0.2)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.background = 'rgba(236, 72, 153, 0.1)';
+                            e.currentTarget.style.background = 'rgba(244, 63, 94, 0.1)';
                             e.currentTarget.style.boxShadow = 'none';
                         }}
                     >
