@@ -21,10 +21,10 @@ DSA Master is a modern, highly interactive web application designed to help lear
 
 ### ✨ Key Features
 
-- **📚 Topic Learning**: Deep dive into essential DSA concepts (Arrays, Linked Lists, Trees, Graphs, DP, etc.).
-- **⏱️ Big-O Notation Guide**: Master time & space complexity with rich, visual explanations.
+- **📚 Interactive Visualizers**: Real-time visual representations of data structures and algorithm execution.
+- **⏱️ Big-O Notation Guide**: Master time & space complexity with rich, interactive charts using Recharts.
 - **💻 Problem Practice**: Test your skills against a curated list of algorithmic challenges.
-- **🗺️ Learning Roadmap**: Follow a structured pathway from beginner to advanced.
+- **🗺️ Learning Roadmap**: Follow a structured pathway from beginner to advanced topics.
 - **⚡ Blazing Fast**: Built with Vite and React lazy loading for immediate interactions and zero-lag rendering.
 - **🌙 Theming Support**: Sleek UI tailored for comfortable reading and focused learning.
 
@@ -37,7 +37,9 @@ DSA Master is a modern, highly interactive web application designed to help lear
 - **Build Tool**: [Vite](https://vitejs.dev/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Data Visualization**: [Recharts](https://recharts.org/)
 - **Icons**: [Lucide React](https://lucide.dev/)
+- **Persistence**: [idb-keyval](https://github.com/jakearchibald/idb-keyval) (IndexedDB wrapper)
 
 ---
 
@@ -76,16 +78,15 @@ Ensure you have the following installed:
 
 ```text
 dsa-learning/
-├── public/                 # Static assets
-└── src/
-    ├── components/         # Reusable React UI components
-    ├── contexts/           # Global React Context providers
-    ├── data/               # Static models, topics, and problem lists
-    ├── hooks/              # Custom React hooks
-    ├── pages/              # Main page views
-    ├── types/              # Global TypeScript interfaces
-    ├── App.tsx             # Root React component & routing logic
-    └── main.tsx            # React application entry point
+├── src/
+│   ├── components/         # Reusable UI components (Visualizers, Navbars, Cards)
+│   ├── contexts/           # Global React Context providers (State management)
+│   ├── data/               # Curriculum data, topic definitions, and problem sets
+│   ├── hooks/              # Custom logic hooks (e.g., visualizer state control)
+│   ├── pages/              # Main view compositions
+│   ├── types/              # Global TypeScript interfaces and type definitions
+│   ├── App.tsx             # Root React component & routing logic
+│   └── main.tsx            # React application entry point
 ```
 
 ---
