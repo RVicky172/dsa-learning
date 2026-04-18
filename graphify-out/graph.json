@@ -43,7 +43,7 @@
       "label": "handleNavigate()",
       "file_type": "code",
       "source_file": "src\\App.tsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "id": "app_handlenavigate",
       "community": 1,
       "norm_label": "handlenavigate()"
@@ -52,7 +52,7 @@
       "label": "handleTopicSelect()",
       "file_type": "code",
       "source_file": "src\\App.tsx",
-      "source_location": "L46",
+      "source_location": "L47",
       "id": "app_handletopicselect",
       "community": 1,
       "norm_label": "handletopicselect()"
@@ -61,7 +61,7 @@
       "label": "renderContent()",
       "file_type": "code",
       "source_file": "src\\App.tsx",
-      "source_location": "L114",
+      "source_location": "L115",
       "id": "app_rendercontent",
       "community": 1,
       "norm_label": "rendercontent()"
@@ -81,7 +81,7 @@
       "source_file": "src\\components\\BigO.tsx",
       "source_location": "L1",
       "id": "src_components_bigo_tsx",
-      "community": 5,
+      "community": 4,
       "norm_label": "bigo.tsx"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "src\\components\\BigO.tsx",
       "source_location": "L69",
       "id": "bigo_generatepath",
-      "community": 5,
+      "community": 4,
       "norm_label": "generatepath()"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "src\\components\\BigO.tsx",
       "source_location": "L82",
       "id": "bigo_f_n",
-      "community": 5,
+      "community": 4,
       "norm_label": "f_n()"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "src\\components\\BigO.tsx",
       "source_location": "L83",
       "id": "bigo_cg_n",
-      "community": 5,
+      "community": 4,
       "norm_label": "cg_n()"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
       "source_location": "L1",
       "id": "src_components_datastructurevisualizer_tsx",
-      "community": 3,
+      "community": 2,
       "norm_label": "datastructurevisualizer.tsx"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
       "source_location": "L48",
       "id": "datastructurevisualizer_handlereset",
-      "community": 3,
+      "community": 2,
       "norm_label": "handlereset()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
       "source_location": "L54",
       "id": "datastructurevisualizer_handleprevious",
-      "community": 3,
+      "community": 2,
       "norm_label": "handleprevious()"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
       "source_location": "L62",
       "id": "datastructurevisualizer_handlenext",
-      "community": 3,
+      "community": 2,
       "norm_label": "handlenext()"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
       "source_location": "L72",
       "id": "datastructurevisualizer_getexampledata",
-      "community": 3,
+      "community": 2,
       "norm_label": "getexampledata()"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "src\\components\\LearningPath.tsx",
       "source_location": "L1",
       "id": "src_components_learningpath_tsx",
-      "community": 4,
+      "community": 3,
       "norm_label": "learningpath.tsx"
     },
     {
@@ -270,7 +270,7 @@
       "source_file": "src\\components\\LearningPath.tsx",
       "source_location": "L31",
       "id": "learningpath_updateprogress",
-      "community": 4,
+      "community": 3,
       "norm_label": "updateprogress()"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "src\\components\\LearningPath.tsx",
       "source_location": "L45",
       "id": "learningpath_getnodestatus",
-      "community": 4,
+      "community": 3,
       "norm_label": "getnodestatus()"
     },
     {
@@ -288,7 +288,7 @@
       "source_file": "src\\components\\LearningPath.tsx",
       "source_location": "L141",
       "id": "learningpath_getprogresspercentage",
-      "community": 4,
+      "community": 3,
       "norm_label": "getprogresspercentage()"
     },
     {
@@ -297,7 +297,7 @@
       "source_file": "src\\components\\LearningPath.tsx",
       "source_location": "L252",
       "id": "learningpath_if",
-      "community": 4,
+      "community": 3,
       "norm_label": "if()"
     },
     {
@@ -306,7 +306,7 @@
       "source_file": "src\\components\\Navbar.tsx",
       "source_location": "L1",
       "id": "src_components_navbar_tsx",
-      "community": 2,
+      "community": 5,
       "norm_label": "navbar.tsx"
     },
     {
@@ -315,25 +315,7 @@
       "source_file": "src\\components\\Navbar.tsx",
       "source_location": "L11",
       "id": "navbar_navbar",
-      "community": 2,
-      "norm_label": "navbar()"
-    },
-    {
-      "label": "NavbarRedesigned.tsx",
-      "file_type": "code",
-      "source_file": "src\\components\\NavbarRedesigned.tsx",
-      "source_location": "L1",
-      "id": "src_components_navbarredesigned_tsx",
-      "community": 2,
-      "norm_label": "navbarredesigned.tsx"
-    },
-    {
-      "label": "Navbar()",
-      "file_type": "code",
-      "source_file": "src\\components\\NavbarRedesigned.tsx",
-      "source_location": "L7",
-      "id": "navbarredesigned_navbar",
-      "community": 2,
+      "community": 5,
       "norm_label": "navbar()"
     },
     {
@@ -693,7 +675,7 @@
       "source_file": "src\\hooks\\useTheme.ts",
       "source_location": "L1",
       "id": "src_hooks_usetheme_ts",
-      "community": 2,
+      "community": 5,
       "norm_label": "usetheme.ts"
     },
     {
@@ -702,7 +684,7 @@
       "source_file": "src\\hooks\\useTheme.ts",
       "source_location": "L5",
       "id": "usetheme_usetheme",
-      "community": 2,
+      "community": 5,
       "norm_label": "usetheme()"
     },
     {
@@ -729,7 +711,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\App.tsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0,
       "_src": "src_app_tsx",
       "_tgt": "app_handlenavigate",
@@ -741,7 +723,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\App.tsx",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0,
       "_src": "src_app_tsx",
       "_tgt": "app_handletopicselect",
@@ -753,7 +735,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\App.tsx",
-      "source_location": "L114",
+      "source_location": "L115",
       "weight": 1.0,
       "_src": "src_app_tsx",
       "_tgt": "app_rendercontent",
@@ -1059,30 +1041,6 @@
       "_src": "navbar_navbar",
       "_tgt": "usetheme_usetheme",
       "source": "navbar_navbar",
-      "target": "usetheme_usetheme"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\NavbarRedesigned.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_src": "src_components_navbarredesigned_tsx",
-      "_tgt": "navbarredesigned_navbar",
-      "source": "src_components_navbarredesigned_tsx",
-      "target": "navbarredesigned_navbar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src\\components\\NavbarRedesigned.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_src": "navbarredesigned_navbar",
-      "_tgt": "usetheme_usetheme",
-      "source": "navbarredesigned_navbar",
       "target": "usetheme_usetheme"
     },
     {

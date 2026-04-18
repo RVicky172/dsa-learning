@@ -1,12 +1,12 @@
 # Graph Report - .  (2026-04-18)
 
 ## Corpus Check
-- 54 files · ~117,152 words
+- 53 files · ~100,450 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 80 nodes · 39 edges · 42 communities detected
-- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.8)
+- 78 nodes · 37 edges · 42 communities detected
+- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -54,19 +54,16 @@
 - [[_COMMUNITY_Community 41|Community 41]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `useTheme()` - 3 edges
-2. `updateProgress()` - 2 edges
-3. `if()` - 2 edges
-4. `Navbar()` - 2 edges
-5. `Navbar()` - 2 edges
-6. `TopicCard()` - 2 edges
-7. `useProgress()` - 2 edges
+1. `updateProgress()` - 2 edges
+2. `if()` - 2 edges
+3. `Navbar()` - 2 edges
+4. `TopicCard()` - 2 edges
+5. `useProgress()` - 2 edges
+6. `useTheme()` - 2 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Navbar()` --calls--> `useTheme()`  [INFERRED]
   src\components\Navbar.tsx → src\hooks\useTheme.ts
-- `Navbar()` --calls--> `useTheme()`  [INFERRED]
-  src\components\NavbarRedesigned.tsx → src\hooks\useTheme.ts
 - `TopicCard()` --calls--> `useProgress()`  [INFERRED]
   src\components\TopicCard.tsx → src\hooks\useProgress.ts
 
@@ -81,20 +78,20 @@ Cohesion: 0.33
 Nodes (0): 
 
 ### Community 2 - "Community 2"
-Cohesion: 0.33
-Nodes (3): Navbar(), Navbar(), useTheme()
-
-### Community 3 - "Community 3"
 Cohesion: 0.4
 Nodes (0): 
 
-### Community 4 - "Community 4"
+### Community 3 - "Community 3"
 Cohesion: 0.5
 Nodes (2): if(), updateProgress()
 
-### Community 5 - "Community 5"
+### Community 4 - "Community 4"
 Cohesion: 0.5
 Nodes (0): 
+
+### Community 5 - "Community 5"
+Cohesion: 0.5
+Nodes (2): Navbar(), useTheme()
 
 ### Community 6 - "Community 6"
 Cohesion: 0.5
@@ -309,9 +306,3 @@ Nodes (0):
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 41`** (1 nodes): `topic.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-
-## Suggested Questions
-_Questions this graph is uniquely positioned to answer:_
-
-- **Are the 2 inferred relationships involving `useTheme()` (e.g. with `Navbar()` and `Navbar()`) actually correct?**
-  _`useTheme()` has 2 INFERRED edges - model-reasoned connections that need verification._
