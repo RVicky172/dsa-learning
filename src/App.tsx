@@ -1,4 +1,5 @@
 import { useState, lazy, Suspense } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import TopicDetail from './components/TopicDetail'
 import Home from './pages/Home'
@@ -147,6 +148,7 @@ function App() {
         </div>
         <p style={{ color: 'var(--text-muted)' }}>&copy; 2026 DSA Master. Designed for excellence.</p>
       </footer>
+      <Analytics />
     </div>
   )
 }
