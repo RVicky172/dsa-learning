@@ -1,0 +1,208 @@
+{
+  "communities": {
+    "0": [
+      "lucide_react",
+      "src_components_topicdetail_tsx",
+      "src_data_topics_arrays_index_ts",
+      "src_data_topics_design_ts",
+      "src_data_topics_dynamicprogramming_ts",
+      "src_data_topics_graphs_ts",
+      "src_data_topics_greedy_ts",
+      "src_data_topics_hashtables_ts",
+      "src_data_topics_heaps_ts",
+      "src_data_topics_linkedlists_ts",
+      "src_data_topics_mathbitlogic_ts",
+      "src_data_topics_recursionbacktracking_ts",
+      "src_data_topics_sorting_ts",
+      "src_data_topics_stacksqueues_ts",
+      "src_data_topics_strings_ts",
+      "src_data_topics_trees_ts",
+      "src_data_topics_tries_ts",
+      "src_data_topicsdata_fundamentals_ts",
+      "src_data_topicsdata_old_ts",
+      "src_data_topicsdata_ts",
+      "topicdetail_loadtopic"
+    ],
+    "1": [
+      "big_o_notation_guide",
+      "claude_md",
+      "dsa_learning_app",
+      "graphify",
+      "interactive_visualizers",
+      "learning_roadmap",
+      "problem_practice",
+      "react_19",
+      "readme_md",
+      "recharts",
+      "src_contexts",
+      "src_data",
+      "src_hooks",
+      "src_types",
+      "tailwind_css",
+      "typescript",
+      "vite",
+      "vite_config_ts"
+    ],
+    "2": [
+      "datastructurevisualizer_getexampledata",
+      "datastructurevisualizer_handlenext",
+      "datastructurevisualizer_handleprevious",
+      "datastructurevisualizer_handlereset",
+      "framer_motion",
+      "hero_scrolltosection",
+      "problemspage_togglesolution",
+      "src_components_datastructurevisualizer_tsx",
+      "src_components_hero_tsx",
+      "src_components_problemspage_tsx",
+      "src_pages_home_tsx"
+    ],
+    "3": [
+      "bigodetail_factorial",
+      "bigodetail_formatyaxis",
+      "bigodetail_getcomplexityinfo",
+      "bigodetail_internalfactorial",
+      "bigodetail_resetanimation",
+      "bigodetail_startanimation",
+      "bigodetail_toggleline",
+      "bigodetail_togglereveal",
+      "src_components_bigodetail_tsx"
+    ],
+    "4": [
+      "app_handlenavigate",
+      "app_handletopicselect",
+      "app_rendercontent",
+      "src_app_tsx",
+      "src_components",
+      "src_contexts_themecontext_tsx",
+      "src_main_tsx",
+      "src_pages"
+    ],
+    "5": [
+      "learningpath_getnodestatus",
+      "learningpath_getprogresspercentage",
+      "learningpath_if",
+      "learningpath_updateprogress",
+      "src_components_learningpath_tsx"
+    ],
+    "6": [
+      "idb_keyval",
+      "src_components_topiccard_tsx",
+      "src_hooks_useprogress_ts",
+      "topiccard_topiccard",
+      "useprogress_useprogress"
+    ],
+    "7": [
+      "bigo_cg_n",
+      "bigo_f_n",
+      "bigo_generatepath",
+      "src_components_bigo_tsx"
+    ],
+    "8": [
+      "navbar_navbarredesigned",
+      "src_components_navbar_tsx",
+      "src_hooks_usetheme_ts",
+      "usetheme_usetheme"
+    ],
+    "9": [
+      "roadmap_getdynamicstatus",
+      "roadmap_getstatuscolor",
+      "roadmap_getstatusicon",
+      "src_components_roadmap_tsx"
+    ],
+    "10": [
+      "eslint_config_js"
+    ],
+    "11": [
+      "extractmeta_mjs"
+    ],
+    "12": [
+      "src_data_advancedproblems_ts"
+    ],
+    "13": [
+      "src_data_newproblems_ts"
+    ],
+    "14": [
+      "src_data_sortingandsearchingproblems_ts"
+    ],
+    "15": [
+      "src_data_topics_index_ts"
+    ],
+    "16": [
+      "src_data_topics_arrays_examples_ts"
+    ],
+    "17": [
+      "src_data_topics_arrays_patterns_ts"
+    ],
+    "18": [
+      "src_data_topics_arrays_theory_ts"
+    ],
+    "19": [
+      "src_data_topics_arrays_visualizations_ts"
+    ],
+    "20": [
+      "src_types_topic_ts"
+    ]
+  },
+  "cohesion": {},
+  "god_nodes": [
+    {
+      "id": "src_app_tsx",
+      "label": "src/App.tsx",
+      "degree": 6
+    },
+    {
+      "id": "learningpath_updateprogress",
+      "label": "updateProgress()",
+      "degree": 2
+    },
+    {
+      "id": "learningpath_if",
+      "label": "if()",
+      "degree": 2
+    },
+    {
+      "id": "navbar_navbarredesigned",
+      "label": "NavbarRedesigned()",
+      "degree": 2
+    },
+    {
+      "id": "topiccard_topiccard",
+      "label": "TopicCard()",
+      "degree": 2
+    },
+    {
+      "id": "useprogress_useprogress",
+      "label": "useProgress()",
+      "degree": 2
+    },
+    {
+      "id": "usetheme_usetheme",
+      "label": "useTheme()",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "NavbarRedesigned()",
+      "target": "useTheme()",
+      "source_files": [
+        "src\\components\\Navbar.tsx",
+        "src\\hooks\\useTheme.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "TopicCard()",
+      "target": "useProgress()",
+      "source_files": [
+        "src\\components\\TopicCard.tsx",
+        "src\\hooks\\useProgress.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    }
+  ]
+}

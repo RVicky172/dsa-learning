@@ -1,0 +1,4830 @@
+{
+  "nodes": [
+    {
+      "id": "eslint_config_js",
+      "label": "eslint.config.js",
+      "file_type": "code",
+      "source_file": "eslint.config.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "extractmeta_mjs",
+      "label": "extractMeta.mjs",
+      "file_type": "code",
+      "source_file": "extractMeta.mjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "vite_config_ts",
+      "label": "vite.config.ts",
+      "file_type": "code",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_tsx",
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "src\\App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_handlenavigate",
+      "label": "handleNavigate()",
+      "file_type": "code",
+      "source_file": "src\\App.tsx",
+      "source_location": "L39"
+    },
+    {
+      "id": "app_handletopicselect",
+      "label": "handleTopicSelect()",
+      "file_type": "code",
+      "source_file": "src\\App.tsx",
+      "source_location": "L47"
+    },
+    {
+      "id": "app_rendercontent",
+      "label": "renderContent()",
+      "file_type": "code",
+      "source_file": "src\\App.tsx",
+      "source_location": "L115"
+    },
+    {
+      "id": "src_main_tsx",
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "src\\main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_bigo_tsx",
+      "label": "BigO.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "bigo_generatepath",
+      "label": "generatePath()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L69"
+    },
+    {
+      "id": "bigo_f_n",
+      "label": "f_n()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L82"
+    },
+    {
+      "id": "bigo_cg_n",
+      "label": "cg_n()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L83"
+    },
+    {
+      "id": "src_components_bigodetail_tsx",
+      "label": "BigODetail.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "bigodetail_toggleline",
+      "label": "toggleLine()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L252"
+    },
+    {
+      "id": "bigodetail_factorial",
+      "label": "factorial()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L261"
+    },
+    {
+      "id": "bigodetail_getcomplexityinfo",
+      "label": "getComplexityInfo()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L283"
+    },
+    {
+      "id": "bigodetail_formatyaxis",
+      "label": "formatYAxis()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L287"
+    },
+    {
+      "id": "bigodetail_togglereveal",
+      "label": "toggleReveal()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L519"
+    },
+    {
+      "id": "bigodetail_startanimation",
+      "label": "startAnimation()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L567"
+    },
+    {
+      "id": "bigodetail_resetanimation",
+      "label": "resetAnimation()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L587"
+    },
+    {
+      "id": "bigodetail_internalfactorial",
+      "label": "internalFactorial()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L595"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_tsx",
+      "label": "DataStructureVisualizer.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "datastructurevisualizer_handlereset",
+      "label": "handleReset()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L48"
+    },
+    {
+      "id": "datastructurevisualizer_handleprevious",
+      "label": "handlePrevious()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L54"
+    },
+    {
+      "id": "datastructurevisualizer_handlenext",
+      "label": "handleNext()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L62"
+    },
+    {
+      "id": "datastructurevisualizer_getexampledata",
+      "label": "getExampleData()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L72"
+    },
+    {
+      "id": "src_components_hero_tsx",
+      "label": "Hero.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "hero_scrolltosection",
+      "label": "scrollToSection()",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_components_learningpath_tsx",
+      "label": "LearningPath.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "learningpath_updateprogress",
+      "label": "updateProgress()",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "learningpath_getnodestatus",
+      "label": "getNodeStatus()",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L45"
+    },
+    {
+      "id": "learningpath_getprogresspercentage",
+      "label": "getProgressPercentage()",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L141"
+    },
+    {
+      "id": "learningpath_if",
+      "label": "if()",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L252"
+    },
+    {
+      "id": "src_components_navbar_tsx",
+      "label": "Navbar.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "navbar_navbarredesigned",
+      "label": "NavbarRedesigned()",
+      "file_type": "code",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_problemspage_tsx",
+      "label": "ProblemsPage.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "problemspage_togglesolution",
+      "label": "toggleSolution()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L51"
+    },
+    {
+      "id": "src_components_roadmap_tsx",
+      "label": "Roadmap.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "roadmap_getdynamicstatus",
+      "label": "getDynamicStatus()",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L177"
+    },
+    {
+      "id": "roadmap_getstatusicon",
+      "label": "getStatusIcon()",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L190"
+    },
+    {
+      "id": "roadmap_getstatuscolor",
+      "label": "getStatusColor()",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L198"
+    },
+    {
+      "id": "src_components_topiccard_tsx",
+      "label": "TopicCard.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "topiccard_topiccard",
+      "label": "TopicCard()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_components_topicdetail_tsx",
+      "label": "TopicDetail.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "topicdetail_loadtopic",
+      "label": "loadTopic()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "src_contexts_themecontext_tsx",
+      "label": "ThemeContext.tsx",
+      "file_type": "code",
+      "source_file": "src\\contexts\\ThemeContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_advancedproblems_ts",
+      "label": "advancedProblems.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\advancedProblems.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_newproblems_ts",
+      "label": "newProblems.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\newProblems.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_sortingandsearchingproblems_ts",
+      "label": "sortingAndSearchingProblems.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\sortingAndSearchingProblems.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topicsdata_fundamentals_ts",
+      "label": "topicsData.fundamentals.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topicsdata_old_ts",
+      "label": "topicsData.old.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topicsdata_ts",
+      "label": "topicsData.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topicsData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_design_ts",
+      "label": "design.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_dynamicprogramming_ts",
+      "label": "dynamicProgramming.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_graphs_ts",
+      "label": "graphs.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_greedy_ts",
+      "label": "greedy.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_hashtables_ts",
+      "label": "hashTables.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_heaps_ts",
+      "label": "heaps.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_linkedlists_ts",
+      "label": "linkedLists.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_mathbitlogic_ts",
+      "label": "mathBitLogic.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_recursionbacktracking_ts",
+      "label": "recursionBacktracking.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_sorting_ts",
+      "label": "sorting.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_stacksqueues_ts",
+      "label": "stacksQueues.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\stacksQueues.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_strings_ts",
+      "label": "strings.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_trees_ts",
+      "label": "trees.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_tries_ts",
+      "label": "tries.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_examples_ts",
+      "label": "examples.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\examples.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_patterns_ts",
+      "label": "patterns.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\patterns.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_theory_ts",
+      "label": "theory.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\theory.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_visualizations_ts",
+      "label": "visualizations.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\visualizations.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_hooks_useprogress_ts",
+      "label": "useProgress.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "useprogress_useprogress",
+      "label": "useProgress()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_hooks_usetheme_ts",
+      "label": "useTheme.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "usetheme_usetheme",
+      "label": "useTheme()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "src_pages_home_tsx",
+      "label": "Home.tsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_topic_ts",
+      "label": "topic.ts",
+      "file_type": "code",
+      "source_file": "src\\types\\topic.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "eslint_config_js",
+      "label": "eslint.config.js",
+      "file_type": "code",
+      "source_file": "eslint.config.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "extractmeta_mjs",
+      "label": "extractMeta.mjs",
+      "file_type": "code",
+      "source_file": "extractMeta.mjs",
+      "source_location": "L1"
+    },
+    {
+      "id": "vite_config_ts",
+      "label": "vite.config.ts",
+      "file_type": "code",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_tsx",
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "src\\App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_handlenavigate",
+      "label": "handleNavigate()",
+      "file_type": "code",
+      "source_file": "src\\App.tsx",
+      "source_location": "L39"
+    },
+    {
+      "id": "app_handletopicselect",
+      "label": "handleTopicSelect()",
+      "file_type": "code",
+      "source_file": "src\\App.tsx",
+      "source_location": "L47"
+    },
+    {
+      "id": "app_rendercontent",
+      "label": "renderContent()",
+      "file_type": "code",
+      "source_file": "src\\App.tsx",
+      "source_location": "L115"
+    },
+    {
+      "id": "src_main_tsx",
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "src\\main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_bigo_tsx",
+      "label": "BigO.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "bigo_generatepath",
+      "label": "generatePath()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L69"
+    },
+    {
+      "id": "bigo_f_n",
+      "label": "f_n()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L82"
+    },
+    {
+      "id": "bigo_cg_n",
+      "label": "cg_n()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L83"
+    },
+    {
+      "id": "src_components_bigodetail_tsx",
+      "label": "BigODetail.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "bigodetail_toggleline",
+      "label": "toggleLine()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L252"
+    },
+    {
+      "id": "bigodetail_factorial",
+      "label": "factorial()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L261"
+    },
+    {
+      "id": "bigodetail_getcomplexityinfo",
+      "label": "getComplexityInfo()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L283"
+    },
+    {
+      "id": "bigodetail_formatyaxis",
+      "label": "formatYAxis()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L287"
+    },
+    {
+      "id": "bigodetail_togglereveal",
+      "label": "toggleReveal()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L519"
+    },
+    {
+      "id": "bigodetail_startanimation",
+      "label": "startAnimation()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L567"
+    },
+    {
+      "id": "bigodetail_resetanimation",
+      "label": "resetAnimation()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L587"
+    },
+    {
+      "id": "bigodetail_internalfactorial",
+      "label": "internalFactorial()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L595"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_tsx",
+      "label": "DataStructureVisualizer.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "datastructurevisualizer_handlereset",
+      "label": "handleReset()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L48"
+    },
+    {
+      "id": "datastructurevisualizer_handleprevious",
+      "label": "handlePrevious()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L54"
+    },
+    {
+      "id": "datastructurevisualizer_handlenext",
+      "label": "handleNext()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L62"
+    },
+    {
+      "id": "datastructurevisualizer_getexampledata",
+      "label": "getExampleData()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L72"
+    },
+    {
+      "id": "src_components_hero_tsx",
+      "label": "Hero.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "hero_scrolltosection",
+      "label": "scrollToSection()",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_components_learningpath_tsx",
+      "label": "LearningPath.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "learningpath_updateprogress",
+      "label": "updateProgress()",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "learningpath_getnodestatus",
+      "label": "getNodeStatus()",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L45"
+    },
+    {
+      "id": "learningpath_getprogresspercentage",
+      "label": "getProgressPercentage()",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L141"
+    },
+    {
+      "id": "learningpath_if",
+      "label": "if()",
+      "file_type": "code",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L252"
+    },
+    {
+      "id": "src_components_navbar_tsx",
+      "label": "Navbar.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "navbar_navbarredesigned",
+      "label": "NavbarRedesigned()",
+      "file_type": "code",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_problemspage_tsx",
+      "label": "ProblemsPage.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "problemspage_togglesolution",
+      "label": "toggleSolution()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L51"
+    },
+    {
+      "id": "src_components_roadmap_tsx",
+      "label": "Roadmap.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "roadmap_getdynamicstatus",
+      "label": "getDynamicStatus()",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L177"
+    },
+    {
+      "id": "roadmap_getstatusicon",
+      "label": "getStatusIcon()",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L190"
+    },
+    {
+      "id": "roadmap_getstatuscolor",
+      "label": "getStatusColor()",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L198"
+    },
+    {
+      "id": "src_components_topiccard_tsx",
+      "label": "TopicCard.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "topiccard_topiccard",
+      "label": "TopicCard()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_components_topicdetail_tsx",
+      "label": "TopicDetail.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "topicdetail_loadtopic",
+      "label": "loadTopic()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "src_contexts_themecontext_tsx",
+      "label": "ThemeContext.tsx",
+      "file_type": "code",
+      "source_file": "src\\contexts\\ThemeContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_advancedproblems_ts",
+      "label": "advancedProblems.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\advancedProblems.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_newproblems_ts",
+      "label": "newProblems.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\newProblems.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_sortingandsearchingproblems_ts",
+      "label": "sortingAndSearchingProblems.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\sortingAndSearchingProblems.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topicsdata_fundamentals_ts",
+      "label": "topicsData.fundamentals.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topicsdata_old_ts",
+      "label": "topicsData.old.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topicsdata_ts",
+      "label": "topicsData.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topicsData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_design_ts",
+      "label": "design.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_dynamicprogramming_ts",
+      "label": "dynamicProgramming.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_graphs_ts",
+      "label": "graphs.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_greedy_ts",
+      "label": "greedy.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_hashtables_ts",
+      "label": "hashTables.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_heaps_ts",
+      "label": "heaps.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_linkedlists_ts",
+      "label": "linkedLists.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_mathbitlogic_ts",
+      "label": "mathBitLogic.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_recursionbacktracking_ts",
+      "label": "recursionBacktracking.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_sorting_ts",
+      "label": "sorting.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_stacksqueues_ts",
+      "label": "stacksQueues.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\stacksQueues.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_strings_ts",
+      "label": "strings.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_trees_ts",
+      "label": "trees.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_tries_ts",
+      "label": "tries.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_examples_ts",
+      "label": "examples.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\examples.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_patterns_ts",
+      "label": "patterns.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\patterns.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_theory_ts",
+      "label": "theory.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\theory.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_topics_arrays_visualizations_ts",
+      "label": "visualizations.ts",
+      "file_type": "code",
+      "source_file": "src\\data\\topics\\arrays\\visualizations.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_hooks_useprogress_ts",
+      "label": "useProgress.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "useprogress_useprogress",
+      "label": "useProgress()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_hooks_usetheme_ts",
+      "label": "useTheme.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "usetheme_usetheme",
+      "label": "useTheme()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "src_pages_home_tsx",
+      "label": "Home.tsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_topic_ts",
+      "label": "topic.ts",
+      "file_type": "code",
+      "source_file": "src\\types\\topic.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "dsa_learning_app",
+      "label": "DSA Learning App",
+      "file_type": "document"
+    },
+    {
+      "id": "react_19",
+      "label": "React 19",
+      "file_type": "code"
+    },
+    {
+      "id": "vite",
+      "label": "Vite",
+      "file_type": "code"
+    },
+    {
+      "id": "typescript",
+      "label": "TypeScript",
+      "file_type": "code"
+    },
+    {
+      "id": "tailwind_css",
+      "label": "Tailwind CSS",
+      "file_type": "code"
+    },
+    {
+      "id": "framer_motion",
+      "label": "Framer Motion",
+      "file_type": "code"
+    },
+    {
+      "id": "recharts",
+      "label": "Recharts",
+      "file_type": "code"
+    },
+    {
+      "id": "idb_keyval",
+      "label": "idb-keyval",
+      "file_type": "code"
+    },
+    {
+      "id": "lucide_react",
+      "label": "Lucide React",
+      "file_type": "code"
+    },
+    {
+      "id": "src_components",
+      "label": "src/components",
+      "file_type": "code"
+    },
+    {
+      "id": "src_contexts",
+      "label": "src/contexts",
+      "file_type": "code"
+    },
+    {
+      "id": "src_data",
+      "label": "src/data",
+      "file_type": "code"
+    },
+    {
+      "id": "src_hooks",
+      "label": "src/hooks",
+      "file_type": "code"
+    },
+    {
+      "id": "src_pages",
+      "label": "src/pages",
+      "file_type": "code"
+    },
+    {
+      "id": "src_types",
+      "label": "src/types",
+      "file_type": "code"
+    },
+    {
+      "id": "src_app_tsx",
+      "label": "src/App.tsx",
+      "file_type": "code"
+    },
+    {
+      "id": "interactive_visualizers",
+      "label": "Interactive Visualizers",
+      "file_type": "document"
+    },
+    {
+      "id": "big_o_notation_guide",
+      "label": "Big-O Notation Guide",
+      "file_type": "document"
+    },
+    {
+      "id": "problem_practice",
+      "label": "Problem Practice",
+      "file_type": "document"
+    },
+    {
+      "id": "learning_roadmap",
+      "label": "Learning Roadmap",
+      "file_type": "document"
+    },
+    {
+      "id": "graphify",
+      "label": "graphify",
+      "file_type": "code"
+    },
+    {
+      "id": "claude_md",
+      "label": "CLAUDE.md",
+      "file_type": "document"
+    },
+    {
+      "id": "readme_md",
+      "label": "README.md",
+      "file_type": "document"
+    }
+  ],
+  "edges": [
+    {
+      "source": "eslint_config_js",
+      "target": "js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "globals",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "eslint_plugin_react_hooks",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "eslint_plugin_react_refresh",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "typescript_eslint",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "config",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "extractmeta_mjs",
+      "target": "fs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "extractMeta.mjs",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "extractmeta_mjs",
+      "target": "path",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "extractMeta.mjs",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config_ts",
+      "target": "vite",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config_ts",
+      "target": "plugin_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config_ts",
+      "target": "vite_plugin_pwa",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_components_navbar",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_components_topicdetail",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_pages_home",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_index_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "app_handlenavigate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "app_handletopicselect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "app_rendercontent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "client",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "src_index_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "src_app_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "src_contexts_themecontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "bigo_generatepath",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "bigo_f_n",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "bigo_cg_n",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "recharts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_toggleline",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L252",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_factorial",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L261",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_getcomplexityinfo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L283",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_formatyaxis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L287",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_togglereveal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L519",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_startanimation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L567",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_resetanimation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L587",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_internalfactorial",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L595",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_handlereset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_handleprevious",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_handlenext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_getexampledata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_tsx",
+      "target": "hero_scrolltosection",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "learningpath_updateprogress",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "learningpath_getnodestatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "learningpath_getprogresspercentage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "learningpath_if",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L252",
+      "weight": 1.0
+    },
+    {
+      "source": "learningpath_if",
+      "target": "learningpath_updateprogress",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L253",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "src_components_hooks_usetheme",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "src_components_navbar_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "navbar_navbarredesigned",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "src_components_data_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "src_components_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "src_components_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "problemspage_togglesolution",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "src_components_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "roadmap_getdynamicstatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L177",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "roadmap_getstatusicon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L190",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "roadmap_getstatuscolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_tsx",
+      "target": "src_components_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_tsx",
+      "target": "topiccard_topiccard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "src_components_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "src_components_datastructurevisualizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "src_components_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "topicdetail_loadtopic",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "src_contexts_themecontext_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\contexts\\ThemeContext.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_advancedproblems_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\advancedProblems.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_newproblems_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\newProblems.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_sortingandsearchingproblems_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\sortingAndSearchingProblems.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_fundamentals_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_fundamentals_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_fundamentals_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "src_data_sortingandsearchingproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "src_data_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_design_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_design_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_design_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_design_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_dynamicprogramming_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_dynamicprogramming_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_dynamicprogramming_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_dynamicprogramming_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_graphs_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_graphs_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_graphs_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_graphs_ts",
+      "target": "src_data_topics_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_greedy_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_greedy_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_greedy_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_greedy_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_hashtables_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_hashtables_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_hashtables_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_hashtables_ts",
+      "target": "src_data_topics_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_heaps_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_heaps_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_heaps_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_heaps_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_linkedlists_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_linkedlists_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_linkedlists_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_linkedlists_ts",
+      "target": "src_data_topics_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_mathbitlogic_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_mathbitlogic_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_mathbitlogic_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_mathbitlogic_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_recursionbacktracking_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_recursionbacktracking_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_recursionbacktracking_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_recursionbacktracking_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "src_data_topics_sortingandsearchingproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_stacksqueues_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\stacksQueues.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_stacksqueues_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\stacksQueues.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_stacksqueues_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\stacksQueues.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_strings_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_strings_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_strings_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_strings_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_trees_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_trees_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_trees_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_trees_ts",
+      "target": "src_data_topics_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_tries_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_tries_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_tries_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_tries_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_examples_ts",
+      "target": "src_data_topics_arrays_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\examples.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_theory",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_examples",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_patterns",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_visualizations",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_topicsdata",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_patterns_ts",
+      "target": "src_data_topics_arrays_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\patterns.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_theory_ts",
+      "target": "src_data_topics_arrays_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\theory.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_visualizations_ts",
+      "target": "src_data_topics_arrays_components_datastructurevisualizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\visualizations.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
+      "target": "idb_keyval",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
+      "target": "useprogress_useprogress",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetheme_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetheme_ts",
+      "target": "src_hooks_contexts_themecontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetheme_ts",
+      "target": "src_hooks_contexts_themecontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetheme_ts",
+      "target": "usetheme_usetheme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_hero",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_topiccard",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_data_topicsdata",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_types_topic_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\types\\topic.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_types_topic_ts",
+      "target": "src_types_components_datastructurevisualizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\types\\topic.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "navbar_navbarredesigned",
+      "target": "usetheme_usetheme",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "topiccard_topiccard",
+      "target": "useprogress_useprogress",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "globals",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "eslint_plugin_react_hooks",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "eslint_plugin_react_refresh",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "typescript_eslint",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "eslint_config_js",
+      "target": "config",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "eslint.config.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "extractmeta_mjs",
+      "target": "fs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "extractMeta.mjs",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "extractmeta_mjs",
+      "target": "path",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "extractMeta.mjs",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config_ts",
+      "target": "vite",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config_ts",
+      "target": "plugin_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "vite_config_ts",
+      "target": "vite_plugin_pwa",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_components_navbar",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_components_topicdetail",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_pages_home",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_index_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "app_handlenavigate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "app_handletopicselect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "app_rendercontent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "client",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "src_index_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "src_app_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_main_tsx",
+      "target": "src_contexts_themecontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "bigo_generatepath",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "bigo_f_n",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigo_tsx",
+      "target": "bigo_cg_n",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigO.tsx",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "recharts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_toggleline",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L252",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_factorial",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L261",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_getcomplexityinfo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L283",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_formatyaxis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L287",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_togglereveal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L519",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_startanimation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L567",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_resetanimation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L587",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_internalfactorial",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L595",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_handlereset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_handleprevious",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_handlenext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_getexampledata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_tsx",
+      "target": "hero_scrolltosection",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "learningpath_updateprogress",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "learningpath_getnodestatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "learningpath_getprogresspercentage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_learningpath_tsx",
+      "target": "learningpath_if",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L252",
+      "weight": 1.0
+    },
+    {
+      "source": "learningpath_if",
+      "target": "learningpath_updateprogress",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\LearningPath.tsx",
+      "source_location": "L253",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "src_components_hooks_usetheme",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "src_components_navbar_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_tsx",
+      "target": "navbar_navbarredesigned",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "src_components_data_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "src_components_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "src_components_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_tsx",
+      "target": "problemspage_togglesolution",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "src_components_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "roadmap_getdynamicstatus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L177",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "roadmap_getstatusicon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L190",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_tsx",
+      "target": "roadmap_getstatuscolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap.tsx",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_tsx",
+      "target": "src_components_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_tsx",
+      "target": "topiccard_topiccard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "src_components_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "src_components_datastructurevisualizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "src_components_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tsx",
+      "target": "topicdetail_loadtopic",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "src_contexts_themecontext_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\contexts\\ThemeContext.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_advancedproblems_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\advancedProblems.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_newproblems_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\newProblems.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_sortingandsearchingproblems_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\sortingAndSearchingProblems.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_fundamentals_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_fundamentals_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_fundamentals_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "src_data_sortingandsearchingproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_old_ts",
+      "target": "src_data_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.old.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topicsdata_ts",
+      "target": "src_data_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topicsData.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_design_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_design_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_design_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_design_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\design.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_dynamicprogramming_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_dynamicprogramming_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_dynamicprogramming_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_dynamicprogramming_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_graphs_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_graphs_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_graphs_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_graphs_ts",
+      "target": "src_data_topics_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\graphs.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_greedy_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_greedy_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_greedy_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_greedy_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\greedy.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_hashtables_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_hashtables_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_hashtables_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_hashtables_ts",
+      "target": "src_data_topics_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\hashTables.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_heaps_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_heaps_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_heaps_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_heaps_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\heaps.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_linkedlists_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_linkedlists_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_linkedlists_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_linkedlists_ts",
+      "target": "src_data_topics_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\linkedLists.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_mathbitlogic_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_mathbitlogic_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_mathbitlogic_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_mathbitlogic_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\mathBitLogic.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_recursionbacktracking_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_recursionbacktracking_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_recursionbacktracking_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_recursionbacktracking_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_sorting_ts",
+      "target": "src_data_topics_sortingandsearchingproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\sorting.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_stacksqueues_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\stacksQueues.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_stacksqueues_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\stacksQueues.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_stacksqueues_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\stacksQueues.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_strings_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_strings_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_strings_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_strings_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\strings.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_trees_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_trees_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_trees_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_trees_ts",
+      "target": "src_data_topics_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\trees.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_tries_ts",
+      "target": "src_data_topics_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_tries_ts",
+      "target": "src_data_topics_advancedproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_tries_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_tries_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\tries.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_examples_ts",
+      "target": "src_data_topics_arrays_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\examples.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_newproblems",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_theory",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_examples",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_patterns",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_visualizations",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_index_ts",
+      "target": "src_data_topics_arrays_topicsdata",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\index.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_patterns_ts",
+      "target": "src_data_topics_arrays_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\patterns.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_theory_ts",
+      "target": "src_data_topics_arrays_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\theory.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_topics_arrays_visualizations_ts",
+      "target": "src_data_topics_arrays_components_datastructurevisualizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\data\\topics\\arrays\\visualizations.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
+      "target": "idb_keyval",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
+      "target": "useprogress_useprogress",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetheme_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetheme_ts",
+      "target": "src_hooks_contexts_themecontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetheme_ts",
+      "target": "src_hooks_contexts_themecontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetheme_ts",
+      "target": "usetheme_usetheme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTheme.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_hero",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_topiccard",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_data_topicsdata",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_types_topic_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\types\\topic.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_types_topic_ts",
+      "target": "src_types_components_datastructurevisualizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\types\\topic.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "react_19",
+      "relation": "uses as framework",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "vite",
+      "relation": "uses as build tool",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "typescript",
+      "relation": "uses as language",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "tailwind_css",
+      "relation": "uses for styling",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "framer_motion",
+      "relation": "uses for animations",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "recharts",
+      "relation": "uses for data visualization",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "idb_keyval",
+      "relation": "uses for persistence",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "lucide_react",
+      "relation": "uses for icons",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "src_components",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "src_contexts",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "src_data",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "src_hooks",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "src_pages",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "src_types",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "src_app_tsx",
+      "relation": "contains",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "interactive_visualizers",
+      "relation": "provides feature",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "big_o_notation_guide",
+      "relation": "provides feature",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "problem_practice",
+      "relation": "provides feature",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "dsa_learning_app",
+      "target": "learning_roadmap",
+      "relation": "provides feature",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "big_o_notation_guide",
+      "target": "recharts",
+      "relation": "powered by",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "src_components",
+      "target": "lucide_react",
+      "relation": "uses for icons",
+      "confidence": "INFERRED"
+    },
+    {
+      "source": "src_components",
+      "target": "framer_motion",
+      "relation": "uses for animations",
+      "confidence": "INFERRED"
+    },
+    {
+      "source": "src_contexts",
+      "target": "react_19",
+      "relation": "uses React Context",
+      "confidence": "INFERRED"
+    },
+    {
+      "source": "src_data",
+      "target": "src_types",
+      "relation": "references type definitions",
+      "confidence": "INFERRED"
+    },
+    {
+      "source": "src_pages",
+      "target": "src_components",
+      "relation": "composes",
+      "confidence": "INFERRED"
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_pages",
+      "relation": "contains routing logic",
+      "confidence": "INFERRED"
+    },
+    {
+      "source": "claude_md",
+      "target": "dsa_learning_app",
+      "relation": "documents architecture of",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "claude_md",
+      "target": "graphify",
+      "relation": "references knowledge graph tool",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "readme_md",
+      "target": "dsa_learning_app",
+      "relation": "describes features of",
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

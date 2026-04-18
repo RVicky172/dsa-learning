@@ -358,7 +358,8 @@ const ComplexityGraph = () => {
                 border: '1px solid rgba(255,255,255,0.06)',
                 padding: '0.5rem 0.5rem 0 0',
                 height: '420px',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                minWidth: 0
             }}>
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={chartData} margin={{ top: 15, right: 40, left: 60, bottom: 40 }}>
@@ -1099,7 +1100,7 @@ const BigODetail = () => {
                                         <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>{selectedExample.complexity}</span>
                                     </div>
                                 </div>
-                                <div style={{ height: '280px', background: 'rgba(0,0,0,0.15)', borderRadius: '12px', padding: '1.5rem 1rem 0.5rem 0', border: '1px solid rgba(255,255,255,0.03)' }}>
+                                <div style={{ height: '280px', background: 'rgba(0,0,0,0.15)', borderRadius: '12px', padding: '1.5rem 1rem 0.5rem 0', border: '1px solid rgba(255,255,255,0.03)', minWidth: 0 }}>
                                     <ResponsiveContainer width="100%" height="100%">
                                         <AreaChart data={miniChartData} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
                                             <defs>
