@@ -718,11 +718,8 @@ pre:hover {
 .gap-lg { gap: var(--space-lg); }
 
 /* ============================================= */
-/* FUTURISTIC NAVBAR (REMOVED) */
+/* FUTURISTIC NAVBAR STYLES REMOVED - Using inline styles now */
 /* ============================================= */
-
-  justify-content: center;
-}
 
 .flex-between {
   display: flex;
