@@ -122,102 +122,95 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
               </motion.button>
             </li>
           ))}
+        </ul>
 
-          <li>
-            <motion.button
-              className="learn-btn"
-              onClick={() => handleClick('topics')}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        {/* Right-side actions */}
+        <div className="navbar-actions">
+          <motion.button
+            className="learn-btn"
+            onClick={() => handleClick('topics')}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <span>Start Learning</span>
+            <motion.div
+              initial={{ x: 0 }}
+              whileHover={{ x: 4 }}
+              transition={{ duration: 0.2 }}
             >
-              <span>Start Learning</span>
-              <motion.div
-                initial={{ x: 0 }}
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ChevronRight size={16} />
-              </motion.div>
-            </motion.button>
-          </li>
+              <ChevronRight size={16} />
+            </motion.div>
+          </motion.button>
+
+          <div className="nav-divider" />
 
           {isAuthenticated ? (
             <>
               {isAdmin ? (
-                <li>
-                  <motion.button
-                    onClick={() => handleClick('admin')}
-                    className={`nav-item-btn ${activeSection === 'admin' ? 'active' : ''}`}
-                    variants={navItemVariants}
-                    whileHover="hover"
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  >
-                    <ShieldCheck size={16} />
-                    Admin
-                  </motion.button>
-                </li>
-              ) : null}
-              <li>
                 <motion.button
-                  onClick={() => handleClick('profile')}
-                  className={`nav-item-btn ${activeSection === 'profile' ? 'active' : ''}`}
+                  onClick={() => handleClick('admin')}
+                  className={`nav-item-btn ${activeSection === 'admin' ? 'active' : ''}`}
                   variants={navItemVariants}
                   whileHover="hover"
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  title={user?.displayName}
                 >
-                  <User size={16} />
-                  Profile
+                  <ShieldCheck size={16} />
+                  Admin
                 </motion.button>
-              </li>
-              <li>
-                <motion.button
-                  onClick={handleSignOut}
-                  className="auth-action-btn"
-                  whileHover={{ y: -1 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <LogOut size={15} />
-                  Logout
-                </motion.button>
-              </li>
-            </>
-          ) : (
-            <li>
+              ) : null}
               <motion.button
-                onClick={() => handleClick('login')}
+                onClick={() => handleClick('profile')}
+                className={`nav-item-btn ${activeSection === 'profile' ? 'active' : ''}`}
+                variants={navItemVariants}
+                whileHover="hover"
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                title={user?.displayName}
+              >
+                <User size={16} />
+                Profile
+              </motion.button>
+              <motion.button
+                onClick={handleSignOut}
                 className="auth-action-btn"
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <LogIn size={15} />
-                Login
+                <LogOut size={15} />
+                Logout
               </motion.button>
-            </li>
+            </>
+          ) : (
+            <motion.button
+              onClick={() => handleClick('login')}
+              className="auth-action-btn"
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <LogIn size={15} />
+              Login
+            </motion.button>
           )}
 
-          <li>
-            <motion.button
-              className="theme-toggle"
-              onClick={toggleTheme}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.92 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          <motion.button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            <motion.div
+              initial={{ rotate: 0 }}
+              whileHover={{ rotate: 20 }}
+              transition={{ duration: 0.3 }}
             >
-              <motion.div
-                initial={{ rotate: 0 }}
-                whileHover={{ rotate: 20 }}
-                transition={{ duration: 0.3 }}
-              >
-                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-              </motion.div>
-            </motion.button>
-          </li>
-        </ul>
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </motion.div>
+          </motion.button>
+        </div>
 
         {/* Mobile Menu Button */}
         <div className="mobile-actions">
