@@ -1,7 +1,7 @@
 import type { Topic } from '../../../types/topic';
 import React from 'react';
 import { Hash } from 'lucide-react';
-import { arrayProblems } from '../../newProblems';
+import { arrayProblems } from '../../problems/arrays';
 import { arraysTheory } from './theory';
 import { arraysExamples } from './examples';
 import { arraysPatterns } from './patterns';

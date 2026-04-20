@@ -164,6 +164,238 @@ Each Topic must include:
 - Callbacks passed up: `onNavigate`, `onTopicSelect`, `onBack`
 - Check React DevTools for prop drilling path if component doesn't update
 
+## Common Pitfalls & Anti-Patterns
+
+### What to Avoid
+| Issue | Problem | Solution |
+|-------|---------|----------|
+| Hardcoded colors in components | Breaks theming consistency | Use CSS variables: `var(--primary-color)` |
+| Direct state mutations | Causes re-render bugs | Always use setState or spread syntax |
+| Missing TypeScript types | Causes prop drilling issues | Define proper interfaces, use `React.ReactNode` for elements |
+| Large topicsData single file | File becomes unmaintainable | Consider splitting by category if > 2500 lines |
+| Inline icon creation in JSX | Re-creates icons on every render | Create icons in data layer, pass as `React.ReactNode` |
+| Inconsistent prop naming | Confuses developers and readability | Follow: `show{X}`, `is{Y}`, `on{Event}` consistently |
+| Animation without viewport check | Triggers on scroll throughout page | Always pair with `viewport={{ once: true }}` for performance |
+| Missing error boundaries | Silent failures in UI | Add error boundaries for major sections |
+
+### Performance Pitfalls
+- **Prop drilling too many levels:** Extract context or lift state closer to child
+- **Animations on every render:** Use `viewport={{ once: true }}` to trigger only once
+- **Large component trees without React.memo:** Profile with React DevTools Profiler before optimizing
+- **Unused dependencies:** Run `npm run lint` and check ESLint output regularly
+
+## Testing Strategy
+
+### Current State
+- No test suite currently configured; ready for expansion
+- ESLint catches code quality issues; use before commits
+
+### Future Testing Approach
+1. **Unit Tests:** Jest + React Testing Library for components
+   - Test component rendering, state changes, callbacks
+   - Place tests adjacent to components: `ComponentName.test.tsx`
+2. **Integration Tests:** Test navigation flow and data integration
+3. **Snapshot Tests:** For complex animations (use sparingly)
+
+### Testing Checklist Before Merging
+- [ ] Component renders without errors
+- [ ] Props are properly typed
+- [ ] State updates trigger re-renders
+- [ ] Navigation callbacks fire correctly
+- [ ] No TypeScript errors: `npm run build`
+- [ ] No lint issues: `npm run lint`
+
+## Performance & Optimization Guidelines
+
+### Current Optimizations
+- Vite for fast builds and HMR
+- CSS variables avoid recompilation
+- Framer Motion with `viewport={{ once: true }}` prevents unnecessary animations
+
+### Optimization Checklist
+1. **Bundle Size:** Monitor with `npm run build` output
+2. **Component Rendering:** Use React DevTools Profiler to identify slow renders
+3. **Image Assets:** Keep icons as Lucide components (vector-based)
+4. **Data Loading:** topicsData is static; preload on app init
+
+### When to Optimize
+- Build time > 5 seconds
+- Page paint time > 3 seconds
+- DevTools Profiler shows repeated re-renders
+
+## Accessibility Guidelines
+
+### WCAG 2.1 AA Compliance Target
+- **Keyboard Navigation:** All interactive elements must be tab-navigable
+  - Use native `<button>` and `<a>` tags where possible
+  - Framer Motion should not trap focus
+- **Color Contrast:** Primary/Secondary colors meet 4.5:1 contrast ratio for text
+  - Test with WebAIM Contrast Checker before finalizing colors
+- **Labels & ARIA:** 
+  - Use `aria-label` for icon-only buttons
+  - Example: `<button aria-label="Toggle solution">{IconComponent}</button>`
+- **Focus Indicators:** Tailwind's `focus:ring` classes used for outline feedback
+
+### Testing Accessibility
+```bash
+# Use axe DevTools browser extension for automated checks
+# Manual testing: Tab through entire page, verify all content is reachable
+# Screen reader check: Enable Windows Narrator or macOS VoiceOver
+```
+
+## Environment Setup & Getting Started
+
+### Prerequisites
+- Node.js 18+ (check: `node --version`)
+- npm 9+ (check: `npm --version`)
+- Git (check: `git --version`)
+
+### First-Time Setup
+```bash
+# 1. Clone and install
+git clone <repo>
+cd dsa-learning
+npm install
+
+# 2. Verify setup
+npm run lint      # Should pass with no errors
+npm run build     # Should complete successfully
+
+# 3. Start development
+npm run dev       # Open http://localhost:5173
+```
+
+### IDE Setup
+- **VS Code Extensions Recommended:**
+  - ES7+ React/Redux/React-Native snippets
+  - Tailwind CSS IntelliSense
+  - Framer Motion docs (if available)
+  - ESLint
+- **Settings:** Enable format on save with Prettier (optional; ESLint enforces style)
+
+### Environment Variables
+- Currently: None required
+- Future additions: Document here if API endpoints or feature flags are added
+
+## Git Workflow & Conventions
+
+### Branch Naming
+```
+feature/topic-name-or-feature-description
+fix/bug-description
+docs/documentation-update
+perf/performance-improvement
+```
+
+### Commit Messages
+- **Format:** `<type>: <description>`
+- **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`
+- **Examples:**
+  ```
+  feat: add quicksort algorithm to Sorting topic
+  fix: correct hover animation timing on TopicCard
+  docs: enhance Copilot instructions with testing guidelines
+  perf: memoize TopicCard to prevent re-renders
+  ```
+
+### Before Pushing
+```bash
+npm run lint      # Fix any linting issues
+npm run build     # Ensure TypeScript compilation succeeds
+git status        # Verify only intended files changed
+```
+
+## Troubleshooting
+
+### Common Issues & Solutions
+
+#### "npm install" fails with dependency conflicts
+```bash
+# Solution: Clear cache and retry
+npm cache clean --force
+rm package-lock.json
+npm install
+```
+
+#### Styles not applying to new component
+- **Check:** Is component using Tailwind classes or CSS variables?
+- **Verify:** CSS variables in [index.css](src/index.css) exist
+- **Debug:** Inspect in DevTools; check cascade and specificity
+- **Fix:** Use `!important` only as last resort; refactor selector instead
+
+#### Component not updating when state changes
+- **Check:** Are you mutating state directly? (Never do `state.prop = value`)
+- **Debug:** React DevTools → Profiler → check re-render triggers
+- **Verify:** Props are correctly passed from parent and callbacks invoked
+- **Solution:** Use `setState((prev) => ({ ...prev, prop: newValue }))`
+
+#### Animations not triggering on scroll
+- **Check:** Is `whileInView` present in Framer Motion config?
+- **Verify:** `viewport={{ once: true }}` is set to prevent re-triggering
+- **Debug:** Check if element is within viewport before scroll happens
+- **Fix:** Adjust initial state or add `margin` to viewport
+
+#### Build fails with TypeScript errors
+```bash
+# Identify errors
+npm run build     # Shows full error trace
+
+# Common fixes
+# 1. Missing type annotations
+tsc --noEmit      # Run TypeScript checker directly
+
+# 2. Implicit 'any' types
+# Check tsconfig.app.json: "noImplicitAny": true is enforced
+```
+
+#### ESLint warnings about unused variables
+```bash
+# Auto-fix many issues
+npm run lint -- --fix
+
+# Manually fix remaining issues per the output
+# Unused imports: remove or prefix with underscore if intentionally unused
+```
+
+#### HMR (Hot Module Reload) not working during development
+```bash
+# Solution: Restart dev server
+npm run dev
+
+# If still failing: Check if port 5173 is in use
+# Kill process or specify different port
+npm run dev -- --port 5174
+```
+
+### Performance Debugging
+
+#### Page loads slowly
+1. Open DevTools → Network tab
+2. Check for large assets or failed requests
+3. Run Lighthouse audit: DevTools → Lighthouse
+4. Check React Profiler for slow component renders
+
+#### Component re-renders too frequently
+1. React DevTools → Profiler tab
+2. Record a session → Identify "flamegraph" spikes
+3. Add `React.memo()` to child components if stable props
+4. Use `useCallback()` for stable function references
+
+## Related Resources & Documentation
+
+### Internal Docs
+- **[CLAUDE.md](CLAUDE.md)** - Build commands and project structure
+- **[GRAPH_REPORT.md](graphify-out/GRAPH_REPORT.md)** - Code structure analysis
+- **[README.md](README.md)** - Project overview and features
+
+### External References
+- **React 19:** https://react.dev
+- **Vite:** https://vitejs.dev
+- **Framer Motion:** https://www.framer.com/motion/
+- **Tailwind CSS:** https://tailwindcss.com
+- **TypeScript:** https://www.typescriptlang.org
+- **Lucide React:** https://lucide.dev
+
 ## graphify
 
 Before answering architecture or codebase questions, read `graphify-out/GRAPH_REPORT.md` if it exists.

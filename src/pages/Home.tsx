@@ -40,40 +40,40 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
       <Hero onNavigate={onNavigate} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       {/* Features Section */}
-      <section className="container" style={{ padding: '4rem 0', borderTop: '1px solid var(--border-color)' }}>
+      <section className="container" style={{ padding: 'clamp(2rem, 6vw, 4rem) 0', borderTop: '1px solid var(--border-color)' }}>
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}
         >
-          <motion.div variants={itemVariants} className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
-            <div style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '1.5rem' }}>
+          <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)', borderRadius: '16px' }}>
+            <div style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: 'clamp(1.2rem, 3vw, 1.5rem)' }}>
               <Zap size={24} />
             </div>
-            <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>Lightning Fast</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+            <h3 style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.3rem)', marginBottom: '0.5rem' }}>Lightning Fast</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)' }}>
               Optimized learning paths that get you results in record time. No fluff, just pure algorithmic mastery.
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
-            <div style={{ color: 'var(--secondary-color)', marginBottom: '1rem', fontSize: '1.5rem' }}>
+          <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)', borderRadius: '16px' }}>
+            <div style={{ color: 'var(--secondary-color)', marginBottom: '1rem', fontSize: 'clamp(1.2rem, 3vw, 1.5rem)' }}>
               <BookOpen size={24} />
             </div>
-            <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>Comprehensive</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+            <h3 style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.3rem)', marginBottom: '0.5rem' }}>Comprehensive</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)' }}>
               {topicsData.length} major DSA topics with in-depth explanations, real-world applications, and dozens of practice problems.
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="glass" style={{ padding: '2rem', borderRadius: '16px' }}>
-            <div style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '1.5rem' }}>
+          <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)', borderRadius: '16px' }}>
+            <div style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: 'clamp(1.2rem, 3vw, 1.5rem)' }}>
               <BarChart3 size={24} />
             </div>
-            <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>Interactive</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+            <h3 style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.3rem)', marginBottom: '0.5rem' }}>Interactive</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)' }}>
               Visualize algorithms in action with detailed complexity analysis and step-by-step code walkthroughs.
             </p>
           </motion.div>
@@ -81,39 +81,39 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
       </section>
 
       {/* Stats Section */}
-      <section className="container" style={{ padding: '4rem 0' }}>
+      <section className="container" style={{ padding: 'clamp(2rem, 6vw, 4rem) 0' }}>
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '2rem', textAlign: 'center' }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 'clamp(1rem, 4vw, 2rem)', textAlign: 'center' }}
         >
           <div>
-            <h3 style={{ fontSize: '2.5rem', color: 'var(--primary-color)', marginBottom: '0.5rem' }}>{topicsData.length}</h3>
-            <p style={{ color: 'var(--text-muted)' }}>Core Topics</p>
+            <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: 'var(--primary-color)', marginBottom: '0.5rem' }}>{topicsData.length}</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 1rem)' }}>Core Topics</p>
           </div>
           <div>
-            <h3 style={{ fontSize: '2.5rem', color: 'var(--secondary-color)', marginBottom: '0.5rem' }}>{stats.totalCompletedTopics}</h3>
-            <p style={{ color: 'var(--text-muted)' }}>Completed Topics</p>
+            <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: 'var(--secondary-color)', marginBottom: '0.5rem' }}>{stats.totalCompletedTopics}</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 1rem)' }}>Completed Topics</p>
           </div>
           <div>
-            <h3 style={{ fontSize: '2.5rem', color: 'var(--secondary-color)', marginBottom: '0.5rem' }}>50+</h3>
-            <p style={{ color: 'var(--text-muted)' }}>Practice Problems</p>
+            <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: 'var(--secondary-color)', marginBottom: '0.5rem' }}>50+</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 1rem)' }}>Practice Problems</p>
           </div>
           <div>
-            <h3 style={{ fontSize: '2.5rem', color: 'var(--secondary-color)', marginBottom: '0.5rem' }}>{stats.totalCompletedProblems}</h3>
-            <p style={{ color: 'var(--text-muted)' }}>Problems Solved</p>
+            <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: 'var(--secondary-color)', marginBottom: '0.5rem' }}>{stats.totalCompletedProblems}</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 1rem)' }}>Problems Solved</p>
           </div>
           <div>
-            <h3 style={{ fontSize: '2.5rem', color: 'var(--primary-color)', marginBottom: '0.5rem' }}>100%</h3>
-            <p style={{ color: 'var(--text-muted)' }}>Free &amp; Open</p>
+            <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', color: 'var(--primary-color)', marginBottom: '0.5rem' }}>100%</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 1rem)' }}>Free &amp; Open</p>
           </div>
         </motion.div>
       </section>
 
       {/* Topics Preview */}
-      <section id="topics" className="container" style={{ padding: '4rem 0' }}>
+      <section id="topics" className="container" style={{ padding: 'clamp(2rem, 6vw, 4rem) 0' }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -122,13 +122,13 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-end',
-            marginBottom: '4rem'
+            marginBottom: 'clamp(2rem, 6vw, 4rem)'
           }}
         >
           <div style={{ textAlign: 'center', width: '100%' }}>
-            <span className="gradient-text" style={{ fontWeight: '700', letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.9rem' }}>Comprehensive Curriculum</span>
-            <h2 style={{ fontSize: '3.5rem', marginTop: '1rem', letterSpacing: '-0.03em' }}>Master Every Concept</h2>
-            <p style={{ color: 'var(--text-muted)', marginTop: '1rem', maxWidth: '600px', margin: '1rem auto 0', fontSize: '1.1rem' }}>
+            <span className="gradient-text" style={{ fontWeight: '700', letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: 'clamp(0.75rem, 2vw, 0.9rem)' }}>Comprehensive Curriculum</span>
+            <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', marginTop: '1rem', letterSpacing: '-0.03em' }}>Master Every Concept</h2>
+            <p style={{ color: 'var(--text-muted)', marginTop: '1rem', maxWidth: '600px', margin: '1rem auto 0', fontSize: 'clamp(0.9rem, 3vw, 1.1rem)' }}>
               A structured path from fundamental building blocks to advanced algorithmic mastery. Including Graphs and beyond.
             </p>
           </div>
@@ -141,8 +141,8 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
           viewport={{ once: true }}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-            gap: '2rem'
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gap: 'clamp(1rem, 4vw, 2rem)'
           }}
         >
           {filteredTopics.map((topic) => (

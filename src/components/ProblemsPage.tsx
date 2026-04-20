@@ -1,15 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter, ChevronDown, ChevronUp, EyeOff, Zap, Clock, HardDrive, CheckCircle2, Circle } from 'lucide-react';
-import { 
-    arrayProblems,
-    linkedListProblems,
-    hashTableProblems,
-    stackQueueProblems,
-    treeProblems,
-    graphProblems
-} from '../data/newProblems';
-import type { Problem } from '../types/topic';
+import {
+    allProblems,
+    problemCategories,
+    problemDifficulties,
+    type ProblemListItem
+} from '../data/problems/registry';
 import { useProgress } from '../hooks/useProgress';
 
 const difficultyColors: Record<string, string> = {
@@ -19,8 +16,7 @@ const difficultyColors: Record<string, string> = {
     'Expert': '#ef4444'
 };
 
-const categories = ['All', 'Arrays', 'Linked List', 'Hash Table', 'Stack', 'Queue', 'Trees', 'Graphs'];
-const difficulties = ['All', 'Easy', 'Medium', 'Hard'];
+const PAGE_SIZE = 12;
 
 const ProblemsPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -28,17 +24,42 @@ const ProblemsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [expandedProblem, setExpandedProblem] = useState<string | null>(null);
     const [showSolution, setShowSolution] = useState<Record<string, boolean>>({});
+    const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isSmallPhone, setIsSmallPhone] = useState(window.innerWidth <= 480);
+    const loadMoreRef = useRef<HTMLDivElement | null>(null);
     const { isProblemCompleted, toggleProblem } = useProgress();
 
-    // Combine all problems and add category information
-    const allProblems = [
-        ...arrayProblems.map(p => ({ ...p, category: ['Arrays'] })),
-        ...linkedListProblems.map(p => ({ ...p, category: ['Linked List'] })),
-        ...hashTableProblems.map(p => ({ ...p, category: ['Hash Table'] })),
-        ...stackQueueProblems.map(p => ({ ...p, category: ['Stack', 'Queue'] })),
-        ...treeProblems.map(p => ({ ...p, category: ['Trees'] })),
-        ...graphProblems.map(p => ({ ...p, category: ['Graphs'] }))
-    ];
+    const resetListUiState = () => {
+        setVisibleCount(PAGE_SIZE);
+        setExpandedProblem(null);
+        setShowSolution({});
+    };
+
+    const handleSearchChange = (value: string) => {
+        setSearchQuery(value);
+        resetListUiState();
+    };
+
+    const handleDifficultyChange = (difficulty: string) => {
+        setSelectedDifficulty(difficulty);
+        resetListUiState();
+    };
+
+    const handleCategoryChange = (category: string) => {
+        setSelectedCategory(category);
+        resetListUiState();
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+            setIsSmallPhone(window.innerWidth <= 480);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const filteredProblems = allProblems.filter(problem => {
         const matchesSearch = problem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -48,36 +69,91 @@ const ProblemsPage = () => {
         return matchesSearch && matchesDifficulty && matchesCategory;
     });
 
-    const toggleSolution = (problemId: string) => {
+    const visibleProblems = filteredProblems.slice(0, visibleCount);
+    const hasMoreProblems = visibleCount < filteredProblems.length;
+
+    useEffect(() => {
+        if (!hasMoreProblems) {
+            return;
+        }
+
+        const target = loadMoreRef.current;
+        if (!target) {
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0]?.isIntersecting) {
+                    setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, filteredProblems.length));
+                }
+            },
+            {
+                rootMargin: '320px 0px'
+            }
+        );
+
+        observer.observe(target);
+
+        return () => observer.disconnect();
+    }, [hasMoreProblems, filteredProblems.length]);
+
+    const toggleSolution = (problemUniqueKey: string) => {
         setShowSolution(prev => ({
             ...prev,
-            [problemId]: !prev[problemId]
+            [problemUniqueKey]: !prev[problemUniqueKey]
         }));
     };
 
     return (
-        <section id="problems" className="container" style={{ padding: '8rem 0' }}>
+        <section id="problems" className="container" style={{ paddingTop: 'clamp(4rem, 10vw, 8rem)', paddingBottom: 'clamp(4rem, 10vw, 8rem)' }}>
             {/* Header */}
-            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                <h2 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                style={{ textAlign: 'center', marginBottom: '5rem' }}
+            >
+                <motion.div
+                    initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1.25rem', borderRadius: '99px', background: 'var(--primary-gradient)', color: 'white', marginBottom: '2rem', boxShadow: '0 4px 20px rgba(139, 92, 246, 0.3)' }}
+                >
+                    <Zap size={16} fill="currentColor" />
+                    <span style={{ fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Curated Problem Sets</span>
+                </motion.div>
+                <h2 style={{ fontSize: 'clamp(2rem, 6vw, 4rem)', marginBottom: '1.5rem', lineHeight: '1.1', letterSpacing: '-0.02em' }}>
                     Practice <span className="gradient-text">Problems</span>
                 </h2>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+                <p style={{ color: 'var(--text-muted)', maxWidth: '750px', margin: '0 auto', fontSize: '1.25rem', lineHeight: '1.7' }}>
                     Master DSA with curated problems. Each includes brute force and optimal solutions with detailed complexity analysis.
                 </p>
-            </div>
+            </motion.div>
 
             {/* Filters */}
-            <div className="glass" style={{ padding: '1.5rem 2rem', marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div className="glass" style={{ padding: 'clamp(1rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem)', marginBottom: '2rem' }}>
+                {/* Mobile: Stack filters vertically */}
+                <div style={{
+                    display: 'flex',
+                    gap: '1.5rem',
+                    alignItems: 'flex-start',
+                    flexWrap: 'wrap',
+                    flexDirection: isMobile ? 'column' : 'row'
+                }}>
                     {/* Search */}
-                    <div style={{ flex: 1, minWidth: '250px', position: 'relative' }}>
+                    <div style={{
+                        flex: 1,
+                        minWidth: isMobile ? '100%' : '0',
+                        position: 'relative'
+                    }}>
                         <Search size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                         <input
                             type="text"
                             placeholder="Search problems..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => handleSearchChange(e.target.value)}
                             style={{
                                 width: '100%',
                                 padding: '0.75rem 1rem 0.75rem 2.75rem',
@@ -85,31 +161,42 @@ const ProblemsPage = () => {
                                 border: '1px solid var(--border-color)',
                                 background: 'rgba(0,0,0,0.2)',
                                 color: 'var(--text-main)',
-                                fontSize: '0.95rem'
+                                fontSize: '0.95rem',
+                                minHeight: '44px',
+                                boxSizing: 'border-box'
                             }}
                         />
                     </div>
 
                     {/* Difficulty Filter */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <Filter size={18} color="var(--text-muted)" />
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
-                            {difficulties.map(diff => (
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: isSmallPhone ? '0.35rem' : '0.75rem',
+                        flexWrap: 'wrap'
+                    }}>
+                        <Filter size={18} color="var(--text-muted)" style={{ flexShrink: 0 }} />
+                        <div style={{
+                            display: 'flex',
+                            gap: isSmallPhone ? '0.3rem' : '0.5rem',
+                            flexWrap: 'wrap'
+                        }}>
+                            {problemDifficulties.map(diff => (
                                 <button
                                     key={diff}
-                                    onClick={() => setSelectedDifficulty(diff)}
+                                    onClick={() => handleDifficultyChange(diff)}
                                     style={{
-                                        padding: '0.5rem 1rem',
+                                        padding: isSmallPhone ? '0.4rem 0.7rem' : '0.5rem 1rem',
                                         borderRadius: '8px',
                                         border: 'none',
                                         background: selectedDifficulty === diff
                                             ? (diff === 'All' ? 'var(--primary-color)' : difficultyColors[diff] || 'var(--primary-color)')
                                             : 'transparent',
                                         color: selectedDifficulty === diff ? 'white' : 'var(--text-muted)',
-                                        cursor: 'pointer',
-                                        fontWeight: '600',
-                                        fontSize: '0.85rem',
-                                        transition: 'all 0.3s ease'
+                                        fontSize: isSmallPhone ? '0.75rem' : '0.85rem',
+                                        minHeight: '36px',
+                                        display: 'flex',
+                                        alignItems: 'center'
                                     }}
                                 >
                                     {diff}
@@ -119,21 +206,30 @@ const ProblemsPage = () => {
                     </div>
                 </div>
 
-                {/* Category Filter */}
-                <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
-                    {categories.map(cat => (
+                {/* Category Filter - 2 column grid on mobile */}
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: isSmallPhone ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(100px, 1fr))',
+                    gap: '0.5rem',
+                    marginTop: '1rem'
+                }}>
+                    {problemCategories.map(cat => (
                         <button
                             key={cat}
-                            onClick={() => setSelectedCategory(cat)}
+                            onClick={() => handleCategoryChange(cat)}
                             style={{
-                                padding: '0.35rem 0.85rem',
+                                padding: isSmallPhone ? '0.35rem 0.6rem' : '0.35rem 0.85rem',
                                 borderRadius: '6px',
                                 border: selectedCategory === cat ? '1px solid var(--primary-color)' : '1px solid var(--border-color)',
                                 background: selectedCategory === cat ? 'rgba(99, 102, 241, 0.15)' : 'transparent',
                                 color: selectedCategory === cat ? 'var(--primary-color)' : 'var(--text-muted)',
                                 cursor: 'pointer',
-                                fontSize: '0.8rem',
-                                transition: 'all 0.3s ease'
+                                fontSize: isSmallPhone ? '0.7rem' : '0.8rem',
+                                transition: 'all 0.3s ease',
+                                minHeight: '36px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
                             }}
                         >
                             {cat}
@@ -145,53 +241,96 @@ const ProblemsPage = () => {
             {/* Problems List */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 {filteredProblems.length === 0 ? (
-                    <div className="glass" style={{ padding: '3rem', textAlign: 'center' }}>
+                    <div className="glass" style={{ padding: 'clamp(1.5rem, 5vw, 3rem)', textAlign: 'center' }}>
                         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>No problems match your filters. Try adjusting your search.</p>
                     </div>
                 ) : (
-                    filteredProblems.map((problem) => (
+                    visibleProblems.map((problem) => (
                         <ProblemCard
-                            key={problem.id}
+                            key={problem.uniqueKey}
                             problem={problem}
-                            isExpanded={expandedProblem === problem.id}
-                            onToggleExpand={() => setExpandedProblem(expandedProblem === problem.id ? null : problem.id)}
-                            solutionVisible={showSolution[problem.id]}
-                            onToggleSolution={() => toggleSolution(problem.id)}
+                            isExpanded={expandedProblem === problem.uniqueKey}
+                            onToggleExpand={() => setExpandedProblem(expandedProblem === problem.uniqueKey ? null : problem.uniqueKey)}
+                            solutionVisible={showSolution[problem.uniqueKey]}
+                            onToggleSolution={() => toggleSolution(problem.uniqueKey)}
                             isCompleted={isProblemCompleted(problem.id)}
                             onToggleComplete={(e) => {
                                 e.stopPropagation();
                                 toggleProblem(problem.id);
                             }}
+                            isMobile={isMobile}
+                            isSmallPhone={isSmallPhone}
                         />
                     ))
                 )}
             </div>
 
+            {filteredProblems.length > 0 && (
+                <div ref={loadMoreRef} style={{ marginTop: '1.25rem', textAlign: 'center', minHeight: '1px' }}>
+                    {hasMoreProblems ? (
+                        <p style={{ color: 'var(--text-muted)', fontSize: isSmallPhone ? '0.8rem' : '0.9rem' }}>
+                            Loading more problems...
+                        </p>
+                    ) : (
+                        <p style={{ color: 'var(--text-muted)', fontSize: isSmallPhone ? '0.8rem' : '0.9rem' }}>
+                            Showing all {filteredProblems.length} matching problems.
+                        </p>
+                    )}
+                </div>
+            )}
+
             {/* Stats */}
-            <div className="glass" style={{ marginTop: '3rem', padding: '2rem', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '1rem' }}>
-                <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize: '2rem', fontWeight: '700', color: '#22c55e' }}>
+            <div className="glass" style={{
+                marginTop: '3rem',
+                padding: isSmallPhone ? '1rem' : 'clamp(1rem, 4vw, 2rem)',
+                display: 'grid',
+                gridTemplateColumns: isSmallPhone ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(120px, 1fr))',
+                gap: isSmallPhone ? '0.75rem' : '1rem'
+            }}>
+                <div style={{ textAlign: 'center', padding: isSmallPhone ? '0.5rem' : '1rem' }}>
+                    <p style={{
+                        fontSize: isSmallPhone ? '1.25rem' : '2rem',
+                        fontWeight: '700',
+                        color: '#22c55e',
+                        margin: 0
+                    }}>
                         {allProblems.filter(p => p.difficulty === 'Easy').length}
                     </p>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Easy</p>
+                    <p style={{
+                        color: 'var(--text-muted)',
+                        fontSize: isSmallPhone ? '0.8rem' : '0.9rem',
+                        margin: '0.25rem 0 0'
+                    }}>Easy</p>
                 </div>
-                <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize: '2rem', fontWeight: '700', color: '#eab308' }}>
+                <div style={{ textAlign: 'center', padding: isSmallPhone ? '0.5rem' : '1rem' }}>
+                    <p style={{
+                        fontSize: isSmallPhone ? '1.25rem' : '2rem',
+                        fontWeight: '700',
+                        color: '#eab308',
+                        margin: 0
+                    }}>
                         {allProblems.filter(p => p.difficulty === 'Medium').length}
                     </p>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Medium</p>
+                    <p style={{
+                        color: 'var(--text-muted)',
+                        fontSize: isSmallPhone ? '0.8rem' : '0.9rem',
+                        margin: '0.25rem 0 0'
+                    }}>Medium</p>
                 </div>
-                <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize: '2rem', fontWeight: '700', color: '#ef4444' }}>
+                <div style={{ textAlign: 'center', padding: isSmallPhone ? '0.5rem' : '1rem' }}>
+                    <p style={{
+                        fontSize: isSmallPhone ? '1.25rem' : '2rem',
+                        fontWeight: '700',
+                        color: '#ef4444',
+                        margin: 0
+                    }}>
                         {allProblems.filter(p => p.difficulty === 'Hard').length}
                     </p>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Hard</p>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontSize: '2rem', fontWeight: '700', color: '#8b5cf6' }}>
-                        {allProblems.filter(p => p.difficulty === 'Hard').length}
-                    </p>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Expert</p>
+                    <p style={{
+                        color: 'var(--text-muted)',
+                        fontSize: isSmallPhone ? '0.8rem' : '0.9rem',
+                        margin: '0.25rem 0 0'
+                    }}>Hard</p>
                 </div>
             </div>
         </section>
@@ -199,16 +338,18 @@ const ProblemsPage = () => {
 };
 
 interface ProblemCardProps {
-    problem: Problem & { category: string[] };
+    problem: ProblemListItem;
     isExpanded: boolean;
     onToggleExpand: () => void;
     solutionVisible: boolean;
     onToggleSolution: () => void;
     isCompleted: boolean;
     onToggleComplete: (e: React.MouseEvent) => void;
+    isMobile: boolean;
+    isSmallPhone: boolean;
 }
 
-const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onToggleSolution, isCompleted, onToggleComplete }: ProblemCardProps) => {
+const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onToggleSolution, isCompleted, onToggleComplete, isMobile, isSmallPhone }: ProblemCardProps) => {
     const difficultyColor = difficultyColors[problem.difficulty];
 
     return (
@@ -221,14 +362,23 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
             <div
                 onClick={onToggleExpand}
                 style={{
-                    padding: '1.5rem 2rem',
+                    padding: isSmallPhone ? '0.5rem 0.75rem' : 'clamp(0.75rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem)',
                     cursor: 'pointer',
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center'
+                    alignItems: 'flex-start',
+                    flexWrap: 'wrap',
+                    gap: isSmallPhone ? '0.4rem' : '0.75rem',
+                    minHeight: isSmallPhone ? '44px' : 'auto'
                 }}
             >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: isSmallPhone ? '0.5rem' : '1.25rem',
+                    flex: '0 1 auto',
+                    minWidth: 0
+                }}>
                     <button
                         onClick={onToggleComplete}
                         style={{
@@ -239,41 +389,65 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                             padding: 0,
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
+                            minWidth: isSmallPhone ? '32px' : '44px',
+                            minHeight: isSmallPhone ? '32px' : '44px',
+                            flexShrink: 0
                         }}
                         title={isCompleted ? "Mark as uncompleted" : "Mark as completed"}
                     >
-                        {isCompleted ? <CheckCircle2 size={24} /> : <Circle size={24} />}
+                        {isCompleted ? <CheckCircle2 size={isSmallPhone ? 20 : 24} /> : <Circle size={isSmallPhone ? 20 : 24} />}
                     </button>
                     <span style={{
-                        padding: '0.35rem 0.85rem',
+                        padding: isSmallPhone ? '0.2rem 0.5rem' : '0.35rem 0.85rem',
                         borderRadius: '6px',
                         background: difficultyColor,
                         color: 'white',
-                        fontSize: '0.8rem',
-                        fontWeight: '700'
+                        fontSize: isSmallPhone ? '0.7rem' : '0.8rem',
+                        fontWeight: '700',
+                        whiteSpace: 'nowrap',
+                        flexShrink: 0
                     }}>
                         {problem.difficulty}
                     </span>
-                    <h3 style={{ fontSize: '1.25rem', margin: 0, color: isCompleted ? 'var(--text-muted)' : 'inherit', textDecoration: isCompleted ? 'line-through' : 'none' }}>
+                    <h3 style={{
+                        fontSize: isSmallPhone ? '0.95rem' : '1.25rem',
+                        margin: 0,
+                        color: isCompleted ? 'var(--text-muted)' : 'inherit',
+                        textDecoration: isCompleted ? 'line-through' : 'none',
+                        wordBreak: 'break-word',
+                        overflow: 'visible'
+                    }}>
                         {problem.title}
                     </h3>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: isSmallPhone ? '0.35rem' : '0.5rem',
+                    flexWrap: 'wrap',
+                    flexBasis: isMobile ? '100%' : 'auto',
+                    marginLeft: isMobile ? 0 : 'auto'
+                }}>
+                    <div style={{
+                        display: 'flex',
+                        gap: isSmallPhone ? '0.25rem' : '0.5rem',
+                        flexWrap: 'wrap'
+                    }}>
                         {problem.category.map(cat => (
                             <span key={cat} style={{
-                                padding: '0.25rem 0.6rem',
+                                padding: isSmallPhone ? '0.15rem 0.4rem' : '0.25rem 0.6rem',
                                 borderRadius: '4px',
                                 background: 'rgba(99, 102, 241, 0.15)',
                                 color: 'var(--primary-color)',
-                                fontSize: '0.75rem'
+                                fontSize: isSmallPhone ? '0.65rem' : '0.75rem',
+                                whiteSpace: 'nowrap'
                             }}>
                                 {cat}
                             </span>
                         ))}
                     </div>
-                    {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                    {isExpanded ? <ChevronUp size={isSmallPhone ? 18 : 20} /> : <ChevronDown size={isSmallPhone ? 18 : 20} />}
                 </div>
             </div>
 
@@ -282,33 +456,46 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    style={{ padding: '0 2rem 2rem' }}
+                    style={{
+                        padding: isSmallPhone ? '0 0.75rem 0.75rem' : '0 clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem)'
+                    }}
                 >
                     {/* Description */}
-                    <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                    <p style={{
+                        color: 'var(--text-muted)',
+                        lineHeight: '1.7',
+                        marginBottom: '1.5rem',
+                        fontSize: isSmallPhone ? '0.9rem' : 'inherit'
+                    }}>
                         {problem.description}
                     </p>
 
                     {/* Examples */}
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h4 style={{ marginBottom: '0.75rem' }}>Examples:</h4>
+                        <h4 style={{ marginBottom: '0.75rem', fontSize: isSmallPhone ? '0.95rem' : '1rem' }}>Examples:</h4>
                         {problem.examples.map((ex, idx) => (
                             <div key={idx} style={{
-                                padding: '1rem',
+                                padding: isSmallPhone ? '0.6rem' : '1rem',
                                 background: 'rgba(0,0,0,0.2)',
                                 borderRadius: '8px',
-                                marginBottom: '0.75rem'
+                                marginBottom: '0.75rem',
+                                fontSize: isSmallPhone ? '0.8rem' : 'inherit'
                             }}>
-                                <div style={{ marginBottom: '0.5rem' }}>
+                                <div style={{ marginBottom: '0.5rem', wordBreak: 'break-word' }}>
                                     <span style={{ color: 'var(--text-muted)' }}>Input: </span>
-                                    <code style={{ color: 'var(--secondary-color)' }}>{ex.input}</code>
+                                    <code style={{ color: 'var(--secondary-color)', fontSize: isSmallPhone ? '0.75rem' : 'inherit' }}>{ex.input}</code>
                                 </div>
-                                <div style={{ marginBottom: ex.explanation ? '0.5rem' : 0 }}>
+                                <div style={{ marginBottom: ex.explanation ? '0.5rem' : 0, wordBreak: 'break-word' }}>
                                     <span style={{ color: 'var(--text-muted)' }}>Output: </span>
-                                    <code style={{ color: '#22c55e' }}>{ex.output}</code>
+                                    <code style={{ color: '#22c55e', fontSize: isSmallPhone ? '0.75rem' : 'inherit' }}>{ex.output}</code>
                                 </div>
                                 {ex.explanation && (
-                                    <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontStyle: 'italic', margin: 0 }}>
+                                    <p style={{
+                                        color: 'var(--text-muted)',
+                                        fontSize: isSmallPhone ? '0.75rem' : '0.85rem',
+                                        fontStyle: 'italic',
+                                        margin: 0
+                                    }}>
                                         {ex.explanation}
                                     </p>
                                 )}
@@ -324,14 +511,17 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '0.5rem',
-                                padding: '0.75rem 1.5rem',
+                                padding: isSmallPhone ? '0.6rem 1rem' : '0.75rem 1.5rem',
                                 borderRadius: '8px',
                                 background: solutionVisible ? '#22c55e' : 'rgba(34, 197, 94, 0.15)',
                                 color: solutionVisible ? 'white' : '#22c55e',
                                 border: 'none',
                                 cursor: 'pointer',
                                 fontWeight: '600',
-                                fontSize: '0.9rem'
+                                fontSize: isSmallPhone ? '0.8rem' : '0.9rem',
+                                width: isSmallPhone ? '100%' : 'auto',
+                                justifyContent: 'center',
+                                minHeight: '44px'
                             }}
                         >
                             {solutionVisible ? <EyeOff size={18} /> : <Zap size={18} />}
@@ -346,29 +536,36 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                             animate={{ opacity: 1, y: 0 }}
                             style={{
                                 borderLeft: `4px solid #22c55e`,
-                                paddingLeft: '1.5rem'
+                                paddingLeft: isSmallPhone ? '0.75rem' : '1.5rem'
                             }}
                         >
                             <h4 style={{
                                 color: '#22c55e',
-                                marginBottom: '1rem'
+                                marginBottom: '1rem',
+                                fontSize: isSmallPhone ? '0.95rem' : 'inherit'
                             }}>
                                 ⚡ Solution Approach
                             </h4>
 
-                            <p style={{ color: 'var(--text-muted)', lineHeight: '1.7', marginBottom: '1rem' }}>
+                            <p style={{
+                                color: 'var(--text-muted)',
+                                lineHeight: '1.7',
+                                marginBottom: '1rem',
+                                fontSize: isSmallPhone ? '0.9rem' : 'inherit'
+                            }}>
                                 {problem.solution.approach}
                             </p>
 
                             {/* Code */}
                             <pre style={{
                                 backgroundColor: 'rgba(0,0,0,0.5)',
-                                padding: '1.5rem',
+                                padding: isSmallPhone ? '0.75rem' : '1.5rem',
                                 borderRadius: '12px',
                                 overflowX: 'auto',
                                 marginBottom: '1.5rem',
-                                fontSize: '0.85rem',
-                                lineHeight: '1.6'
+                                fontSize: isSmallPhone ? '0.7rem' : '0.85rem',
+                                lineHeight: '1.6',
+                                maxWidth: '100%'
                             }}>
                                 <code style={{ color: '#e5e7eb' }}>
                                     {problem.solution.code}
@@ -376,25 +573,60 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                             </pre>
 
                             {/* Complexity Analysis */}
-                            <div className="glass" style={{ padding: '1.5rem', marginBottom: '1rem' }}>
-                                <h5 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <div className="glass" style={{
+                                padding: isSmallPhone ? '0.75rem' : '1.5rem',
+                                marginBottom: '1rem'
+                            }}>
+                                <h5 style={{
+                                    marginBottom: '1rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    fontSize: isSmallPhone ? '0.9rem' : 'inherit'
+                                }}>
                                     📊 Complexity Analysis
                                 </h5>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                <div style={{
+                                    display: 'grid',
+                                    gridTemplateColumns: isSmallPhone ? '1fr' : '1fr 1fr',
+                                    gap: isSmallPhone ? '0.75rem' : '1rem'
+                                }}>
                                     <div>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                                        <div style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem',
+                                            marginBottom: '0.5rem',
+                                            flexWrap: 'wrap'
+                                        }}>
                                             <Clock size={16} color="#22c55e" />
-                                            <span style={{ fontWeight: '600' }}>Time:</span>
-                                            <code style={{ color: '#22c55e', fontWeight: '700' }}>
+                                            <span style={{ fontWeight: '600', fontSize: isSmallPhone ? '0.9rem' : 'inherit' }}>Time:</span>
+                                            <code style={{
+                                                color: '#22c55e',
+                                                fontWeight: '700',
+                                                fontSize: isSmallPhone ? '0.75rem' : 'inherit',
+                                                wordBreak: 'break-all'
+                                            }}>
                                                 {problem.solution.timeComplexity}
                                             </code>
                                         </div>
                                     </div>
                                     <div>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                                        <div style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem',
+                                            marginBottom: '0.5rem',
+                                            flexWrap: 'wrap'
+                                        }}>
                                             <HardDrive size={16} color="#8b5cf6" />
-                                            <span style={{ fontWeight: '600' }}>Space:</span>
-                                            <code style={{ color: '#8b5cf6', fontWeight: '700' }}>
+                                            <span style={{ fontWeight: '600', fontSize: isSmallPhone ? '0.9rem' : 'inherit' }}>Space:</span>
+                                            <code style={{
+                                                color: '#8b5cf6',
+                                                fontWeight: '700',
+                                                fontSize: isSmallPhone ? '0.75rem' : 'inherit',
+                                                wordBreak: 'break-all'
+                                            }}>
                                                 {problem.solution.spaceComplexity}
                                             </code>
                                         </div>
@@ -404,8 +636,16 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
 
                             {/* Step by Step */}
                             <div style={{ marginTop: '1rem' }}>
-                                <h5 style={{ marginBottom: '0.75rem' }}>Step-by-Step:</h5>
-                                <ol style={{ paddingLeft: '1.25rem', color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.8' }}>
+                                <h5 style={{
+                                    marginBottom: '0.75rem',
+                                    fontSize: isSmallPhone ? '0.95rem' : 'inherit'
+                                }}>Step-by-Step:</h5>
+                                <ol style={{
+                                    paddingLeft: '1.25rem',
+                                    color: 'var(--text-muted)',
+                                    fontSize: isSmallPhone ? '0.85rem' : '0.9rem',
+                                    lineHeight: isSmallPhone ? '1.6' : '1.8'
+                                }}>
                                     {problem.solution.stepByStep.map((step, idx) => (
                                         <li key={idx}>{step}</li>
                                     ))}

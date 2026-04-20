@@ -17,8 +17,8 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
     };
 
     return (
-        <section className="container" style={{ padding: '8rem 0 4rem 0', position: 'relative', overflow: 'hidden' }}>
-            {/* Animated 3D Background - Data Structure Nodes */}
+        <section className="container" style={{ padding: 'clamp(4rem, 8vw, 8rem) 0 2rem 0', position: 'relative', overflow: 'hidden' }}>
+            {/* Animated 3D Background - Data Structure Nodes - Disabled on mobile for performance */}
             <motion.div
                 style={{
                     position: 'absolute',
@@ -30,7 +30,8 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     borderRadius: '12px',
                     zIndex: -1,
                     opacity: 0.2,
-                    boxShadow: '0 8px 32px rgba(139, 92, 246, 0.3)'
+                    boxShadow: '0 8px 32px rgba(139, 92, 246, 0.3)',
+                    display: 'none'
                 }}
                 animate={{
                     y: [0, -20, 0],
@@ -40,7 +41,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             />
             
-            {/* Animated 3D Cube */}
+            {/* Animated 3D Cube - Disabled on mobile */}
             <motion.div
                 style={{
                     position: 'absolute',
@@ -52,7 +53,8 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     borderRadius: '16px',
                     zIndex: -1,
                     opacity: 0.15,
-                    boxShadow: '0 12px 40px rgba(20, 184, 166, 0.3)'
+                    boxShadow: '0 12px 40px rgba(20, 184, 166, 0.3)',
+                    display: 'none'
                 }}
                 animate={{
                     y: [0, 30, 0],
@@ -63,7 +65,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                 transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
             />
 
-            {/* Pyramid-like structure */}
+            {/* Pyramid-like structure - Disabled on mobile */}
             <motion.div
                 style={{
                     position: 'absolute',
@@ -75,7 +77,8 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
                     zIndex: -1,
                     opacity: 0.1,
-                    filter: 'blur(1px)'
+                    filter: 'blur(1px)',
+                    display: 'none'
                 }}
                 animate={{
                     rotate: [0, 360],
@@ -84,7 +87,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                 transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
             />
 
-            {/* Network nodes visualization */}
+            {/* Network nodes visualization - Simplified for mobile */}
             {[...Array(5)].map((_, i) => (
                 <motion.div
                     key={i}
@@ -106,7 +109,8 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                         border: `2px solid rgba(139, 92, 246, ${0.2 - i * 0.03})`,
                         zIndex: -1,
                         top: `${25 + i * 5}%`,
-                        right: `${10 + i * 3}%`
+                        right: `${10 + i * 3}%`,
+                        display: 'none'
                     }}
                 />
             ))}
@@ -141,7 +145,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                 transition={{ duration: 0.8 }}
             >
                 <h2 style={{ 
-                    fontSize: 'clamp(3rem, 8vw, 4.5rem)', 
+                    fontSize: 'clamp(2rem, 7vw, 4.5rem)', 
                     marginBottom: '1.5rem', 
                     lineHeight: '1.1',
                     fontWeight: '800',
@@ -156,9 +160,9 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     transition={{ delay: 0.3, duration: 0.8 }}
                     style={{ 
                         color: 'var(--text-muted)', 
-                        fontSize: '1.25rem', 
+                        fontSize: 'clamp(1rem, 3vw, 1.25rem)', 
                         maxWidth: '650px', 
-                        marginBottom: '3rem',
+                        marginBottom: '2rem',
                         lineHeight: '1.8'
                     }}
                 >
@@ -171,7 +175,8 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     transition={{ delay: 0.4, duration: 0.6 }}
                     style={{
                         position: 'relative',
-                        marginBottom: '3rem',
+                        marginBottom: '2rem',
+                        width: '100%',
                         maxWidth: '500px'
                     }}
                 >
@@ -179,7 +184,7 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                         size={20}
                         style={{
                             position: 'absolute',
-                            left: '1rem',
+                            left: 'clamp(0.5rem, 2vw, 1rem)',
                             top: '50%',
                             transform: 'translateY(-50%)',
                             color: 'var(--text-muted)'
@@ -192,12 +197,12 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                         onChange={(e) => setSearchQuery(e.target.value)}
                         style={{
                             width: '100%',
-                            padding: '1rem 1rem 1rem 3rem',
+                            padding: 'clamp(0.75rem, 3vw, 1rem) clamp(0.75rem, 3vw, 1rem) clamp(0.75rem, 3vw, 1rem) clamp(2.5rem, 5vw, 3rem)',
                             borderRadius: '12px',
                             border: '1px solid var(--border-color)',
                             backgroundColor: 'var(--surface-color)',
                             color: 'var(--text-color)',
-                            fontSize: '1rem',
+                            fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
                             outline: 'none',
                             transition: 'border-color 0.2s ease'
                         }}
@@ -210,17 +215,17 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6, duration: 0.6 }}
-                    style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
+                    style={{ display: 'flex', gap: 'clamp(0.75rem, 3vw, 1.5rem)', flexWrap: 'wrap' }}
                 >
                     <button
                         onClick={() => scrollToSection('roadmap')}
                         style={{
                             background: 'linear-gradient(135deg, var(--primary-color), var(--primary-hover))',
                             color: 'white',
-                            padding: '1rem 2.5rem',
+                            padding: 'clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
                             borderRadius: '12px',
                             fontWeight: '700',
-                            fontSize: '1.1rem',
+                            fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
                             boxShadow: '0 15px 40px rgba(139, 92, 246, 0.3)',
                             cursor: 'pointer',
                             border: 'none',
@@ -245,9 +250,9 @@ const Hero = ({ onNavigate, searchQuery, setSearchQuery }: HeroProps) => {
                         onClick={() => scrollToSection('big-o')}
                         className="glass"
                         style={{
-                            padding: '1rem 2.5rem',
+                            padding: 'clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
                             fontWeight: '600',
-                            fontSize: '1.1rem',
+                            fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
                             cursor: 'pointer',
                             border: '2px solid var(--border-color)',
                             borderRadius: '12px',

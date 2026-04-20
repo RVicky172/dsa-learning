@@ -1,5 +1,5 @@
 import type { Topic } from '../../types/topic';
-import { greedyProblems } from '../advancedProblems';
+import { greedyProblems } from '../problems/greedy';
 import React from 'react';
 import { TrendingUp } from 'lucide-react';
 

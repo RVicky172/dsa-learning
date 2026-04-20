@@ -144,7 +144,7 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
     return (
         <div className="topic-detail" style={{ paddingTop: '8rem', minHeight: '100vh', paddingBottom: '4rem' }}>
             {/* Header */}
-            <header className="container" style={{ marginBottom: '3rem' }}>
+            <header className="container" style={{ marginBottom: '2rem' }}>
                 <button
                     onClick={onBack}
                     style={{
@@ -152,22 +152,22 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                         alignItems: 'center',
                         gap: '0.5rem',
                         color: 'var(--text-muted)',
-                        marginBottom: '2rem',
+                        marginBottom: 'clamp(1rem, 4vw, 2rem)',
                         background: 'transparent',
                         border: 'none',
                         cursor: 'pointer',
-                        fontSize: '0.95rem'
+                        fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)'
                     }}
                 >
                     <ArrowLeft size={18} /> Back to Topics
                 </button>
 
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'clamp(1rem, 4vw, 2rem)', flexWrap: 'wrap', marginBottom: '1rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                         <div style={{ color: 'var(--primary-color)' }}>
                             {topic.icon}
                         </div>
-                        <h1 style={{ fontSize: '3rem', margin: 0 }}>{topic.title}</h1>
+                        <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 3rem)', margin: 0 }}>{topic.title}</h1>
                     </div>
                     
                     <button 
@@ -182,7 +182,7 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                             border: isCompleted ? '1px solid #22c55e' : 'none',
                             borderRadius: '8px',
                             fontWeight: '600',
-                            fontSize: '0.95rem',
+                            fontSize: 'clamp(0.8rem, 2.5vw, 0.95rem)',
                             cursor: 'pointer',
                             transition: 'all 0.3s ease',
                             whiteSpace: 'nowrap'
@@ -193,21 +193,21 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                     </button>
                 </div>
 
-                <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
+                <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.2rem)', color: 'var(--text-muted)', marginBottom: '1rem' }}>
                     {topic.description}
                 </p>
 
-                <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
+                <div style={{ display: 'flex', gap: 'clamp(1rem, 4vw, 2rem)', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)' }}>
                         <BookOpen size={18} color="var(--secondary-color)" />
                         <span style={{ color: 'var(--text-muted)' }}>Complexity:</span>
                         <code style={{ color: 'var(--secondary-color)', fontWeight: '600' }}>{topic.complexity}</code>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)' }}>
                         <Code size={18} color="var(--primary-color)" />
                         <span style={{ color: 'var(--text-muted)' }}>{topic.examples.length} Examples</span>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)' }}>
                         <Trophy size={18} color="#eab308" />
                         <span style={{ color: 'var(--text-muted)' }}>{topic.problems.length} Practice Problems</span>
                     </div>
@@ -220,27 +220,29 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                     display: 'flex',
                     gap: '0.5rem',
                     borderBottom: '2px solid var(--border-color)',
-                    overflowX: 'auto'
+                    overflowX: 'auto',
+                    WebkitOverflowScrolling: 'touch'
                 }}>
                     {(['theory', 'examples', 'patterns', 'visualizations', 'problems'] as const).map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             style={{
-                                padding: '1rem 2rem',
+                                padding: 'clamp(0.6rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem)',
                                 background: 'transparent',
                                 border: 'none',
                                 borderBottom: activeTab === tab ? '2px solid var(--primary-color)' : '2px solid transparent',
                                 color: activeTab === tab ? 'var(--text-main)' : 'var(--text-muted)',
                                 fontWeight: activeTab === tab ? '600' : '400',
                                 cursor: 'pointer',
-                                fontSize: '1rem',
+                                fontSize: 'clamp(0.8rem, 2.5vw, 1rem)',
                                 textTransform: 'capitalize',
                                 transition: 'all 0.3s ease',
                                 marginBottom: '-2px',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '0.5rem'
+                                gap: '0.5rem',
+                                whiteSpace: 'nowrap'
                             }}
                         >
                             {tab === 'visualizations' && <Zap size={18} />}
@@ -254,50 +256,56 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
             <main className="container">
                 {/* Theory Tab */}
                 {activeTab === 'theory' && (
-                    <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
+                    <div style={{ 
+                        display: 'grid', 
+                        gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)', 
+                        gap: 'clamp(1rem, 4vw, 2rem)'
+                    }}
+                    className="responsive-grid"
+                    >
                         <div>
                             {/* Introduction */}
-                            <div className="glass" style={{ padding: '2.5rem', marginBottom: '2rem' }}>
-                                <h2 style={{ fontSize: '1.75rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                            <div className="glass" style={{ padding: 'clamp(1rem, 4vw, 2.5rem)', marginBottom: '2rem' }}>
+                                <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 1.75rem)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                                     <BookOpen size={24} color="var(--primary-color)" />
                                     Introduction
                                 </h2>
-                                <p style={{ lineHeight: '1.8', color: 'var(--text-muted)', whiteSpace: 'pre-line' }}>
+                                <p style={{ lineHeight: '1.8', color: 'var(--text-muted)', whiteSpace: 'pre-line', fontSize: 'clamp(0.9rem, 2.5vw, 0.95rem)' }}>
                                     {topic.introduction}
                                 </p>
                             </div>
 
                             {/* Why Important */}
-                            <div className="glass" style={{ padding: '2.5rem', marginBottom: '2rem' }}>
-                                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Why It's Important</h3>
-                                <p style={{ lineHeight: '1.8', color: 'var(--text-muted)' }}>
+                            <div className="glass" style={{ padding: 'clamp(1rem, 4vw, 2.5rem)', marginBottom: '2rem' }}>
+                                <h3 style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.5rem)', marginBottom: '1rem' }}>Why It's Important</h3>
+                                <p style={{ lineHeight: '1.8', color: 'var(--text-muted)', fontSize: 'clamp(0.9rem, 2.5vw, 0.95rem)' }}>
                                     {topic.whyImportant}
                                 </p>
                             </div>
 
                             {/* When to Use */}
-                            <div className="glass" style={{ padding: '2.5rem', marginBottom: '2rem' }}>
-                                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>When to Use</h3>
+                            <div className="glass" style={{ padding: 'clamp(1rem, 4vw, 2.5rem)', marginBottom: '2rem' }}>
+                                <h3 style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.5rem)', marginBottom: '1rem' }}>When to Use</h3>
                                 <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', paddingLeft: '1.5rem' }}>
                                     {topic.whenToUse.map((use, idx) => (
-                                        <li key={idx} style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>{use}</li>
+                                        <li key={idx} style={{ color: 'var(--text-muted)', lineHeight: '1.6', fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)' }}>{use}</li>
                                     ))}
                                 </ul>
                             </div>
 
                             {/* Advantages vs Disadvantages */}
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
-                                <div className="glass" style={{ padding: '2rem', borderLeft: '4px solid #22c55e' }}>
-                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#22c55e' }}>✓ Advantages</h3>
-                                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingLeft: '1.25rem', fontSize: '0.9rem' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }} className="responsive-grid-2">
+                                <div className="glass" style={{ padding: 'clamp(1rem, 3vw, 2rem)', borderLeft: '4px solid #22c55e' }}>
+                                    <h3 style={{ fontSize: 'clamp(1rem, 3.5vw, 1.25rem)', marginBottom: '1rem', color: '#22c55e' }}>✓ Advantages</h3>
+                                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingLeft: '1.25rem', fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)' }}>
                                         {topic.advantages.map((adv, idx) => (
                                             <li key={idx} style={{ color: 'var(--text-muted)', lineHeight: '1.5' }}>{adv}</li>
                                         ))}
                                     </ul>
                                 </div>
-                                <div className="glass" style={{ padding: '2rem', borderLeft: '4px solid #ef4444' }}>
-                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#ef4444' }}>✗ Disadvantages</h3>
-                                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingLeft: '1.25rem', fontSize: '0.9rem' }}>
+                                <div className="glass" style={{ padding: 'clamp(1rem, 3vw, 2rem)', borderLeft: '4px solid #ef4444' }}>
+                                    <h3 style={{ fontSize: 'clamp(1rem, 3.5vw, 1.25rem)', marginBottom: '1rem', color: '#ef4444' }}>✗ Disadvantages</h3>
+                                    <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingLeft: '1.25rem', fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)' }}>
                                         {topic.disadvantages.map((dis, idx) => (
                                             <li key={idx} style={{ color: 'var(--text-muted)', lineHeight: '1.5' }}>{dis}</li>
                                         ))}

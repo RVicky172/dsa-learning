@@ -205,9 +205,8 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
 
     return (
         <section id="roadmap" className="container" style={{ 
-            padding: '8rem 2rem', 
-            width: '100%', 
-            maxWidth: '100%',
+            paddingTop: 'clamp(4rem, 10vw, 8rem)',
+            paddingBottom: 'clamp(4rem, 10vw, 8rem)',
             position: 'relative',
             overflow: 'hidden'
         }}>
@@ -427,17 +426,32 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                     </div>
                 </motion.div>
             </div>
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                <h2 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                style={{ textAlign: 'center', marginBottom: '5rem' }}
+            >
+                <motion.div
+                    initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1.25rem', borderRadius: '99px', background: 'var(--primary-gradient)', color: 'white', marginBottom: '2rem', boxShadow: '0 4px 20px rgba(139, 92, 246, 0.3)' }}
+                >
+                    <ArrowRight size={16} fill="currentColor" />
+                    <span style={{ fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Structured Learning Path</span>
+                </motion.div>
+                <h2 style={{ fontSize: 'clamp(2rem, 6vw, 4rem)', marginBottom: '1.5rem', lineHeight: '1.1', letterSpacing: '-0.02em' }}>
                     Learning <span className="gradient-text">Roadmap</span>
                 </h2>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+                <p style={{ color: 'var(--text-muted)', maxWidth: '750px', margin: '0 auto', fontSize: '1.25rem', lineHeight: '1.7' }}>
                     Follow this structured path to master Data Structures and Algorithms. Each step builds upon the previous.
                 </p>
-            </div>
+            </motion.div>
 
             {/* Progress Stats */}
-            <div className="glass" style={{ padding: '2rem', marginBottom: '3rem', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '1rem' }}>
+            <div className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)', marginBottom: '3rem', display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '1rem' }}>
                 <div style={{ textAlign: 'center' }}>
                     <p style={{ fontSize: '2.5rem', fontWeight: '700', color: '#22c55e' }}>
                         {roadmapData.filter(n => getDynamicStatus(n) === 'completed').length}
@@ -465,9 +479,29 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
             </div>
 
             {/* Roadmap Timeline */}
+            <style>{`
+                @media (max-width: 768px) {
+                    .roadmap-timeline-node {
+                        padding-left: 3.5rem !important;
+                        padding-right: 0 !important;
+                        justify-content: flex-start !important;
+                    }
+                    .roadmap-timeline-node .roadmap-node-circle {
+                        left: 0 !important;
+                        transform: none !important;
+                    }
+                    .roadmap-timeline-line {
+                        left: 18px !important;
+                    }
+                    .roadmap-card {
+                        width: 100% !important;
+                        max-width: 100% !important;
+                    }
+                }
+            `}</style>
             <div style={{ position: 'relative' }}>
                 {/* Vertical Line */}
-                <div style={{
+                <div className="roadmap-timeline-line" style={{
                     position: 'absolute',
                     left: '50%',
                     top: 0,
@@ -485,6 +519,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: '-100px' }}
                         transition={{ delay: index * 0.1 }}
+                        className="roadmap-timeline-node"
                         style={{
                             display: 'flex',
                             justifyContent: index % 2 === 0 ? 'flex-end' : 'flex-start',
@@ -495,7 +530,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                         }}
                     >
                         {/* Node Circle */}
-                        <div style={{
+                        <div className="roadmap-node-circle" style={{
                             position: 'absolute',
                             left: '50%',
                             transform: 'translateX(-50%)',
@@ -521,10 +556,10 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
                                     onNavigateToTopic(node.topicId);
                                 }
                             }}
-                            className="glass"
+                            className="glass roadmap-card"
                             style={{
-                                width: '400px',
-                                padding: '1.5rem',
+                                width: 'min(400px, 100%)',
+                                padding: 'clamp(1rem, 3vw, 1.5rem)',
                                 cursor: getDynamicStatus(node) !== 'locked' ? 'pointer' : 'default',
                                 opacity: getDynamicStatus(node) === 'locked' ? 0.6 : 1,
                                 borderLeft: getDynamicStatus(node) === 'current' ? '4px solid var(--primary-color)' : 'none'
@@ -649,7 +684,7 @@ const Roadmap = ({ onNavigateToTopic }: RoadmapProps) => {
             </div>
 
             {/* Tips Section */}
-            <div className="glass" style={{ marginTop: '4rem', padding: '2rem' }}>
+            <div className="glass" style={{ marginTop: '4rem', padding: 'clamp(1rem, 4vw, 2rem)' }}>
                 <h3 style={{ marginBottom: '1.5rem' }}>💡 Pro Tips for Success</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
                     <div>

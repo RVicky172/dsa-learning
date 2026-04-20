@@ -31,7 +31,7 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
 
   const containerVariants = {
     initial: { y: -100, opacity: 0 },
-    animate: { y: 0, opacity: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+    animate: { y: 0, opacity: 1, transition: { duration: 0.6 } }
   };
 
   const navItemVariants = {

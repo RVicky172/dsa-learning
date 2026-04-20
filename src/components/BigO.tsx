@@ -83,7 +83,7 @@ const MathProofInteractive = () => {
     const cg_n = (n: number) => constantC * (n * n);
 
     return (
-        <div className="glass" style={{ padding: '2.5rem', marginBottom: '4rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div className="glass" style={{ padding: 'clamp(1.25rem, 5vw, 2.5rem)', marginBottom: '4rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div>
                 <h3 style={{ fontSize: '2rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <Calculator className="gradient-text" /> 
@@ -94,7 +94,7 @@ const MathProofInteractive = () => {
                 </p>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(250px, 1fr) 2fr', gap: '2rem', alignItems: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 2fr)', gap: 'clamp(1rem, 4vw, 2rem)', alignItems: 'center' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', padding: '1.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
                     <div>
                         <label style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', color: 'var(--text-main)', fontWeight: '600' }}>
@@ -166,7 +166,7 @@ const MathProofInteractive = () => {
 
 const BigOTheory = () => {
     return (
-        <section id="big-o" className="container" style={{ padding: '6rem 1rem' }}>
+        <section id="big-o" className="container" style={{ padding: 'clamp(3rem, 8vw, 6rem) 1rem' }}>
             {/* Hero Section */}
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -185,7 +185,7 @@ const BigOTheory = () => {
                     <span style={{ fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Theoretical Foundation</span>
                 </motion.div>
 
-                <h2 style={{ fontSize: '4rem', marginBottom: '1.5rem', lineHeight: '1.1', letterSpacing: '-0.02em' }}>
+                <h2 style={{ fontSize: 'clamp(2rem, 6vw, 4rem)', marginBottom: '1.5rem', lineHeight: '1.1', letterSpacing: '-0.02em' }}>
                     Mastering <span className="gradient-text">Big O Notation</span>
                 </h2>
                 <p style={{ color: 'var(--text-muted)', maxWidth: '750px', margin: '0 auto', fontSize: '1.25rem', lineHeight: '1.7' }}>
@@ -200,13 +200,13 @@ const BigOTheory = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="glass"
-                style={{ padding: '3rem', marginBottom: '4rem' }}
+                style={{ padding: 'clamp(1.25rem, 5vw, 3rem)', marginBottom: '4rem' }}
             >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
                     <Calculator size={32} style={{ color: '#8b5cf6' }} />
                     <h3 style={{ fontSize: '2rem', margin: 0 }}>What is Big O?</h3>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) minmax(300px, 1fr)', gap: '3rem', alignItems: 'start' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'start' }}>
                     <div>
                         <h4 style={{ color: '#8b5cf6', marginBottom: '1rem', fontSize: '1.3rem' }}>
                             Mathematical Upper Bound
@@ -284,7 +284,7 @@ const BigOTheory = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.35 }}
                 className="glass"
-                style={{ padding: '3rem', marginBottom: '4rem', background: 'linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(14, 165, 233, 0.02) 100%)', border: '1px solid rgba(14, 165, 233, 0.2)' }}
+                style={{ padding: 'clamp(1.25rem, 5vw, 3rem)', marginBottom: '4rem', background: 'linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(14, 165, 233, 0.02) 100%)', border: '1px solid rgba(14, 165, 233, 0.2)' }}
             >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
                     <div style={{ padding: '0.75rem', background: 'rgba(14, 165, 233, 0.1)', borderRadius: '12px' }}>
@@ -293,7 +293,7 @@ const BigOTheory = () => {
                     <h3 style={{ fontSize: '2rem', margin: 0, color: '#0ea5e9' }}>Understanding Logarithms <span style={{ opacity: 0.5 }}>O(log n)</span></h3>
                 </div>
                 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
                     <div>
                         <p style={{ fontSize: '1.1rem', color: 'var(--text-main)', lineHeight: '1.7', marginBottom: '1.5rem' }}>
                             A logarithm is simply the inverse of exponentiation. If exponentiation is <strong>"how many times do I multiply by 2 to get N?"</strong>, a logarithm is <strong>"how many times can I divide N by 2 until I reach 1?"</strong>
@@ -362,7 +362,7 @@ const BigOTheory = () => {
                     <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>From best to worst performance capabilities.</p>
                 </div>
                 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
                     {complexities.map((item, index) => (
                         <motion.div
                             key={index}

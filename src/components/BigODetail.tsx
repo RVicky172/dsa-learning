@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause, RotateCcw, Clock, HardDrive, Zap, TrendingUp, BookOpen, Activity, Search, Database, Layers, CheckCircle2, Eye } from 'lucide-react';
 import { ResponsiveContainer, LineChart, Line, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { useResponsiveChartConfig } from '../hooks/useResponsiveChartConfig';
 
 interface ComplexityExample {
     id: string;
@@ -248,6 +249,7 @@ function swap(a, b) {
 const ComplexityGraph = () => {
     const [hoveredComplexity, setHoveredComplexity] = useState<string | null>(null);
     const [hiddenLines, setHiddenLines] = useState<Set<string>>(new Set());
+    const chartConfig = useResponsiveChartConfig();
 
     const toggleLine = (complexity: string) => {
         setHiddenLines(prev => {
@@ -294,7 +296,7 @@ const ComplexityGraph = () => {
 
     return (
         <div className="glass" style={{
-            padding: '2rem',
+            padding: 'clamp(1rem, 4vw, 2rem)',
             position: 'relative',
             background: 'linear-gradient(135deg, rgba(15,15,30,0.9) 0%, rgba(20,20,40,0.8) 100%)',
             border: '1px solid rgba(255,255,255,0.08)',
@@ -302,20 +304,21 @@ const ComplexityGraph = () => {
             backdropFilter: 'blur(20px)'
         }}>
             {/* Header */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: 'clamp(1rem, 3vw, 1.5rem)', flexWrap: 'wrap' }}>
                 <div style={{
                     width: '44px', height: '44px', borderRadius: '12px',
                     background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    boxShadow: '0 4px 20px rgba(99,102,241,0.5)'
+                    boxShadow: '0 4px 20px rgba(99,102,241,0.5)',
+                    flexShrink: 0
                 }}>
                     <TrendingUp size={22} color="white" />
                 </div>
                 <div>
-                    <h3 style={{ fontSize: '1.5rem', margin: 0, fontWeight: '800', color: 'var(--text-main)' }}>
+                    <h3 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', margin: 0, fontWeight: '800', color: 'var(--text-main)' }}>
                         Growth Rate Visualization
                     </h3>
-                    <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                    <p style={{ margin: '0.2rem 0 0 0', color: 'var(--text-muted)', fontSize: 'clamp(0.75rem, 2.5vw, 0.85rem)' }}>
                         Logarithmic scale · n = 1 → 13 · Click legend to toggle lines
                     </p>
                 </div>
@@ -323,16 +326,17 @@ const ComplexityGraph = () => {
 
             {/* Info banner when hovering */}
             <div style={{
-                height: '56px',
-                marginBottom: '1rem',
-                padding: '0.75rem 1.25rem',
+                minHeight: '56px',
+                marginBottom: 'clamp(0.75rem, 3vw, 1rem)',
+                padding: 'clamp(0.5rem, 3vw, 0.75rem) clamp(0.75rem, 3vw, 1.25rem)',
                 borderRadius: '12px',
                 background: activeInfo ? `${activeInfo.color}18` : 'rgba(255,255,255,0.03)',
                 border: `1px solid ${activeInfo ? activeInfo.color + '40' : 'rgba(255,255,255,0.06)'}`,
                 display: 'flex',
                 alignItems: 'center',
-                gap: '1rem',
-                transition: 'all 0.3s ease'
+                gap: 'clamp(0.5rem, 3vw, 1rem)',
+                transition: 'all 0.3s ease',
+                flexWrap: 'wrap'
             }}>
                 {activeInfo ? (
                     <>
@@ -351,50 +355,49 @@ const ComplexityGraph = () => {
                 )}
             </div>
 
-            {/* Chart */}
+            {/* Chart — use explicit pixel height so ResponsiveContainer never collapses on mobile */}
             <div style={{
                 background: 'rgba(0,0,0,0.35)',
                 borderRadius: '16px',
                 border: '1px solid rgba(255,255,255,0.06)',
-                padding: '0.5rem 0.5rem 0 0',
-                height: '420px',
-                overflow: 'hidden',
-                minWidth: 0
+                height: `${chartConfig.mainChartHeight}px`,
+                marginBottom: 'clamp(1rem, 4vw, 2rem)',
+                minWidth: 0,
             }}>
-                <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={chartData} margin={{ top: 15, right: 40, left: 60, bottom: 40 }}>
+                <ResponsiveContainer width="100%" height={chartConfig.mainChartHeight}>
+                    <LineChart data={chartData} margin={chartConfig.mainChartMargin}>
                         <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.06)" />
                         <XAxis
                             dataKey="n"
                             stroke="rgba(255,255,255,0.2)"
-                            tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 12, fontWeight: 600 }}
+                            tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: chartConfig.mainAxisFontSize, fontWeight: 600 }}
                             tickLine={{ stroke: 'rgba(255,255,255,0.1)' }}
-                            label={{
+                            label={chartConfig.showAxisLabels ? {
                                 value: 'Input Size (n)',
                                 position: 'insideBottom',
-                                offset: -22,
+                                offset: chartConfig.mainLabelOffset,
                                 fill: 'rgba(255,255,255,0.6)',
-                                fontSize: 13,
+                                fontSize: chartConfig.mainLabelFontSize,
                                 fontWeight: 600
-                            }}
+                            } : undefined}
                         />
                         <YAxis
                             scale="log"
                             domain={[1, 'auto']}
                             stroke="rgba(255,255,255,0.2)"
-                            tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 11 }}
+                            tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: chartConfig.mainAxisFontSize }}
                             tickLine={{ stroke: 'rgba(255,255,255,0.1)' }}
                             tickFormatter={formatYAxis}
-                            width={55}
-                            label={{
+                            width={chartConfig.mainYAxisWidth}
+                            label={chartConfig.showAxisLabels ? {
                                 value: 'Operations (log scale)',
                                 angle: -90,
                                 position: 'insideLeft',
-                                offset: -45,
+                                offset: chartConfig.growthLabelOffset,
                                 fill: 'rgba(255,255,255,0.6)',
-                                fontSize: 13,
+                                fontSize: chartConfig.mainLabelFontSize,
                                 fontWeight: 600
-                            }}
+                            } : undefined}
                         />
                         <Tooltip
                             contentStyle={{
@@ -515,6 +518,7 @@ const BigODetail = () => {
     const [isAnimating, setIsAnimating] = useState(false);
     const [currentAnnotationIndex, setCurrentAnnotationIndex] = useState(0);
     const [revealedProblems, setRevealedProblems] = useState<Set<number>>(new Set());
+    const chartConfig = useResponsiveChartConfig();
 
     const toggleReveal = (index: number) => {
         setRevealedProblems(prev => {
@@ -672,20 +676,20 @@ const BigODetail = () => {
                         </motion.p>
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 4vw, 3rem)' }}>
                         {/* Beginner Introduction Section */}
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(1.5rem, 4vw, 2rem)' }}>
                             {/* The Restaurant Analogy */}
-                            <div className="glass" style={{ padding: '2.5rem' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-                                    <BookOpen size={28} color="#eab308" />
-                                    <h3 style={{ fontSize: '1.6rem', margin: 0, color: '#fff', fontWeight: '800' }}>The "Pizza" Analogy</h3>
+                            <div className="glass" style={{ padding: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: 'clamp(1rem, 3vw, 1.5rem)', flexWrap: 'wrap' }}>
+                                    <BookOpen size={28} color="#eab308" style={{ flexShrink: 0 }} />
+                                    <h3 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.6rem)', margin: 0, color: '#fff', fontWeight: '800' }}>The "Pizza" Analogy</h3>
                                 </div>
-                                <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem' }}>
+                                <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.9rem, 3vw, 1.05rem)', lineHeight: '1.7', marginBottom: 'clamp(1rem, 3vw, 2rem)' }}>
                                     Abstract math can be confusing. Let's imagine you're dealing with <strong style={{ color: 'var(--text-main)' }}>n</strong> slices of pizza to understand how algorithms scale.
                                 </p>
                                 
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1rem, 3vw, 1.5rem)' }}>
                                     <div style={{ background: 'rgba(34, 197, 94, 0.05)', padding: '1.25rem', borderRadius: '12px', borderLeft: '4px solid #22c55e' }}>
                                         <h4 style={{ color: '#22c55e', margin: '0 0 0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><code style={{ background: 'transparent', padding: 0 }}>O(1)</code> Constant</h4>
                                         <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
@@ -708,12 +712,12 @@ const BigODetail = () => {
                             </div>
 
                             {/* The 3 Golden Rules */}
-                            <div className="glass" style={{ padding: '2.5rem' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-                                    <Zap size={28} color="#f43f5e" />
-                                    <h3 style={{ fontSize: '1.6rem', margin: 0, color: '#fff', fontWeight: '800' }}>The Golden Rules</h3>
+                            <div className="glass" style={{ padding: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: 'clamp(1rem, 3vw, 1.5rem)', flexWrap: 'wrap' }}>
+                                    <Zap size={28} color="#f43f5e" style={{ flexShrink: 0 }} />
+                                    <h3 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.6rem)', margin: 0, color: '#fff', fontWeight: '800' }}>The Golden Rules</h3>
                                 </div>
-                                <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem' }}>
+                                <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.9rem, 3vw, 1.05rem)', lineHeight: '1.7', marginBottom: 'clamp(1rem, 3vw, 2rem)' }}>
                                     When calculating Big O in an interview, you must follow these absolute core mathematical rules:
                                 </p>
 
@@ -748,9 +752,9 @@ const BigODetail = () => {
 
                 {/* Theoretical Foundations */}
                 <div style={{ marginBottom: '4rem' }}>
-                    <div className="glass" style={{ padding: '3rem' }}>
+                    <div className="glass" style={{ padding: 'clamp(1.25rem, 5vw, 3rem)' }}>
                         <h3 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center' }}>Theoretical <span className="gradient-text">Foundations</span></h3>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}>
                             <div style={{ padding: '1.5rem', borderLeft: '4px solid #ef4444', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '0 12px 12px 0' }}>
                                 <h4 style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '1.25rem' }}>Big O (O)</h4>
                                 <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Upper Bound (Worst Case)</p>
@@ -788,7 +792,7 @@ const BigODetail = () => {
 
                 {/* Understanding Logarithms */}
                 <div style={{ marginBottom: '4rem' }}>
-                    <div className="glass" style={{ padding: '3rem', position: 'relative', overflow: 'hidden' }}>
+                    <div className="glass" style={{ padding: 'clamp(1.25rem, 5vw, 3rem)', position: 'relative', overflow: 'hidden' }}>
                         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
                         <div style={{ position: 'relative', zIndex: 1 }}>
                             <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -809,7 +813,7 @@ const BigODetail = () => {
                                 Simply put, while exponential growth means <em>doubling</em> things, logarithmic growth means <em>halving</em> them. Asking for <code>log₂(n)</code> is essentially asking: <strong>"How many times do I need to divide <code style={{ color: '#f97316' }}>n</code> by 2 to get down to 1?"</strong>
                             </p>
                             
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}>
                                 <div style={{ background: 'rgba(0,0,0,0.2)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
                                     <h4 style={{ color: '#fdba74', marginBottom: '1rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                         <RotateCcw size={18} /> The Math: Exponents Reversed
@@ -861,7 +865,7 @@ const BigODetail = () => {
                                     <Search size={22} color="#f97316" />
                                     Deep Dive: Where do Logarithms appear in DSA?
                                 </h4>
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
                                     <div>
                                         <h5 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                             <div style={{ width: '8px', height: '8px', background: '#f97316', borderRadius: '50%' }}></div>
@@ -899,8 +903,8 @@ const BigODetail = () => {
 
                 {/* Space Complexity Callout */}
                 <div style={{ marginBottom: '4rem' }}>
-                    <div className="glass" style={{ padding: '2rem 3rem', display: 'flex', alignItems: 'center', gap: '2rem', borderLeft: '4px solid #0ea5e9', flexDirection: 'row', flexWrap: 'wrap' }}>
-                        <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #0ea5e9, #0284c7)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 20px rgba(14,165,233,0.3)' }}>
+                    <div className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem) clamp(1.25rem, 5vw, 3rem)', display: 'flex', alignItems: 'center', gap: 'clamp(1rem, 4vw, 2rem)', borderLeft: '4px solid #0ea5e9', flexDirection: 'row', flexWrap: 'wrap' }}>
+                        <div style={{ width: 'clamp(44px, 10vw, 64px)', height: 'clamp(44px, 10vw, 64px)', borderRadius: '50%', background: 'linear-gradient(135deg, #0ea5e9, #0284c7)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 20px rgba(14,165,233,0.3)' }}>
                             <HardDrive size={32} color="white" />
                         </div>
                         <div style={{ flex: '1 1 300px' }}>
@@ -980,7 +984,7 @@ const BigODetail = () => {
                             <div className="glass" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column', height: '100%' }}>
                                 {/* Mac-style Window Header */}
                                 <div style={{
-                                    padding: '0.9rem 1.5rem',
+                                    padding: 'clamp(0.6rem, 2vw, 0.9rem) clamp(0.75rem, 3vw, 1.5rem)',
                                     background: 'rgba(0,0,0,0.45)',
                                     borderBottom: '1px solid rgba(255,255,255,0.06)',
                                     display: 'flex',
@@ -996,9 +1000,9 @@ const BigODetail = () => {
                                     </div>
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                         {/* Selected algorithm title */}
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
                                             <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: selectedExample.color, boxShadow: `0 0 8px ${selectedExample.color}`, flexShrink: 0 }} />
-                                            <span style={{ color: selectedExample.color, fontWeight: '700', fontSize: '0.9rem' }}>{selectedExample.name}</span>
+                                            <span style={{ color: selectedExample.color, fontWeight: '700', fontSize: 'clamp(0.75rem, 2.5vw, 0.9rem)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{selectedExample.name}</span>
                                         </div>
                                         <div style={{
                                             fontSize: '0.8rem', fontFamily: 'var(--font-mono)',
@@ -1036,9 +1040,9 @@ const BigODetail = () => {
                                 </div>
 
                                 {/* Code display */}
-                                <div style={{ background: '#090c14', padding: '1.5rem 0' }}>
+                                <div style={{ background: '#090c14', padding: 'clamp(0.75rem, 3vw, 1.5rem) 0', overflowX: 'auto' }}>
                                     <pre style={{
-                                        margin: 0, fontSize: '0.95rem', lineHeight: '1.85',
+                                        margin: 0, fontSize: 'clamp(0.75rem, 2.5vw, 0.95rem)', lineHeight: '1.85',
                                         overflowX: 'auto', fontFamily: "'JetBrains Mono', 'Courier New', monospace"
                                     }}>
                                         {codeLines.map((line, index) => {
@@ -1050,7 +1054,7 @@ const BigODetail = () => {
                                                     key={index}
                                                     style={{
                                                         display: 'flex', alignItems: 'center',
-                                                        padding: '0.15rem 1.5rem',
+                                                        padding: '0.15rem clamp(0.5rem, 3vw, 1.5rem)',
                                                         background: isHighlighted ? `${selectedExample.color}20` : 'transparent',
                                                         borderLeft: isHighlighted ? `3px solid ${selectedExample.color}` : '3px solid transparent',
                                                         transition: 'all 0.3s ease'
@@ -1090,7 +1094,7 @@ const BigODetail = () => {
                             </div>
 
                             {/* Selected Complexity Graph */}
-                            <div className="glass" style={{ padding: '2rem', display: 'flex', flexDirection: 'column' }}>
+                            <div className="glass" style={{ padding: 'clamp(1rem, 3vw, 2rem)', display: 'flex', flexDirection: 'column' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
                                     <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: `${selectedExample.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                         <Activity size={18} color={selectedExample.color} />
@@ -1100,9 +1104,10 @@ const BigODetail = () => {
                                         <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>{selectedExample.complexity}</span>
                                     </div>
                                 </div>
-                                <div style={{ height: '280px', background: 'rgba(0,0,0,0.15)', borderRadius: '12px', padding: '1.5rem 1rem 0.5rem 0', border: '1px solid rgba(255,255,255,0.03)', minWidth: 0 }}>
-                                    <ResponsiveContainer width="100%" height="100%">
-                                        <AreaChart data={miniChartData} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
+                                {/* Selected Complexity Graph — explicit height avoids flex collapse on mobile */}
+                                <div style={{ height: `${chartConfig.miniChartHeight}px`, background: 'rgba(0,0,0,0.15)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)', minWidth: 0 }}>
+                                    <ResponsiveContainer width="100%" height={chartConfig.miniChartHeight}>
+                                        <AreaChart data={miniChartData} margin={chartConfig.growthChartMargin}>
                                             <defs>
                                                 <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
                                                     <stop offset="5%" stopColor={selectedExample.color} stopOpacity={0.4} />
@@ -1110,8 +1115,17 @@ const BigODetail = () => {
                                                 </linearGradient>
                                             </defs>
                                             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                                            <XAxis dataKey="n" stroke="rgba(255,255,255,0.2)" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} tickLine={false} />
-                                            <YAxis stroke="rgba(255,255,255,0.2)" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10 }} tickLine={false} scale="log" domain={['dataMin', 'dataMax']} tickFormatter={val => val >= 1000 ? (val / 1000).toFixed(0) + 'k' : val.toString()} width={40} />
+                                            <XAxis dataKey="n" stroke="rgba(255,255,255,0.2)" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: chartConfig.growthAxisFontSize }} tickLine={false} />
+                                            <YAxis
+                                                stroke="rgba(255,255,255,0.2)"
+                                                tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: chartConfig.growthAxisFontSize }}
+                                                tickLine={false}
+                                                scale="log"
+                                                domain={[1, (dataMax: number) => Math.max(dataMax * 2, 2)]}
+                                                allowDataOverflow
+                                                tickFormatter={val => val >= 1000 ? (val / 1000).toFixed(0) + 'k' : Number(val).toFixed(0)}
+                                                width={chartConfig.growthYAxisWidth}
+                                            />
                                             <Tooltip
                                                 contentStyle={{ background: '#0f172a', border: `1px solid ${selectedExample.color}40`, borderRadius: '8px', fontSize: '0.8rem' }}
                                                 itemStyle={{ color: selectedExample.color, fontWeight: '700' }}
@@ -1122,18 +1136,18 @@ const BigODetail = () => {
                                                     return [num >= 1000000 ? (num / 1000000).toFixed(1) + 'M' : num.toString(), 'Operations'];
                                                 }}
                                             />
-                                            <Area type="monotone" dataKey="val" name="Operations" stroke={selectedExample.color} strokeWidth={3} fillOpacity={1} fill="url(#colorVal)" />
+                                            <Area type="monotone" dataKey="val" name="Operations" stroke={selectedExample.color} strokeWidth={chartConfig.strokeWidth} fillOpacity={1} fill="url(#colorVal)" />
                                         </AreaChart>
                                     </ResponsiveContainer>
                                 </div>
-                                <p style={{ marginTop: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+                                <p style={{ marginTop: '1rem', fontSize: 'clamp(0.75rem, 2.5vw, 0.85rem)', color: 'var(--text-muted)', lineHeight: '1.5' }}>
                                     At <strong>n = 15</strong>, this algorithm roughly requires <strong>{miniChartData[14].val >= 1000000 ? (miniChartData[14].val / 1000000).toFixed(1) + 'M' : miniChartData[14].val.toLocaleString()}</strong> operations.
                                 </p>
                             </div>
                         </div>
 
                         {/* ── Row 2: Three Info Cards ── */}
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'clamp(1rem, 4vw, 1.5rem)' }}>
                             {/* Time Complexity */}
                             <div className="glass" style={{ padding: '1.75rem', borderTop: `3px solid ${selectedExample.color}` }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
@@ -1187,7 +1201,7 @@ const BigODetail = () => {
                         </div>
 
                         {/* ── Row 3: Operation Counting ── */}
-                        <div className="glass" style={{ padding: '2rem' }}>
+                        <div className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
                                 <div style={{
                                     width: '32px', height: '32px', borderRadius: '8px',
@@ -1200,7 +1214,7 @@ const BigODetail = () => {
                                 </span>
                             </div>
 
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 'clamp(0.75rem, 3vw, 1rem)' }}>
                                 {selectedExample.annotations.map((annotation, index) => (
                                     <motion.div
                                         key={index}
@@ -1247,7 +1261,7 @@ const BigODetail = () => {
 
                         {/* ── Row 4: Quick Counting Rules ── */}
                         <div className="glass" style={{
-                            padding: '1.5rem 2rem',
+                            padding: 'clamp(1rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem)',
                             background: 'linear-gradient(135deg, rgba(234,179,8,0.06) 0%, rgba(217,119,6,0.03) 100%)',
                             border: '1px solid rgba(234,179,8,0.18)'
                         }}>
@@ -1285,7 +1299,7 @@ const BigODetail = () => {
 
                 {/* Complexity Comparison Table */}
                 <div className="glass" style={{ marginTop: '3rem', padding: '0', overflow: 'hidden' }}>
-                    <div style={{ padding: '2.5rem 2.5rem 1rem 2.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ padding: 'clamp(1.25rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2.5rem) 1rem clamp(1rem, 4vw, 2.5rem)', display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
                         <Activity size={24} className="gradient-text" color="var(--primary-color)" />
                         <h3 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800' }}>Performance Comparison</h3>
                     </div>
@@ -1293,12 +1307,12 @@ const BigODetail = () => {
                         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem', textAlign: 'left' }}>
                             <thead>
                                 <tr style={{ background: 'rgba(0,0,0,0.2)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                                    <th style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Complexity</th>
-                                    <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=10</th>
-                                    <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=100</th>
-                                    <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=1,000</th>
-                                    <th style={{ padding: '1.25rem 1rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em', textAlign: 'center' }}>n=10,000</th>
-                                    <th style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Example Algorithm</th>
+                                    <th style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>Complexity</th>
+                                    <th style={{ padding: '1rem 0.75rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', textAlign: 'center', whiteSpace: 'nowrap' }}>n=10</th>
+                                    <th style={{ padding: '1rem 0.75rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', textAlign: 'center', whiteSpace: 'nowrap' }}>n=100</th>
+                                    <th style={{ padding: '1rem 0.75rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', textAlign: 'center', whiteSpace: 'nowrap' }}>n=1,000</th>
+                                    <th style={{ padding: '1rem 0.75rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', textAlign: 'center', whiteSpace: 'nowrap' }}>n=10,000</th>
+                                    <th style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>Example</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1320,17 +1334,17 @@ const BigODetail = () => {
                                         onMouseEnter={(e) => e.currentTarget.style.background = row.bg}
                                         onMouseLeave={(e) => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.1)'}
                                     >
-                                        <td style={{ padding: '1.25rem 2.5rem', color: row.color, fontWeight: '700' }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: row.color, boxShadow: `0 0 8px ${row.color}` }} />
+                                        <td style={{ padding: '0.9rem 1.25rem', color: row.color, fontWeight: '700', whiteSpace: 'nowrap' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: row.color, boxShadow: `0 0 8px ${row.color}`, flexShrink: 0 }} />
                                                 {row.c}
                                             </div>
                                         </td>
-                                        <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)' }}>{row.n10}</td>
-                                        <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n100 === '∞' || row.n100.includes('10³⁰') ? row.color : 'inherit' }}>{row.n100}</td>
-                                        <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n1k === '∞' || row.n1k.includes('10⁹') ? row.color : 'inherit' }}>{row.n1k}</td>
-                                        <td style={{ padding: '1.25rem 1rem', textAlign: 'center', fontFamily: 'var(--font-mono)', color: row.n10k === '∞' || row.n10k.includes('10¹³') || row.n10k === '100,000,000' ? row.color : 'inherit' }}>{row.n10k}</td>
-                                        <td style={{ padding: '1.25rem 2.5rem', color: 'var(--text-muted)' }}>{row.ex}</td>
+                                        <td style={{ padding: '0.9rem 0.75rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>{row.n10}</td>
+                                        <td style={{ padding: '0.9rem 0.75rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: row.n100 === '∞' || row.n100.includes('10³⁰') ? row.color : 'inherit' }}>{row.n100}</td>
+                                        <td style={{ padding: '0.9rem 0.75rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: row.n1k === '∞' || row.n1k.includes('10⁹') ? row.color : 'inherit' }}>{row.n1k}</td>
+                                        <td style={{ padding: '0.9rem 0.75rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: row.n10k === '∞' || row.n10k.includes('10¹³') || row.n10k === '100,000,000' ? row.color : 'inherit' }}>{row.n10k}</td>
+                                        <td style={{ padding: '0.9rem 1.25rem', color: 'var(--text-muted)', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>{row.ex}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -1340,14 +1354,14 @@ const BigODetail = () => {
 
                 {/* Common Patterns Section */}
                 <div style={{ marginTop: '4rem' }}>
-                    <div className="glass" style={{ padding: '3.5rem' }}>
+                    <div className="glass" style={{ padding: 'clamp(1.25rem, 5vw, 3.5rem)' }}>
                         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                             <span style={{ color: 'var(--primary-color)', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.85rem' }}>Algorithms</span>
                             <h3 style={{ fontSize: '2.5rem', margin: '0.5rem 0', fontWeight: '800' }}>
                                 Common <span className="gradient-text">Patterns</span>
                             </h3>
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}>
                             <motion.div whileHover={{ y: -5 }} style={{ padding: '2rem', borderRadius: '20px', background: 'rgba(34, 197, 94, 0.05)', border: '1px solid rgba(34, 197, 94, 0.2)', position: 'relative', overflow: 'hidden' }}>
                                 <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
                                 <Search size={32} color="#22c55e" style={{ marginBottom: '1rem' }} />
@@ -1408,7 +1422,7 @@ const BigODetail = () => {
                         </h3>
                         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>Test your Big O knowledge with these classic algorithmic problems.</p>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}>
                         {[
                             { title: 'Two Sum', desc: 'Find two numbers in an array that add up to a target sum.', p1: 'Brute Force:', p1v: 'O(n²)', p2: 'Optimal:', p2v: 'O(n) Hash Map' },
                             { title: 'Valid Parentheses', desc: 'Check if a string of parentheses is valid using a stack.', p1: 'Time:', p1v: 'O(n) Single pass', p2: 'Space:', p2v: 'O(n) Stack' },

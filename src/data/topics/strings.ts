@@ -1,5 +1,5 @@
 import type { Topic } from '../../types/topic';
-import { stringProblems } from '../advancedProblems';
+import { stringProblems } from '../problems/strings';
 import React from 'react';
 import { Lightbulb } from 'lucide-react';
 

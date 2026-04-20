@@ -1,5 +1,5 @@
 import type { Topic } from '../../types/topic';
-import { recursionProblems } from '../advancedProblems';
+import { recursionProblems } from '../problems/recursion';
 import React from 'react';
 import { GitBranch } from 'lucide-react';
 

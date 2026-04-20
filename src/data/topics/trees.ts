@@ -1,7 +1,7 @@
 import type { Topic } from '../../types/topic';
 import React from 'react';
 import { TreePalm } from 'lucide-react';
-import { treeProblems } from '../newProblems';
+import { treeProblems } from '../problems/trees';
 
 export const treesTopic: Topic = {
   id: 'trees',

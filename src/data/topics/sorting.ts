@@ -1,8 +1,7 @@
 import type { Topic } from '../../types/topic';
-import { sortingProblems as advancedSortingProblems } from '../advancedProblems';
+import { sortingProblems, searchingProblems, advancedSortingProblems } from '../problems/sorting';
 import React from 'react';
 import { ArrowUpDown } from 'lucide-react';
-import { sortingProblems, searchingProblems } from '../sortingAndSearchingProblems';
 
 export const sortingTopic: Topic = {
   id: 'sorting-searching',

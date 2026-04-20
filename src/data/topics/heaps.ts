@@ -1,5 +1,5 @@
 import type { Topic } from '../../types/topic';
-import { heapProblems } from '../advancedProblems';
+import { heapProblems } from '../problems/heaps';
 import React from 'react';
 import { Layers } from 'lucide-react';
 

@@ -1,5 +1,5 @@
 import type { Topic } from '../../types/topic';
-import { designProblems } from '../advancedProblems';
+import { designProblems } from '../problems/design';
 import React from 'react';
 import { Share2 } from 'lucide-react';
 

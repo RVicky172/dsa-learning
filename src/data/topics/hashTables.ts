@@ -1,7 +1,7 @@
 import type { Topic } from '../../types/topic';
 import React from 'react';
 import { Zap } from 'lucide-react';
-import { hashTableProblems } from '../newProblems';
+import { hashTableProblems } from '../problems/hashTables';
 
 export const hashTablesTopic: Topic = {
   id: 'hash-tables',

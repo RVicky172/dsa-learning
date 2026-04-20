@@ -1,5 +1,5 @@
 import type { Topic } from '../../types/topic';
-import { dpProblems } from '../advancedProblems';
+import { dpProblems } from '../problems/dynamicProgramming';
 import React from 'react';
 import { Trophy } from 'lucide-react';
 

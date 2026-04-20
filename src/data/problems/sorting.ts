@@ -1,6 +1,4 @@
-import type { Problem } from '../types/topic';
-
-// Sorting & Searching Problems - NEW TOPIC
+import type { Problem } from '../../types/topic';
 
 export const sortingProblems: Problem[] = [
   {
@@ -330,54 +328,9 @@ function partition(arr: number[], low: number, high: number): number {
       'Track the last merged interval',
       'Merge if current start <= last end'
     ]
-  },
-  {
-    id: 'sort-colors',
-    title: 'Sort Colors',
-    difficulty: 'Medium',
-    description: 'Sort an array of 0s, 1s, and 2s in-place using the Dutch flag algorithm.',
-    examples: [
-      {
-        input: 'nums = [2,0,2,1,1,0]',
-        output: '[0,0,1,1,2,2]'
-      }
-    ],
-    solution: {
-      approach: 'Use three pointers to partition the array into three sections',
-      code: `function sortColors(nums: number[]): void {
-  let low = 0;
-  let mid = 0;
-  let high = nums.length - 1;
-
-  while (mid <= high) {
-    if (nums[mid] === 0) {
-      [nums[low], nums[mid]] = [nums[mid], nums[low]];
-      low++;
-      mid++;
-    } else if (nums[mid] === 1) {
-      mid++;
-    } else {
-      [nums[mid], nums[high]] = [nums[high], nums[mid]];
-      high--;
-    }
-  }
-}`,
-      timeComplexity: 'O(n)',
-      spaceComplexity: 'O(1)',
-      stepByStep: [
-        'Use three pointers: low, mid, high',
-        'If mid is 0, swap with low and move both',
-        'If mid is 1, just move mid',
-        'If mid is 2, swap with high and move high left'
-      ]
-    },
-    hints: [
-      'Three-way partitioning',
-      'Maintain three sections: 0s, 1s, 2s',
-      'Only one pass needed'
-    ]
   }
 ];
+
 
 export const searchingProblems: Problem[] = [
   {
@@ -554,3 +507,101 @@ function findLast(nums: number[], target: number): number {
     ]
   }
 ];
+
+export const advancedSortingProblems: Problem[] = [
+  {
+    id: 'sort-kth-largest',
+    title: 'Kth Largest Element in an Array',
+    difficulty: 'Medium',
+    description: 'Given an integer array nums and an integer k, return the kth largest element in the array.',
+    examples: [{ input: 'nums = [3,2,1,5,6,4], k = 2', output: '5' }],
+    solution: {
+      approach: 'Quickselect algorithm for O(n) average time complexity, or Min-Heap.',
+      code: `function findKthLargest(nums: number[], k: number): number {
+  return nums.sort((a,b) => b - a)[k-1]; // Built-in sort approach
+  // Quickselect implementation is optimal for O(n)
+}`,
+      timeComplexity: 'O(n log n) with sort, O(n) expected with QuickSelect',
+      spaceComplexity: 'O(1)',
+      stepByStep: ['A naive approach is to sort the array and pick the element', 'For optimization, use a min-heap of size K or Quickselect algorithm']
+    },
+    hints: ['Sorting works but takes O(N log N)', 'Can you do it in O(N)? Think Quickselect.']
+  },
+  {
+    id: 'sort-merge-intervals',
+    title: 'Merge Intervals',
+    difficulty: 'Medium',
+    description: 'Given an array of intervals, merge all overlapping intervals.',
+    examples: [{ input: 'intervals = [[1,3],[2,6],[8,10],[15,18]]', output: '[[1,6],[8,10],[15,18]]' }],
+    solution: {
+      approach: 'Sort by start time, then merge overlapping ones by comparing current start with previous end.',
+      code: `function merge(intervals: number[][]): number[][] {
+  intervals.sort((a, b) => a[0] - b[0]);
+  const res = [intervals[0]];
+  for (const curr of intervals) {
+    const prev = res[res.length - 1];
+    if (curr[0] <= prev[1]) {
+      prev[1] = Math.max(prev[1], curr[1]);
+    } else {
+      res.push(curr);
+    }
+  }
+  return res;
+}`,
+      timeComplexity: 'O(n log n)',
+      spaceComplexity: 'O(n)',
+      stepByStep: ['Sort intervals by start time', 'Iterate and check if current interval overlaps with the last added one', 'If it overlaps, update the end time', 'Else, push to result']
+    },
+    hints: ['How does sorting the intervals first help?', 'Sort by start time']
+  },
+  {
+    id: 'top-k-frequent',
+    title: 'Top K Frequent Elements',
+    difficulty: 'Medium',
+    description: 'Given an integer array nums and an integer k, return the k most frequent elements.',
+    examples: [
+      {
+        input: 'nums = [1,1,1,2,2,3], k = 2',
+        output: '[1,2]'
+      }
+    ],
+    solution: {
+      approach: 'Use a hash map to count frequencies, then use a bucket sort or priority queue',
+      code: `function topKFrequent(nums: number[], k: number): number[] {
+  const freq = new Map<number, number>();
+  for (const num of nums) {
+    freq.set(num, (freq.get(num) || 0) + 1);
+  }
+
+  const buckets: number[][] = Array(nums.length + 1).fill(null).map(() => []);
+  for (const [num, count] of freq) {
+    buckets[count].push(num);
+  }
+
+  const result: number[] = [];
+  for (let i = buckets.length - 1; i >= 0 && result.length < k; i--) {
+    for (const num of buckets[i]) {
+      result.push(num);
+      if (result.length === k) break;
+    }
+  }
+
+  return result;
+}`,
+      timeComplexity: 'O(n)',
+      spaceComplexity: 'O(n)',
+      stepByStep: [
+        'Count frequency of each number using hash map',
+        'Create buckets where index is frequency',
+        'Iterate from highest frequency bucket',
+        'Collect k most frequent elements'
+      ]
+    },
+    hints: [
+      'Bucket sort based on frequency',
+      'Use array of arrays for buckets',
+      'Iterate from highest frequency'
+    ]
+  }
+];
+

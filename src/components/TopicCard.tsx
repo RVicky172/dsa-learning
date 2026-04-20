@@ -23,7 +23,7 @@ const TopicCard = ({ title, description, icon, complexity, delay = 0, id }: Topi
             whileHover={{ y: -5, borderColor: 'var(--primary-color)' }}
             className="glass"
             style={{
-                padding: '2rem',
+                padding: 'clamp(1rem, 4vw, 2rem)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1rem',
@@ -41,20 +41,21 @@ const TopicCard = ({ title, description, icon, complexity, delay = 0, id }: Topi
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: '0.5rem',
-                    color: completed ? 'var(--secondary-color)' : 'var(--secondary-color)'
+                    color: completed ? 'var(--secondary-color)' : 'var(--secondary-color)',
+                    flexShrink: 0
                 }}>
                     {icon}
                 </div>
                 {completed && (
-                    <div style={{ color: 'var(--secondary-color)', display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.85rem', fontWeight: 'bold' }}>
-                        <CheckCircle2 size={18} /> Completed
+                    <div style={{ color: 'var(--secondary-color)', display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: 'clamp(0.7rem, 2.5vw, 0.85rem)', fontWeight: 'bold', flexShrink: 0 }}>
+                        <CheckCircle2 size={18} /> <span style={{ display: 'none' }}>Completed</span>
                     </div>
                 )}
             </div>
 
             <div>
                 <span style={{
-                    fontSize: '0.75rem',
+                    fontSize: 'clamp(0.65rem, 2vw, 0.75rem)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
                     color: 'var(--text-muted)',
@@ -63,8 +64,8 @@ const TopicCard = ({ title, description, icon, complexity, delay = 0, id }: Topi
                 }}>
                     Complexity: {complexity}
                 </span>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{title}</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>{description}</p>
+                <h3 style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.5rem)', marginBottom: '0.5rem' }}>{title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)' }}>{description}</p>
             </div>
 
             <div style={{ marginTop: 'auto', paddingTop: '1.5rem' }}>
@@ -74,7 +75,7 @@ const TopicCard = ({ title, description, icon, complexity, delay = 0, id }: Topi
                     gap: '0.5rem',
                     color: 'var(--primary-color)',
                     fontWeight: '600',
-                    fontSize: '0.95rem'
+                    fontSize: 'clamp(0.8rem, 2.5vw, 0.95rem)'
                 }}>
                     Learn more <ArrowRight size={16} />
                 </button>

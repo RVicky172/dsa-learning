@@ -1,7 +1,7 @@
 import type { Topic } from '../../types/topic';
 import React from 'react';
 import { List } from 'lucide-react';
-import { linkedListProblems } from '../newProblems';
+import { linkedListProblems } from '../problems/linkedLists';
 
 export const linkedListsTopic: Topic = {
   id: 'linked-lists',

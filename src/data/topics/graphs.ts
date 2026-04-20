@@ -1,7 +1,7 @@
 import type { Topic } from '../../types/topic';
 import React from 'react';
 import { Network } from 'lucide-react';
-import { graphProblems } from '../newProblems';
+import { graphProblems } from '../problems/graphs';
 
 export const graphsTopic: Topic = {
   id: 'graphs',
