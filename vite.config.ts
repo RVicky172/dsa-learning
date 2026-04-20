@@ -54,7 +54,6 @@ export default defineConfig({
             './src/pages/Home.tsx',
             './src/components/Navbar.tsx',
             './src/components/Roadmap.tsx',
-            './src/components/BigO.tsx',
             './src/components/BigODetail.tsx',
           ],
         },

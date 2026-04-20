@@ -1,116 +1,122 @@
-<div align="center">
-  <h1>🚀 DSA Master</h1>
-  <p>Your ultimate interactive guide to mastering Data Structures, Algorithms, and Big-O Notation.</p>
-</div>
+# DSA Master
 
-<br />
+DSA Master is a full-stack learning platform for Data Structures and Algorithms.
 
-<div align="center">
-  <!-- Badges -->
-  <img src="https://img.shields.io/badge/React-19-blue.svg?style=flat&logo=react" alt="React 19" />
-  <img src="https://img.shields.io/badge/TypeScript-5.9-blue.svg?style=flat&logo=typescript" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Vite-7.2-646CFF.svg?style=flat&logo=vite" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC.svg?style=flat&logo=tailwind-css" alt="Tailwind CSS" />
-</div>
+It includes:
+- an interactive frontend for theory, visualizers, and problem practice
+- a backend API for auth, admin content management, progress, subscriptions, and payments
+- planning and architecture documentation in the docs folder
+- Graphify artifacts for codebase knowledge graph analysis
 
-<br />
+## Project Overview
 
-## 📖 About The Project
+### Frontend
+- Stack: React 19, TypeScript, Vite, Framer Motion, Recharts
+- Path: src
+- Purpose: learner-facing UI, dashboards, visualizers, topic and problem flows
 
-DSA Master is a modern, highly interactive web application designed to help learners and professionals strengthen their foundational knowledge of Data Structures and Algorithms. With a clear UI built using React 19, Tailwind CSS, and Framer Motion, studying for coding interviews and understanding complex data concepts has never been more engaging.
+### Backend
+- Stack: Node.js, TypeScript, Express, PostgreSQL, Zod
+- Path: backend/src
+- Purpose: auth, RBAC, admin CRUD, progress persistence, entitlement checks, payment webhook flows
 
-### ✨ Key Features
+### Planning Docs
+- Path: docs
+- Purpose: implementation roadmap, execution checklist, sprint board, architecture and ERD references
 
-- **📚 Interactive Visualizers**: Real-time visual representations of data structures and algorithm execution.
-- **⏱️ Big-O Notation Guide**: Master time & space complexity with rich, interactive charts using Recharts.
-- **💻 Problem Practice**: Test your skills against a curated list of algorithmic challenges.
-- **🗺️ Learning Roadmap**: Follow a structured pathway from beginner to advanced topics.
-- **⚡ Blazing Fast**: Built with Vite and React lazy loading for immediate interactions and zero-lag rendering.
-- **🌙 Theming Support**: Sleek UI tailored for comfortable reading and focused learning.
-
----
-
-## 🛠️ Tech Stack
-
-- **Framework**: [React 19](https://react.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Data Visualization**: [Recharts](https://recharts.org/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Persistence**: [idb-keyval](https://github.com/jakearchibald/idb-keyval) (IndexedDB wrapper)
-
----
-
-## 🚀 Getting Started
-
-Follow these instructions to set up the project locally on your machine.
+## Quick Start
 
 ### Prerequisites
+- Node.js 18+
+- npm
+- Docker Desktop (recommended for local PostgreSQL)
 
-Ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (v18.0.0 or higher is recommended)
-- `npm` (usually comes with Node.js)
+### 1) Frontend Setup
+```bash
+npm install
+npm run dev
+```
 
-### Installation
+Frontend default URL:
+- http://localhost:5173
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd dsa-learning
-   ```
+### 2) Backend Setup
+```bash
+cd backend
+npm install
+docker compose up -d
+npm run migrate:init
+npm run seed:admin
+npm run dev
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+Backend defaults are documented in:
+- backend/DATABASE_SETUP.md
+- backend/README.md
 
-3. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-   *The server will start at `http://localhost:5173/` (or the port shown in your terminal). Open it in your browser.*
+## Core Scripts
 
----
+From repository root:
+- npm run dev
+- npm run build
+- npm run lint
+- npm run preview
+- npm run graphify:update
 
-## 📂 Project Structure
+From backend:
+- npm run dev
+- npm run build
+- npm run typecheck
+- npm run migrate:init
+- npm run migrate -- 002_user_problem_progress.sql
+- npm run seed:admin
+
+## Graphify Workflow
+
+This repository tracks a graphify-out knowledge graph for architecture exploration.
+
+Recommended update command:
+```bash
+npm run graphify:update
+```
+
+What it does:
+1. Runs graphify incremental update on the repo.
+2. Runs scripts/graphify_fix_sources.py to normalize source_file metadata in graph outputs.
+
+Why the extra fix step exists:
+- Graphify can emit extraction warnings for some semantic document nodes that are missing source_file.
+- The post-step normalizes graphify-out/.graphify_extract.json and graphify-out/graph.json so downstream artifacts are consistent.
+
+Main graph outputs:
+- graphify-out/GRAPH_REPORT.md
+- graphify-out/graph.json
+- graphify-out/graph.html
+
+## Repository Structure
 
 ```text
 dsa-learning/
-├── src/
-│   ├── components/         # Reusable UI components (Visualizers, Navbars, Cards)
-│   ├── contexts/           # Global React Context providers (State management)
-│   ├── data/               # Curriculum data, topic definitions, and problem sets
-│   ├── hooks/              # Custom logic hooks (e.g., visualizer state control)
-│   ├── pages/              # Main view compositions
-│   ├── types/              # Global TypeScript interfaces and type definitions
-│   ├── App.tsx             # Root React component & routing logic
-│   └── main.tsx            # React application entry point
+├── backend/                 # Express API, DB migrations, seeds
+├── docs/                    # Planning and architecture docs
+├── graphify-out/            # Knowledge graph outputs
+├── src/                     # Frontend app
+├── scripts/                 # Repository utility scripts
+├── package.json             # Frontend/root scripts
+└── README.md
 ```
 
----
+## Additional Documentation
 
-## 📜 Scripts
+- docs/README.md
+- backend/README.md
+- backend/DATABASE_SETUP.md
+- CLAUDE.md
 
-- `npm run dev`: Starts the local development server.
-- `npm run build`: Type-checks codebase and builds for production.
-- `npm run preview`: Previews the local production build.
-- `npm run lint`: Runs ESLint to evaluate code quality.
+## Contributing
 
----
+1. Create a branch.
+2. Make changes with focused commits.
+3. Run lint/build checks.
+4. Open a pull request with a clear summary.
 
-## 🤝 Contributing
-
-We welcome contributions! Whether it's adding new problems, fixing typos, or optimizing the code, please feel free to:
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is open-source and available under the terms of the MIT License.

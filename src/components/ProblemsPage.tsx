@@ -1,13 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Filter, ChevronDown, ChevronUp, EyeOff, Zap, Clock, HardDrive, CheckCircle2, Circle } from 'lucide-react';
+import { Search, Filter, ChevronDown, ChevronUp, EyeOff, Zap, Clock, HardDrive, CheckCircle2, Circle, Crown } from 'lucide-react';
 import {
     allProblems,
-    problemCategories,
     problemDifficulties,
     type ProblemListItem
 } from '../data/problems/registry';
 import { useProgress } from '../hooks/useProgress';
+import { useAuth } from '../hooks/useAuth';
+import { problemService } from '../services/problemService';
+import type { ProblemListItemApi } from '../types/api';
 
 const difficultyColors: Record<string, string> = {
     'Easy': '#22c55e',
@@ -18,7 +20,40 @@ const difficultyColors: Record<string, string> = {
 
 const PAGE_SIZE = 12;
 
-const ProblemsPage = () => {
+interface ProblemRecord extends ProblemListItem {
+    isPremium: boolean;
+    canAccess: boolean;
+}
+
+interface ProblemsPageProps {
+    onGoLogin?: () => void;
+    onGoUpgrade?: () => void;
+}
+
+function buildFallbackProblem(problem: ProblemListItemApi, index: number): ProblemRecord {
+    return {
+        id: problem.id,
+        title: problem.title,
+        difficulty: problem.difficulty,
+        description: problem.description,
+        examples: [{ input: 'N/A', output: 'N/A', explanation: 'Example data not yet authored.' }],
+        solution: {
+            approach: 'No detailed editorial has been added for this imported problem yet.',
+            code: '// Add solution details in the admin content editor',
+            timeComplexity: 'N/A',
+            spaceComplexity: 'N/A',
+            stepByStep: ['Detailed solution notes will appear once authored.']
+        },
+        hints: [],
+        category: ['Imported'],
+        uniqueKey: `backend:${problem.id}:${index}`,
+        isPremium: problem.isPremium,
+        canAccess: problem.canAccess ?? !problem.isPremium
+    };
+}
+
+const ProblemsPage = ({ onGoLogin, onGoUpgrade }: ProblemsPageProps) => {
+    const { token, isAuthenticated } = useAuth();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedDifficulty, setSelectedDifficulty] = useState('All');
     const [selectedCategory, setSelectedCategory] = useState('All');
@@ -27,8 +62,76 @@ const ProblemsPage = () => {
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [isSmallPhone, setIsSmallPhone] = useState(window.innerWidth <= 480);
+    const [problems, setProblems] = useState<ProblemRecord[]>(
+        allProblems.map((problem) => ({ ...problem, isPremium: false, canAccess: true }))
+    );
+    const [isLoadingProblems, setIsLoadingProblems] = useState(true);
+    const [backendMode, setBackendMode] = useState(false);
     const loadMoreRef = useRef<HTMLDivElement | null>(null);
     const { isProblemCompleted, toggleProblem } = useProgress();
+
+    useEffect(() => {
+        let isCancelled = false;
+
+        const staticByTitle = new Map<string, ProblemListItem>();
+        allProblems.forEach((problem) => {
+            staticByTitle.set(problem.title.trim().toLowerCase(), problem);
+        });
+
+        const loadProblems = async () => {
+            setIsLoadingProblems(true);
+
+            try {
+                const apiProblems = await problemService.list(undefined, token ?? undefined);
+
+                if (apiProblems.length === 0) {
+                    if (!isCancelled) {
+                        setProblems(allProblems.map((problem) => ({ ...problem, isPremium: false, canAccess: true })));
+                        setBackendMode(false);
+                    }
+                    return;
+                }
+
+                const mappedProblems = apiProblems.map((problem, index) => {
+                    const staticMatch = staticByTitle.get(problem.title.trim().toLowerCase());
+
+                    if (!staticMatch) {
+                        return buildFallbackProblem(problem, index);
+                    }
+
+                    return {
+                        ...staticMatch,
+                        id: problem.id,
+                        difficulty: problem.difficulty,
+                        description: problem.description || staticMatch.description,
+                        uniqueKey: `backend:${problem.id}:${index}`,
+                        isPremium: problem.isPremium,
+                        canAccess: problem.canAccess ?? !problem.isPremium
+                    };
+                });
+
+                if (!isCancelled) {
+                    setProblems(mappedProblems);
+                    setBackendMode(true);
+                }
+            } catch {
+                if (!isCancelled) {
+                    setProblems(allProblems.map((problem) => ({ ...problem, isPremium: false, canAccess: true })));
+                    setBackendMode(false);
+                }
+            } finally {
+                if (!isCancelled) {
+                    setIsLoadingProblems(false);
+                }
+            }
+        };
+
+        void loadProblems();
+
+        return () => {
+            isCancelled = true;
+        };
+    }, [token]);
 
     const resetListUiState = () => {
         setVisibleCount(PAGE_SIZE);
@@ -61,7 +164,16 @@ const ProblemsPage = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const filteredProblems = allProblems.filter(problem => {
+    const availableCategories = useMemo(() => {
+        const categorySet = new Set<string>();
+        problems.forEach((problem) => {
+            problem.category.forEach((category) => categorySet.add(category));
+        });
+
+        return ['All', ...Array.from(categorySet)];
+    }, [problems]);
+
+    const filteredProblems = problems.filter(problem => {
         const matchesSearch = problem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             problem.description.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesDifficulty = selectedDifficulty === 'All' || problem.difficulty === selectedDifficulty;
@@ -129,6 +241,13 @@ const ProblemsPage = () => {
                 </h2>
                 <p style={{ color: 'var(--text-muted)', maxWidth: '750px', margin: '0 auto', fontSize: '1.25rem', lineHeight: '1.7' }}>
                     Master DSA with curated problems. Each includes brute force and optimal solutions with detailed complexity analysis.
+                </p>
+                <p style={{ color: 'var(--text-muted)', marginTop: '0.9rem', fontSize: '0.9rem' }}>
+                    {isLoadingProblems
+                        ? 'Loading problems from backend...'
+                        : backendMode
+                            ? 'Showing backend-managed problem set.'
+                            : 'Showing local fallback problem set.'}
                 </p>
             </motion.div>
 
@@ -213,7 +332,7 @@ const ProblemsPage = () => {
                     gap: '0.5rem',
                     marginTop: '1rem'
                 }}>
-                    {problemCategories.map(cat => (
+                    {availableCategories.map(cat => (
                         <button
                             key={cat}
                             onClick={() => handleCategoryChange(cat)}
@@ -245,7 +364,10 @@ const ProblemsPage = () => {
                         <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>No problems match your filters. Try adjusting your search.</p>
                     </div>
                 ) : (
-                    visibleProblems.map((problem) => (
+                    visibleProblems.map((problem) => {
+                        const isLocked = problem.isPremium && !problem.canAccess;
+
+                        return (
                         <ProblemCard
                             key={problem.uniqueKey}
                             problem={problem}
@@ -256,12 +378,20 @@ const ProblemsPage = () => {
                             isCompleted={isProblemCompleted(problem.id)}
                             onToggleComplete={(e) => {
                                 e.stopPropagation();
+                                if (isLocked) {
+                                    return;
+                                }
                                 toggleProblem(problem.id);
                             }}
+                            isLocked={isLocked}
+                            isAuthenticated={isAuthenticated}
+                            onGoLogin={onGoLogin}
+                            onGoUpgrade={onGoUpgrade}
                             isMobile={isMobile}
                             isSmallPhone={isSmallPhone}
                         />
-                    ))
+                        );
+                    })
                 )}
             </div>
 
@@ -294,7 +424,7 @@ const ProblemsPage = () => {
                         color: '#22c55e',
                         margin: 0
                     }}>
-                        {allProblems.filter(p => p.difficulty === 'Easy').length}
+                        {problems.filter(p => p.difficulty === 'Easy').length}
                     </p>
                     <p style={{
                         color: 'var(--text-muted)',
@@ -309,7 +439,7 @@ const ProblemsPage = () => {
                         color: '#eab308',
                         margin: 0
                     }}>
-                        {allProblems.filter(p => p.difficulty === 'Medium').length}
+                        {problems.filter(p => p.difficulty === 'Medium').length}
                     </p>
                     <p style={{
                         color: 'var(--text-muted)',
@@ -324,7 +454,7 @@ const ProblemsPage = () => {
                         color: '#ef4444',
                         margin: 0
                     }}>
-                        {allProblems.filter(p => p.difficulty === 'Hard').length}
+                        {problems.filter(p => p.difficulty === 'Hard').length}
                     </p>
                     <p style={{
                         color: 'var(--text-muted)',
@@ -338,18 +468,36 @@ const ProblemsPage = () => {
 };
 
 interface ProblemCardProps {
-    problem: ProblemListItem;
+    problem: ProblemRecord;
     isExpanded: boolean;
     onToggleExpand: () => void;
     solutionVisible: boolean;
     onToggleSolution: () => void;
     isCompleted: boolean;
     onToggleComplete: (e: React.MouseEvent) => void;
+    isLocked: boolean;
+    isAuthenticated: boolean;
+    onGoLogin?: () => void;
+    onGoUpgrade?: () => void;
     isMobile: boolean;
     isSmallPhone: boolean;
 }
 
-const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onToggleSolution, isCompleted, onToggleComplete, isMobile, isSmallPhone }: ProblemCardProps) => {
+const ProblemCard = ({
+    problem,
+    isExpanded,
+    onToggleExpand,
+    solutionVisible,
+    onToggleSolution,
+    isCompleted,
+    onToggleComplete,
+    isLocked,
+    isAuthenticated,
+    onGoLogin,
+    onGoUpgrade,
+    isMobile,
+    isSmallPhone
+}: ProblemCardProps) => {
     const difficultyColor = difficultyColors[problem.difficulty];
 
     return (
@@ -384,8 +532,8 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                         style={{
                             background: 'transparent',
                             border: 'none',
-                            color: isCompleted ? '#22c55e' : 'var(--text-muted)',
-                            cursor: 'pointer',
+                            color: isLocked ? 'var(--warning-color)' : isCompleted ? '#22c55e' : 'var(--text-muted)',
+                            cursor: isLocked ? 'not-allowed' : 'pointer',
                             padding: 0,
                             display: 'flex',
                             alignItems: 'center',
@@ -395,6 +543,7 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                             flexShrink: 0
                         }}
                         title={isCompleted ? "Mark as uncompleted" : "Mark as completed"}
+                        disabled={isLocked}
                     >
                         {isCompleted ? <CheckCircle2 size={isSmallPhone ? 20 : 24} /> : <Circle size={isSmallPhone ? 20 : 24} />}
                     </button>
@@ -420,6 +569,21 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                     }}>
                         {problem.title}
                     </h3>
+                    {problem.isPremium ? (
+                        <span style={{
+                            padding: '0.2rem 0.5rem',
+                            borderRadius: '999px',
+                            background: isLocked ? 'var(--warning-bg)' : 'var(--accent-gradient)',
+                            color: isLocked ? 'var(--warning-light)' : 'white',
+                            fontSize: isSmallPhone ? '0.65rem' : '0.72rem',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.25rem'
+                        }}>
+                            <Crown size={12} />
+                            {isLocked ? 'Premium Locked' : 'Premium'}
+                        </span>
+                    ) : null}
                 </div>
                 <div style={{
                     display: 'flex',
@@ -470,7 +634,41 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                         {problem.description}
                     </p>
 
+                    {isLocked ? (
+                        <div className="glass" style={{ padding: '1rem', border: '1px solid var(--warning-color)', marginBottom: '1.25rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.45rem' }}>
+                                <Crown size={16} color="var(--warning-color)" />
+                                <strong>Premium Problem</strong>
+                            </div>
+                            <p style={{ color: 'var(--text-muted)', marginBottom: '0.9rem' }}>
+                                Unlock this problem's examples and solution with a premium subscription.
+                            </p>
+                            <button
+                                onClick={() => {
+                                    if (isAuthenticated) {
+                                        onGoUpgrade?.();
+                                        return;
+                                    }
+                                    onGoLogin?.();
+                                }}
+                                style={{
+                                    minHeight: '40px',
+                                    borderRadius: '10px',
+                                    border: 'none',
+                                    background: 'var(--primary-gradient)',
+                                    color: 'white',
+                                    fontWeight: 700,
+                                    padding: '0 1rem',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                {isAuthenticated ? 'Upgrade to Premium' : 'Login to Upgrade'}
+                            </button>
+                        </div>
+                    ) : null}
+
                     {/* Examples */}
+                    {!isLocked ? (
                     <div style={{ marginBottom: '1.5rem' }}>
                         <h4 style={{ marginBottom: '0.75rem', fontSize: isSmallPhone ? '0.95rem' : '1rem' }}>Examples:</h4>
                         {problem.examples.map((ex, idx) => (
@@ -502,8 +700,10 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                             </div>
                         ))}
                     </div>
+                    ) : null}
 
                     {/* Solution Button */}
+                    {!isLocked ? (
                     <div style={{ marginBottom: '1.5rem' }}>
                         <button
                             onClick={() => onToggleSolution()}
@@ -528,9 +728,10 @@ const ProblemCard = ({ problem, isExpanded, onToggleExpand, solutionVisible, onT
                             {solutionVisible ? 'Hide Solution' : 'Show Solution'}
                         </button>
                     </div>
+                    ) : null}
 
                     {/* Solution Content */}
-                    {solutionVisible && (
+                    {!isLocked && solutionVisible && (
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}

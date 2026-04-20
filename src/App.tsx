@@ -3,12 +3,19 @@ import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import TopicDetail from './components/TopicDetail'
 import Home from './pages/Home'
+import Login from './pages/Login'
+import Profile from './pages/Profile'
+import Register from './pages/Register'
+import ForgotPassword from './pages/ForgotPassword'
+import AdminDashboard from './pages/AdminDashboard'
+import { useAuth } from './hooks/useAuth'
 import './index.css'
 
 // Lazy-load heavy components — only fetched when the user navigates to them
 const BigODetail = lazy(() => import('./components/BigODetail'));
 const ProblemsPage = lazy(() => import('./components/ProblemsPage'));
 const Roadmap = lazy(() => import('./components/Roadmap'));
+const SubscriptionPage = lazy(() => import('./pages/Subscription'));
 
 const LoadingSpinner = () => (
   <div style={{
@@ -32,6 +39,7 @@ const LoadingSpinner = () => (
 );
 
 function App() {
+  const { isAdmin } = useAuth();
   const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string>('home');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -77,7 +85,19 @@ function App() {
         return (
           <main style={{ paddingTop: '5rem' }}>
             <Suspense fallback={<LoadingSpinner />}>
-              <ProblemsPage />
+              <ProblemsPage
+                onGoLogin={() => handleNavigate('login')}
+                onGoUpgrade={() => handleNavigate('subscription')}
+              />
+            </Suspense>
+          </main>
+        );
+
+      case 'subscription':
+        return (
+          <main style={{ paddingTop: '5rem' }}>
+            <Suspense fallback={<LoadingSpinner />}>
+              <SubscriptionPage onGoLogin={() => handleNavigate('login')} />
             </Suspense>
           </main>
         );
@@ -95,6 +115,54 @@ function App() {
         return (
           <main style={{ paddingTop: '5rem' }}>
             <Home onNavigate={handleNavigate} onTopicSelect={handleTopicSelect} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          </main>
+        );
+
+      case 'login':
+        return (
+          <main style={{ paddingTop: '5rem' }}>
+            <Login
+              onSuccess={() => handleNavigate('topics')}
+              onBackHome={() => handleNavigate('home')}
+              onGoRegister={() => handleNavigate('register')}
+              onGoForgotPassword={() => handleNavigate('forgot-password')}
+            />
+          </main>
+        );
+
+      case 'forgot-password':
+        return (
+          <main style={{ paddingTop: '5rem' }}>
+            <ForgotPassword onBackLogin={() => handleNavigate('login')} />
+          </main>
+        );
+
+      case 'register':
+        return (
+          <main style={{ paddingTop: '5rem' }}>
+            <Register
+              onSuccess={() => handleNavigate('topics')}
+              onGoLogin={() => handleNavigate('login')}
+              onBackHome={() => handleNavigate('home')}
+            />
+          </main>
+        );
+
+      case 'profile':
+        return (
+          <main style={{ paddingTop: '5rem' }}>
+            <Profile onGoToLogin={() => handleNavigate('login')} />
+          </main>
+        );
+
+      case 'admin':
+        return (
+          <main style={{ paddingTop: '5rem' }}>
+            {isAdmin ? (
+              <AdminDashboard onGoLogin={() => handleNavigate('login')} />
+            ) : (
+              <Profile onGoToLogin={() => handleNavigate('login')} />
+            )}
           </main>
         );
 
@@ -144,6 +212,13 @@ function App() {
             style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}
           >
             Roadmap
+          </a>
+          <a
+            href="#subscription"
+            onClick={(e) => { e.preventDefault(); handleNavigate('subscription'); }}
+            style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}
+          >
+            Upgrade
           </a>
         </div>
         <p style={{ color: 'var(--text-muted)' }}>&copy; 2026 DSA Master. Designed for excellence.</p>

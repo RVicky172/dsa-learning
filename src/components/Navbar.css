@@ -187,6 +187,32 @@
   outline-offset: 2px;
 }
 
+.auth-action-btn {
+  border: 1px solid var(--border-color);
+  background: rgba(var(--primary-rgb), 0.08);
+  color: var(--text-secondary);
+  padding: 0.58rem 0.9rem;
+  border-radius: 9px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.auth-action-btn:hover {
+  border-color: var(--primary-light);
+  color: var(--primary-color);
+  background: rgba(var(--primary-rgb), 0.14);
+}
+
+.auth-action-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
 .theme-toggle {
   width: 38px;
   height: 38px;

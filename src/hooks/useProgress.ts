@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { get, set } from 'idb-keyval';
+import { useAuth } from './useAuth';
+import { progressService } from '../services/progressService';
+import { problemService } from '../services/problemService';
 
 interface ProgressData {
   completedTopics: string[];
@@ -7,8 +10,10 @@ interface ProgressData {
 }
 
 const STORAGE_KEY = 'dsa-master-progress';
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 export function useProgress() {
+  const { isAuthenticated, token } = useAuth();
   const [progress, setProgress] = useState<ProgressData>({ completedTopics: [], completedProblems: [] });
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -22,6 +27,23 @@ export function useProgress() {
       setIsLoaded(true);
     });
   }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated || !token) {
+      return;
+    }
+
+    progressService.getMyProgress(token)
+      .then((response) => {
+        setProgress((prev) => ({
+          ...prev,
+          completedProblems: response.completedProblemIds ?? prev.completedProblems
+        }));
+      })
+      .catch(() => {
+        // Keep local progress when backend sync is unavailable.
+      });
+  }, [isAuthenticated, token]);
 
   useEffect(() => {
     // Save to IndexedDB whenever progress changes, but only if loaded
@@ -43,15 +65,42 @@ export function useProgress() {
   };
 
   const toggleProblem = (problemId: string) => {
-    setProgress(prev => {
-      const isCompleted = prev.completedProblems.includes(problemId);
-      return {
-        ...prev,
-        completedProblems: isCompleted
-          ? prev.completedProblems.filter(id => id !== problemId)
-          : [...prev.completedProblems, problemId]
-      };
-    });
+    const currentlyCompleted = progress.completedProblems.includes(problemId);
+    const nextCompleted = !currentlyCompleted;
+
+    setProgress((prev) => ({
+      ...prev,
+      completedProblems: nextCompleted
+        ? [...prev.completedProblems, problemId]
+        : prev.completedProblems.filter((id) => id !== problemId)
+    }));
+
+    if (isAuthenticated && token && UUID_REGEX.test(problemId)) {
+      progressService.setProblemCompletion(problemId, nextCompleted, token)
+        .then(async () => {
+          if (nextCompleted) {
+            await problemService.submitAttempt(
+              problemId,
+              {
+                language: 'markdown',
+                submittedCode: 'Marked as solved from problem checklist'
+              },
+              token
+            );
+          }
+        })
+        .catch(() => {
+          // Roll back optimistic local state when backend write fails.
+          setProgress((prev) => ({
+            ...prev,
+            completedProblems: currentlyCompleted
+              ? prev.completedProblems.includes(problemId)
+                ? prev.completedProblems
+                : [...prev.completedProblems, problemId]
+              : prev.completedProblems.filter((id) => id !== problemId)
+          }));
+        });
+    }
   };
 
   const isTopicCompleted = (topicId: string) => progress.completedTopics.includes(topicId);

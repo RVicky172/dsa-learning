@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layers, Zap, Code, Box, ChevronRight, Menu, X, Sun, Moon } from 'lucide-react';
+import { Layers, Zap, Code, Box, ChevronRight, Menu, X, Sun, Moon, User, LogIn, LogOut, ShieldCheck, Crown } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
+import { useAuth } from '../hooks/useAuth';
 import './Navbar.css';
 
 interface NavbarProps {
@@ -13,6 +14,7 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { isAuthenticated, isAdmin, user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +29,7 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
     { id: 'big-o', label: 'Big O', icon: Zap },
     { id: 'problems', label: 'Problems', icon: Code },
     { id: 'roadmap', label: 'Roadmap', icon: Box },
+    { id: 'subscription', label: 'Upgrade', icon: Crown },
   ];
 
   const containerVariants = {
@@ -55,6 +58,11 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    onNavigate?.('home');
   };
 
   return (
@@ -134,6 +142,63 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
             </motion.button>
           </li>
 
+          {isAuthenticated ? (
+            <>
+              {isAdmin ? (
+                <li>
+                  <motion.button
+                    onClick={() => handleClick('admin')}
+                    className={`nav-item-btn ${activeSection === 'admin' ? 'active' : ''}`}
+                    variants={navItemVariants}
+                    whileHover="hover"
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
+                    <ShieldCheck size={16} />
+                    Admin
+                  </motion.button>
+                </li>
+              ) : null}
+              <li>
+                <motion.button
+                  onClick={() => handleClick('profile')}
+                  className={`nav-item-btn ${activeSection === 'profile' ? 'active' : ''}`}
+                  variants={navItemVariants}
+                  whileHover="hover"
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  title={user?.displayName}
+                >
+                  <User size={16} />
+                  Profile
+                </motion.button>
+              </li>
+              <li>
+                <motion.button
+                  onClick={handleSignOut}
+                  className="auth-action-btn"
+                  whileHover={{ y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <LogOut size={15} />
+                  Logout
+                </motion.button>
+              </li>
+            </>
+          ) : (
+            <li>
+              <motion.button
+                onClick={() => handleClick('login')}
+                className="auth-action-btn"
+                whileHover={{ y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <LogIn size={15} />
+                Login
+              </motion.button>
+            </li>
+          )}
+
           <li>
             <motion.button
               className="theme-toggle"
@@ -196,6 +261,41 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
             >
               Start Learning <ChevronRight size={16} />
             </button>
+            {isAuthenticated ? (
+              <>
+                {isAdmin ? (
+                  <button
+                    onClick={() => handleClick('admin')}
+                    className={`mobile-nav-item ${activeSection === 'admin' ? 'active' : ''}`}
+                  >
+                    <ShieldCheck size={18} />
+                    Admin
+                  </button>
+                ) : null}
+                <button
+                  onClick={() => handleClick('profile')}
+                  className={`mobile-nav-item ${activeSection === 'profile' ? 'active' : ''}`}
+                >
+                  <User size={18} />
+                  Profile
+                </button>
+                <button
+                  onClick={handleSignOut}
+                  className="mobile-nav-item"
+                >
+                  <LogOut size={18} />
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => handleClick('login')}
+                className={`mobile-nav-item ${activeSection === 'login' ? 'active' : ''}`}
+              >
+                <LogIn size={18} />
+                Login
+              </button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
