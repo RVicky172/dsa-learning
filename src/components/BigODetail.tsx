@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Pause, RotateCcw, Clock, HardDrive, Zap, TrendingUp, BookOpen, Activity, Search, Database, Layers, CheckCircle2, Eye } from 'lucide-react';
+import { Play, Pause, RotateCcw, Clock, HardDrive, Zap, TrendingUp, BookOpen, Activity, Search, Database, Layers, CheckCircle2, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ResponsiveContainer, LineChart, Line, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { useResponsiveChartConfig } from '../hooks/useResponsiveChartConfig';
 
@@ -517,6 +517,7 @@ const BigODetail = () => {
     const [highlightedLine, setHighlightedLine] = useState<number | null>(null);
     const [isAnimating, setIsAnimating] = useState(false);
     const [currentAnnotationIndex, setCurrentAnnotationIndex] = useState(0);
+    const [playbackRate, setPlaybackRate] = useState(1);
     const [revealedProblems, setRevealedProblems] = useState<Set<number>>(new Set());
     const chartConfig = useResponsiveChartConfig();
 
@@ -568,24 +569,38 @@ const BigODetail = () => {
         </style>
     `;
 
+    const totalAnnotations = selectedExample.annotations.length;
+
+    const applyAnnotationIndex = (index: number) => {
+        if (totalAnnotations === 0) {
+            setCurrentAnnotationIndex(0);
+            setHighlightedLine(null);
+            return;
+        }
+
+        const clamped = Math.max(0, Math.min(index, totalAnnotations - 1));
+        setCurrentAnnotationIndex(clamped);
+        setHighlightedLine(selectedExample.annotations[clamped]?.line ?? null);
+    };
+
     const startAnimation = () => {
+        if (totalAnnotations === 0) {
+            setIsAnimating(false);
+            setHighlightedLine(null);
+            return;
+        }
+
+        if (currentAnnotationIndex >= totalAnnotations - 1) {
+            applyAnnotationIndex(0);
+        } else {
+            setHighlightedLine(selectedExample.annotations[currentAnnotationIndex]?.line ?? null);
+        }
+
         setIsAnimating(true);
-        setCurrentAnnotationIndex(0);
+    };
 
-        const animate = (index: number) => {
-            if (index >= selectedExample.annotations.length) {
-                setIsAnimating(false);
-                setHighlightedLine(null);
-                return;
-            }
-
-            setHighlightedLine(selectedExample.annotations[index].line);
-            setCurrentAnnotationIndex(index);
-
-            setTimeout(() => animate(index + 1), 2000);
-        };
-
-        animate(0);
+    const pauseAnimation = () => {
+        setIsAnimating(false);
     };
 
     const resetAnimation = () => {
@@ -593,6 +608,41 @@ const BigODetail = () => {
         setHighlightedLine(null);
         setCurrentAnnotationIndex(0);
     };
+
+    const stepBackward = () => {
+        setIsAnimating(false);
+        applyAnnotationIndex(currentAnnotationIndex - 1);
+    };
+
+    const stepForward = () => {
+        setIsAnimating(false);
+        applyAnnotationIndex(currentAnnotationIndex + 1);
+    };
+
+    useEffect(() => {
+        if (!isAnimating || totalAnnotations === 0) {
+            return;
+        }
+
+        const delayMs = Math.max(250, 1200 / playbackRate);
+        const timer = window.setTimeout(() => {
+            if (currentAnnotationIndex >= totalAnnotations - 1) {
+                setIsAnimating(false);
+                setHighlightedLine(null);
+                return;
+            }
+
+            applyAnnotationIndex(currentAnnotationIndex + 1);
+        }, delayMs);
+
+        return () => window.clearTimeout(timer);
+    }, [
+        isAnimating,
+        currentAnnotationIndex,
+        playbackRate,
+        totalAnnotations,
+        selectedExample.annotations,
+    ]);
 
     const codeLines = selectedExample.code.split('\n');
 
@@ -1010,9 +1060,10 @@ const BigODetail = () => {
                                             padding: '0.25rem 0.85rem', borderRadius: '99px', border: '1px solid rgba(255,255,255,0.06)'
                                         }}>algorithm.js</div>
                                     </div>
-                                    <div style={{ display: 'flex', gap: '0.6rem' }}>
+                                    <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
                                         <button
-                                            onClick={isAnimating ? resetAnimation : startAnimation}
+                                            onClick={isAnimating ? pauseAnimation : startAnimation}
+                                            aria-label={isAnimating ? 'Pause walkthrough' : 'Play walkthrough'}
                                             style={{
                                                 display: 'flex', alignItems: 'center', gap: '0.4rem',
                                                 padding: '0.5rem 1.1rem', borderRadius: '8px',
@@ -1022,10 +1073,35 @@ const BigODetail = () => {
                                             }}
                                         >
                                             {isAnimating ? <Pause size={14} fill="currentColor" /> : <Play size={14} fill="currentColor" />}
-                                            {isAnimating ? 'Pause' : 'Animate'}
+                                            {isAnimating ? 'Pause' : 'Play'}
+                                        </button>
+                                        <button
+                                            onClick={stepBackward}
+                                            aria-label="Previous step"
+                                            style={{
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                width: '36px', borderRadius: '8px',
+                                                background: 'rgba(255,255,255,0.06)', color: 'var(--text-main)',
+                                                border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
+                                            }}
+                                        >
+                                            <ChevronLeft size={14} />
+                                        </button>
+                                        <button
+                                            onClick={stepForward}
+                                            aria-label="Next step"
+                                            style={{
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                width: '36px', borderRadius: '8px',
+                                                background: 'rgba(255,255,255,0.06)', color: 'var(--text-main)',
+                                                border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer'
+                                            }}
+                                        >
+                                            <ChevronRight size={14} />
                                         </button>
                                         <button
                                             onClick={resetAnimation}
+                                            aria-label="Reset walkthrough"
                                             style={{
                                                 display: 'flex', alignItems: 'center', gap: '0.4rem',
                                                 padding: '0.5rem 1rem', borderRadius: '8px',
@@ -1036,6 +1112,32 @@ const BigODetail = () => {
                                         >
                                             <RotateCcw size={13} /> Reset
                                         </button>
+                                        <div style={{
+                                            display: 'flex', alignItems: 'center', gap: '0.5rem',
+                                            padding: '0.45rem 0.7rem', borderRadius: '8px',
+                                            background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)'
+                                        }}>
+                                            <input
+                                                type="range"
+                                                min="0.5"
+                                                max="3"
+                                                step="0.5"
+                                                value={playbackRate}
+                                                onChange={(e) => setPlaybackRate(parseFloat(e.target.value))}
+                                                aria-label="Playback speed"
+                                                style={{ width: '72px', cursor: 'pointer' }}
+                                            />
+                                            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', minWidth: '28px' }}>
+                                                {playbackRate.toFixed(1)}x
+                                            </span>
+                                        </div>
+                                        <span style={{
+                                            fontSize: '0.8rem', color: 'var(--text-muted)',
+                                            padding: '0.45rem 0.7rem', borderRadius: '8px',
+                                            background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)'
+                                        }}>
+                                            Step {Math.min(currentAnnotationIndex + 1, totalAnnotations || 1)} / {totalAnnotations}
+                                        </span>
                                     </div>
                                 </div>
 

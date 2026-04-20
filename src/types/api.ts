@@ -76,18 +76,63 @@ export interface SubscriptionState {
 
 export interface RunCodePayload {
   problemId?: string;
-  language: string;
+  language: 'javascript' | 'python' | 'typescript' | 'js' | 'py' | 'ts';
   sourceCode: string;
   stdin?: string;
+  timeoutMs?: number;
+  waitForCompletion?: boolean;
 }
+
+export type ExecutionStatus =
+  | 'queued'
+  | 'running'
+  | 'completed'
+  | 'runtime_error'
+  | 'timeout'
+  | 'failed';
 
 export interface RunCodeResult {
   id: string;
-  status: 'success' | 'compile_error' | 'runtime_error' | 'timeout' | 'killed';
+  status: ExecutionStatus;
   stdout: string;
   stderr: string;
+  exitCode?: number | null;
   runtimeMs?: number;
   memoryKb?: number;
+}
+
+export interface ExecutionRecord {
+  id: string;
+  problemId: string | null;
+  language: string;
+  sourceHash: string | null;
+  stdin: string;
+  stdout: string;
+  stderr: string;
+  status: ExecutionStatus;
+  exitCode: number | null;
+  runtimeMs: number | null;
+  memoryKb: number | null;
+  createdAt: string;
+  completedAt: string | null;
+}
+
+export interface ExecutionHistoryQuery {
+  problemId?: string;
+  language?: 'javascript' | 'python' | 'typescript';
+  status?: ExecutionStatus;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface ExecutionHistoryResponse {
+  items: ExecutionRecord[];
+  pagination: {
+    page: number;
+    pageSize: number;
+    total: number;
+    totalPages: number;
+  };
 }
 
 export interface ApiError {

@@ -2,8 +2,9 @@
 
 ## Status Snapshot (Updated: 2026-04-20)
 
-- Implemented: Auth/RBAC, admin content CRUD API+UI, progress+attempt persistence, backend-driven problem listing with fallback, subscription page, mock checkout + webhook sync, and API/UI premium gating.
-- Remaining: execution worker stack, visualization upgrades, production payment provider wiring, launch hardening.
+- Implemented: Auth/RBAC, admin content CRUD API+UI, progress+attempt persistence, backend-driven problem listing with fallback, subscription page, mock checkout + webhook sync, API/UI premium gating, execution worker queue, and execution persistence/query APIs.
+- Implemented: frontend run-code panel integration in problem detail flows.
+- Remaining: visualization upgrades, production payment provider wiring, launch hardening.
 
 ## Purpose
 

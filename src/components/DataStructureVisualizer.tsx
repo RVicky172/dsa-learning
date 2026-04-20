@@ -24,10 +24,9 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
   advancedSteps = []
 }) => {
 
-  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
-  const [step, setStep] = useState<number>(0);
+  const [currentStep, setCurrentStep] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
-  const [speed, setSpeed] = useState<number>(1.5); // seconds per step
+  const [playbackRate, setPlaybackRate] = useState<number>(1);
   // If advancedSteps provided, max steps derived from it
   const maxSteps = advancedSteps.length > 0 ? advancedSteps.length : Math.max(data.length || 5, 6);
 
@@ -35,37 +34,24 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
     if (!isPlaying) return;
 
     const timer = setInterval(() => {
-      setHighlightedIndex(prev => {
-        if (prev === null) return 0;
-        if (prev >= maxSteps - 1) return 0;
-        return prev + 1;
-      });
-      setStep(prev => (prev + 1) % maxSteps);
-    }, speed * 1000);
+      setCurrentStep((prev) => (prev + 1) % maxSteps);
+    }, Math.max(250, 1200 / playbackRate));
     return () => clearInterval(timer);
-  }, [isPlaying, speed, maxSteps]);
+  }, [isPlaying, playbackRate, maxSteps]);
 
   const handleReset = () => {
-    setHighlightedIndex(null);
-    setStep(0);
+    setCurrentStep(0);
     setIsPlaying(true);
   };
 
   const handlePrevious = () => {
     setIsPlaying(false);
-    setHighlightedIndex(prev => {
-      if (prev === null || prev === 0) return maxSteps - 1;
-      return prev - 1;
-    });
+    setCurrentStep((prev) => (prev === 0 ? maxSteps - 1 : prev - 1));
   };
 
   const handleNext = () => {
     setIsPlaying(false);
-    setHighlightedIndex(prev => {
-      if (prev === null) return 0;
-      if (prev >= maxSteps - 1) return 0;
-      return prev + 1;
-    });
+    setCurrentStep((prev) => (prev + 1) % maxSteps);
   };
 
   // Example-based visualizations with meaningful data
@@ -188,11 +174,11 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
   const visualizeArray = () => {
     let arrayData = data.length > 0 ? data : [2, 5, 8, 12, 16, 23, 38, 45];
     let stepText = '';
-    let currentHighlights = [highlightedIndex];
+    let currentHighlights = [currentStep];
     let displayText = description;
 
     if (advancedSteps.length > 0) {
-      const stepData = advancedSteps[step % maxSteps];
+      const stepData = advancedSteps[currentStep % maxSteps];
       if (stepData.dataState) {
         arrayData = stepData.dataState;
       }
@@ -202,7 +188,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
     } else {
       const examples = getExampleData();
       const currentExample = examples['array-search'];
-      stepText = currentExample.steps[Math.min(highlightedIndex || 0, currentExample.steps.length - 1)] || '';
+      stepText = currentExample.steps[Math.min(currentStep, currentExample.steps.length - 1)] || '';
       displayText = currentExample.description;
     }
 
@@ -249,7 +235,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
           })}
         </div>
         <div style={{ marginTop: '1rem', textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-          Step {step + 1} of {maxSteps}
+          Step {currentStep + 1} of {maxSteps}
         </div>
       </div>
     );
@@ -259,7 +245,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
     const listData = data.length > 0 ? data : [10, 20, 30, 40];
     const examples = getExampleData();
     const currentExample = examples['linked-list-insert'] || { data: listData, description: '', steps: [] };
-    const stepText = currentExample.steps[Math.min(highlightedIndex || 0, currentExample.steps.length - 1)] || '';
+    const stepText = currentExample.steps[Math.min(currentStep, currentExample.steps.length - 1)] || '';
 
     return (
       <div className="visualization-linked-list">
@@ -278,9 +264,9 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{
-                    scale: highlightedIndex === idx ? 1.2 : 1,
+                      scale: currentStep === idx ? 1.2 : 1,
                     opacity: 1,
-                    backgroundColor: highlightedIndex === idx ? 'var(--secondary-color)' : 'var(--primary-color)'
+                      backgroundColor: currentStep === idx ? 'var(--secondary-color)' : 'var(--primary-color)'
                   }}
                   transition={{ duration: 0.4 }}
                   style={{
@@ -292,7 +278,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
                     borderRadius: '4px',
                     color: 'white',
                     fontWeight: '600',
-                    boxShadow: highlightedIndex === idx ? '0 0 20px var(--secondary-color)' : '0 2px 8px rgba(0, 0, 0, 0.1)'
+                    boxShadow: currentStep === idx ? '0 0 20px var(--secondary-color)' : '0 2px 8px rgba(0, 0, 0, 0.1)'
                   }}
                 >
                   {item}
@@ -319,7 +305,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
     const stackData = data.length > 0 ? data : [1, 2, 3, 4, 5];
     const examples = getExampleData();
     const currentExample = examples['stack-operations'] || { data: stackData, description: '', steps: [] };
-    const stepText = currentExample.steps[Math.min(step % currentExample.steps.length, currentExample.steps.length - 1)] || '';
+    const stepText = currentExample.steps[Math.min(currentStep % currentExample.steps.length, currentExample.steps.length - 1)] || '';
 
     return (
       <div>
@@ -363,7 +349,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
     const queueData = data.length > 0 ? data : [1, 2, 3, 4, 5];
     const examples = getExampleData();
     const currentExample = examples['queue-operations'] || { data: queueData, description: '', steps: [] };
-    const stepText = currentExample.steps[Math.min(step % currentExample.steps.length, currentExample.steps.length - 1)] || '';
+    const stepText = currentExample.steps[Math.min(currentStep % currentExample.steps.length, currentExample.steps.length - 1)] || '';
 
     return (
       <div>
@@ -409,7 +395,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
     const heapData = data.length > 0 ? data : [10, 8, 9, 4, 5, 3, 2];
     const examples = getExampleData();
     const currentExample = examples['heap-insert'] || { data: heapData, description: '', steps: [] };
-    const stepText = currentExample.steps[Math.min(highlightedIndex || 0, currentExample.steps.length - 1)] || '';
+    const stepText = currentExample.steps[Math.min(currentStep, currentExample.steps.length - 1)] || '';
 
     return (
       <div>
@@ -483,7 +469,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
     const tableData = data.length > 0 ? data.slice(0, 5) : ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'];
     const examples = getExampleData();
     const currentExample = examples['hash-insert'] || { data: tableData, description: '', steps: [] };
-    const stepText = currentExample.steps[Math.min(step % currentExample.steps.length, currentExample.steps.length - 1)] || '';
+    const stepText = currentExample.steps[Math.min(currentStep % currentExample.steps.length, currentExample.steps.length - 1)] || '';
 
     return (
       <div>
@@ -535,11 +521,11 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
     // In-order traversal indices to highlight:
     // 3, 5, 7, 10, 12, 15, 18
     const highlightOrder = [3, 1, 4, 0, 5, 2, 6];
-    const currentIndexToHighlight = highlightOrder[Math.min(highlightedIndex || 0, highlightOrder.length - 1)];
+    const currentIndexToHighlight = highlightOrder[Math.min(currentStep, highlightOrder.length - 1)];
 
     const examples = getExampleData();
     const currentExample = examples['binary-tree-inorder'] || { data: [], description: '', steps: [] };
-    const stepText = currentExample.steps[Math.min(highlightedIndex || 0, currentExample.steps.length - 1)] || '';
+    const stepText = currentExample.steps[Math.min(currentStep, currentExample.steps.length - 1)] || '';
 
     return (
       <div>
@@ -621,11 +607,11 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
       [5],          // F (neighbors of C)
       [0,1,2,3,4,5] // All
     ];
-    const currentActiveList = activeNodesByStep[Math.min(highlightedIndex || 0, activeNodesByStep.length - 1)] || [];
+    const currentActiveList = activeNodesByStep[Math.min(currentStep, activeNodesByStep.length - 1)] || [];
 
     const examples = getExampleData();
     const currentExample = examples['graph-bfs'] || { data: [], description: '', steps: [] };
-    const stepText = currentExample.steps[Math.min(highlightedIndex || 0, currentExample.steps.length - 1)] || '';
+    const stepText = currentExample.steps[Math.min(currentStep, currentExample.steps.length - 1)] || '';
 
     return (
       <div>
@@ -744,6 +730,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
         {/* Play/Pause */}
         <button
           onClick={() => setIsPlaying(!isPlaying)}
+          aria-label={isPlaying ? 'Pause visualization' : 'Play visualization'}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -769,6 +756,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
         {/* Previous Step */}
         <button
           onClick={handlePrevious}
+          aria-label="Previous step"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -797,12 +785,13 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
           fontWeight: '600',
           border: '1px solid var(--primary-color)'
         }}>
-          Step {(highlightedIndex ?? 0) + 1} / {maxSteps}
+          Step {currentStep + 1} / {maxSteps}
         </span>
 
         {/* Next Step */}
         <button
           onClick={handleNext}
+          aria-label="Next step"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -824,6 +813,7 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
         {/* Reset */}
         <button
           onClick={handleReset}
+          aria-label="Reset visualization"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -864,15 +854,15 @@ const DataStructureVisualizer: React.FC<VisualizerProps> = ({
             min="0.5"
             max="3"
             step="0.5"
-            value={speed}
-            onChange={(e) => setSpeed(parseFloat(e.target.value))}
+            value={playbackRate}
+            onChange={(e) => setPlaybackRate(parseFloat(e.target.value))}
             style={{
               width: '80px',
               cursor: 'pointer'
             }}
           />
           <span style={{ fontSize: '0.85rem', color: 'var(--primary-color)', minWidth: '30px' }}>
-            {(4 - speed).toFixed(1)}x
+            {playbackRate.toFixed(1)}x
           </span>
         </div>
       </div>

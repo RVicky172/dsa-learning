@@ -1,12 +1,12 @@
 # Graph Report - .  (2026-04-20)
 
 ## Corpus Check
-- 91 files · ~93,939 words
+- 95 files · ~97,319 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 174 nodes · 118 edges · 74 communities detected
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.8)
+- 202 nodes · 156 edges · 77 communities detected
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -84,18 +84,21 @@
 - [[_COMMUNITY_Community 71|Community 71]]
 - [[_COMMUNITY_Community 72|Community 72]]
 - [[_COMMUNITY_Community 73|Community 73]]
+- [[_COMMUNITY_Community 74|Community 74]]
+- [[_COMMUNITY_Community 75|Community 75]]
+- [[_COMMUNITY_Community 76|Community 76]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `DSA Learning App` - 6 edges
-2. `resetListUiState()` - 4 edges
-3. `normalize_node()` - 3 edges
-4. `patch_extract()` - 3 edges
-5. `patch_graph()` - 3 edges
-6. `main()` - 3 edges
-7. `loadProblems()` - 3 edges
-8. `resetForm()` - 3 edges
-9. `submitForm()` - 3 edges
-10. `deleteProblem()` - 3 edges
+1. `executeInDocker()` - 6 edges
+2. `DSA Learning App` - 6 edges
+3. `processQueue()` - 5 edges
+4. `applyAnnotationIndex()` - 4 edges
+5. `resetListUiState()` - 4 edges
+6. `normalize_node()` - 3 edges
+7. `patch_extract()` - 3 edges
+8. `patch_graph()` - 3 edges
+9. `main()` - 3 edges
+10. `loadProblems()` - 3 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `loadProblems()` --calls--> `submitForm()`  [INFERRED]
@@ -104,6 +107,8 @@
   src\components\ProblemsPage.tsx → src\components\admin\AdminProblemsManager.tsx
 - `TopicCard()` --calls--> `useProgress()`  [INFERRED]
   src\components\TopicCard.tsx → src\hooks\useProgress.ts
+- `useAuth()` --calls--> `useCodeExecution()`  [INFERRED]
+  src\hooks\useAuth.ts → src\hooks\useCodeExecution.ts
 - `useAuth()` --calls--> `useProgress()`  [INFERRED]
   src\hooks\useAuth.ts → src\hooks\useProgress.ts
 
@@ -111,63 +116,63 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.1
-Nodes (3): mapProblemDetail(), mapProblemListItem(), recomputeUserTopicProgress()
+Nodes (4): hasPremiumAccess(), mapProblemDetail(), mapProblemListItem(), recomputeUserTopicProgress()
 
 ### Community 1 - "Community 1"
+Cohesion: 0.24
+Nodes (11): buildDockerArgs(), enqueueExecution(), executeInDocker(), getLanguageRuntime(), looksLikeTypeScript(), persistQueuedExecution(), processQueue(), transpileTypeScriptToNodeJs() (+3 more)
+
+### Community 2 - "Community 2"
+Cohesion: 0.19
+Nodes (4): applyAnnotationIndex(), startAnimation(), stepBackward(), stepForward()
+
+### Community 3 - "Community 3"
 Cohesion: 0.2
 Nodes (0): 
 
-### Community 2 - "Community 2"
-Cohesion: 0.22
-Nodes (0): 
-
-### Community 3 - "Community 3"
-Cohesion: 0.36
+### Community 4 - "Community 4"
+Cohesion: 0.31
 Nodes (4): handleCategoryChange(), handleDifficultyChange(), handleSearchChange(), resetListUiState()
 
-### Community 4 - "Community 4"
+### Community 5 - "Community 5"
+Cohesion: 0.25
+Nodes (4): TopicCard(), useAuth(), useCodeExecution(), useProgress()
+
+### Community 6 - "Community 6"
 Cohesion: 0.29
 Nodes (5): Big-O Notation Guide, DSA Learning App, Interactive Visualizers, Learning Roadmap, Problem Practice
 
-### Community 5 - "Community 5"
+### Community 7 - "Community 7"
 Cohesion: 0.53
 Nodes (4): deleteProblem(), resetForm(), submitForm(), loadProblems()
 
-### Community 6 - "Community 6"
-Cohesion: 0.33
-Nodes (3): TopicCard(), useAuth(), useProgress()
-
-### Community 7 - "Community 7"
+### Community 8 - "Community 8"
 Cohesion: 0.8
 Nodes (4): main(), normalize_node(), patch_extract(), patch_graph()
 
-### Community 8 - "Community 8"
+### Community 9 - "Community 9"
 Cohesion: 0.4
 Nodes (0): 
 
-### Community 9 - "Community 9"
+### Community 10 - "Community 10"
 Cohesion: 0.6
 Nodes (3): deleteTopic(), resetForm(), submitForm()
-
-### Community 10 - "Community 10"
-Cohesion: 0.5
-Nodes (0): 
 
 ### Community 11 - "Community 11"
 Cohesion: 0.5
 Nodes (0): 
 
 ### Community 12 - "Community 12"
-Cohesion: 0.67
-Nodes (2): convertToProblem(), normalizeDifficulty()
+Cohesion: 0.5
+Nodes (0): 
 
 ### Community 13 - "Community 13"
-Cohesion: 0.67
+Cohesion: 0.5
 Nodes (0): 
 
 ### Community 14 - "Community 14"
-Cohesion: 1.0
-Nodes (2): ensureAdminRole(), run()
+Cohesion: 0.67
+Nodes (2): convertToProblem(), normalizeDifficulty()
 
 ### Community 15 - "Community 15"
 Cohesion: 0.67
@@ -175,15 +180,15 @@ Nodes (0):
 
 ### Community 16 - "Community 16"
 Cohesion: 1.0
-Nodes (2): buildHeaders(), request()
+Nodes (2): ensureAdminRole(), run()
 
 ### Community 17 - "Community 17"
-Cohesion: 1.0
+Cohesion: 0.67
 Nodes (0): 
 
 ### Community 18 - "Community 18"
 Cohesion: 1.0
-Nodes (0): 
+Nodes (2): buildHeaders(), request()
 
 ### Community 19 - "Community 19"
 Cohesion: 1.0
@@ -405,129 +410,143 @@ Nodes (0):
 Cohesion: 1.0
 Nodes (0): 
 
+### Community 74 - "Community 74"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 75 - "Community 75"
+Cohesion: 1.0
+Nodes (0): 
+
+### Community 76 - "Community 76"
+Cohesion: 1.0
+Nodes (0): 
+
 ## Knowledge Gaps
 - **4 isolated node(s):** `Interactive Visualizers`, `Big-O Notation Guide`, `Problem Practice`, `Learning Roadmap`
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 17`** (2 nodes): `authenticate()`, `authenticate.ts`
+- **Thin community `Community 19`** (2 nodes): `authenticate()`, `authenticate.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 18`** (2 nodes): `optionalAuthenticate.ts`, `optionalAuthenticate()`
+- **Thin community `Community 20`** (2 nodes): `optionalAuthenticate.ts`, `optionalAuthenticate()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (2 nodes): `requireAdmin.ts`, `requireAdmin()`
+- **Thin community `Community 21`** (2 nodes): `requireAdmin.ts`, `requireAdmin()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (2 nodes): `scrollToSection()`, `Hero.tsx`
+- **Thin community `Community 22`** (2 nodes): `scrollToSection()`, `Hero.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (2 nodes): `TopicDetail.tsx`, `loadTopic()`
+- **Thin community `Community 23`** (2 nodes): `TopicDetail.tsx`, `loadTopic()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (2 nodes): `useTheme.ts`, `useTheme()`
+- **Thin community `Community 24`** (2 nodes): `useTheme.ts`, `useTheme()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 23`** (2 nodes): `handleSubmit()`, `Login.tsx`
+- **Thin community `Community 25`** (2 nodes): `handleSubmit()`, `Login.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 24`** (2 nodes): `handleSubmit()`, `Register.tsx`
+- **Thin community `Community 26`** (2 nodes): `handleSubmit()`, `Register.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 25`** (2 nodes): `Subscription.tsx`, `handleUpgrade()`
+- **Thin community `Community 27`** (2 nodes): `Subscription.tsx`, `handleUpgrade()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 26`** (2 nodes): `buildProblemListPath()`, `problemService.ts`
+- **Thin community `Community 28`** (2 nodes): `buildExecutionListPath()`, `executionService.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 27`** (1 nodes): `eslint.config.js`
+- **Thin community `Community 29`** (2 nodes): `buildProblemListPath()`, `problemService.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 28`** (1 nodes): `vite.config.ts`
+- **Thin community `Community 30`** (1 nodes): `eslint.config.js`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 29`** (1 nodes): `express.d.ts`
+- **Thin community `Community 31`** (1 nodes): `vite.config.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 30`** (1 nodes): `AuthContextDefinition.ts`
+- **Thin community `Community 32`** (1 nodes): `express.d.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 31`** (1 nodes): `topicsData.ts`
+- **Thin community `Community 33`** (1 nodes): `AuthContextDefinition.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 32`** (1 nodes): `arrays.ts`
+- **Thin community `Community 34`** (1 nodes): `topicsData.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 33`** (1 nodes): `design.ts`
+- **Thin community `Community 35`** (1 nodes): `arrays.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 34`** (1 nodes): `dynamicProgramming.ts`
+- **Thin community `Community 36`** (1 nodes): `design.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 35`** (1 nodes): `graphs.ts`
+- **Thin community `Community 37`** (1 nodes): `dynamicProgramming.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 36`** (1 nodes): `greedy.ts`
+- **Thin community `Community 38`** (1 nodes): `graphs.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 37`** (1 nodes): `hashTables.ts`
+- **Thin community `Community 39`** (1 nodes): `greedy.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 38`** (1 nodes): `heaps.ts`
+- **Thin community `Community 40`** (1 nodes): `hashTables.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 39`** (1 nodes): `linkedLists.ts`
+- **Thin community `Community 41`** (1 nodes): `heaps.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 40`** (1 nodes): `math.ts`
+- **Thin community `Community 42`** (1 nodes): `linkedLists.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 41`** (1 nodes): `recursion.ts`
+- **Thin community `Community 43`** (1 nodes): `math.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 42`** (1 nodes): `sorting.ts`
+- **Thin community `Community 44`** (1 nodes): `recursion.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 43`** (1 nodes): `stacksQueues.ts`
+- **Thin community `Community 45`** (1 nodes): `sorting.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 44`** (1 nodes): `strings.ts`
+- **Thin community `Community 46`** (1 nodes): `stacksQueues.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 45`** (1 nodes): `trees.ts`
+- **Thin community `Community 47`** (1 nodes): `strings.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 46`** (1 nodes): `tries.ts`
+- **Thin community `Community 48`** (1 nodes): `trees.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 47`** (1 nodes): `design.ts`
+- **Thin community `Community 49`** (1 nodes): `tries.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 48`** (1 nodes): `dynamicProgramming.ts`
+- **Thin community `Community 50`** (1 nodes): `design.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 49`** (1 nodes): `graphs.ts`
+- **Thin community `Community 51`** (1 nodes): `dynamicProgramming.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 50`** (1 nodes): `greedy.ts`
+- **Thin community `Community 52`** (1 nodes): `graphs.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 51`** (1 nodes): `hashTables.ts`
+- **Thin community `Community 53`** (1 nodes): `greedy.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 52`** (1 nodes): `heaps.ts`
+- **Thin community `Community 54`** (1 nodes): `hashTables.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 53`** (1 nodes): `linkedLists.ts`
+- **Thin community `Community 55`** (1 nodes): `heaps.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 54`** (1 nodes): `mathBitLogic.ts`
+- **Thin community `Community 56`** (1 nodes): `linkedLists.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 55`** (1 nodes): `recursionBacktracking.ts`
+- **Thin community `Community 57`** (1 nodes): `mathBitLogic.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 56`** (1 nodes): `sorting.ts`
+- **Thin community `Community 58`** (1 nodes): `recursionBacktracking.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 57`** (1 nodes): `stacksQueues.ts`
+- **Thin community `Community 59`** (1 nodes): `sorting.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 58`** (1 nodes): `strings.ts`
+- **Thin community `Community 60`** (1 nodes): `stacksQueues.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 59`** (1 nodes): `trees.ts`
+- **Thin community `Community 61`** (1 nodes): `strings.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 60`** (1 nodes): `tries.ts`
+- **Thin community `Community 62`** (1 nodes): `trees.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 61`** (1 nodes): `examples.ts`
+- **Thin community `Community 63`** (1 nodes): `tries.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 62`** (1 nodes): `index.ts`
+- **Thin community `Community 64`** (1 nodes): `examples.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 63`** (1 nodes): `patterns.ts`
+- **Thin community `Community 65`** (1 nodes): `index.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 64`** (1 nodes): `theory.ts`
+- **Thin community `Community 66`** (1 nodes): `patterns.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 65`** (1 nodes): `visualizations.ts`
+- **Thin community `Community 67`** (1 nodes): `theory.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 66`** (1 nodes): `AdminDashboard.tsx`
+- **Thin community `Community 68`** (1 nodes): `visualizations.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 67`** (1 nodes): `Home.tsx`
+- **Thin community `Community 69`** (1 nodes): `AdminDashboard.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 68`** (1 nodes): `Profile.tsx`
+- **Thin community `Community 70`** (1 nodes): `Home.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 69`** (1 nodes): `authService.ts`
+- **Thin community `Community 71`** (1 nodes): `Profile.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 70`** (1 nodes): `progressService.ts`
+- **Thin community `Community 72`** (1 nodes): `authService.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 71`** (1 nodes): `subscriptionService.ts`
+- **Thin community `Community 73`** (1 nodes): `progressService.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 72`** (1 nodes): `api.ts`
+- **Thin community `Community 74`** (1 nodes): `subscriptionService.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 73`** (1 nodes): `topic.ts`
+- **Thin community `Community 75`** (1 nodes): `api.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 76`** (1 nodes): `topic.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `loadProblems()` connect `Community 5` to `Community 3`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **Why does `loadProblems()` connect `Community 7` to `Community 4`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `Interactive Visualizers`, `Big-O Notation Guide`, `Problem Practice` to the rest of the system?**
   _4 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**

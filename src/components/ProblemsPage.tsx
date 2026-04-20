@@ -10,6 +10,7 @@ import { useProgress } from '../hooks/useProgress';
 import { useAuth } from '../hooks/useAuth';
 import { problemService } from '../services/problemService';
 import type { ProblemListItemApi } from '../types/api';
+import CodeExecutionPanel from './CodeExecutionPanel';
 
 const difficultyColors: Record<string, string> = {
     'Easy': '#22c55e',
@@ -700,6 +701,14 @@ const ProblemCard = ({
                             </div>
                         ))}
                     </div>
+                    ) : null}
+
+                    {/* Solution Button */}
+                    {!isLocked ? (
+                    <CodeExecutionPanel
+                        problemId={problem.id}
+                        initialCode={problem.solution.code}
+                    />
                     ) : null}
 
                     {/* Solution Button */}

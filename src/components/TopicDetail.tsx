@@ -3,6 +3,7 @@ import { ArrowLeft, BookOpen, Code, Lightbulb, Trophy, Briefcase, ChevronDown, C
 import type { Topic } from '../types/topic';
 import DataStructureVisualizer, { type VisualizerProps } from './DataStructureVisualizer';
 import { useProgress } from '../hooks/useProgress';
+import CodeExecutionPanel from './CodeExecutionPanel';
 
 interface TopicDetailProps {
     topicId: string;
@@ -586,6 +587,12 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                                         ))}
                                     </ul>
                                 </details>
+
+                                {/* Run Code */}
+                                <CodeExecutionPanel
+                                    problemId={problem.id}
+                                    initialCode={problem.solution.code}
+                                />
 
                                 {/* Solution Toggle */}
                                 <button

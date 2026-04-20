@@ -9,7 +9,7 @@
       "source_file": "src\\main.ts",
       "source_location": "L1",
       "id": "src_main_ts",
-      "community": 0,
+      "community": 1,
       "norm_label": "main.ts"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "src\\common\\logging\\logger.ts",
       "source_location": "L1",
       "id": "src_common_logging_logger_ts",
-      "community": 0,
+      "community": 1,
       "norm_label": "logger.ts"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "src\\common\\middleware\\authenticate.ts",
       "source_location": "L1",
       "id": "src_common_middleware_authenticate_ts",
-      "community": 3,
+      "community": 6,
       "norm_label": "authenticate.ts"
     },
     {
@@ -36,8 +36,26 @@
       "source_file": "src\\common\\middleware\\authenticate.ts",
       "source_location": "L4",
       "id": "authenticate_authenticate",
-      "community": 3,
+      "community": 6,
       "norm_label": "authenticate()"
+    },
+    {
+      "label": "optionalAuthenticate.ts",
+      "file_type": "code",
+      "source_file": "src\\common\\middleware\\optionalAuthenticate.ts",
+      "source_location": "L1",
+      "id": "src_common_middleware_optionalauthenticate_ts",
+      "community": 7,
+      "norm_label": "optionalauthenticate.ts"
+    },
+    {
+      "label": "optionalAuthenticate()",
+      "file_type": "code",
+      "source_file": "src\\common\\middleware\\optionalAuthenticate.ts",
+      "source_location": "L4",
+      "id": "optionalauthenticate_optionalauthenticate",
+      "community": 7,
+      "norm_label": "optionalauthenticate()"
     },
     {
       "label": "requireAdmin.ts",
@@ -45,7 +63,7 @@
       "source_file": "src\\common\\middleware\\requireAdmin.ts",
       "source_location": "L1",
       "id": "src_common_middleware_requireadmin_ts",
-      "community": 4,
+      "community": 8,
       "norm_label": "requireadmin.ts"
     },
     {
@@ -54,7 +72,7 @@
       "source_file": "src\\common\\middleware\\requireAdmin.ts",
       "source_location": "L8",
       "id": "requireadmin_requireadmin",
-      "community": 4,
+      "community": 8,
       "norm_label": "requireadmin()"
     },
     {
@@ -63,7 +81,7 @@
       "source_file": "src\\config\\env.ts",
       "source_location": "L1",
       "id": "src_config_env_ts",
-      "community": 0,
+      "community": 1,
       "norm_label": "env.ts"
     },
     {
@@ -72,7 +90,7 @@
       "source_file": "src\\db\\client.ts",
       "source_location": "L1",
       "id": "src_db_client_ts",
-      "community": 1,
+      "community": 4,
       "norm_label": "client.ts"
     },
     {
@@ -81,7 +99,7 @@
       "source_file": "src\\db\\runMigration.ts",
       "source_location": "L1",
       "id": "src_db_runmigration_ts",
-      "community": 1,
+      "community": 4,
       "norm_label": "runmigration.ts"
     },
     {
@@ -90,7 +108,7 @@
       "source_file": "src\\db\\runMigration.ts",
       "source_location": "L9",
       "id": "runmigration_run",
-      "community": 1,
+      "community": 4,
       "norm_label": "run()"
     },
     {
@@ -99,7 +117,7 @@
       "source_file": "src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L1",
       "id": "src_db_seeds_seedadmin_ts",
-      "community": 2,
+      "community": 5,
       "norm_label": "seedadmin.ts"
     },
     {
@@ -108,7 +126,7 @@
       "source_file": "src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L9",
       "id": "seedadmin_ensureadminrole",
-      "community": 2,
+      "community": 5,
       "norm_label": "ensureadminrole()"
     },
     {
@@ -117,7 +135,7 @@
       "source_file": "src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L29",
       "id": "seedadmin_run",
-      "community": 2,
+      "community": 5,
       "norm_label": "run()"
     },
     {
@@ -126,8 +144,35 @@
       "source_file": "src\\modules\\admin\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_admin_routes_ts",
-      "community": 0,
+      "community": 3,
       "norm_label": "routes.ts"
+    },
+    {
+      "label": "isPgError()",
+      "file_type": "code",
+      "source_file": "src\\modules\\admin\\routes.ts",
+      "source_location": "L64",
+      "id": "routes_ispgerror",
+      "community": 3,
+      "norm_label": "ispgerror()"
+    },
+    {
+      "label": "mapTopic()",
+      "file_type": "code",
+      "source_file": "src\\modules\\admin\\routes.ts",
+      "source_location": "L68",
+      "id": "routes_maptopic",
+      "community": 3,
+      "norm_label": "maptopic()"
+    },
+    {
+      "label": "mapProblem()",
+      "file_type": "code",
+      "source_file": "src\\modules\\admin\\routes.ts",
+      "source_location": "L81",
+      "id": "routes_mapproblem",
+      "community": 3,
+      "norm_label": "mapproblem()"
     },
     {
       "label": "routes.ts",
@@ -135,7 +180,7 @@
       "source_file": "src\\modules\\auth\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_auth_routes_ts",
-      "community": 5,
+      "community": 1,
       "norm_label": "routes.ts"
     },
     {
@@ -144,7 +189,7 @@
       "source_file": "src\\modules\\auth\\routes.ts",
       "source_location": "L39",
       "id": "routes_buildauthresponse",
-      "community": 5,
+      "community": 1,
       "norm_label": "buildauthresponse()"
     },
     {
@@ -153,8 +198,26 @@
       "source_file": "src\\modules\\execution\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_execution_routes_ts",
-      "community": 0,
+      "community": 2,
       "norm_label": "routes.ts"
+    },
+    {
+      "label": "hasPremiumAccess()",
+      "file_type": "code",
+      "source_file": "src\\modules\\problems\\routes.ts",
+      "source_location": "L65",
+      "id": "routes_haspremiumaccess",
+      "community": 2,
+      "norm_label": "haspremiumaccess()"
+    },
+    {
+      "label": "mapExecution()",
+      "file_type": "code",
+      "source_file": "src\\modules\\execution\\routes.ts",
+      "source_location": "L88",
+      "id": "routes_mapexecution",
+      "community": 2,
+      "norm_label": "mapexecution()"
     },
     {
       "label": "routes.ts",
@@ -162,7 +225,7 @@
       "source_file": "src\\modules\\health\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_health_routes_ts",
-      "community": 0,
+      "community": 1,
       "norm_label": "routes.ts"
     },
     {
@@ -171,8 +234,17 @@
       "source_file": "src\\modules\\payments\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_payments_routes_ts",
-      "community": 0,
+      "community": 1,
       "norm_label": "routes.ts"
+    },
+    {
+      "label": "activateSubscriptionByPaymentId()",
+      "file_type": "code",
+      "source_file": "src\\modules\\payments\\routes.ts",
+      "source_location": "L24",
+      "id": "routes_activatesubscriptionbypaymentid",
+      "community": 1,
+      "norm_label": "activatesubscriptionbypaymentid()"
     },
     {
       "label": "routes.ts",
@@ -180,8 +252,35 @@
       "source_file": "src\\modules\\problems\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_problems_routes_ts",
-      "community": 0,
+      "community": 2,
       "norm_label": "routes.ts"
+    },
+    {
+      "label": "mapProblemListItem()",
+      "file_type": "code",
+      "source_file": "src\\modules\\problems\\routes.ts",
+      "source_location": "L43",
+      "id": "routes_mapproblemlistitem",
+      "community": 2,
+      "norm_label": "mapproblemlistitem()"
+    },
+    {
+      "label": "mapProblemDetail()",
+      "file_type": "code",
+      "source_file": "src\\modules\\problems\\routes.ts",
+      "source_location": "L57",
+      "id": "routes_mapproblemdetail",
+      "community": 2,
+      "norm_label": "mapproblemdetail()"
+    },
+    {
+      "label": "recomputeUserTopicProgress()",
+      "file_type": "code",
+      "source_file": "src\\modules\\progress\\routes.ts",
+      "source_location": "L19",
+      "id": "routes_recomputeusertopicprogress",
+      "community": 2,
+      "norm_label": "recomputeusertopicprogress()"
     },
     {
       "label": "routes.ts",
@@ -189,7 +288,7 @@
       "source_file": "src\\modules\\progress\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_progress_routes_ts",
-      "community": 0,
+      "community": 2,
       "norm_label": "routes.ts"
     },
     {
@@ -198,7 +297,7 @@
       "source_file": "src\\modules\\subscriptions\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_subscriptions_routes_ts",
-      "community": 0,
+      "community": 1,
       "norm_label": "routes.ts"
     },
     {
@@ -207,7 +306,7 @@
       "source_file": "src\\modules\\topics\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_topics_routes_ts",
-      "community": 0,
+      "community": 1,
       "norm_label": "routes.ts"
     },
     {
@@ -216,8 +315,116 @@
       "source_file": "src\\modules\\users\\routes.ts",
       "source_location": "L1",
       "id": "src_modules_users_routes_ts",
-      "community": 0,
+      "community": 1,
       "norm_label": "routes.ts"
+    },
+    {
+      "label": "executionWorker.ts",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L1",
+      "id": "src_queue_executionworker_ts",
+      "community": 0,
+      "norm_label": "executionworker.ts"
+    },
+    {
+      "label": "getLanguageRuntime()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L60",
+      "id": "executionworker_getlanguageruntime",
+      "community": 0,
+      "norm_label": "getlanguageruntime()"
+    },
+    {
+      "label": "buildDockerArgs()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L78",
+      "id": "executionworker_builddockerargs",
+      "community": 0,
+      "norm_label": "builddockerargs()"
+    },
+    {
+      "label": "executeInDocker()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L100",
+      "id": "executionworker_executeindocker",
+      "community": 0,
+      "norm_label": "executeindocker()"
+    },
+    {
+      "label": "persistQueuedExecution()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L177",
+      "id": "executionworker_persistqueuedexecution",
+      "community": 0,
+      "norm_label": "persistqueuedexecution()"
+    },
+    {
+      "label": "updateExecutionRunning()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L192",
+      "id": "executionworker_updateexecutionrunning",
+      "community": 0,
+      "norm_label": "updateexecutionrunning()"
+    },
+    {
+      "label": "updateExecutionResult()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L196",
+      "id": "executionworker_updateexecutionresult",
+      "community": 0,
+      "norm_label": "updateexecutionresult()"
+    },
+    {
+      "label": "updateExecutionFailure()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L214",
+      "id": "executionworker_updateexecutionfailure",
+      "community": 0,
+      "norm_label": "updateexecutionfailure()"
+    },
+    {
+      "label": "processQueue()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L235",
+      "id": "executionworker_processqueue",
+      "community": 0,
+      "norm_label": "processqueue()"
+    },
+    {
+      "label": "sanitizeTimeoutMs()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L276",
+      "id": "executionworker_sanitizetimeoutms",
+      "community": 0,
+      "norm_label": "sanitizetimeoutms()"
+    },
+    {
+      "label": "enqueueExecution()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L284",
+      "id": "executionworker_enqueueexecution",
+      "community": 0,
+      "norm_label": "enqueueexecution()"
+    },
+    {
+      "label": "getExecutionById()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L314",
+      "id": "executionworker_getexecutionbyid",
+      "community": 0,
+      "norm_label": "getexecutionbyid()"
     },
     {
       "label": "express.d.ts",
@@ -225,7 +432,7 @@
       "source_file": "src\\types\\express.d.ts",
       "source_location": "L1",
       "id": "src_types_express_d_ts",
-      "community": 6,
+      "community": 9,
       "norm_label": "express.d.ts"
     }
   ],
@@ -389,6 +596,18 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src\\common\\middleware\\optionalAuthenticate.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_common_middleware_optionalauthenticate_ts",
+      "_tgt": "optionalauthenticate_optionalauthenticate",
+      "source": "src_common_middleware_optionalauthenticate_ts",
+      "target": "optionalauthenticate_optionalauthenticate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src\\common\\middleware\\requireAdmin.ts",
       "source_location": "L8",
       "weight": 1.0,
@@ -461,6 +680,42 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\admin\\routes.ts",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_src": "src_modules_admin_routes_ts",
+      "_tgt": "routes_ispgerror",
+      "source": "src_modules_admin_routes_ts",
+      "target": "routes_ispgerror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\admin\\routes.ts",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "src_modules_admin_routes_ts",
+      "_tgt": "routes_maptopic",
+      "source": "src_modules_admin_routes_ts",
+      "target": "routes_maptopic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\admin\\routes.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "src_modules_admin_routes_ts",
+      "_tgt": "routes_mapproblem",
+      "source": "src_modules_admin_routes_ts",
+      "target": "routes_mapproblem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src\\modules\\auth\\routes.ts",
       "source_location": "L39",
       "weight": 1.0,
@@ -468,6 +723,330 @@
       "_tgt": "routes_buildauthresponse",
       "source": "src_modules_auth_routes_ts",
       "target": "routes_buildauthresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\execution\\routes.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "src_modules_execution_routes_ts",
+      "_tgt": "routes_haspremiumaccess",
+      "source": "src_modules_execution_routes_ts",
+      "target": "routes_haspremiumaccess",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\execution\\routes.ts",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_src": "src_modules_execution_routes_ts",
+      "_tgt": "routes_mapexecution",
+      "source": "src_modules_execution_routes_ts",
+      "target": "routes_mapexecution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\problems\\routes.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "src_modules_problems_routes_ts",
+      "_tgt": "routes_haspremiumaccess",
+      "source": "routes_haspremiumaccess",
+      "target": "src_modules_problems_routes_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\payments\\routes.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "src_modules_payments_routes_ts",
+      "_tgt": "routes_activatesubscriptionbypaymentid",
+      "source": "src_modules_payments_routes_ts",
+      "target": "routes_activatesubscriptionbypaymentid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\problems\\routes.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "src_modules_problems_routes_ts",
+      "_tgt": "routes_mapproblemlistitem",
+      "source": "src_modules_problems_routes_ts",
+      "target": "routes_mapproblemlistitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\problems\\routes.ts",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "src_modules_problems_routes_ts",
+      "_tgt": "routes_mapproblemdetail",
+      "source": "src_modules_problems_routes_ts",
+      "target": "routes_mapproblemdetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\problems\\routes.ts",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_src": "src_modules_problems_routes_ts",
+      "_tgt": "routes_recomputeusertopicprogress",
+      "source": "src_modules_problems_routes_ts",
+      "target": "routes_recomputeusertopicprogress",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\problems\\routes.ts",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_src": "routes_mapproblemdetail",
+      "_tgt": "routes_mapproblemlistitem",
+      "source": "routes_mapproblemlistitem",
+      "target": "routes_mapproblemdetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\progress\\routes.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "src_modules_progress_routes_ts",
+      "_tgt": "routes_recomputeusertopicprogress",
+      "source": "routes_recomputeusertopicprogress",
+      "target": "src_modules_progress_routes_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_getlanguageruntime",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_getlanguageruntime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_builddockerargs",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_builddockerargs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_executeindocker",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_executeindocker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L177",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_persistqueuedexecution",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_persistqueuedexecution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L192",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_updateexecutionrunning",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_updateexecutionrunning",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L196",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_updateexecutionresult",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_updateexecutionresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L214",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_updateexecutionfailure",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_updateexecutionfailure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L235",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_processqueue",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L276",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_sanitizetimeoutms",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_sanitizetimeoutms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L284",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_enqueueexecution",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_enqueueexecution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L314",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_getexecutionbyid",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_getexecutionbyid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_src": "executionworker_executeindocker",
+      "_tgt": "executionworker_getlanguageruntime",
+      "source": "executionworker_getlanguageruntime",
+      "target": "executionworker_executeindocker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L107",
+      "weight": 1.0,
+      "_src": "executionworker_executeindocker",
+      "_tgt": "executionworker_builddockerargs",
+      "source": "executionworker_builddockerargs",
+      "target": "executionworker_executeindocker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L251",
+      "weight": 1.0,
+      "_src": "executionworker_processqueue",
+      "_tgt": "executionworker_executeindocker",
+      "source": "executionworker_executeindocker",
+      "target": "executionworker_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L287",
+      "weight": 1.0,
+      "_src": "executionworker_enqueueexecution",
+      "_tgt": "executionworker_persistqueuedexecution",
+      "source": "executionworker_persistqueuedexecution",
+      "target": "executionworker_enqueueexecution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L249",
+      "weight": 1.0,
+      "_src": "executionworker_processqueue",
+      "_tgt": "executionworker_updateexecutionrunning",
+      "source": "executionworker_updateexecutionrunning",
+      "target": "executionworker_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L252",
+      "weight": 1.0,
+      "_src": "executionworker_processqueue",
+      "_tgt": "executionworker_updateexecutionresult",
+      "source": "executionworker_updateexecutionresult",
+      "target": "executionworker_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L267",
+      "weight": 1.0,
+      "_src": "executionworker_processqueue",
+      "_tgt": "executionworker_updateexecutionfailure",
+      "source": "executionworker_updateexecutionfailure",
+      "target": "executionworker_processqueue",
       "confidence_score": 1.0
     }
   ],

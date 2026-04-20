@@ -9,7 +9,7 @@
       "source_file": "eslint.config.js",
       "source_location": "L1",
       "id": "eslint_config_js",
-      "community": 27,
+      "community": 30,
       "norm_label": "eslint.config.js"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "vite.config.ts",
       "source_location": "L1",
       "id": "vite_config_ts",
-      "community": 28,
+      "community": 31,
       "norm_label": "vite.config.ts"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "backend\\src\\common\\middleware\\authenticate.ts",
       "source_location": "L1",
       "id": "backend_src_common_middleware_authenticate_ts",
-      "community": 17,
+      "community": 19,
       "norm_label": "authenticate.ts"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "backend\\src\\common\\middleware\\authenticate.ts",
       "source_location": "L4",
       "id": "authenticate_authenticate",
-      "community": 17,
+      "community": 19,
       "norm_label": "authenticate()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "backend\\src\\common\\middleware\\optionalAuthenticate.ts",
       "source_location": "L1",
       "id": "backend_src_common_middleware_optionalauthenticate_ts",
-      "community": 18,
+      "community": 20,
       "norm_label": "optionalauthenticate.ts"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "backend\\src\\common\\middleware\\optionalAuthenticate.ts",
       "source_location": "L4",
       "id": "optionalauthenticate_optionalauthenticate",
-      "community": 18,
+      "community": 20,
       "norm_label": "optionalauthenticate()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "backend\\src\\common\\middleware\\requireAdmin.ts",
       "source_location": "L1",
       "id": "backend_src_common_middleware_requireadmin_ts",
-      "community": 19,
+      "community": 21,
       "norm_label": "requireadmin.ts"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "backend\\src\\common\\middleware\\requireAdmin.ts",
       "source_location": "L8",
       "id": "requireadmin_requireadmin",
-      "community": 19,
+      "community": 21,
       "norm_label": "requireadmin()"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "backend\\src\\db\\client.ts",
       "source_location": "L1",
       "id": "backend_src_db_client_ts",
-      "community": 13,
+      "community": 15,
       "norm_label": "client.ts"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "backend\\src\\db\\runMigration.ts",
       "source_location": "L1",
       "id": "backend_src_db_runmigration_ts",
-      "community": 13,
+      "community": 15,
       "norm_label": "runmigration.ts"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "backend\\src\\db\\runMigration.ts",
       "source_location": "L9",
       "id": "runmigration_run",
-      "community": 13,
+      "community": 15,
       "norm_label": "run()"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "backend\\src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L1",
       "id": "backend_src_db_seeds_seedadmin_ts",
-      "community": 14,
+      "community": 16,
       "norm_label": "seedadmin.ts"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "backend\\src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L9",
       "id": "seedadmin_ensureadminrole",
-      "community": 14,
+      "community": 16,
       "norm_label": "ensureadminrole()"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "backend\\src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L29",
       "id": "seedadmin_run",
-      "community": 14,
+      "community": 16,
       "norm_label": "run()"
     },
     {
@@ -220,6 +220,24 @@
       "norm_label": "routes.ts"
     },
     {
+      "label": "hasPremiumAccess()",
+      "file_type": "code",
+      "source_file": "backend\\src\\modules\\problems\\routes.ts",
+      "source_location": "L65",
+      "id": "routes_haspremiumaccess",
+      "community": 0,
+      "norm_label": "haspremiumaccess()"
+    },
+    {
+      "label": "mapExecution()",
+      "file_type": "code",
+      "source_file": "backend\\src\\modules\\execution\\routes.ts",
+      "source_location": "L88",
+      "id": "routes_mapexecution",
+      "community": 0,
+      "norm_label": "mapexecution()"
+    },
+    {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "backend\\src\\modules\\health\\routes.ts",
@@ -274,15 +292,6 @@
       "norm_label": "mapproblemdetail()"
     },
     {
-      "label": "hasPremiumAccess()",
-      "file_type": "code",
-      "source_file": "backend\\src\\modules\\problems\\routes.ts",
-      "source_location": "L65",
-      "id": "routes_haspremiumaccess",
-      "community": 0,
-      "norm_label": "haspremiumaccess()"
-    },
-    {
       "label": "recomputeUserTopicProgress()",
       "file_type": "code",
       "source_file": "backend\\src\\modules\\progress\\routes.ts",
@@ -328,12 +337,138 @@
       "norm_label": "routes.ts"
     },
     {
+      "label": "executionWorker.ts",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L1",
+      "id": "backend_src_queue_executionworker_ts",
+      "community": 1,
+      "norm_label": "executionworker.ts"
+    },
+    {
+      "label": "looksLikeTypeScript()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L61",
+      "id": "executionworker_looksliketypescript",
+      "community": 1,
+      "norm_label": "looksliketypescript()"
+    },
+    {
+      "label": "getLanguageRuntime()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L72",
+      "id": "executionworker_getlanguageruntime",
+      "community": 1,
+      "norm_label": "getlanguageruntime()"
+    },
+    {
+      "label": "transpileTypeScriptToNodeJs()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L99",
+      "id": "executionworker_transpiletypescripttonodejs",
+      "community": 1,
+      "norm_label": "transpiletypescripttonodejs()"
+    },
+    {
+      "label": "buildDockerArgs()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L115",
+      "id": "executionworker_builddockerargs",
+      "community": 1,
+      "norm_label": "builddockerargs()"
+    },
+    {
+      "label": "executeInDocker()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L137",
+      "id": "executionworker_executeindocker",
+      "community": 1,
+      "norm_label": "executeindocker()"
+    },
+    {
+      "label": "persistQueuedExecution()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L219",
+      "id": "executionworker_persistqueuedexecution",
+      "community": 1,
+      "norm_label": "persistqueuedexecution()"
+    },
+    {
+      "label": "updateExecutionRunning()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L234",
+      "id": "executionworker_updateexecutionrunning",
+      "community": 1,
+      "norm_label": "updateexecutionrunning()"
+    },
+    {
+      "label": "updateExecutionResult()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L238",
+      "id": "executionworker_updateexecutionresult",
+      "community": 1,
+      "norm_label": "updateexecutionresult()"
+    },
+    {
+      "label": "updateExecutionFailure()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L256",
+      "id": "executionworker_updateexecutionfailure",
+      "community": 1,
+      "norm_label": "updateexecutionfailure()"
+    },
+    {
+      "label": "processQueue()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L277",
+      "id": "executionworker_processqueue",
+      "community": 1,
+      "norm_label": "processqueue()"
+    },
+    {
+      "label": "sanitizeTimeoutMs()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L318",
+      "id": "executionworker_sanitizetimeoutms",
+      "community": 1,
+      "norm_label": "sanitizetimeoutms()"
+    },
+    {
+      "label": "enqueueExecution()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L326",
+      "id": "executionworker_enqueueexecution",
+      "community": 1,
+      "norm_label": "enqueueexecution()"
+    },
+    {
+      "label": "getExecutionById()",
+      "file_type": "code",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L356",
+      "id": "executionworker_getexecutionbyid",
+      "community": 1,
+      "norm_label": "getexecutionbyid()"
+    },
+    {
       "label": "express.d.ts",
       "file_type": "code",
       "source_file": "backend\\src\\types\\express.d.ts",
       "source_location": "L1",
       "id": "backend_src_types_express_d_ts",
-      "community": 29,
+      "community": 32,
       "norm_label": "express.d.ts"
     },
     {
@@ -342,7 +477,7 @@
       "source_file": "scripts\\graphify_fix_sources.py",
       "source_location": "L1",
       "id": "scripts_graphify_fix_sources_py",
-      "community": 7,
+      "community": 8,
       "norm_label": "graphify_fix_sources.py"
     },
     {
@@ -351,7 +486,7 @@
       "source_file": "scripts\\graphify_fix_sources.py",
       "source_location": "L36",
       "id": "graphify_fix_sources_normalize_node",
-      "community": 7,
+      "community": 8,
       "norm_label": "normalize_node()"
     },
     {
@@ -360,7 +495,7 @@
       "source_file": "scripts\\graphify_fix_sources.py",
       "source_location": "L46",
       "id": "graphify_fix_sources_patch_extract",
-      "community": 7,
+      "community": 8,
       "norm_label": "patch_extract()"
     },
     {
@@ -369,7 +504,7 @@
       "source_file": "scripts\\graphify_fix_sources.py",
       "source_location": "L62",
       "id": "graphify_fix_sources_patch_graph",
-      "community": 7,
+      "community": 8,
       "norm_label": "patch_graph()"
     },
     {
@@ -378,7 +513,7 @@
       "source_file": "scripts\\graphify_fix_sources.py",
       "source_location": "L78",
       "id": "graphify_fix_sources_main",
-      "community": 7,
+      "community": 8,
       "norm_label": "main()"
     },
     {
@@ -387,7 +522,7 @@
       "source_file": "src\\App.tsx",
       "source_location": "L1",
       "id": "src_app_tsx",
-      "community": 1,
+      "community": 3,
       "norm_label": "app.tsx"
     },
     {
@@ -396,7 +531,7 @@
       "source_file": "src\\App.tsx",
       "source_location": "L47",
       "id": "app_handlenavigate",
-      "community": 1,
+      "community": 3,
       "norm_label": "handlenavigate()"
     },
     {
@@ -405,7 +540,7 @@
       "source_file": "src\\App.tsx",
       "source_location": "L55",
       "id": "app_handletopicselect",
-      "community": 1,
+      "community": 3,
       "norm_label": "handletopicselect()"
     },
     {
@@ -414,7 +549,7 @@
       "source_file": "src\\main.tsx",
       "source_location": "L1",
       "id": "src_main_tsx",
-      "community": 1,
+      "community": 3,
       "norm_label": "main.tsx"
     },
     {
@@ -466,37 +601,109 @@
       "label": "toggleReveal()",
       "file_type": "code",
       "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L523",
+      "source_location": "L524",
       "id": "bigodetail_togglereveal",
       "community": 2,
       "norm_label": "togglereveal()"
     },
     {
+      "label": "applyAnnotationIndex()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L574",
+      "id": "bigodetail_applyannotationindex",
+      "community": 2,
+      "norm_label": "applyannotationindex()"
+    },
+    {
       "label": "startAnimation()",
       "file_type": "code",
       "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L571",
+      "source_location": "L586",
       "id": "bigodetail_startanimation",
       "community": 2,
       "norm_label": "startanimation()"
     },
     {
+      "label": "pauseAnimation()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L602",
+      "id": "bigodetail_pauseanimation",
+      "community": 2,
+      "norm_label": "pauseanimation()"
+    },
+    {
       "label": "resetAnimation()",
       "file_type": "code",
       "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L591",
+      "source_location": "L606",
       "id": "bigodetail_resetanimation",
       "community": 2,
       "norm_label": "resetanimation()"
     },
     {
+      "label": "stepBackward()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L612",
+      "id": "bigodetail_stepbackward",
+      "community": 2,
+      "norm_label": "stepbackward()"
+    },
+    {
+      "label": "stepForward()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L617",
+      "id": "bigodetail_stepforward",
+      "community": 2,
+      "norm_label": "stepforward()"
+    },
+    {
       "label": "internalFactorial()",
       "file_type": "code",
       "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L599",
+      "source_location": "L649",
       "id": "bigodetail_internalfactorial",
       "community": 2,
       "norm_label": "internalfactorial()"
+    },
+    {
+      "label": "CodeExecutionPanel.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\CodeExecutionPanel.tsx",
+      "source_location": "L1",
+      "id": "src_components_codeexecutionpanel_tsx",
+      "community": 11,
+      "norm_label": "codeexecutionpanel.tsx"
+    },
+    {
+      "label": "getStatusColor()",
+      "file_type": "code",
+      "source_file": "src\\components\\CodeExecutionPanel.tsx",
+      "source_location": "L15",
+      "id": "codeexecutionpanel_getstatuscolor",
+      "community": 11,
+      "norm_label": "getstatuscolor()"
+    },
+    {
+      "label": "inferLanguage()",
+      "file_type": "code",
+      "source_file": "src\\components\\CodeExecutionPanel.tsx",
+      "source_location": "L37",
+      "id": "codeexecutionpanel_inferlanguage",
+      "community": 11,
+      "norm_label": "inferlanguage()"
+    },
+    {
+      "label": "submitRun()",
+      "file_type": "code",
+      "source_file": "src\\components\\CodeExecutionPanel.tsx",
+      "source_location": "L79",
+      "id": "codeexecutionpanel_submitrun",
+      "community": 11,
+      "norm_label": "submitrun()"
     },
     {
       "label": "DataStructureVisualizer.tsx",
@@ -504,43 +711,43 @@
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
       "source_location": "L1",
       "id": "src_components_datastructurevisualizer_tsx",
-      "community": 8,
+      "community": 9,
       "norm_label": "datastructurevisualizer.tsx"
     },
     {
       "label": "handleReset()",
       "file_type": "code",
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L48",
+      "source_location": "L42",
       "id": "datastructurevisualizer_handlereset",
-      "community": 8,
+      "community": 9,
       "norm_label": "handlereset()"
     },
     {
       "label": "handlePrevious()",
       "file_type": "code",
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L54",
+      "source_location": "L47",
       "id": "datastructurevisualizer_handleprevious",
-      "community": 8,
+      "community": 9,
       "norm_label": "handleprevious()"
     },
     {
       "label": "handleNext()",
       "file_type": "code",
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L62",
+      "source_location": "L52",
       "id": "datastructurevisualizer_handlenext",
-      "community": 8,
+      "community": 9,
       "norm_label": "handlenext()"
     },
     {
       "label": "getExampleData()",
       "file_type": "code",
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L72",
+      "source_location": "L58",
       "id": "datastructurevisualizer_getexampledata",
-      "community": 8,
+      "community": 9,
       "norm_label": "getexampledata()"
     },
     {
@@ -549,7 +756,7 @@
       "source_file": "src\\components\\Hero.tsx",
       "source_location": "L1",
       "id": "src_components_hero_tsx",
-      "community": 20,
+      "community": 22,
       "norm_label": "hero.tsx"
     },
     {
@@ -558,7 +765,7 @@
       "source_file": "src\\components\\Hero.tsx",
       "source_location": "L11",
       "id": "hero_scrolltosection",
-      "community": 20,
+      "community": 22,
       "norm_label": "scrolltosection()"
     },
     {
@@ -567,7 +774,7 @@
       "source_file": "src\\components\\Navbar.tsx",
       "source_location": "L1",
       "id": "src_components_navbar_tsx",
-      "community": 10,
+      "community": 12,
       "norm_label": "navbar.tsx"
     },
     {
@@ -576,7 +783,7 @@
       "source_file": "src\\components\\Navbar.tsx",
       "source_location": "L20",
       "id": "navbar_handlescroll",
-      "community": 10,
+      "community": 12,
       "norm_label": "handlescroll()"
     },
     {
@@ -585,7 +792,7 @@
       "source_file": "src\\components\\Navbar.tsx",
       "source_location": "L47",
       "id": "navbar_handleclick",
-      "community": 10,
+      "community": 12,
       "norm_label": "handleclick()"
     },
     {
@@ -594,7 +801,7 @@
       "source_file": "src\\components\\Navbar.tsx",
       "source_location": "L63",
       "id": "navbar_handlesignout",
-      "community": 10,
+      "community": 12,
       "norm_label": "handlesignout()"
     },
     {
@@ -603,80 +810,89 @@
       "source_file": "src\\components\\ProblemsPage.tsx",
       "source_location": "L1",
       "id": "src_components_problemspage_tsx",
-      "community": 3,
+      "community": 4,
       "norm_label": "problemspage.tsx"
     },
     {
       "label": "buildFallbackProblem()",
       "file_type": "code",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "id": "problemspage_buildfallbackproblem",
-      "community": 3,
+      "community": 4,
       "norm_label": "buildfallbackproblem()"
     },
     {
       "label": "loadProblems()",
       "file_type": "code",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L81",
+      "source_location": "L82",
       "id": "problemspage_loadproblems",
-      "community": 5,
+      "community": 7,
       "norm_label": "loadproblems()"
     },
     {
       "label": "resetListUiState()",
       "file_type": "code",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L136",
+      "source_location": "L137",
       "id": "problemspage_resetlistuistate",
-      "community": 3,
+      "community": 4,
       "norm_label": "resetlistuistate()"
     },
     {
       "label": "handleSearchChange()",
       "file_type": "code",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L142",
+      "source_location": "L143",
       "id": "problemspage_handlesearchchange",
-      "community": 3,
+      "community": 4,
       "norm_label": "handlesearchchange()"
     },
     {
       "label": "handleDifficultyChange()",
       "file_type": "code",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L147",
+      "source_location": "L148",
       "id": "problemspage_handledifficultychange",
-      "community": 3,
+      "community": 4,
       "norm_label": "handledifficultychange()"
     },
     {
       "label": "handleCategoryChange()",
       "file_type": "code",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L152",
+      "source_location": "L153",
       "id": "problemspage_handlecategorychange",
-      "community": 3,
+      "community": 4,
       "norm_label": "handlecategorychange()"
     },
     {
       "label": "handleResize()",
       "file_type": "code",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L158",
+      "source_location": "L159",
       "id": "problemspage_handleresize",
-      "community": 3,
+      "community": 4,
       "norm_label": "handleresize()"
     },
     {
       "label": "toggleSolution()",
       "file_type": "code",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L213",
+      "source_location": "L214",
       "id": "problemspage_togglesolution",
-      "community": 3,
+      "community": 4,
       "norm_label": "togglesolution()"
+    },
+    {
+      "label": "isLocked()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L707",
+      "id": "problemspage_islocked",
+      "community": 4,
+      "norm_label": "islocked()"
     },
     {
       "label": "Roadmap.tsx",
@@ -684,7 +900,7 @@
       "source_file": "src\\components\\Roadmap.tsx",
       "source_location": "L1",
       "id": "src_components_roadmap_tsx",
-      "community": 11,
+      "community": 13,
       "norm_label": "roadmap.tsx"
     },
     {
@@ -693,7 +909,7 @@
       "source_file": "src\\components\\Roadmap.tsx",
       "source_location": "L177",
       "id": "roadmap_getdynamicstatus",
-      "community": 11,
+      "community": 13,
       "norm_label": "getdynamicstatus()"
     },
     {
@@ -702,7 +918,7 @@
       "source_file": "src\\components\\Roadmap.tsx",
       "source_location": "L190",
       "id": "roadmap_getstatusicon",
-      "community": 11,
+      "community": 13,
       "norm_label": "getstatusicon()"
     },
     {
@@ -711,7 +927,7 @@
       "source_file": "src\\components\\Roadmap.tsx",
       "source_location": "L198",
       "id": "roadmap_getstatuscolor",
-      "community": 11,
+      "community": 13,
       "norm_label": "getstatuscolor()"
     },
     {
@@ -720,7 +936,7 @@
       "source_file": "src\\components\\TopicCard.tsx",
       "source_location": "L1",
       "id": "src_components_topiccard_tsx",
-      "community": 6,
+      "community": 5,
       "norm_label": "topiccard.tsx"
     },
     {
@@ -729,7 +945,7 @@
       "source_file": "src\\components\\TopicCard.tsx",
       "source_location": "L13",
       "id": "topiccard_topiccard",
-      "community": 6,
+      "community": 5,
       "norm_label": "topiccard()"
     },
     {
@@ -738,16 +954,16 @@
       "source_file": "src\\components\\TopicDetail.tsx",
       "source_location": "L1",
       "id": "src_components_topicdetail_tsx",
-      "community": 21,
+      "community": 23,
       "norm_label": "topicdetail.tsx"
     },
     {
       "label": "loadTopic()",
       "file_type": "code",
       "source_file": "src\\components\\TopicDetail.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "id": "topicdetail_loadtopic",
-      "community": 21,
+      "community": 23,
       "norm_label": "loadtopic()"
     },
     {
@@ -756,7 +972,7 @@
       "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L1",
       "id": "src_components_admin_adminproblemsmanager_tsx",
-      "community": 5,
+      "community": 7,
       "norm_label": "adminproblemsmanager.tsx"
     },
     {
@@ -765,7 +981,7 @@
       "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L71",
       "id": "adminproblemsmanager_resetform",
-      "community": 5,
+      "community": 7,
       "norm_label": "resetform()"
     },
     {
@@ -774,7 +990,7 @@
       "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L79",
       "id": "adminproblemsmanager_startedit",
-      "community": 5,
+      "community": 7,
       "norm_label": "startedit()"
     },
     {
@@ -783,7 +999,7 @@
       "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L92",
       "id": "adminproblemsmanager_submitform",
-      "community": 5,
+      "community": 7,
       "norm_label": "submitform()"
     },
     {
@@ -792,7 +1008,7 @@
       "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L115",
       "id": "adminproblemsmanager_deleteproblem",
-      "community": 5,
+      "community": 7,
       "norm_label": "deleteproblem()"
     },
     {
@@ -801,7 +1017,7 @@
       "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
       "source_location": "L1",
       "id": "src_components_admin_admintopicsmanager_tsx",
-      "community": 9,
+      "community": 10,
       "norm_label": "admintopicsmanager.tsx"
     },
     {
@@ -810,7 +1026,7 @@
       "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
       "source_location": "L47",
       "id": "admintopicsmanager_resetform",
-      "community": 9,
+      "community": 10,
       "norm_label": "resetform()"
     },
     {
@@ -819,7 +1035,7 @@
       "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
       "source_location": "L52",
       "id": "admintopicsmanager_startedit",
-      "community": 9,
+      "community": 10,
       "norm_label": "startedit()"
     },
     {
@@ -828,7 +1044,7 @@
       "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
       "source_location": "L63",
       "id": "admintopicsmanager_submitform",
-      "community": 9,
+      "community": 10,
       "norm_label": "submitform()"
     },
     {
@@ -837,7 +1053,7 @@
       "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
       "source_location": "L86",
       "id": "admintopicsmanager_deletetopic",
-      "community": 9,
+      "community": 10,
       "norm_label": "deletetopic()"
     },
     {
@@ -846,7 +1062,7 @@
       "source_file": "src\\contexts\\AuthContext.tsx",
       "source_location": "L1",
       "id": "src_contexts_authcontext_tsx",
-      "community": 1,
+      "community": 3,
       "norm_label": "authcontext.tsx"
     },
     {
@@ -855,7 +1071,7 @@
       "source_file": "src\\contexts\\AuthContext.tsx",
       "source_location": "L28",
       "id": "authcontext_getstoredtoken",
-      "community": 1,
+      "community": 3,
       "norm_label": "getstoredtoken()"
     },
     {
@@ -864,7 +1080,7 @@
       "source_file": "src\\contexts\\AuthContext.tsx",
       "source_location": "L36",
       "id": "authcontext_savetoken",
-      "community": 1,
+      "community": 3,
       "norm_label": "savetoken()"
     },
     {
@@ -873,7 +1089,7 @@
       "source_file": "src\\contexts\\AuthContext.tsx",
       "source_location": "L44",
       "id": "authcontext_cleartoken",
-      "community": 1,
+      "community": 3,
       "norm_label": "cleartoken()"
     },
     {
@@ -882,7 +1098,7 @@
       "source_file": "src\\contexts\\AuthContext.tsx",
       "source_location": "L52",
       "id": "authcontext_authprovider",
-      "community": 1,
+      "community": 3,
       "norm_label": "authprovider()"
     },
     {
@@ -891,7 +1107,7 @@
       "source_file": "src\\contexts\\AuthContextDefinition.ts",
       "source_location": "L1",
       "id": "src_contexts_authcontextdefinition_ts",
-      "community": 30,
+      "community": 33,
       "norm_label": "authcontextdefinition.ts"
     },
     {
@@ -900,7 +1116,7 @@
       "source_file": "src\\contexts\\ThemeContext.tsx",
       "source_location": "L1",
       "id": "src_contexts_themecontext_tsx",
-      "community": 1,
+      "community": 3,
       "norm_label": "themecontext.tsx"
     },
     {
@@ -909,7 +1125,7 @@
       "source_file": "src\\data\\topicsData.ts",
       "source_location": "L1",
       "id": "src_data_topicsdata_ts",
-      "community": 31,
+      "community": 34,
       "norm_label": "topicsdata.ts"
     },
     {
@@ -918,7 +1134,7 @@
       "source_file": "src\\data\\problems\\arrays.ts",
       "source_location": "L1",
       "id": "src_data_problems_arrays_ts",
-      "community": 32,
+      "community": 35,
       "norm_label": "arrays.ts"
     },
     {
@@ -927,7 +1143,7 @@
       "source_file": "src\\data\\problems\\design.ts",
       "source_location": "L1",
       "id": "src_data_problems_design_ts",
-      "community": 33,
+      "community": 36,
       "norm_label": "design.ts"
     },
     {
@@ -936,7 +1152,7 @@
       "source_file": "src\\data\\problems\\dynamicProgramming.ts",
       "source_location": "L1",
       "id": "src_data_problems_dynamicprogramming_ts",
-      "community": 34,
+      "community": 37,
       "norm_label": "dynamicprogramming.ts"
     },
     {
@@ -945,7 +1161,7 @@
       "source_file": "src\\data\\problems\\graphs.ts",
       "source_location": "L1",
       "id": "src_data_problems_graphs_ts",
-      "community": 35,
+      "community": 38,
       "norm_label": "graphs.ts"
     },
     {
@@ -954,7 +1170,7 @@
       "source_file": "src\\data\\problems\\greedy.ts",
       "source_location": "L1",
       "id": "src_data_problems_greedy_ts",
-      "community": 36,
+      "community": 39,
       "norm_label": "greedy.ts"
     },
     {
@@ -963,7 +1179,7 @@
       "source_file": "src\\data\\problems\\hashTables.ts",
       "source_location": "L1",
       "id": "src_data_problems_hashtables_ts",
-      "community": 37,
+      "community": 40,
       "norm_label": "hashtables.ts"
     },
     {
@@ -972,7 +1188,7 @@
       "source_file": "src\\data\\problems\\heaps.ts",
       "source_location": "L1",
       "id": "src_data_problems_heaps_ts",
-      "community": 38,
+      "community": 41,
       "norm_label": "heaps.ts"
     },
     {
@@ -981,7 +1197,7 @@
       "source_file": "src\\data\\problems\\linkedLists.ts",
       "source_location": "L1",
       "id": "src_data_problems_linkedlists_ts",
-      "community": 39,
+      "community": 42,
       "norm_label": "linkedlists.ts"
     },
     {
@@ -990,7 +1206,7 @@
       "source_file": "src\\data\\problems\\math.ts",
       "source_location": "L1",
       "id": "src_data_problems_math_ts",
-      "community": 40,
+      "community": 43,
       "norm_label": "math.ts"
     },
     {
@@ -999,7 +1215,7 @@
       "source_file": "src\\data\\problems\\recursion.ts",
       "source_location": "L1",
       "id": "src_data_problems_recursion_ts",
-      "community": 41,
+      "community": 44,
       "norm_label": "recursion.ts"
     },
     {
@@ -1008,7 +1224,7 @@
       "source_file": "src\\data\\problems\\registry.ts",
       "source_location": "L1",
       "id": "src_data_problems_registry_ts",
-      "community": 12,
+      "community": 14,
       "norm_label": "registry.ts"
     },
     {
@@ -1017,7 +1233,7 @@
       "source_file": "src\\data\\problems\\registry.ts",
       "source_location": "L30",
       "id": "registry_normalizedifficulty",
-      "community": 12,
+      "community": 14,
       "norm_label": "normalizedifficulty()"
     },
     {
@@ -1026,7 +1242,7 @@
       "source_file": "src\\data\\problems\\registry.ts",
       "source_location": "L38",
       "id": "registry_converttoproblem",
-      "community": 12,
+      "community": 14,
       "norm_label": "converttoproblem()"
     },
     {
@@ -1035,7 +1251,7 @@
       "source_file": "src\\data\\problems\\registry.ts",
       "source_location": "L58",
       "id": "registry_withcategory",
-      "community": 12,
+      "community": 14,
       "norm_label": "withcategory()"
     },
     {
@@ -1044,7 +1260,7 @@
       "source_file": "src\\data\\problems\\sorting.ts",
       "source_location": "L1",
       "id": "src_data_problems_sorting_ts",
-      "community": 42,
+      "community": 45,
       "norm_label": "sorting.ts"
     },
     {
@@ -1053,7 +1269,7 @@
       "source_file": "src\\data\\problems\\stacksQueues.ts",
       "source_location": "L1",
       "id": "src_data_problems_stacksqueues_ts",
-      "community": 43,
+      "community": 46,
       "norm_label": "stacksqueues.ts"
     },
     {
@@ -1062,7 +1278,7 @@
       "source_file": "src\\data\\problems\\strings.ts",
       "source_location": "L1",
       "id": "src_data_problems_strings_ts",
-      "community": 44,
+      "community": 47,
       "norm_label": "strings.ts"
     },
     {
@@ -1071,7 +1287,7 @@
       "source_file": "src\\data\\problems\\trees.ts",
       "source_location": "L1",
       "id": "src_data_problems_trees_ts",
-      "community": 45,
+      "community": 48,
       "norm_label": "trees.ts"
     },
     {
@@ -1080,7 +1296,7 @@
       "source_file": "src\\data\\problems\\tries.ts",
       "source_location": "L1",
       "id": "src_data_problems_tries_ts",
-      "community": 46,
+      "community": 49,
       "norm_label": "tries.ts"
     },
     {
@@ -1089,7 +1305,7 @@
       "source_file": "src\\data\\topics\\design.ts",
       "source_location": "L1",
       "id": "src_data_topics_design_ts",
-      "community": 47,
+      "community": 50,
       "norm_label": "design.ts"
     },
     {
@@ -1098,7 +1314,7 @@
       "source_file": "src\\data\\topics\\dynamicProgramming.ts",
       "source_location": "L1",
       "id": "src_data_topics_dynamicprogramming_ts",
-      "community": 48,
+      "community": 51,
       "norm_label": "dynamicprogramming.ts"
     },
     {
@@ -1107,7 +1323,7 @@
       "source_file": "src\\data\\topics\\graphs.ts",
       "source_location": "L1",
       "id": "src_data_topics_graphs_ts",
-      "community": 49,
+      "community": 52,
       "norm_label": "graphs.ts"
     },
     {
@@ -1116,7 +1332,7 @@
       "source_file": "src\\data\\topics\\greedy.ts",
       "source_location": "L1",
       "id": "src_data_topics_greedy_ts",
-      "community": 50,
+      "community": 53,
       "norm_label": "greedy.ts"
     },
     {
@@ -1125,7 +1341,7 @@
       "source_file": "src\\data\\topics\\hashTables.ts",
       "source_location": "L1",
       "id": "src_data_topics_hashtables_ts",
-      "community": 51,
+      "community": 54,
       "norm_label": "hashtables.ts"
     },
     {
@@ -1134,7 +1350,7 @@
       "source_file": "src\\data\\topics\\heaps.ts",
       "source_location": "L1",
       "id": "src_data_topics_heaps_ts",
-      "community": 52,
+      "community": 55,
       "norm_label": "heaps.ts"
     },
     {
@@ -1143,7 +1359,7 @@
       "source_file": "src\\data\\topics\\linkedLists.ts",
       "source_location": "L1",
       "id": "src_data_topics_linkedlists_ts",
-      "community": 53,
+      "community": 56,
       "norm_label": "linkedlists.ts"
     },
     {
@@ -1152,7 +1368,7 @@
       "source_file": "src\\data\\topics\\mathBitLogic.ts",
       "source_location": "L1",
       "id": "src_data_topics_mathbitlogic_ts",
-      "community": 54,
+      "community": 57,
       "norm_label": "mathbitlogic.ts"
     },
     {
@@ -1161,7 +1377,7 @@
       "source_file": "src\\data\\topics\\recursionBacktracking.ts",
       "source_location": "L1",
       "id": "src_data_topics_recursionbacktracking_ts",
-      "community": 55,
+      "community": 58,
       "norm_label": "recursionbacktracking.ts"
     },
     {
@@ -1170,7 +1386,7 @@
       "source_file": "src\\data\\topics\\sorting.ts",
       "source_location": "L1",
       "id": "src_data_topics_sorting_ts",
-      "community": 56,
+      "community": 59,
       "norm_label": "sorting.ts"
     },
     {
@@ -1179,7 +1395,7 @@
       "source_file": "src\\data\\topics\\stacksQueues.ts",
       "source_location": "L1",
       "id": "src_data_topics_stacksqueues_ts",
-      "community": 57,
+      "community": 60,
       "norm_label": "stacksqueues.ts"
     },
     {
@@ -1188,7 +1404,7 @@
       "source_file": "src\\data\\topics\\strings.ts",
       "source_location": "L1",
       "id": "src_data_topics_strings_ts",
-      "community": 58,
+      "community": 61,
       "norm_label": "strings.ts"
     },
     {
@@ -1197,7 +1413,7 @@
       "source_file": "src\\data\\topics\\trees.ts",
       "source_location": "L1",
       "id": "src_data_topics_trees_ts",
-      "community": 59,
+      "community": 62,
       "norm_label": "trees.ts"
     },
     {
@@ -1206,7 +1422,7 @@
       "source_file": "src\\data\\topics\\tries.ts",
       "source_location": "L1",
       "id": "src_data_topics_tries_ts",
-      "community": 60,
+      "community": 63,
       "norm_label": "tries.ts"
     },
     {
@@ -1215,7 +1431,7 @@
       "source_file": "src\\data\\topics\\arrays\\examples.ts",
       "source_location": "L1",
       "id": "src_data_topics_arrays_examples_ts",
-      "community": 61,
+      "community": 64,
       "norm_label": "examples.ts"
     },
     {
@@ -1224,7 +1440,7 @@
       "source_file": "src\\data\\topics\\arrays\\index.ts",
       "source_location": "L1",
       "id": "src_data_topics_arrays_index_ts",
-      "community": 62,
+      "community": 65,
       "norm_label": "index.ts"
     },
     {
@@ -1233,7 +1449,7 @@
       "source_file": "src\\data\\topics\\arrays\\patterns.ts",
       "source_location": "L1",
       "id": "src_data_topics_arrays_patterns_ts",
-      "community": 63,
+      "community": 66,
       "norm_label": "patterns.ts"
     },
     {
@@ -1242,7 +1458,7 @@
       "source_file": "src\\data\\topics\\arrays\\theory.ts",
       "source_location": "L1",
       "id": "src_data_topics_arrays_theory_ts",
-      "community": 64,
+      "community": 67,
       "norm_label": "theory.ts"
     },
     {
@@ -1251,7 +1467,7 @@
       "source_file": "src\\data\\topics\\arrays\\visualizations.ts",
       "source_location": "L1",
       "id": "src_data_topics_arrays_visualizations_ts",
-      "community": 65,
+      "community": 68,
       "norm_label": "visualizations.ts"
     },
     {
@@ -1260,7 +1476,7 @@
       "source_file": "src\\hooks\\useAuth.ts",
       "source_location": "L1",
       "id": "src_hooks_useauth_ts",
-      "community": 6,
+      "community": 5,
       "norm_label": "useauth.ts"
     },
     {
@@ -1269,8 +1485,26 @@
       "source_file": "src\\hooks\\useAuth.ts",
       "source_location": "L4",
       "id": "useauth_useauth",
-      "community": 6,
+      "community": 5,
       "norm_label": "useauth()"
+    },
+    {
+      "label": "useCodeExecution.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
+      "source_location": "L1",
+      "id": "src_hooks_usecodeexecution_ts",
+      "community": 5,
+      "norm_label": "usecodeexecution.ts"
+    },
+    {
+      "label": "useCodeExecution()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
+      "source_location": "L21",
+      "id": "usecodeexecution_usecodeexecution",
+      "community": 5,
+      "norm_label": "usecodeexecution()"
     },
     {
       "label": "useProgress.ts",
@@ -1278,7 +1512,7 @@
       "source_file": "src\\hooks\\useProgress.ts",
       "source_location": "L1",
       "id": "src_hooks_useprogress_ts",
-      "community": 6,
+      "community": 5,
       "norm_label": "useprogress.ts"
     },
     {
@@ -1287,7 +1521,7 @@
       "source_file": "src\\hooks\\useProgress.ts",
       "source_location": "L15",
       "id": "useprogress_useprogress",
-      "community": 6,
+      "community": 5,
       "norm_label": "useprogress()"
     },
     {
@@ -1296,7 +1530,7 @@
       "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
       "source_location": "L1",
       "id": "src_hooks_useresponsivechartconfig_ts",
-      "community": 15,
+      "community": 17,
       "norm_label": "useresponsivechartconfig.ts"
     },
     {
@@ -1305,7 +1539,7 @@
       "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
       "source_location": "L22",
       "id": "useresponsivechartconfig_useresponsivechartconfig",
-      "community": 15,
+      "community": 17,
       "norm_label": "useresponsivechartconfig()"
     },
     {
@@ -1314,7 +1548,7 @@
       "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
       "source_location": "L40",
       "id": "useresponsivechartconfig_getchartconfig",
-      "community": 15,
+      "community": 17,
       "norm_label": "getchartconfig()"
     },
     {
@@ -1323,7 +1557,7 @@
       "source_file": "src\\hooks\\useTheme.ts",
       "source_location": "L1",
       "id": "src_hooks_usetheme_ts",
-      "community": 22,
+      "community": 24,
       "norm_label": "usetheme.ts"
     },
     {
@@ -1332,7 +1566,7 @@
       "source_file": "src\\hooks\\useTheme.ts",
       "source_location": "L5",
       "id": "usetheme_usetheme",
-      "community": 22,
+      "community": 24,
       "norm_label": "usetheme()"
     },
     {
@@ -1341,7 +1575,7 @@
       "source_file": "src\\pages\\AdminDashboard.tsx",
       "source_location": "L1",
       "id": "src_pages_admindashboard_tsx",
-      "community": 66,
+      "community": 69,
       "norm_label": "admindashboard.tsx"
     },
     {
@@ -1350,7 +1584,7 @@
       "source_file": "src\\pages\\Home.tsx",
       "source_location": "L1",
       "id": "src_pages_home_tsx",
-      "community": 67,
+      "community": 70,
       "norm_label": "home.tsx"
     },
     {
@@ -1359,7 +1593,7 @@
       "source_file": "src\\pages\\Login.tsx",
       "source_location": "L1",
       "id": "src_pages_login_tsx",
-      "community": 23,
+      "community": 25,
       "norm_label": "login.tsx"
     },
     {
@@ -1368,7 +1602,7 @@
       "source_file": "src\\pages\\Login.tsx",
       "source_location": "L20",
       "id": "login_handlesubmit",
-      "community": 23,
+      "community": 25,
       "norm_label": "handlesubmit()"
     },
     {
@@ -1377,7 +1611,7 @@
       "source_file": "src\\pages\\Profile.tsx",
       "source_location": "L1",
       "id": "src_pages_profile_tsx",
-      "community": 68,
+      "community": 71,
       "norm_label": "profile.tsx"
     },
     {
@@ -1386,7 +1620,7 @@
       "source_file": "src\\pages\\Register.tsx",
       "source_location": "L1",
       "id": "src_pages_register_tsx",
-      "community": 24,
+      "community": 26,
       "norm_label": "register.tsx"
     },
     {
@@ -1395,7 +1629,7 @@
       "source_file": "src\\pages\\Register.tsx",
       "source_location": "L20",
       "id": "register_handlesubmit",
-      "community": 24,
+      "community": 26,
       "norm_label": "handlesubmit()"
     },
     {
@@ -1404,7 +1638,7 @@
       "source_file": "src\\pages\\Subscription.tsx",
       "source_location": "L1",
       "id": "src_pages_subscription_tsx",
-      "community": 25,
+      "community": 27,
       "norm_label": "subscription.tsx"
     },
     {
@@ -1413,7 +1647,7 @@
       "source_file": "src\\pages\\Subscription.tsx",
       "source_location": "L57",
       "id": "subscription_handleupgrade",
-      "community": 25,
+      "community": 27,
       "norm_label": "handleupgrade()"
     },
     {
@@ -1422,7 +1656,7 @@
       "source_file": "src\\services\\apiClient.ts",
       "source_location": "L1",
       "id": "src_services_apiclient_ts",
-      "community": 16,
+      "community": 18,
       "norm_label": "apiclient.ts"
     },
     {
@@ -1431,7 +1665,7 @@
       "source_file": "src\\services\\apiClient.ts",
       "source_location": "L5",
       "id": "apiclient_buildheaders",
-      "community": 16,
+      "community": 18,
       "norm_label": "buildheaders()"
     },
     {
@@ -1440,7 +1674,7 @@
       "source_file": "src\\services\\apiClient.ts",
       "source_location": "L12",
       "id": "apiclient_request",
-      "community": 16,
+      "community": 18,
       "norm_label": "request()"
     },
     {
@@ -1449,8 +1683,26 @@
       "source_file": "src\\services\\authService.ts",
       "source_location": "L1",
       "id": "src_services_authservice_ts",
-      "community": 69,
+      "community": 72,
       "norm_label": "authservice.ts"
+    },
+    {
+      "label": "executionService.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\executionService.ts",
+      "source_location": "L1",
+      "id": "src_services_executionservice_ts",
+      "community": 28,
+      "norm_label": "executionservice.ts"
+    },
+    {
+      "label": "buildExecutionListPath()",
+      "file_type": "code",
+      "source_file": "src\\services\\executionService.ts",
+      "source_location": "L10",
+      "id": "executionservice_buildexecutionlistpath",
+      "community": 28,
+      "norm_label": "buildexecutionlistpath()"
     },
     {
       "label": "problemService.ts",
@@ -1458,7 +1710,7 @@
       "source_file": "src\\services\\problemService.ts",
       "source_location": "L1",
       "id": "src_services_problemservice_ts",
-      "community": 26,
+      "community": 29,
       "norm_label": "problemservice.ts"
     },
     {
@@ -1467,7 +1719,7 @@
       "source_file": "src\\services\\problemService.ts",
       "source_location": "L14",
       "id": "problemservice_buildproblemlistpath",
-      "community": 26,
+      "community": 29,
       "norm_label": "buildproblemlistpath()"
     },
     {
@@ -1476,7 +1728,7 @@
       "source_file": "src\\services\\progressService.ts",
       "source_location": "L1",
       "id": "src_services_progressservice_ts",
-      "community": 70,
+      "community": 73,
       "norm_label": "progressservice.ts"
     },
     {
@@ -1485,7 +1737,7 @@
       "source_file": "src\\services\\subscriptionService.ts",
       "source_location": "L1",
       "id": "src_services_subscriptionservice_ts",
-      "community": 71,
+      "community": 74,
       "norm_label": "subscriptionservice.ts"
     },
     {
@@ -1494,7 +1746,7 @@
       "source_file": "src\\types\\api.ts",
       "source_location": "L1",
       "id": "src_types_api_ts",
-      "community": 72,
+      "community": 75,
       "norm_label": "api.ts"
     },
     {
@@ -1503,13 +1755,13 @@
       "source_file": "src\\types\\topic.ts",
       "source_location": "L1",
       "id": "src_types_topic_ts",
-      "community": 73,
+      "community": 76,
       "norm_label": "topic.ts"
     },
     {
       "label": "DSA Learning App",
       "file_type": "document",
-      "community": 4,
+      "community": 6,
       "norm_label": "dsa learning app",
       "source_file": "README.md",
       "source_location": "L1",
@@ -1518,7 +1770,7 @@
     {
       "label": "Interactive Visualizers",
       "file_type": "document",
-      "community": 4,
+      "community": 6,
       "norm_label": "interactive visualizers",
       "source_file": "README.md",
       "source_location": "L1",
@@ -1527,7 +1779,7 @@
     {
       "label": "Big-O Notation Guide",
       "file_type": "document",
-      "community": 4,
+      "community": 6,
       "norm_label": "big-o notation guide",
       "source_file": "README.md",
       "source_location": "L1",
@@ -1536,7 +1788,7 @@
     {
       "label": "Problem Practice",
       "file_type": "document",
-      "community": 4,
+      "community": 6,
       "norm_label": "problem practice",
       "source_file": "README.md",
       "source_location": "L1",
@@ -1545,7 +1797,7 @@
     {
       "label": "Learning Roadmap",
       "file_type": "document",
-      "community": 4,
+      "community": 6,
       "norm_label": "learning roadmap",
       "source_file": "README.md",
       "source_location": "L1",
@@ -1554,7 +1806,7 @@
     {
       "label": "CLAUDE.md",
       "file_type": "document",
-      "community": 4,
+      "community": 6,
       "norm_label": "claude.md",
       "source_file": "CLAUDE.md",
       "source_location": "L1",
@@ -1563,7 +1815,7 @@
     {
       "label": "README.md",
       "file_type": "document",
-      "community": 4,
+      "community": 6,
       "norm_label": "readme.md",
       "source_file": "README.md",
       "source_location": "L1",
@@ -1862,6 +2114,42 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\modules\\execution\\routes.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "backend_src_modules_execution_routes_ts",
+      "_tgt": "routes_haspremiumaccess",
+      "source": "backend_src_modules_execution_routes_ts",
+      "target": "routes_haspremiumaccess",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\modules\\execution\\routes.ts",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_src": "backend_src_modules_execution_routes_ts",
+      "_tgt": "routes_mapexecution",
+      "source": "backend_src_modules_execution_routes_ts",
+      "target": "routes_mapexecution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\modules\\problems\\routes.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "backend_src_modules_problems_routes_ts",
+      "_tgt": "routes_haspremiumaccess",
+      "source": "routes_haspremiumaccess",
+      "target": "backend_src_modules_problems_routes_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "backend\\src\\modules\\payments\\routes.ts",
       "source_location": "L24",
       "weight": 1.0,
@@ -1899,18 +2187,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend\\src\\modules\\problems\\routes.ts",
-      "source_location": "L65",
-      "weight": 1.0,
-      "_src": "backend_src_modules_problems_routes_ts",
-      "_tgt": "routes_haspremiumaccess",
-      "source": "backend_src_modules_problems_routes_ts",
-      "target": "routes_haspremiumaccess",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "backend\\src\\modules\\problems\\routes.ts",
       "source_location": "L96",
       "weight": 1.0,
       "_src": "backend_src_modules_problems_routes_ts",
@@ -1941,6 +2217,270 @@
       "_tgt": "routes_recomputeusertopicprogress",
       "source": "routes_recomputeusertopicprogress",
       "target": "backend_src_modules_progress_routes_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_looksliketypescript",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_looksliketypescript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_getlanguageruntime",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_getlanguageruntime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L99",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_transpiletypescripttonodejs",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_transpiletypescripttonodejs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_builddockerargs",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_builddockerargs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L137",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_executeindocker",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_executeindocker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L219",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_persistqueuedexecution",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_persistqueuedexecution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L234",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_updateexecutionrunning",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_updateexecutionrunning",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L238",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_updateexecutionresult",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_updateexecutionresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L256",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_updateexecutionfailure",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_updateexecutionfailure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L277",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_processqueue",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L318",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_sanitizetimeoutms",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_sanitizetimeoutms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L326",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_enqueueexecution",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_enqueueexecution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L356",
+      "weight": 1.0,
+      "_src": "backend_src_queue_executionworker_ts",
+      "_tgt": "executionworker_getexecutionbyid",
+      "source": "backend_src_queue_executionworker_ts",
+      "target": "executionworker_getexecutionbyid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_src": "executionworker_executeindocker",
+      "_tgt": "executionworker_looksliketypescript",
+      "source": "executionworker_looksliketypescript",
+      "target": "executionworker_executeindocker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_src": "executionworker_executeindocker",
+      "_tgt": "executionworker_getlanguageruntime",
+      "source": "executionworker_getlanguageruntime",
+      "target": "executionworker_executeindocker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_src": "executionworker_executeindocker",
+      "_tgt": "executionworker_transpiletypescripttonodejs",
+      "source": "executionworker_transpiletypescripttonodejs",
+      "target": "executionworker_executeindocker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L149",
+      "weight": 1.0,
+      "_src": "executionworker_executeindocker",
+      "_tgt": "executionworker_builddockerargs",
+      "source": "executionworker_builddockerargs",
+      "target": "executionworker_executeindocker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L293",
+      "weight": 1.0,
+      "_src": "executionworker_processqueue",
+      "_tgt": "executionworker_executeindocker",
+      "source": "executionworker_executeindocker",
+      "target": "executionworker_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L329",
+      "weight": 1.0,
+      "_src": "executionworker_enqueueexecution",
+      "_tgt": "executionworker_persistqueuedexecution",
+      "source": "executionworker_persistqueuedexecution",
+      "target": "executionworker_enqueueexecution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L291",
+      "weight": 1.0,
+      "_src": "executionworker_processqueue",
+      "_tgt": "executionworker_updateexecutionrunning",
+      "source": "executionworker_updateexecutionrunning",
+      "target": "executionworker_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L294",
+      "weight": 1.0,
+      "_src": "executionworker_processqueue",
+      "_tgt": "executionworker_updateexecutionresult",
+      "source": "executionworker_updateexecutionresult",
+      "target": "executionworker_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\src\\queue\\executionWorker.ts",
+      "source_location": "L309",
+      "weight": 1.0,
+      "_src": "executionworker_processqueue",
+      "_tgt": "executionworker_updateexecutionfailure",
+      "source": "executionworker_updateexecutionfailure",
+      "target": "executionworker_processqueue",
       "confidence_score": 1.0
     },
     {
@@ -2151,7 +2691,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L523",
+      "source_location": "L524",
       "weight": 1.0,
       "_src": "src_components_bigodetail_tsx",
       "_tgt": "bigodetail_togglereveal",
@@ -2163,7 +2703,19 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L571",
+      "source_location": "L574",
+      "weight": 1.0,
+      "_src": "src_components_bigodetail_tsx",
+      "_tgt": "bigodetail_applyannotationindex",
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_applyannotationindex",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L586",
       "weight": 1.0,
       "_src": "src_components_bigodetail_tsx",
       "_tgt": "bigodetail_startanimation",
@@ -2175,7 +2727,19 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L591",
+      "source_location": "L602",
+      "weight": 1.0,
+      "_src": "src_components_bigodetail_tsx",
+      "_tgt": "bigodetail_pauseanimation",
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_pauseanimation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L606",
       "weight": 1.0,
       "_src": "src_components_bigodetail_tsx",
       "_tgt": "bigodetail_resetanimation",
@@ -2187,7 +2751,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L599",
+      "source_location": "L612",
+      "weight": 1.0,
+      "_src": "src_components_bigodetail_tsx",
+      "_tgt": "bigodetail_stepbackward",
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_stepbackward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L617",
+      "weight": 1.0,
+      "_src": "src_components_bigodetail_tsx",
+      "_tgt": "bigodetail_stepforward",
+      "source": "src_components_bigodetail_tsx",
+      "target": "bigodetail_stepforward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L649",
       "weight": 1.0,
       "_src": "src_components_bigodetail_tsx",
       "_tgt": "bigodetail_internalfactorial",
@@ -2196,10 +2784,82 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L594",
+      "weight": 1.0,
+      "_src": "bigodetail_startanimation",
+      "_tgt": "bigodetail_applyannotationindex",
+      "source": "bigodetail_applyannotationindex",
+      "target": "bigodetail_startanimation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L614",
+      "weight": 1.0,
+      "_src": "bigodetail_stepbackward",
+      "_tgt": "bigodetail_applyannotationindex",
+      "source": "bigodetail_applyannotationindex",
+      "target": "bigodetail_stepbackward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail.tsx",
+      "source_location": "L619",
+      "weight": 1.0,
+      "_src": "bigodetail_stepforward",
+      "_tgt": "bigodetail_applyannotationindex",
+      "source": "bigodetail_applyannotationindex",
+      "target": "bigodetail_stepforward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "src_components_codeexecutionpanel_tsx",
+      "_tgt": "codeexecutionpanel_getstatuscolor",
+      "source": "src_components_codeexecutionpanel_tsx",
+      "target": "codeexecutionpanel_getstatuscolor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "src_components_codeexecutionpanel_tsx",
+      "_tgt": "codeexecutionpanel_inferlanguage",
+      "source": "src_components_codeexecutionpanel_tsx",
+      "target": "codeexecutionpanel_inferlanguage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel.tsx",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_src": "src_components_codeexecutionpanel_tsx",
+      "_tgt": "codeexecutionpanel_submitrun",
+      "source": "src_components_codeexecutionpanel_tsx",
+      "target": "codeexecutionpanel_submitrun",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L48",
+      "source_location": "L42",
       "weight": 1.0,
       "_src": "src_components_datastructurevisualizer_tsx",
       "_tgt": "datastructurevisualizer_handlereset",
@@ -2211,7 +2871,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L54",
+      "source_location": "L47",
       "weight": 1.0,
       "_src": "src_components_datastructurevisualizer_tsx",
       "_tgt": "datastructurevisualizer_handleprevious",
@@ -2223,7 +2883,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L62",
+      "source_location": "L52",
       "weight": 1.0,
       "_src": "src_components_datastructurevisualizer_tsx",
       "_tgt": "datastructurevisualizer_handlenext",
@@ -2235,7 +2895,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L72",
+      "source_location": "L58",
       "weight": 1.0,
       "_src": "src_components_datastructurevisualizer_tsx",
       "_tgt": "datastructurevisualizer_getexampledata",
@@ -2295,7 +2955,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
       "_src": "src_components_problemspage_tsx",
       "_tgt": "problemspage_buildfallbackproblem",
@@ -2307,7 +2967,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L81",
+      "source_location": "L82",
       "weight": 1.0,
       "_src": "src_components_problemspage_tsx",
       "_tgt": "problemspage_loadproblems",
@@ -2319,7 +2979,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L136",
+      "source_location": "L137",
       "weight": 1.0,
       "_src": "src_components_problemspage_tsx",
       "_tgt": "problemspage_resetlistuistate",
@@ -2331,7 +2991,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L142",
+      "source_location": "L143",
       "weight": 1.0,
       "_src": "src_components_problemspage_tsx",
       "_tgt": "problemspage_handlesearchchange",
@@ -2343,7 +3003,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L147",
+      "source_location": "L148",
       "weight": 1.0,
       "_src": "src_components_problemspage_tsx",
       "_tgt": "problemspage_handledifficultychange",
@@ -2355,7 +3015,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L152",
+      "source_location": "L153",
       "weight": 1.0,
       "_src": "src_components_problemspage_tsx",
       "_tgt": "problemspage_handlecategorychange",
@@ -2367,7 +3027,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L158",
+      "source_location": "L159",
       "weight": 1.0,
       "_src": "src_components_problemspage_tsx",
       "_tgt": "problemspage_handleresize",
@@ -2379,12 +3039,24 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L213",
+      "source_location": "L214",
       "weight": 1.0,
       "_src": "src_components_problemspage_tsx",
       "_tgt": "problemspage_togglesolution",
       "source": "src_components_problemspage_tsx",
       "target": "problemspage_togglesolution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_location": "L707",
+      "weight": 1.0,
+      "_src": "src_components_problemspage_tsx",
+      "_tgt": "problemspage_islocked",
+      "source": "src_components_problemspage_tsx",
+      "target": "problemspage_islocked",
       "confidence_score": 1.0
     },
     {
@@ -2415,7 +3087,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L144",
+      "source_location": "L145",
       "weight": 1.0,
       "_src": "problemspage_handlesearchchange",
       "_tgt": "problemspage_resetlistuistate",
@@ -2427,7 +3099,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L149",
+      "source_location": "L150",
       "weight": 1.0,
       "_src": "problemspage_handledifficultychange",
       "_tgt": "problemspage_resetlistuistate",
@@ -2439,7 +3111,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L154",
+      "source_location": "L155",
       "weight": 1.0,
       "_src": "problemspage_handlecategorychange",
       "_tgt": "problemspage_resetlistuistate",
@@ -2511,7 +3183,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\components\\TopicDetail.tsx",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0,
       "_src": "src_components_topicdetail_tsx",
       "_tgt": "topicdetail_loadtopic",
@@ -2775,6 +3447,18 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "src\\hooks\\useCodeExecution.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "useauth_useauth",
+      "_tgt": "usecodeexecution_usecodeexecution",
+      "source": "useauth_useauth",
+      "target": "usecodeexecution_usecodeexecution"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "src\\hooks\\useProgress.ts",
       "source_location": "L16",
       "weight": 1.0,
@@ -2782,6 +3466,18 @@
       "_tgt": "useprogress_useprogress",
       "source": "useauth_useauth",
       "target": "useprogress_useprogress"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "src_hooks_usecodeexecution_ts",
+      "_tgt": "usecodeexecution_usecodeexecution",
+      "source": "src_hooks_usecodeexecution_ts",
+      "target": "usecodeexecution_usecodeexecution",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2901,6 +3597,18 @@
       "_tgt": "apiclient_buildheaders",
       "source": "apiclient_buildheaders",
       "target": "apiclient_request",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\executionService.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "src_services_executionservice_ts",
+      "_tgt": "executionservice_buildexecutionlistpath",
+      "source": "src_services_executionservice_ts",
+      "target": "executionservice_buildexecutionlistpath",
       "confidence_score": 1.0
     },
     {

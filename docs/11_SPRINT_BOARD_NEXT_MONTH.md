@@ -3,7 +3,9 @@
 ## Status Snapshot (Updated: 2026-04-20)
 
 - Done: TKT-001, TKT-002, TKT-003, TKT-004, TKT-005, TKT-006, TKT-007, TKT-008, TKT-009, TKT-010, TKT-011.
-- In Progress: TKT-012 onward (execution engine, visualization, deployment hardening).
+- Done: TKT-012, TKT-013.
+- Done: TKT-014.
+- In Progress: TKT-015 onward (visualization, content expansion, deployment hardening).
 - Mandatory final ticket: premium entitlement regression audit (free-vs-premium cards/details, API enforcement, and upgrade CTA paths) must be the last closure item before release signoff.
 
 ## Usage

@@ -2,8 +2,8 @@
 
 ## Implementation Status (Updated: 2026-04-20)
 
-- Completed: backend bootstrap, DB schema + migrations, auth + RBAC, admin topic/problem CRUD, progress + attempt persistence, problem API integration with static fallback, subscription page, payment webhook sync (mock), and API + UI premium gating with upgrade CTAs.
-- Remaining major tracks: production payment provider integration, execution worker stack, visualization upgrades, deployment hardening, and launch QA.
+- Completed: backend bootstrap, DB schema + migrations, auth + RBAC, admin topic/problem CRUD, progress + attempt persistence, problem API integration with static fallback, subscription page, payment webhook sync (mock), API + UI premium gating with upgrade CTAs, execution worker queue, and execution result persistence/query APIs.
+- Remaining major tracks: frontend run-code panel integration, production payment provider integration, visualization upgrades, deployment hardening, and launch QA.
 - Final mandatory last task before release signoff: run the premium entitlement regression audit across free-vs-premium problem cards/details, API enforcement, and upgrade CTA paths.
 
 ## Goal
