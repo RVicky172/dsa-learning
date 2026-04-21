@@ -10,6 +10,33 @@
   margin-bottom: 2rem;
 }
 
+.tabSection {
+  margin-bottom: 2rem;
+}
+
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 8rem;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loadingText {
+  color: var(--text-muted);
+}
+
 .backButton {
   display: flex;
   align-items: center;
@@ -163,6 +190,19 @@
   margin-bottom: 2rem;
 }
 
+.prosConsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+}
+
+.prosConsItem {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 .theoryTitle {
   font-size: clamp(1.3rem, 4vw, 1.75rem);
   margin-bottom: 1.5rem;
@@ -292,6 +332,10 @@
 .sidebarCard {
   padding: 2rem;
   margin-bottom: 2rem;
+}
+
+.sidebarCardLast {
+  margin-bottom: 0;
 }
 
 .operationsCard {
@@ -551,6 +595,12 @@
   margin-bottom: 2rem;
 }
 
+.emptyProblemsState {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
 .problemNumber {
   margin-top: -1.5rem;
   margin-bottom: 1rem;
@@ -677,6 +727,17 @@
   margin-bottom: 1.5rem;
 }
 
+.hintsDetails {
+  margin-bottom: 1.5rem;
+}
+
+.hintsSummary {
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary-color);
+}
+
 .hintsList {
   padding-left: 1.5rem;
   display: flex;
@@ -758,6 +819,16 @@
 /* Visualizations Tab */
 .visualizationsContainer {
   margin-bottom: 3rem;
+}
+
+.visualizationSection {
+  margin-bottom: 3rem;
+}
+
+.visualizationSectionTitle {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
 }
 
 .visualizationsTitle {

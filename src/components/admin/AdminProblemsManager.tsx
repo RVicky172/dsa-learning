@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { CSSProperties, FormEvent } from 'react';
+import type { FormEvent } from 'react';
 import { Edit3, Plus, RefreshCcw, Trash2, X } from 'lucide-react';
 import { apiClient } from '../../services/apiClient';
 import type {
@@ -9,6 +9,7 @@ import type {
   AdminTopic,
   ApiError
 } from '../../types/api';
+import styles from './AdminProblemsManager.module.css';
 
 interface AdminProblemsManagerProps {
   token: string;
@@ -131,20 +132,20 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
   const disabledBecauseNoTopics = topics.length === 0;
 
   return (
-    <div className="glass" style={{ padding: '1rem', borderRadius: '14px', marginTop: '1rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+    <div className={`glass ${styles.root}`}>
+      <div className={styles.headerRow}>
         <div>
-          <h3 style={{ margin: 0 }}>Manage Problems</h3>
-          <p style={{ margin: '0.35rem 0 0', color: 'var(--text-muted)', fontSize: '0.92rem' }}>
+          <h3 className={styles.title}>Manage Problems</h3>
+          <p className={styles.subtitle}>
             Maintain problem inventory by topic with difficulty and monetization flags.
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+        <div className={styles.headerActions}>
           <select
             value={filterTopicId}
             onChange={(event) => setFilterTopicId(event.target.value)}
-            style={inputStyle}
+            className={styles.inputBase}
           >
             <option value="all">All topics</option>
             {topics.map((topic) => (
@@ -156,18 +157,7 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
             onClick={() => {
               void loadAll(filterTopicId);
             }}
-            style={{
-              minHeight: '40px',
-              borderRadius: '10px',
-              border: '1px solid var(--border-color)',
-              background: 'transparent',
-              color: 'var(--text-secondary)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.45rem',
-              padding: '0 0.85rem',
-              cursor: 'pointer'
-            }}
+            className={styles.refreshButton}
           >
             <RefreshCcw size={15} />
             Refresh
@@ -175,21 +165,21 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
         </div>
       </div>
 
-      {error ? <div style={{ color: 'var(--error-color)', marginBottom: '0.75rem' }}>{error}</div> : null}
+      {error ? <div className={styles.error}>{error}</div> : null}
 
       {disabledBecauseNoTopics ? (
-        <div style={{ color: 'var(--warning-light)', marginBottom: '1rem' }}>
+        <div className={styles.warning}>
           Create at least one topic before adding problems.
         </div>
       ) : null}
 
-      <form onSubmit={submitForm} style={{ display: 'grid', gap: '0.7rem', marginBottom: '1rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.65rem' }}>
+      <form onSubmit={submitForm} className={styles.form}>
+        <div className={styles.formGrid}>
           <select
             value={form.topicId}
             onChange={(event) => setForm((prev) => ({ ...prev, topicId: event.target.value }))}
             required
-            style={inputStyle}
+            className={styles.inputBase}
             disabled={disabledBecauseNoTopics}
           >
             <option value="" disabled>Select topic</option>
@@ -203,7 +193,7 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
             onChange={(event) => setForm((prev) => ({ ...prev, title: event.target.value }))}
             placeholder="Problem title"
             required
-            style={inputStyle}
+            className={styles.inputBase}
             disabled={disabledBecauseNoTopics}
           />
 
@@ -212,14 +202,14 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
             onChange={(event) => setForm((prev) => ({ ...prev, slug: event.target.value }))}
             placeholder="problem-slug"
             required
-            style={inputStyle}
+            className={styles.inputBase}
             disabled={disabledBecauseNoTopics}
           />
 
           <select
             value={form.difficulty}
             onChange={(event) => setForm((prev) => ({ ...prev, difficulty: event.target.value as AdminProblemPayload['difficulty'] }))}
-            style={inputStyle}
+            className={styles.inputBase}
             disabled={disabledBecauseNoTopics}
           >
             <option value="Easy">Easy</option>
@@ -227,7 +217,7 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
             <option value="Hard">Hard</option>
           </select>
 
-          <label style={{ ...inputStyle, display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+          <label className={`${styles.inputBase} ${styles.checkboxField}`}>
             <input
               type="checkbox"
               checked={form.isPremium}
@@ -244,7 +234,7 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
           placeholder="Problem statement"
           required
           rows={4}
-          style={{ ...inputStyle, resize: 'vertical' }}
+          className={`${styles.inputBase} ${styles.textarea}`}
           disabled={disabledBecauseNoTopics}
         />
 
@@ -253,27 +243,15 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
           onChange={(event) => setForm((prev) => ({ ...prev, constraints: event.target.value }))}
           placeholder="Constraints (optional)"
           rows={2}
-          style={{ ...inputStyle, resize: 'vertical' }}
+          className={`${styles.inputBase} ${styles.textarea}`}
           disabled={disabledBecauseNoTopics}
         />
 
-        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+        <div className={styles.actions}>
           <button
             type="submit"
             disabled={submitting || disabledBecauseNoTopics}
-            style={{
-              minHeight: '40px',
-              borderRadius: '10px',
-              border: 'none',
-              background: 'var(--primary-gradient)',
-              color: 'white',
-              fontWeight: 700,
-              padding: '0 1rem',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.45rem'
-            }}
+            className={styles.primaryButton}
           >
             {isEditing ? <Edit3 size={15} /> : <Plus size={15} />}
             {submitting ? 'Saving...' : isEditing ? 'Update Problem' : 'Create Problem'}
@@ -283,18 +261,7 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
             <button
               type="button"
               onClick={resetForm}
-              style={{
-                minHeight: '40px',
-                borderRadius: '10px',
-                border: '1px solid var(--border-color)',
-                background: 'transparent',
-                color: 'var(--text-secondary)',
-                padding: '0 1rem',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem'
-              }}
+              className={styles.secondaryButton}
             >
               <X size={15} />
               Cancel Edit
@@ -304,28 +271,28 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
       </form>
 
       {loading ? (
-        <div style={{ color: 'var(--text-muted)' }}>Loading problems...</div>
+        <div className={styles.loading}>Loading problems...</div>
       ) : (
-        <div style={{ display: 'grid', gap: '0.55rem' }}>
+        <div className={styles.list}>
           {problems.map((problem) => (
-            <div key={problem.id} style={{ border: '1px solid var(--border-color)', borderRadius: '12px', padding: '0.7rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.75rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+            <div key={problem.id} className={styles.card}>
+              <div className={styles.cardRow}>
                 <div>
-                  <div style={{ fontWeight: 700 }}>{problem.title}</div>
-                  <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                  <div className={styles.cardTitle}>{problem.title}</div>
+                  <div className={styles.cardMeta}>
                     {problem.slug} • {problem.topicTitle} • {problem.difficulty}
                   </div>
-                  <div style={{ color: 'var(--text-secondary)', marginTop: '0.35rem', fontSize: '0.92rem' }}>
+                  <div className={styles.cardDescription}>
                     {problem.statement}
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <div className={styles.cardActions}>
                   {problem.isPremium ? (
-                    <span style={premiumBadgeStyle}>Premium</span>
+                    <span className={`${styles.badge} ${styles.premiumBadge}`}>Premium</span>
                   ) : (
-                    <span style={freeBadgeStyle}>Free</span>
+                    <span className={`${styles.badge} ${styles.freeBadge}`}>Free</span>
                   )}
-                  <button onClick={() => startEdit(problem)} style={iconButtonStyle} aria-label={`Edit ${problem.title}`}>
+                  <button onClick={() => startEdit(problem)} className={styles.iconButton} aria-label={`Edit ${problem.title}`}>
                     <Edit3 size={14} />
                   </button>
                   <button
@@ -335,7 +302,7 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
                         void deleteProblem(problem.id);
                       }
                     }}
-                    style={iconButtonStyle}
+                    className={styles.iconButton}
                     aria-label={`Delete ${problem.title}`}
                   >
                     <Trash2 size={14} />
@@ -344,50 +311,11 @@ const AdminProblemsManager = ({ token, onProblemsChanged }: AdminProblemsManager
               </div>
             </div>
           ))}
-          {problems.length === 0 ? <div style={{ color: 'var(--text-muted)' }}>No problems found for this filter.</div> : null}
+          {problems.length === 0 ? <div className={styles.empty}>No problems found for this filter.</div> : null}
         </div>
       )}
     </div>
   );
-};
-
-const inputStyle: CSSProperties = {
-  background: 'var(--bg-tertiary)',
-  border: '1px solid var(--border-color)',
-  borderRadius: '10px',
-  color: 'var(--text-main)',
-  minHeight: '40px',
-  padding: '0.55rem 0.7rem',
-  font: 'inherit'
-};
-
-const iconButtonStyle: CSSProperties = {
-  width: '32px',
-  height: '32px',
-  borderRadius: '8px',
-  border: '1px solid var(--border-color)',
-  background: 'transparent',
-  color: 'var(--text-secondary)',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  cursor: 'pointer'
-};
-
-const premiumBadgeStyle: CSSProperties = {
-  fontSize: '0.78rem',
-  padding: '0.18rem 0.5rem',
-  borderRadius: '999px',
-  background: 'var(--accent-gradient)',
-  color: 'white'
-};
-
-const freeBadgeStyle: CSSProperties = {
-  fontSize: '0.78rem',
-  padding: '0.18rem 0.5rem',
-  borderRadius: '999px',
-  background: 'var(--info-bg)',
-  color: 'var(--info-light)'
 };
 
 export default AdminProblemsManager;

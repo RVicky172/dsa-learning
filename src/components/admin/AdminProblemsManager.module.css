@@ -1,0 +1,181 @@
+.root {
+  padding: 1rem;
+  border-radius: 14px;
+  margin-top: 1rem;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.error {
+  color: var(--error-color);
+  margin-bottom: 0.75rem;
+}
+
+.warning {
+  color: var(--warning-light);
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: grid;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.65rem;
+}
+
+.inputBase {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-main);
+  min-height: 40px;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+}
+
+.checkboxField {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.refreshButton,
+.secondaryButton,
+.iconButton {
+  min-height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 0.85rem;
+  cursor: pointer;
+}
+
+.primaryButton {
+  min-height: 40px;
+  border-radius: 10px;
+  border: none;
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 700;
+  padding: 0 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.secondaryButton {
+  padding: 0 1rem;
+}
+
+.loading,
+.empty {
+  color: var(--text-muted);
+}
+
+.list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.7rem;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.cardTitle {
+  font-weight: 700;
+}
+
+.cardMeta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.cardDescription {
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
+  font-size: 0.92rem;
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.iconButton {
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  justify-content: center;
+  padding: 0;
+}
+
+.badge {
+  font-size: 0.78rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+}
+
+.premiumBadge {
+  background: var(--accent-gradient);
+  color: white;
+}
+
+.freeBadge {
+  background: var(--info-bg);
+  color: var(--info-light);
+}

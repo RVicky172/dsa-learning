@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, type CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { Zap, TrendingUp, Activity, Search, Database, Layers, CheckCircle2, Eye, Play, Pause, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
@@ -556,8 +556,30 @@ const BigODetail = () => {
         { title: 'Climbing Stairs', desc: 'Find number of ways to climb n stairs.', p1: 'Recursive:', p1v: 'O(2ⁿ)', p2: 'DP:', p2v: 'O(n) Memoization' }
     ];
 
+    const selectorStyles = (example: ComplexityExample, isSelected: boolean): CSSProperties => ({
+        '--example-color': example.color,
+        '--selector-border': isSelected ? example.color : 'rgba(255,255,255,0.08)',
+        '--selector-background': isSelected ? `${example.color}15` : 'rgba(255,255,255,0.02)',
+        '--selector-foreground': isSelected ? example.color : 'var(--text-muted)',
+        '--selector-shadow': isSelected ? `0 0 20px ${example.color}30, inset 0 0 10px ${example.color}10` : 'none',
+    } as CSSProperties);
+
+    const titleDotStyle = {
+        '--selected-color': selectedExample.color,
+    } as CSSProperties;
+
+    const playButtonStyle = {
+        '--selected-color': selectedExample.color,
+        '--selected-shadow': `0 4px 12px ${selectedExample.color}50`,
+    } as CSSProperties;
+
+    const theoryCardStyle = (accentColor: string, background: string) => ({
+        '--theory-accent': accentColor,
+        '--theory-background': background,
+    } as CSSProperties);
+
     return (
-        <section id="big-o" className="container">
+        <section id="big-o" className={`container ${styles.page}`}>
             <div className={styles.heroSection}>
                 <div className={styles.heroHeader}>
                     <div className={styles.heroGlowOrb} />
@@ -595,219 +617,133 @@ const BigODetail = () => {
                 <ComplexityGraph />
             </div>
 
-            {/* Algorithm Counting & Analysis Section */}
-            <div style={{ marginBottom: '6rem' }}>
-                {/* Header */}
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3rem)', marginBottom: '1rem', fontWeight: '800' }}>
+            <div className={styles.analysisSection}>
+                <div className={styles.analysisHeader}>
+                    <h2 className={styles.analysisTitle}>
                         Algorithm <span className="gradient-text">Counting & Analysis</span>
                     </h2>
-                    <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+                    <p className={styles.analysisDescription}>
                         Learn to count operations and analyze algorithm efficiency. Click on any complexity to see step-by-step analysis.
                     </p>
                 </div>
 
-                {/* Dashboard Layout */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-
-                    {/* Horizontal Complexity Selector */}
-                    <div style={{
-                        display: 'flex',
-                        gap: '1rem',
-                        overflowX: 'auto',
-                        padding: '0.5rem',
-                        margin: '-0.5rem',
-                        WebkitOverflowScrolling: 'touch',
-                        msOverflowStyle: 'none',
-                        scrollbarWidth: 'none'
-                    } as React.CSSProperties}>
+                <div className={styles.analysisStack}>
+                    <div className={styles.selectorRail}>
                         {complexityExamples.map((example) => {
                             const isSelected = selectedExample.id === example.id;
                             return (
                                 <motion.button
                                     key={example.id}
-                                    onClick={() => { setSelectedExample(example); resetAnimation(); }}
+                                    onClick={() => {
+                                        setSelectedExample(example);
+                                        resetAnimation();
+                                    }}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    style={{
-                                        display: 'flex', alignItems: 'center', gap: '0.75rem',
-                                        padding: '0.8rem 1.5rem', borderRadius: '99px',
-                                        border: isSelected ? `1px solid ${example.color}` : '1px solid rgba(255,255,255,0.08)',
-                                        background: isSelected ? `${example.color}15` : 'rgba(255,255,255,0.02)',
-                                        color: isSelected ? example.color : 'var(--text-muted)',
-                                        cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                        boxShadow: isSelected ? `0 0 20px ${example.color}30, inset 0 0 10px ${example.color}10` : 'none',
-                                        whiteSpace: 'nowrap', flexShrink: 0
-                                    }}
+                                    className={`${styles.selectorButton} ${isSelected ? styles.selectorButtonSelected : ''}`}
+                                    style={selectorStyles(example, isSelected)}
                                 >
-                                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: isSelected ? example.color : 'rgba(255,255,255,0.2)', boxShadow: isSelected ? `0 0 8px ${example.color}` : 'none' }} />
-                                    <span style={{ fontWeight: '800', fontFamily: 'var(--font-mono)', fontSize: '1rem' }}>
-                                        {example.complexity}
-                                    </span>
+                                    <div className={styles.selectorDot} />
+                                    <span className={styles.selectorComplexity}>{example.complexity}</span>
                                     {isSelected && (
-                                        <span style={{ fontSize: '0.85rem', opacity: 0.9, paddingLeft: '0.25rem', borderLeft: `1px solid ${example.color}40`, marginLeft: '0.25rem' }}>
-                                            {example.name.split(' - ')[1]}
-                                        </span>
+                                        <span className={styles.selectorDetail}>{example.name.split(' - ')[1]}</span>
                                     )}
                                 </motion.button>
                             );
                         })}
                     </div>
 
-                    {/* Main Content: Code Panel and Graph */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                    <div className={styles.walkthroughStack}>
+                        <div className={`glass ${styles.walkthroughPanel}`}>
+                            <div className={styles.walkthroughHeader}>
+                                <div className={styles.windowDots}>
+                                    <div className={`${styles.windowDot} ${styles.windowDotRed}`} />
+                                    <div className={`${styles.windowDot} ${styles.windowDotYellow}`} />
+                                    <div className={`${styles.windowDot} ${styles.windowDotGreen}`} />
+                                </div>
 
-                        {/* Code Panel */}
-                        <div className="glass" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                            {/* Mac-style Window Header */}
-                            <div style={{
-                                padding: 'clamp(0.6rem, 2vw, 0.9rem) clamp(0.75rem, 3vw, 1.5rem)',
-                                background: 'rgba(0,0,0,0.45)',
-                                borderBottom: '1px solid rgba(255,255,255,0.06)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                flexWrap: 'wrap',
-                                gap: '0.75rem'
-                            }}>
-                                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }} />
-                                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#eab308' }} />
-                                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22c55e' }} />
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
-                                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: selectedExample.color, boxShadow: `0 0 8px ${selectedExample.color}`, flexShrink: 0 }} />
-                                        <span style={{ color: selectedExample.color, fontWeight: '700', fontSize: 'clamp(0.75rem, 2.5vw, 0.9rem)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{selectedExample.name}</span>
+                                <div className={styles.walkthroughMeta}>
+                                    <div className={styles.walkthroughTitleWrap}>
+                                        <div className={styles.walkthroughTitleDot} style={titleDotStyle} />
+                                        <span className={styles.walkthroughTitleText} style={{ color: selectedExample.color }}>
+                                            {selectedExample.name}
+                                        </span>
                                     </div>
-                                    <div style={{
-                                        fontSize: '0.8rem', fontFamily: 'var(--font-mono)',
-                                        color: 'var(--text-muted)', background: 'rgba(255,255,255,0.05)',
-                                        padding: '0.25rem 0.85rem', borderRadius: '99px', border: '1px solid rgba(255,255,255,0.06)'
-                                    }}>algorithm.js</div>
+                                    <div className={styles.walkthroughFileBadge}>algorithm.js</div>
                                 </div>
-                                <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
+
+                                <div className={styles.walkthroughControls}>
                                     <button
                                         onClick={isAnimating ? pauseAnimation : startAnimation}
                                         aria-label={isAnimating ? 'Pause walkthrough' : 'Play walkthrough'}
-                                        style={{
-                                            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
-                                            width: '36px', height: '36px', borderRadius: '8px',
-                                            background: selectedExample.color, color: 'white', border: 'none',
-                                            cursor: 'pointer', fontWeight: '700', fontSize: '0.85rem',
-                                            boxShadow: `0 4px 12px ${selectedExample.color}50`, transition: 'all 0.2s',
-                                            padding: 0
-                                        }}
+                                        className={`${styles.iconButton} ${styles.primaryIconButton}`}
+                                        style={playButtonStyle}
                                     >
                                         {isAnimating ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" />}
                                     </button>
-                                    <button
-                                        onClick={stepBackward}
-                                        aria-label="Previous step"
-                                        style={{
-                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                            width: '36px', borderRadius: '8px',
-                                            background: 'rgba(255,255,255,0.06)', color: 'var(--text-main)',
-                                            border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', padding: 0
-                                        }}
-                                    >
+                                    <button onClick={stepBackward} aria-label="Previous step" className={styles.iconButton}>
                                         <ChevronLeft size={16} />
                                     </button>
-                                    <button
-                                        onClick={stepForward}
-                                        aria-label="Next step"
-                                        style={{
-                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                            width: '36px', borderRadius: '8px',
-                                            background: 'rgba(255,255,255,0.06)', color: 'var(--text-main)',
-                                            border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', padding: 0
-                                        }}
-                                    >
+                                    <button onClick={stepForward} aria-label="Next step" className={styles.iconButton}>
                                         <ChevronRight size={16} />
                                     </button>
                                     <button
                                         onClick={resetAnimation}
                                         aria-label="Reset animation"
-                                        style={{
-                                            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
-                                            padding: '0.5rem 1rem', borderRadius: '8px',
-                                            background: 'rgba(255,255,255,0.06)', color: 'var(--text-main)',
-                                            border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
-                                            fontWeight: '600', fontSize: '0.85rem'
-                                        }}
+                                        className={`${styles.iconButton} ${styles.resetButton}`}
                                     >
                                         <RotateCcw size={14} />
+                                        Reset
                                     </button>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                                        <span style={{ fontSize: '0.75rem' }}>Speed:</span>
+                                    <label className={styles.speedControlCompact}>
+                                        <span className={styles.speedControlLabel}>Speed</span>
                                         <select
                                             value={playbackRate}
-                                            onChange={(e) => setPlaybackRate(Number(e.target.value))}
-                                            style={{
-                                                background: 'rgba(255,255,255,0.06)',
-                                                border: '1px solid rgba(255,255,255,0.1)',
-                                                color: 'var(--text-main)',
-                                                borderRadius: '6px',
-                                                padding: '0.35rem 0.6rem',
-                                                fontSize: '0.8rem',
-                                                cursor: 'pointer',
-                                                fontFamily: 'var(--font-mono)'
-                                            }}
+                                            onChange={(event) => setPlaybackRate(Number(event.target.value))}
+                                            className={styles.speedSelect}
                                         >
-                                            <option value="0.5">0.5x</option>
                                             <option value="1">1x</option>
                                             <option value="1.5">1.5x</option>
                                             <option value="2">2x</option>
                                         </select>
-                                    </div>
+                                    </label>
                                 </div>
                             </div>
 
-                            {/* Code Display */}
-                            <div style={{ background: '#090c14', padding: 'clamp(0.75rem, 3vw, 1.5rem) 0', overflowX: 'auto' }}>
-                                <pre style={{
-                                    margin: 0, fontSize: 'clamp(0.75rem, 2.5vw, 0.95rem)', lineHeight: '1.85',
-                                    overflowX: 'auto', fontFamily: "'JetBrains Mono', 'Courier New', monospace"
-                                }}>
+                            <div className={styles.codeViewport}>
+                                <pre className={styles.codeBlock}>
                                     {selectedExample.code.split('\n').map((line, index) => {
                                         const lineNum = index + 1;
-                                        const annotation = selectedExample.annotations.find(a => a.line === lineNum);
-                                        const isHighlighted = highlightedLine === lineNum;
+                                        const isHighlighted = lineNum === highlightedLine;
+                                        const annotation = selectedExample.annotations[currentAnnotationIndex];
+                                        const showAnnotation = isHighlighted && annotation?.line === lineNum;
+
                                         return (
                                             <div
                                                 key={index}
-                                                style={{
-                                                    display: 'flex', alignItems: 'center',
-                                                    padding: '0.15rem clamp(0.5rem, 3vw, 1.5rem)',
-                                                    background: isHighlighted ? `${selectedExample.color}20` : 'transparent',
-                                                    borderLeft: isHighlighted ? `3px solid ${selectedExample.color}` : '3px solid transparent',
-                                                    transition: 'all 0.3s ease'
-                                                }}
+                                                className={`${styles.codeRow} ${isHighlighted ? styles.codeRowActive : ''}`}
+                                                style={isHighlighted ? ({ '--selected-color': selectedExample.color, '--selected-soft': `${selectedExample.color}15` } as CSSProperties) : undefined}
                                             >
-                                                <span style={{
-                                                    width: '2.2rem', color: isHighlighted ? selectedExample.color : 'rgba(255,255,255,0.18)',
-                                                    userSelect: 'none', fontSize: '0.82rem', flexShrink: 0, textAlign: 'right',
-                                                    marginRight: '1.5rem', fontWeight: isHighlighted ? '700' : '400'
-                                                }}>{lineNum}</span>
-                                                <code style={{
-                                                    color: isHighlighted ? '#fff' : '#b0bec5', flex: 1,
-                                                    fontFamily: 'inherit', whiteSpace: 'pre',
-                                                    textShadow: isHighlighted ? `0 0 12px ${selectedExample.color}50` : 'none'
-                                                }}>{line || '\u00A0'}</code>
-                                                {annotation && isHighlighted && (
+                                                <span
+                                                    className={`${styles.codeLineNumber} ${isHighlighted ? styles.codeLineNumberActive : ''}`}
+                                                    style={isHighlighted ? { color: selectedExample.color } : undefined}
+                                                >
+                                                    {lineNum}
+                                                </span>
+                                                <code
+                                                    className={`${styles.codeContent} ${isHighlighted ? styles.codeContentActive : ''}`}
+                                                    style={isHighlighted ? ({ '--selected-glow': `0 0 12px ${selectedExample.color}50` } as CSSProperties) : undefined}
+                                                >
+                                                    {line || '\u00A0'}
+                                                </code>
+                                                {showAnnotation && (
                                                     <motion.div
                                                         initial={{ opacity: 0, x: 12 }}
                                                         animate={{ opacity: 1, x: 0 }}
-                                                        style={{
-                                                            marginLeft: '1.5rem', padding: '0.3rem 0.85rem',
-                                                            background: selectedExample.color, color: 'white',
-                                                            borderRadius: '6px', fontSize: '0.78rem', fontWeight: '700',
-                                                            whiteSpace: 'nowrap', flexShrink: 0,
-                                                            boxShadow: `0 4px 12px ${selectedExample.color}60`,
-                                                            display: 'flex', alignItems: 'center', gap: '0.35rem'
-                                                        }}
+                                                        className={styles.annotationChip}
+                                                        style={{ background: selectedExample.color, boxShadow: `0 4px 12px ${selectedExample.color}60` }}
                                                     >
-                                                        {annotation.text}
+                                                        {annotation.count}
                                                     </motion.div>
                                                 )}
                                             </div>
@@ -816,214 +752,265 @@ const BigODetail = () => {
                                 </pre>
                             </div>
 
-                            {/* Annotation Legend */}
-                            <div style={{ padding: 'clamp(1rem, 3vw, 1.5rem)', background: 'rgba(0,0,0,0.2)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        <div style={{ width: '8px', height: '8px', borderRadius: '2px', background: selectedExample.color }} />
-                                        <span>Current Operation</span>
+                            <div className={styles.walkthroughFooter}>
+                                <div className={styles.walkthroughFooterRow}>
+                                    <div className={styles.walkthroughFooterLegend}>
+                                        <div className={styles.walkthroughFooterDot} style={{ background: selectedExample.color }} />
+                                        <span>
+                                            {selectedExample.annotations[currentAnnotationIndex]?.text ?? 'Start the walkthrough to see each operation counted.'}
+                                        </span>
                                     </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        <span>{currentAnnotationIndex + 1} / {totalAnnotations}</span>
-                                    </div>
+                                    <span>
+                                        Step {totalAnnotations === 0 ? 0 : currentAnnotationIndex + 1} / {totalAnnotations}
+                                    </span>
+                                    <span>Space: {selectedExample.spaceComplexity}</span>
+                                    <span>{selectedExample.realWorld}</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <div style={{ marginBottom: '4rem' }}>
-                <h3 className={styles.heroTitle} style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    Theoretical <span className="gradient-text">Foundations</span>
-                </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}>
-                    <div className="glass" style={{ padding: '1.5rem', borderLeft: '4px solid #ef4444', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '0 12px 12px 0' }}>
-                        <h4 style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '1.25rem' }}>Big O (O)</h4>
-                        <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Upper Bound (Worst Case)</p>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                            Describes the <strong>maximum</strong> time an algorithm could take. It guarantees that the algorithm will never be slower than this.
-                        </p>
-                        <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is O(g(n)) if f(n) ≤ c · g(n)"</div>
-                    </div>
-                    <div className="glass" style={{ padding: '1.5rem', borderLeft: '4px solid #22c55e', background: 'rgba(34, 197, 94, 0.05)', borderRadius: '0 12px 12px 0' }}>
-                        <h4 style={{ color: '#22c55e', marginBottom: '1rem', fontSize: '1.25rem' }}>Big Omega (Ω)</h4>
-                        <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Lower Bound (Best Case)</p>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                            Describes the <strong>minimum</strong> time an algorithm could take. It guarantees that the algorithm will never be faster than this.
-                        </p>
-                        <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is Ω(g(n)) if f(n) ≥ c · g(n)"</div>
-                    </div>
-                    <div className="glass" style={{ padding: '1.5rem', borderLeft: '4px solid #f97316', background: 'rgba(249, 115, 22, 0.05)', borderRadius: '0 12px 12px 0' }}>
-                        <h4 style={{ color: '#f97316', marginBottom: '1rem', fontSize: '1.25rem' }}>Big Theta (Θ)</h4>
-                        <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Tight Bound (Average Case)</p>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                            Describes the <strong>exact</strong> growth rate. An algorithm is Θ(g(n)) if it is both O(g(n)) and Ω(g(n)).
-                        </p>
-                        <div style={{ marginTop: '1rem', fontStyle: 'italic', fontSize: '0.85rem' }}>"f(n) is Θ(g(n)) if c₁g(n) ≤ f(n) ≤ c₂g(n)"</div>
-                    </div>
-                    <div className="glass" style={{ padding: '1.5rem', borderLeft: '4px solid #8b5cf6', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '0 12px 12px 0' }}>
-                        <h4 style={{ color: '#8b5cf6', marginBottom: '1rem', fontSize: '1.25rem' }}>Amortized Time</h4>
-                        <p style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Average over time</p>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                            Guarantees average performance over a sequence of operations. A costly operation is averaged out by many subsequent cheap ones (e.g., resizing a dynamic array).
-                        </p>
-                    </div>
-                </div>
-            </div>
+                        <div className={styles.sectionBlock}>
+                            <h3 className={`${styles.heroTitle} ${styles.sectionHeadingCenter}`}>
+                                Understanding the <span className="gradient-text">Notation Family</span>
+                            </h3>
+                            <div className={styles.theoryGrid}>
+                                <div className={`glass ${styles.theoryCard}`} style={theoryCardStyle('#ef4444', 'rgba(239, 68, 68, 0.05)')}>
+                                    <h4 className={styles.theoryCardTitle}>Big O (O)</h4>
+                                    <p className={styles.theoryCardLabel}>Upper Bound (Worst Case)</p>
+                                    <p className={styles.theoryCardText}>
+                                        Describes the maximum growth rate. It tells you the slowest acceptable performance an algorithm might have as input grows.
+                                    </p>
+                                    <div className={styles.theoryFormula}>"f(n) is O(g(n)) if f(n) ≤ c · g(n)"</div>
+                                </div>
 
-            <div style={{ marginBottom: '4rem' }}>
-                <div className="glass" style={{ padding: 'clamp(1.25rem, 5vw, 3rem)', position: 'relative', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
-                    <div style={{ position: 'relative', zIndex: 1 }}>
-                        <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                            <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(249,115,22,0.4)' }}>
-                                <TrendingUp size={24} color="white" />
-                            </div>
-                            Understanding <span className="gradient-text">Logarithms</span>
-                        </h3>
-                        <p style={{ fontSize: '1.05rem', lineHeight: '1.8', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                            Logarithms are fundamental to understanding O(log n) complexity. They describe how many times you need to divide a number by a base to get 1.
-                        </p>
-                        <div style={{ background: 'rgba(0,0,0,0.3)', padding: '2rem', borderRadius: '12px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginTop: '1.5rem' }}>
-                            <div>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>log₂(2) =</p>
-                                <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#f97316' }}>1</p>
-                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>2 ÷ 2 = 1 (1 division)</p>
-                            </div>
-                            <div>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>log₂(8) =</p>
-                                <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#f97316' }}>3</p>
-                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>8 ÷ 2 ÷ 2 ÷ 2 = 1 (3 divisions)</p>
-                            </div>
-                            <div>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>log₂(1024) =</p>
-                                <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#f97316' }}>10</p>
-                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>1024 halved 10 times = 1</p>
-                            </div>
-                            <div>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>log₂(1,000,000) ≈</p>
-                                <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#f97316' }}>20</p>
-                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Only 20 divisions for a million!</p>
+                                <div className={`glass ${styles.theoryCard}`} style={theoryCardStyle('#22c55e', 'rgba(34, 197, 94, 0.05)')}>
+                                    <h4 className={styles.theoryCardTitle}>Big Omega (Ω)</h4>
+                                    <p className={styles.theoryCardLabel}>Lower Bound (Best Case)</p>
+                                    <p className={styles.theoryCardText}>
+                                        Describes the minimum growth rate. It captures how well an algorithm can perform in the most favorable scenario.
+                                    </p>
+                                    <div className={styles.theoryFormula}>"f(n) is Ω(g(n)) if f(n) ≥ c · g(n)"</div>
+                                </div>
+
+                                <div className={`glass ${styles.theoryCard}`} style={theoryCardStyle('#f97316', 'rgba(249, 115, 22, 0.05)')}>
+                                    <h4 className={styles.theoryCardTitle}>Big Theta (Θ)</h4>
+                                    <p className={styles.theoryCardLabel}>Tight Bound</p>
+                                    <p className={styles.theoryCardText}>
+                                        Used when the upper and lower bounds match. It means the algorithm reliably grows at that exact rate.
+                                    </p>
+                                    <div className={styles.theoryFormula}>"f(n) is Θ(g(n)) if c₁·g(n) ≤ f(n) ≤ c₂·g(n)"</div>
+                                </div>
+
+                                <div className={`glass ${styles.theoryCard}`} style={theoryCardStyle('#8b5cf6', 'rgba(139, 92, 246, 0.05)')}>
+                                    <h4 className={styles.theoryCardTitle}>Amortized Time</h4>
+                                    <p className={styles.theoryCardLabel}>Average Over Operations</p>
+                                    <p className={styles.theoryCardText}>
+                                        Explains rare expensive operations by averaging them across many cheap ones, like dynamic array resizing.
+                                    </p>
+                                    <div className={styles.theoryFormula}>Total cost across many operations / number of operations</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <div style={{ marginBottom: '4rem' }}>
-                <div className="glass" style={{ padding: 'clamp(1.25rem, 5vw, 3rem)', overflowX: 'auto' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-                        <Activity size={24} className="gradient-text" color="var(--primary-color)" />
-                        <h3 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800' }}>Performance Comparison</h3>
-                    </div>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem', textAlign: 'left' }}>
-                        <thead>
-                            <tr style={{ background: 'rgba(0,0,0,0.2)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                                <th style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>Complexity</th>
-                                <th style={{ padding: '1rem 0.75rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', textAlign: 'center', whiteSpace: 'nowrap' }}>n=10</th>
-                                <th style={{ padding: '1rem 0.75rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', textAlign: 'center', whiteSpace: 'nowrap' }}>n=100</th>
-                                <th style={{ padding: '1rem 0.75rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', textAlign: 'center', whiteSpace: 'nowrap' }}>n=1,000</th>
-                                <th style={{ padding: '1rem 0.75rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', textAlign: 'center', whiteSpace: 'nowrap' }}>n=10,000</th>
-                                <th style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>Example</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {comparisonTableData.map((row, i) => (
-                                <tr key={row.c} style={{ borderBottom: i === 7 ? 'none' : '1px solid rgba(255,255,255,0.03)', background: i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.1)' }}
-                                    onMouseEnter={(e) => e.currentTarget.style.background = row.bg}
-                                    onMouseLeave={(e) => e.currentTarget.style.background = i % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.1)'}
-                                >
-                                    <td style={{ padding: '0.9rem 1.25rem', color: row.color, fontWeight: '700', whiteSpace: 'nowrap' }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: row.color, boxShadow: `0 0 8px ${row.color}`, flexShrink: 0 }} />
-                                            {row.c}
+                        <div className={styles.sectionBlock}>
+                            <div className={`glass ${styles.logarithmCard}`}>
+                                <div className={styles.logarithmGlow} />
+                                <div className={styles.logarithmContent}>
+                                    <h3 className={styles.logarithmTitle}>
+                                        <div className={styles.logarithmIconBox}>
+                                            <Search size={24} color="white" />
                                         </div>
-                                    </td>
-                                    <td style={{ padding: '0.9rem 0.75rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>{row.n10}</td>
-                                    <td style={{ padding: '0.9rem 0.75rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: row.n100 === '∞' || row.n100.includes('10³⁰') ? row.color : 'inherit' }}>{row.n100}</td>
-                                    <td style={{ padding: '0.9rem 0.75rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: row.n1k === '∞' || row.n1k.includes('10⁹') ? row.color : 'inherit' }}>{row.n1k}</td>
-                                    <td style={{ padding: '0.9rem 0.75rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: row.n10k === '∞' || row.n10k.includes('10¹³') || row.n10k === '100,000,000' ? row.color : 'inherit' }}>{row.n10k}</td>
-                                    <td style={{ padding: '0.9rem 1.25rem', color: 'var(--text-muted)', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>{row.ex}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div style={{ marginBottom: '4rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    <h3 style={{ fontSize: '2.5rem', fontWeight: '800' }}>
-                        Common <span className="gradient-text">Patterns</span>
-                    </h3>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}>
-                    {patternData.map((pattern) => {
-                        const IconComponent = pattern.icon;
-                        return (
-                            <motion.div key={pattern.title} whileHover={{ y: -5 }} className="glass" style={{ padding: '2rem', borderRadius: '20px', background: `${pattern.color}08`, border: `1px solid ${pattern.color}22`, position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100px', height: '100px', background: `radial-gradient(circle, ${pattern.color}22 0%, transparent 70%)`, borderRadius: '50%' }} />
-                                <IconComponent size={32} color={pattern.color} style={{ marginBottom: '1rem' }} />
-                                <h4 style={{ color: pattern.color, marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>{pattern.title}</h4>
-                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                                    {pattern.desc}
-                                </p>
-                                <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
-                                    <div style={{ marginBottom: '0.25rem' }}><strong style={{ color: 'var(--text-main)' }}>Time:</strong> <code style={{ color: pattern.color }}>{pattern.time}</code></div>
-                                    <div><strong style={{ color: 'var(--text-main)' }}>Examples:</strong> {pattern.examples}</div>
+                                        Why <span className="gradient-text">Logarithms</span> Matter
+                                    </h3>
+                                    <p className={styles.logarithmText}>
+                                        Logarithms are fundamental to understanding O(log n) complexity. They describe how many times you need to divide a number by a base to get 1.
+                                    </p>
+                                    <div className={styles.logarithmExamplesGrid}>
+                                        <div>
+                                            <p className={styles.logarithmExampleLabel}>log₂(2) =</p>
+                                            <p className={styles.logarithmExampleValue}>1</p>
+                                            <p className={styles.logarithmExampleNote}>2 ÷ 2 = 1 (1 division)</p>
+                                        </div>
+                                        <div>
+                                            <p className={styles.logarithmExampleLabel}>log₂(8) =</p>
+                                            <p className={styles.logarithmExampleValue}>3</p>
+                                            <p className={styles.logarithmExampleNote}>8 ÷ 2 ÷ 2 ÷ 2 = 1 (3 divisions)</p>
+                                        </div>
+                                        <div>
+                                            <p className={styles.logarithmExampleLabel}>log₂(1024) =</p>
+                                            <p className={styles.logarithmExampleValue}>10</p>
+                                            <p className={styles.logarithmExampleNote}>1024 halved 10 times = 1</p>
+                                        </div>
+                                        <div>
+                                            <p className={styles.logarithmExampleLabel}>log₂(1,000,000) ≈</p>
+                                            <p className={styles.logarithmExampleValue}>20</p>
+                                            <p className={styles.logarithmExampleNote}>Only 20 divisions for a million!</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </motion.div>
-                        );
-                    })}
-                </div>
-            </div>
+                            </div>
+                        </div>
 
-            <div style={{ marginBottom: '4rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    <h3 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: '800' }}>
-                        Ready to <span className="gradient-text">Practice?</span>
-                    </h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>Test your Big O knowledge with these classic algorithmic problems.</p>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}>
-                    {practiceProblems.map((prob, i) => {
-                        const isRevealed = revealedProblems.has(i);
-                        return (
-                            <motion.div key={prob.title} whileHover={{ y: -5 }} className="glass" style={{ padding: '2rem', borderRadius: '20px', display: 'flex', flexDirection: 'column' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-                                    <h4 style={{ color: 'var(--text-main)', margin: 0, fontSize: '1.25rem', fontWeight: '700' }}>{prob.title}</h4>
-                                    <CheckCircle2 size={20} color={isRevealed ? "var(--primary-color)" : "rgba(255,255,255,0.2)"} opacity={isRevealed ? 1 : 0.5} style={{ transition: 'all 0.3s' }} />
+                        <div className={styles.sectionBlock}>
+                            <div className={`glass ${styles.comparisonCard}`}>
+                                <div className={styles.comparisonHeader}>
+                                    <Activity size={24} className="gradient-text" color="var(--primary-color)" />
+                                    <h3 className={styles.comparisonTitle}>Performance Comparison</h3>
                                 </div>
-                                <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem', flex: 1 }}>
-                                    {prob.desc}
-                                </p>
-                                <div style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px', fontSize: '0.85rem', position: 'relative', overflow: 'hidden', minHeight: '80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                    {!isRevealed ? (
-                                        <button 
-                                            onClick={() => toggleReveal(i)}
-                                            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', padding: '0.6rem', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontWeight: '600', width: '100%', transition: 'all 0.2s', outline: 'none' }}
-                                            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
-                                            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+                                <table className={styles.comparisonTable}>
+                                    <thead>
+                                        <tr className={styles.comparisonHeadRow}>
+                                            <th className={styles.comparisonHeadCell}>Complexity</th>
+                                            <th className={`${styles.comparisonHeadCell} ${styles.comparisonHeadCellCentered}`}>n=10</th>
+                                            <th className={`${styles.comparisonHeadCell} ${styles.comparisonHeadCellCentered}`}>n=100</th>
+                                            <th className={`${styles.comparisonHeadCell} ${styles.comparisonHeadCellCentered}`}>n=1,000</th>
+                                            <th className={`${styles.comparisonHeadCell} ${styles.comparisonHeadCellCentered}`}>n=10,000</th>
+                                            <th className={styles.comparisonHeadCell}>Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {comparisonTableData.map((row, index) => (
+                                            <tr
+                                                key={row.c}
+                                                className={`${styles.comparisonRow} ${index % 2 !== 0 ? styles.comparisonRowAlt : ''} ${index === comparisonTableData.length - 1 ? styles.comparisonRowLast : ''}`}
+                                                onMouseEnter={(event) => {
+                                                    event.currentTarget.style.background = row.bg;
+                                                }}
+                                                onMouseLeave={(event) => {
+                                                    event.currentTarget.style.background = index % 2 === 0 ? 'transparent' : 'rgba(0,0,0,0.1)';
+                                                }}
+                                            >
+                                                <td className={`${styles.comparisonCell} ${styles.comparisonComplexityCell}`} style={{ color: row.color }}>
+                                                    <div className={styles.comparisonComplexityWrap}>
+                                                        <div className={styles.comparisonComplexityDot} style={{ background: row.color, boxShadow: `0 0 8px ${row.color}` }} />
+                                                        {row.c}
+                                                    </div>
+                                                </td>
+                                                <td className={`${styles.comparisonCell} ${styles.comparisonNumericCell}`}>{row.n10}</td>
+                                                <td className={`${styles.comparisonCell} ${styles.comparisonNumericCell}`} style={{ color: row.n100 === '∞' || row.n100.includes('10³⁰') ? row.color : undefined }}>{row.n100}</td>
+                                                <td className={`${styles.comparisonCell} ${styles.comparisonNumericCell}`} style={{ color: row.n1k === '∞' || row.n1k.includes('10⁹') ? row.color : undefined }}>{row.n1k}</td>
+                                                <td className={`${styles.comparisonCell} ${styles.comparisonNumericCell}`} style={{ color: row.n10k === '∞' || row.n10k.includes('10¹³') || row.n10k === '100,000,000' ? row.color : undefined }}>{row.n10k}</td>
+                                                <td className={`${styles.comparisonCell} ${styles.comparisonExampleCell}`}>{row.ex}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div style={{ marginBottom: '4rem' }}>
+                            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                                <h3 style={{ fontSize: '2.5rem', fontWeight: '800' }}>
+                                    Common <span className="gradient-text">Patterns</span>
+                                </h3>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}>
+                                {patternData.map((pattern) => {
+                                    const IconComponent = pattern.icon;
+
+                                    return (
+                                        <motion.div
+                                            key={pattern.title}
+                                            whileHover={{ y: -5 }}
+                                            className="glass"
+                                            style={{
+                                                padding: '2rem',
+                                                borderRadius: '20px',
+                                                background: `${pattern.color}08`,
+                                                border: `1px solid ${pattern.color}22`,
+                                                position: 'relative',
+                                                overflow: 'hidden',
+                                            }}
                                         >
-                                            <Eye size={16} /> Reveal Solution
-                                        </button>
-                                    ) : (
-                                        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '100%' }}>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                                <span style={{ color: 'var(--text-muted)' }}>{prob.p1}</span>
-                                                <span style={{ fontWeight: '600', color: 'var(--text-main)' }}>{prob.p1v}</span>
-                                            </div>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                                <span style={{ color: 'var(--text-muted)' }}>{prob.p2}</span>
-                                                <span style={{ fontWeight: '600', color: 'var(--text-main)' }}>{prob.p2v}</span>
+                                            <div
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: '-10%',
+                                                    right: '-10%',
+                                                    width: '100px',
+                                                    height: '100px',
+                                                    background: `radial-gradient(circle, ${pattern.color}22 0%, transparent 70%)`,
+                                                    borderRadius: '50%',
+                                                }}
+                                            />
+                                            <IconComponent size={32} color={pattern.color} style={{ marginBottom: '1rem' }} />
+                                            <h4 style={{ color: pattern.color, marginBottom: '1rem', fontSize: '1.3rem', fontWeight: '700' }}>{pattern.title}</h4>
+                                            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                                                {pattern.desc}
+                                            </p>
+                                            <div style={{ fontSize: '0.9rem', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '12px' }}>
+                                                <div style={{ marginBottom: '0.25rem' }}>
+                                                    <strong style={{ color: 'var(--text-main)' }}>Time:</strong>{' '}
+                                                    <code style={{ color: pattern.color }}>{pattern.time}</code>
+                                                </div>
+                                                <div>
+                                                    <strong style={{ color: 'var(--text-main)' }}>Examples:</strong> {pattern.examples}
+                                                </div>
                                             </div>
                                         </motion.div>
-                                    )}
-                                </div>
-                            </motion.div>
-                        );
-                    })}
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        <div className={styles.sectionBlock}>
+                            <div className={styles.practiceHeader}>
+                                <h3 className={styles.practiceTitle}>
+                                    Ready to <span className="gradient-text">Practice?</span>
+                                </h3>
+                                <p className={styles.practiceDescription}>
+                                    Test your Big O knowledge with these classic algorithmic problems.
+                                </p>
+                            </div>
+                            <div className={styles.practiceGrid}>
+                                {practiceProblems.map((prob, index) => {
+                                    const isRevealed = revealedProblems.has(index);
+
+                                    return (
+                                        <motion.div key={prob.title} whileHover={{ y: -5 }} className={`glass ${styles.practiceCard}`}>
+                                            <div className={styles.practiceCardHeader}>
+                                                <h4 className={styles.practiceCardTitle}>{prob.title}</h4>
+                                                <CheckCircle2
+                                                    size={20}
+                                                    color={isRevealed ? 'var(--primary-color)' : 'rgba(255,255,255,0.2)'}
+                                                    opacity={isRevealed ? 1 : 0.5}
+                                                    style={{ transition: 'all 0.3s' }}
+                                                />
+                                            </div>
+                                            <p className={styles.practiceCardText}>{prob.desc}</p>
+                                            <div className={styles.practiceCardBody}>
+                                                {!isRevealed ? (
+                                                    <button
+                                                        onClick={() => toggleReveal(index)}
+                                                        className={styles.practiceRevealButton}
+                                                        onMouseOver={(event) => {
+                                                            event.currentTarget.style.background = 'rgba(255,255,255,0.1)';
+                                                        }}
+                                                        onMouseOut={(event) => {
+                                                            event.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                                                        }}
+                                                    >
+                                                        <Eye size={16} /> Reveal Solution
+                                                    </button>
+                                                ) : (
+                                                    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className={styles.practiceAnswerStack}>
+                                                        <div className={styles.practiceAnswerRow}>
+                                                            <span className={styles.practiceAnswerLabel}>{prob.p1}</span>
+                                                            <span className={styles.practiceAnswerValue}>{prob.p1v}</span>
+                                                        </div>
+                                                        <div className={styles.practiceAnswerRow}>
+                                                            <span className={styles.practiceAnswerLabel}>{prob.p2}</span>
+                                                            <span className={styles.practiceAnswerValue}>{prob.p2v}</span>
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

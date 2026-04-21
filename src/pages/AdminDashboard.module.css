@@ -1,0 +1,103 @@
+.page {
+  padding-top: clamp(4rem, 10vw, 8rem);
+  padding-bottom: clamp(4rem, 10vw, 8rem);
+}
+
+.centerCard {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.centerTitle {
+  margin-bottom: 0.5rem;
+}
+
+.centerText {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.centerTextNoMargin {
+  color: var(--text-muted);
+}
+
+.primaryButton {
+  min-height: 42px;
+  border-radius: 10px;
+  border: none;
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 700;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.panelTitle {
+  margin: 0;
+}
+
+.errorText {
+  color: var(--error-color);
+  margin-bottom: 0.8rem;
+}
+
+.tabRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tabButton {
+  min-height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0 0.95rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tabButtonActive {
+  border-color: transparent;
+  background: var(--primary-gradient);
+  color: white;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.9rem;
+}
+
+.overviewCard {
+  padding: 1rem;
+  border-radius: 14px;
+}
+
+.overviewCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.overviewValue {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.loadingCard {
+  padding: 1rem;
+}

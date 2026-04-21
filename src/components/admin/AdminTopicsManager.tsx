@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { CSSProperties, FormEvent } from 'react';
+import type { FormEvent } from 'react';
 import { Edit3, Plus, RefreshCcw, Trash2, X } from 'lucide-react';
 import { apiClient } from '../../services/apiClient';
 import type { AdminListResponse, AdminTopic, AdminTopicPayload, ApiError } from '../../types/api';
+import styles from './AdminTopicsManager.module.css';
 
 interface AdminTopicsManagerProps {
   token: string;
@@ -100,11 +101,11 @@ const AdminTopicsManager = ({ token, onTopicsChanged }: AdminTopicsManagerProps)
   };
 
   return (
-    <div className="glass" style={{ padding: '1rem', borderRadius: '14px', marginTop: '1rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+    <div className={`glass ${styles.root}`}>
+      <div className={styles.headerRow}>
         <div>
-          <h3 style={{ margin: 0 }}>Manage Topics</h3>
-          <p style={{ margin: '0.35rem 0 0', color: 'var(--text-muted)', fontSize: '0.92rem' }}>
+          <h3 className={styles.title}>Manage Topics</h3>
+          <p className={styles.subtitle}>
             Create, edit, publish, and remove topic records.
           </p>
         </div>
@@ -112,41 +113,30 @@ const AdminTopicsManager = ({ token, onTopicsChanged }: AdminTopicsManagerProps)
           onClick={() => {
             void loadTopics();
           }}
-          style={{
-            minHeight: '40px',
-            borderRadius: '10px',
-            border: '1px solid var(--border-color)',
-            background: 'transparent',
-            color: 'var(--text-secondary)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.45rem',
-            padding: '0 0.85rem',
-            cursor: 'pointer'
-          }}
+          className={styles.refreshButton}
         >
           <RefreshCcw size={15} />
           Refresh
         </button>
       </div>
 
-      {error ? <div style={{ color: 'var(--error-color)', marginBottom: '0.75rem' }}>{error}</div> : null}
+      {error ? <div className={styles.error}>{error}</div> : null}
 
-      <form onSubmit={submitForm} style={{ display: 'grid', gap: '0.7rem', marginBottom: '1rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.65rem' }}>
+      <form onSubmit={submitForm} className={styles.form}>
+        <div className={styles.formGrid}>
           <input
             value={form.title}
             onChange={(event) => setForm((prev) => ({ ...prev, title: event.target.value }))}
             placeholder="Topic title"
             required
-            style={inputStyle}
+            className={styles.inputBase}
           />
           <input
             value={form.slug}
             onChange={(event) => setForm((prev) => ({ ...prev, slug: event.target.value }))}
             placeholder="topic-slug"
             required
-            style={inputStyle}
+            className={styles.inputBase}
           />
           <input
             type="number"
@@ -154,9 +144,9 @@ const AdminTopicsManager = ({ token, onTopicsChanged }: AdminTopicsManagerProps)
             min={0}
             onChange={(event) => setForm((prev) => ({ ...prev, orderIndex: Number(event.target.value) || 0 }))}
             placeholder="Order"
-            style={inputStyle}
+            className={styles.inputBase}
           />
-          <label style={{ ...inputStyle, display: 'inline-flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+          <label className={`${styles.inputBase} ${styles.checkboxField}`}>
             <input
               type="checkbox"
               checked={form.isPublished}
@@ -171,26 +161,14 @@ const AdminTopicsManager = ({ token, onTopicsChanged }: AdminTopicsManagerProps)
           placeholder="Short topic description"
           required
           rows={3}
-          style={{ ...inputStyle, resize: 'vertical' }}
+          className={`${styles.inputBase} ${styles.textarea}`}
         />
 
-        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+        <div className={styles.actions}>
           <button
             type="submit"
             disabled={submitting}
-            style={{
-              minHeight: '40px',
-              borderRadius: '10px',
-              border: 'none',
-              background: 'var(--primary-gradient)',
-              color: 'white',
-              fontWeight: 700,
-              padding: '0 1rem',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.45rem'
-            }}
+            className={styles.primaryButton}
           >
             {isEditing ? <Edit3 size={15} /> : <Plus size={15} />}
             {submitting ? 'Saving...' : isEditing ? 'Update Topic' : 'Create Topic'}
@@ -200,18 +178,7 @@ const AdminTopicsManager = ({ token, onTopicsChanged }: AdminTopicsManagerProps)
             <button
               type="button"
               onClick={resetForm}
-              style={{
-                minHeight: '40px',
-                borderRadius: '10px',
-                border: '1px solid var(--border-color)',
-                background: 'transparent',
-                color: 'var(--text-secondary)',
-                padding: '0 1rem',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem'
-              }}
+              className={styles.secondaryButton}
             >
               <X size={15} />
               Cancel Edit
@@ -221,30 +188,24 @@ const AdminTopicsManager = ({ token, onTopicsChanged }: AdminTopicsManagerProps)
       </form>
 
       {loading ? (
-        <div style={{ color: 'var(--text-muted)' }}>Loading topics...</div>
+        <div className={styles.loading}>Loading topics...</div>
       ) : (
-        <div style={{ display: 'grid', gap: '0.55rem' }}>
+        <div className={styles.list}>
           {items.map((topic) => (
-            <div key={topic.id} style={{ border: '1px solid var(--border-color)', borderRadius: '12px', padding: '0.7rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.75rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+            <div key={topic.id} className={styles.card}>
+              <div className={styles.cardRow}>
                 <div>
-                  <div style={{ fontWeight: 700 }}>{topic.title}</div>
-                  <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{topic.slug} • order {topic.orderIndex}</div>
-                  <div style={{ color: 'var(--text-secondary)', marginTop: '0.35rem', fontSize: '0.92rem' }}>{topic.description}</div>
+                  <div className={styles.cardTitle}>{topic.title}</div>
+                  <div className={styles.cardMeta}>{topic.slug} • order {topic.orderIndex}</div>
+                  <div className={styles.cardDescription}>{topic.description}</div>
                 </div>
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <div className={styles.cardActions}>
                   <span
-                    style={{
-                      fontSize: '0.78rem',
-                      padding: '0.18rem 0.5rem',
-                      borderRadius: '999px',
-                      background: topic.isPublished ? 'var(--success-bg)' : 'var(--warning-bg)',
-                      color: topic.isPublished ? 'var(--success-light)' : 'var(--warning-light)'
-                    }}
+                    className={`${styles.badge} ${topic.isPublished ? styles.badgePublished : styles.badgeDraft}`}
                   >
                     {topic.isPublished ? 'Published' : 'Draft'}
                   </span>
-                  <button onClick={() => startEdit(topic)} style={iconButtonStyle} aria-label={`Edit ${topic.title}`}>
+                  <button onClick={() => startEdit(topic)} className={styles.iconButton} aria-label={`Edit ${topic.title}`}>
                     <Edit3 size={14} />
                   </button>
                   <button
@@ -254,7 +215,7 @@ const AdminTopicsManager = ({ token, onTopicsChanged }: AdminTopicsManagerProps)
                         void deleteTopic(topic.id);
                       }
                     }}
-                    style={iconButtonStyle}
+                    className={styles.iconButton}
                     aria-label={`Delete ${topic.title}`}
                   >
                     <Trash2 size={14} />
@@ -263,34 +224,11 @@ const AdminTopicsManager = ({ token, onTopicsChanged }: AdminTopicsManagerProps)
               </div>
             </div>
           ))}
-          {items.length === 0 ? <div style={{ color: 'var(--text-muted)' }}>No topics found.</div> : null}
+          {items.length === 0 ? <div className={styles.empty}>No topics found.</div> : null}
         </div>
       )}
     </div>
   );
-};
-
-const inputStyle: CSSProperties = {
-  background: 'var(--bg-tertiary)',
-  border: '1px solid var(--border-color)',
-  borderRadius: '10px',
-  color: 'var(--text-main)',
-  minHeight: '40px',
-  padding: '0.55rem 0.7rem',
-  font: 'inherit'
-};
-
-const iconButtonStyle: CSSProperties = {
-  width: '32px',
-  height: '32px',
-  borderRadius: '8px',
-  border: '1px solid var(--border-color)',
-  background: 'transparent',
-  color: 'var(--text-secondary)',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  cursor: 'pointer'
 };
 
 export default AdminTopicsManager;

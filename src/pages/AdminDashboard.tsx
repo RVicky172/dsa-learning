@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Users, Library, FileText, Activity } from 'lucide-react';
 import { apiClient } from '../services/apiClient';
@@ -7,6 +6,7 @@ import { useAuth } from '../hooks/useAuth';
 import type { AdminOverview } from '../types/api';
 import AdminTopicsManager from '../components/admin/AdminTopicsManager';
 import AdminProblemsManager from '../components/admin/AdminProblemsManager';
+import styles from './AdminDashboard.module.css';
 
 interface AdminDashboardProps {
   onGoLogin?: () => void;
@@ -39,13 +39,13 @@ const AdminDashboard = ({ onGoLogin }: AdminDashboardProps) => {
 
   if (!isAuthenticated) {
     return (
-      <section className="container" style={{ paddingTop: 'clamp(4rem, 10vw, 8rem)', paddingBottom: 'clamp(4rem, 10vw, 8rem)' }}>
-        <div className="glass" style={{ maxWidth: '560px', margin: '0 auto', padding: '1.5rem', textAlign: 'center' }}>
-          <h2 style={{ marginBottom: '0.5rem' }}>Admin Dashboard</h2>
-          <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>Login as an admin to access this area.</p>
+      <section className={`container ${styles.page}`}>
+        <div className={`glass ${styles.centerCard}`}>
+          <h2 className={styles.centerTitle}>Admin Dashboard</h2>
+          <p className={styles.centerText}>Login as an admin to access this area.</p>
           <button
             onClick={onGoLogin}
-            style={{ minHeight: '42px', borderRadius: '10px', border: 'none', background: 'var(--primary-gradient)', color: 'white', fontWeight: 700, padding: '0 1rem', cursor: 'pointer' }}
+            className={styles.primaryButton}
           >
             Go to Login
           </button>
@@ -56,10 +56,10 @@ const AdminDashboard = ({ onGoLogin }: AdminDashboardProps) => {
 
   if (!isAdmin) {
     return (
-      <section className="container" style={{ paddingTop: 'clamp(4rem, 10vw, 8rem)', paddingBottom: 'clamp(4rem, 10vw, 8rem)' }}>
-        <div className="glass" style={{ maxWidth: '560px', margin: '0 auto', padding: '1.5rem', textAlign: 'center' }}>
-          <h2 style={{ marginBottom: '0.5rem' }}>Admin Access Required</h2>
-          <p style={{ color: 'var(--text-muted)' }}>Your account does not have admin privileges.</p>
+      <section className={`container ${styles.page}`}>
+        <div className={`glass ${styles.centerCard}`}>
+          <h2 className={styles.centerTitle}>Admin Access Required</h2>
+          <p className={styles.centerTextNoMargin}>Your account does not have admin privileges.</p>
         </div>
       </section>
     );
@@ -73,35 +73,35 @@ const AdminDashboard = ({ onGoLogin }: AdminDashboardProps) => {
   ] : [];
 
   return (
-    <section className="container" style={{ paddingTop: 'clamp(4rem, 10vw, 8rem)', paddingBottom: 'clamp(4rem, 10vw, 8rem)' }}>
+    <section className={`container ${styles.page}`}>
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
+        <div className={styles.panel}>
           <ShieldCheck size={24} color="var(--success-color)" />
-          <h2 style={{ margin: 0 }}>Admin Dashboard</h2>
+          <h2 className={styles.panelTitle}>Admin Dashboard</h2>
         </div>
 
-        {error ? <div style={{ color: 'var(--error-color)', marginBottom: '0.8rem' }}>{error}</div> : null}
+        {error ? <div className={styles.errorText}>{error}</div> : null}
 
-        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+        <div className={styles.tabRow}>
           <button
             onClick={() => setActiveTab('overview')}
-            style={tabButtonStyle(activeTab === 'overview')}
+            className={`${styles.tabButton} ${activeTab === 'overview' ? styles.tabButtonActive : ''}`}
           >
             Overview
           </button>
           <button
             onClick={() => setActiveTab('topics')}
-            style={tabButtonStyle(activeTab === 'topics')}
+            className={`${styles.tabButton} ${activeTab === 'topics' ? styles.tabButtonActive : ''}`}
           >
             Topic CRUD
           </button>
           <button
             onClick={() => setActiveTab('problems')}
-            style={tabButtonStyle(activeTab === 'problems')}
+            className={`${styles.tabButton} ${activeTab === 'problems' ? styles.tabButtonActive : ''}`}
           >
             Problem CRUD
           </button>
@@ -109,19 +109,19 @@ const AdminDashboard = ({ onGoLogin }: AdminDashboardProps) => {
 
         {activeTab === 'overview' ? (
           overview ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '0.9rem' }}>
+            <div className={styles.overviewGrid}>
               {cards.map((card) => (
-                <div key={card.label} className="glass" style={{ padding: '1rem', borderRadius: '14px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', marginBottom: '0.4rem' }}>
+                <div key={card.label} className={`glass ${styles.overviewCard}`}>
+                  <div className={styles.overviewCardHeader}>
                     <card.icon size={16} />
                     <span>{card.label}</span>
                   </div>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800 }}>{card.value}</div>
+                  <div className={styles.overviewValue}>{card.value}</div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="glass" style={{ padding: '1rem' }}>Loading admin overview...</div>
+            <div className={`glass ${styles.loadingCard}`}>Loading admin overview...</div>
           )
         ) : null}
 
@@ -136,18 +136,5 @@ const AdminDashboard = ({ onGoLogin }: AdminDashboardProps) => {
     </section>
   );
 };
-
-function tabButtonStyle(active: boolean): CSSProperties {
-  return {
-    minHeight: '38px',
-    borderRadius: '10px',
-    border: active ? '1px solid transparent' : '1px solid var(--border-color)',
-    background: active ? 'var(--primary-gradient)' : 'transparent',
-    color: active ? 'white' : 'var(--text-secondary)',
-    padding: '0 0.95rem',
-    cursor: 'pointer',
-    fontWeight: 600
-  };
-}
 
 export default AdminDashboard;
