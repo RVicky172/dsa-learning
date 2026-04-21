@@ -1,0 +1,253 @@
+.section {
+  padding-top: clamp(4rem, 10vw, 8rem);
+  padding-bottom: clamp(4rem, 10vw, 8rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 99px;
+  background: var(--primary-gradient);
+  color: white;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+
+.badgeText {
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  color: var(--text-muted);
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+.statsContainer {
+  padding: clamp(1rem, 4vw, 2rem);
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.statLabel {
+  color: var(--text-muted);
+}
+
+.timelineContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.timelineNode {
+  display: flex;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.nodeCircle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.roadmapCard {
+  padding: clamp(1rem, 3vw, 1.5rem);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.roadmapCard:hover {
+  transform: scale(1.02);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 0.75rem;
+}
+
+.cardTitleSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--text-main);
+}
+
+.difficultyBadge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.cardDescription {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.topicsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.topicBadge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--hover-bg-light);
+  color: var(--primary-color);
+  font-size: 0.7rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.prerequisites {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.actionButton {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--transition-smooth);
+}
+
+.actionButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.tipsSection {
+  margin-top: 4rem;
+  padding: clamp(1rem, 4vw, 2rem);
+  position: relative;
+  z-index: 1;
+}
+
+.tipsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.tipItem h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tipItem p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .timelineNode {
+    padding-left: 3.5rem !important;
+    padding-right: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .nodeCircle {
+    left: 0 !important;
+    transform: none !important;
+  }
+
+  .timelineLine {
+    left: 18px !important;
+  }
+
+  .roadmapCard {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}

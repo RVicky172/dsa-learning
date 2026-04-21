@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers, Zap, Code, Box, ChevronRight, Menu, X, Sun, Moon, User, LogIn, LogOut, ShieldCheck, Crown } from 'lucide-react';
-import { useTheme } from '../hooks/useTheme';
-import { useAuth } from '../hooks/useAuth';
-import './Navbar.css';
+import { useTheme } from '../../hooks/useTheme';
+import { useAuth } from '../../hooks/useAuth';
+import styles from './Navbar.module.css';
 
 interface NavbarProps {
   onNavigate?: (section: string) => void;
   activeSection?: string;
 }
 
-const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
+const Navbar: React.FC<NavbarProps> = ({ onNavigate, activeSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
@@ -34,14 +34,14 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
 
   const containerVariants = {
     initial: { y: -100, opacity: 0 },
-    animate: { y: 0, opacity: 1, transition: { duration: 0.6 } }
+    animate: { y: 0, opacity: 1, transition: { duration: 0.6 } },
   };
 
   const navItemVariants = {
     hover: {
       color: 'var(--primary-color)',
-      transition: { duration: 0.2 }
-    }
+      transition: { duration: 0.2 },
+    },
   };
 
   const handleClick = (sectionId: string) => {
@@ -55,7 +55,7 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   };
@@ -70,52 +70,50 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
       variants={containerVariants}
       initial="initial"
       animate="animate"
-      className={`navbar-container ${isScrolled ? 'is-scrolled' : ''}`}
+      className={`${styles.container} ${isScrolled ? styles.isScrolled : ''}`}
     >
-      <nav className="navbar-glass">
+      <nav className={styles.glass}>
         {/* Logo Section */}
-        <div className="navbar-logo" onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); onNavigate?.('home'); }}>
+        <div
+          className={styles.logo}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            onNavigate?.('home');
+          }}
+        >
           <motion.div
-            className="logo-icon"
+            className={styles.logoIcon}
             whileHover={{ scale: 1.05, rotate: 5 }}
             whileTap={{ scale: 0.95 }}
           >
             <Layers size={20} color="white" />
             <motion.div
-              className="logo-shine"
+              className={styles.logoShine}
               animate={{
                 left: ['-100%', '100%'],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: "linear",
-                repeatDelay: 3
-              }}
-              style={{
-                position: 'absolute',
-                top: 0,
-                width: '50%',
-                height: '100%',
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
-                transform: 'skewX(-20deg)'
+                ease: 'linear',
+                repeatDelay: 3,
               }}
             />
           </motion.div>
-          <span className="logo-text">DSA Master</span>
+          <span className={styles.logoText}>DSA Master</span>
         </div>
 
         {/* Desktop Navigation */}
-        <ul className="nav-links">
+        <ul className={styles.links}>
           {navItems.map((item) => (
             <li key={item.id}>
               <motion.button
                 onClick={() => handleClick(item.id)}
-                className={`nav-item-btn ${activeSection === item.id ? 'active' : ''}`}
+                className={`${styles.navItem} ${activeSection === item.id ? styles.active : ''}`}
                 variants={navItemVariants}
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <item.icon size={16} />
                 {item.label}
@@ -125,13 +123,13 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
         </ul>
 
         {/* Right-side actions */}
-        <div className="navbar-actions">
+        <div className={styles.actions}>
           <motion.button
-            className="learn-btn"
+            className={styles.learnBtn}
             onClick={() => handleClick('topics')}
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
             <span>Start Learning</span>
             <motion.div
@@ -143,18 +141,18 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
             </motion.div>
           </motion.button>
 
-          <div className="nav-divider" />
+          <div className={styles.divider} />
 
           {isAuthenticated ? (
             <>
               {isAdmin ? (
                 <motion.button
                   onClick={() => handleClick('admin')}
-                  className={`nav-item-btn ${activeSection === 'admin' ? 'active' : ''}`}
+                  className={`${styles.navItem} ${activeSection === 'admin' ? styles.active : ''}`}
                   variants={navItemVariants}
                   whileHover="hover"
                   whileTap={{ scale: 0.98 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
                   <ShieldCheck size={16} />
                   Admin
@@ -162,11 +160,11 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
               ) : null}
               <motion.button
                 onClick={() => handleClick('profile')}
-                className={`nav-item-btn ${activeSection === 'profile' ? 'active' : ''}`}
+                className={`${styles.navItem} ${activeSection === 'profile' ? styles.active : ''}`}
                 variants={navItemVariants}
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 title={user?.displayName}
               >
                 <User size={16} />
@@ -174,7 +172,7 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
               </motion.button>
               <motion.button
                 onClick={handleSignOut}
-                className="auth-action-btn"
+                className={styles.authBtn}
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -185,7 +183,7 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
           ) : (
             <motion.button
               onClick={() => handleClick('login')}
-              className="auth-action-btn"
+              className={styles.authBtn}
               whileHover={{ y: -1 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -195,11 +193,11 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
           )}
 
           <motion.button
-            className="theme-toggle"
+            className={styles.themeToggle}
             onClick={toggleTheme}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.92 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
             <motion.div
@@ -213,18 +211,17 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="mobile-actions">
-          <button className="mobile-menu-toggle theme-only" onClick={toggleTheme}>
+        <div className={styles.mobileActions}>
+          <button className={`${styles.mobileMenuToggle} ${styles.themeOnly}`} onClick={toggleTheme}>
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <button
-            className="mobile-menu-toggle"
+            className={styles.mobileMenuToggle}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-
       </nav>
 
       {/* Mobile Dropdown Menu */}
@@ -234,21 +231,21 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="mobile-dropdown"
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className={styles.mobileDropdown}
           >
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleClick(item.id)}
-                className={`mobile-nav-item ${activeSection === item.id ? 'active' : ''}`}
+                className={`${styles.mobileNavItem} ${activeSection === item.id ? styles.active : ''}`}
               >
                 <item.icon size={18} />
                 {item.label}
               </button>
             ))}
             <button
-              className="learn-btn"
+              className={styles.learnBtn}
               onClick={() => handleClick('topics')}
               style={{ marginTop: '0.5rem', width: '100%', justifyContent: 'center', marginLeft: 0 }}
             >
@@ -259,7 +256,7 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
                 {isAdmin ? (
                   <button
                     onClick={() => handleClick('admin')}
-                    className={`mobile-nav-item ${activeSection === 'admin' ? 'active' : ''}`}
+                    className={`${styles.mobileNavItem} ${activeSection === 'admin' ? styles.active : ''}`}
                   >
                     <ShieldCheck size={18} />
                     Admin
@@ -267,15 +264,12 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
                 ) : null}
                 <button
                   onClick={() => handleClick('profile')}
-                  className={`mobile-nav-item ${activeSection === 'profile' ? 'active' : ''}`}
+                  className={`${styles.mobileNavItem} ${activeSection === 'profile' ? styles.active : ''}`}
                 >
                   <User size={18} />
                   Profile
                 </button>
-                <button
-                  onClick={handleSignOut}
-                  className="mobile-nav-item"
-                >
+                <button onClick={handleSignOut} className={styles.mobileNavItem}>
                   <LogOut size={18} />
                   Logout
                 </button>
@@ -283,7 +277,7 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
             ) : (
               <button
                 onClick={() => handleClick('login')}
-                className={`mobile-nav-item ${activeSection === 'login' ? 'active' : ''}`}
+                className={`${styles.mobileNavItem} ${activeSection === 'login' ? styles.active : ''}`}
               >
                 <LogIn size={18} />
                 Login
@@ -296,5 +290,4 @@ const NavbarRedesigned: React.FC<NavbarProps> = ({ onNavigate, activeSection }) 
   );
 };
 
-export default NavbarRedesigned;
-
+export default Navbar;

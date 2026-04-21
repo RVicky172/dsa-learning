@@ -1,0 +1,645 @@
+.section {
+  padding-top: clamp(4rem, 10vw, 8rem);
+  padding-bottom: clamp(4rem, 10vw, 8rem);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 99px;
+  background: var(--primary-gradient);
+  color: white;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+
+.badgeText {
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  color: var(--text-muted);
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+.statusText {
+  color: var(--text-muted);
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+}
+
+/* Filters */
+.filters {
+  padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem);
+  margin-bottom: 2rem;
+}
+
+.filtersTop {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.difficultyFilterContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.difficultyFilterIcon {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.difficultyButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterButton.active {
+  color: white;
+}
+
+/* Category Filters */
+.categoryFilters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.categoryButton {
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryButton.active {
+  border-color: var(--primary-color);
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--primary-color);
+}
+
+/* Problems List */
+.problemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.emptyState {
+  padding: clamp(1.5rem, 5vw, 3rem);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.loadMoreContainer {
+  margin-top: 1.25rem;
+  text-align: center;
+  min-height: 1px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Stats */
+.stats {
+  margin-top: 3rem;
+  padding: clamp(1rem, 4vw, 2rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.statItem {
+  text-align: center;
+  padding: 1rem;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.statLabel {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0;
+}
+
+.statEasy {
+  color: #22c55e;
+}
+
+.statMedium {
+  color: #eab308;
+}
+
+.statHard {
+  color: #ef4444;
+}
+
+/* Problem Card */
+.problemCard {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cardHeader {
+  padding: clamp(0.75rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  min-height: auto;
+}
+
+.cardHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.completeButton {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.completeButton:hover:not(:disabled) {
+  color: var(--primary-color);
+}
+
+.completeButton.completed {
+  color: #22c55e;
+}
+
+.completeButton.locked {
+  color: var(--warning-color);
+  cursor: not-allowed;
+}
+
+.difficultyBadge {
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  background: var(--primary-color);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--text-main);
+  word-break: break-word;
+  overflow: visible;
+}
+
+.cardTitle.completed {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.premiumBadge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-gradient);
+  color: white;
+  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.premiumBadge.locked {
+  background: var(--warning-bg);
+  color: var(--warning-light);
+}
+
+.cardHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.categoryTags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.categoryTag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* Card Content */
+.cardContent {
+  padding: 0 clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem);
+}
+
+.cardDescription {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: inherit;
+}
+
+/* Premium Lock */
+.premiumLock {
+  padding: 1rem;
+  border: 1px solid var(--warning-color);
+  margin-bottom: 1.25rem;
+  border-radius: 8px;
+}
+
+.premiumLockHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+  font-weight: bold;
+}
+
+.premiumLockText {
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+}
+
+.premiumButton {
+  min-height: 40px;
+  border-radius: 10px;
+  border: none;
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 700;
+  padding: 0 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.premiumButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+/* Examples */
+.examplesSection {
+  margin-bottom: 1.5rem;
+}
+
+.exampleTitle {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.exampleItem {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  font-size: inherit;
+}
+
+.exampleLine {
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+.exampleLabel {
+  color: var(--text-muted);
+}
+
+.exampleCode {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: inherit;
+}
+
+.exampleCodeInput {
+  color: var(--secondary-color);
+}
+
+.exampleCodeOutput {
+  color: #22c55e;
+}
+
+.exampleExplanation {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Solution Button */
+.solutionButtonContainer {
+  margin-bottom: 1.5rem;
+}
+
+.solutionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: auto;
+  justify-content: center;
+  min-height: 44px;
+  transition: all 0.3s ease;
+}
+
+.solutionButton.visible {
+  background: #22c55e;
+  color: white;
+}
+
+.solutionButton:hover {
+  transform: translateY(-2px);
+}
+
+/* Solution Content */
+.solutionContent {
+  border-left: 4px solid #22c55e;
+  padding-left: 1.5rem;
+}
+
+.solutionHeader {
+  color: #22c55e;
+  margin-bottom: 1rem;
+  font-size: inherit;
+}
+
+.solutionApproach {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: inherit;
+}
+
+.solutionCode {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  max-width: 100%;
+  color: #e5e7eb;
+  font-family: 'Monaco', 'Courier New', monospace;
+}
+
+.complexityAnalysis {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.complexityTitle {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: inherit;
+}
+
+.complexityGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.complexityItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.complexityLabel {
+  font-weight: 600;
+  font-size: inherit;
+}
+
+.complexityValue {
+  font-weight: 700;
+  font-family: 'Monaco', 'Courier New', monospace;
+  word-break: break-all;
+}
+
+.complexityTime {
+  color: #22c55e;
+}
+
+.complexitySpace {
+  color: #8b5cf6;
+}
+
+.stepByStepSection {
+  margin-top: 1rem;
+}
+
+.stepByStepTitle {
+  margin-bottom: 0.75rem;
+  font-size: inherit;
+}
+
+.stepByStepList {
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.stepByStepList li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filtersTop {
+    flex-direction: column;
+  }
+
+  .searchContainer {
+    width: 100%;
+  }
+
+  .difficultyFilterContainer {
+    width: 100%;
+  }
+
+  .categoryFilters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .complexityGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardHeader {
+    padding: 0.5rem 0.75rem;
+    min-height: 44px;
+  }
+
+  .difficultyButtons {
+    gap: 0.3rem;
+  }
+
+  .filterButton {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .categoryButton {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .statItem {
+    padding: 0.5rem;
+  }
+
+  .statValue {
+    font-size: 1.25rem;
+  }
+
+  .cardContent {
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  .exampleItem {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .solutionCode {
+    padding: 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  .complexityAnalysis {
+    padding: 0.75rem;
+  }
+
+  .stepByStepList {
+    padding-left: 1rem;
+    font-size: 0.85rem;
+  }
+}

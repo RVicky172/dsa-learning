@@ -1,0 +1,297 @@
+.container {
+  padding: 2rem;
+  background-color: rgba(0, 217, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  margin-top: 2rem;
+}
+
+.title {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary-color);
+}
+
+.description {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.visualization {
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepDescriptionContainer {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.stepDescriptionText {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.stepText {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Controls */
+.controls {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button.playing {
+  background-color: var(--secondary-color);
+}
+
+.buttonSmall {
+  padding: 0.6rem 0.8rem;
+}
+
+.stepCounter {
+  padding: 0.6rem 1rem;
+  background-color: rgba(99, 102, 241, 0.2);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--primary-color);
+}
+
+.speedControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background-color: rgba(99, 102, 241, 0.2);
+  border-radius: 6px;
+  border: 1px solid var(--primary-color);
+}
+
+.speedLabel {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.speedInput {
+  width: 80px;
+  cursor: pointer;
+}
+
+.speedValue {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  min-width: 30px;
+}
+
+/* Array Visualization */
+.arrayContainer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.arrayItem {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.arrayItemHighlighted {
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 20px var(--secondary-color);
+}
+
+/* Linked List Visualization */
+.linkedListContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  justify-content: center;
+}
+
+.linkedListNode {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+}
+
+.linkedListNodeHighlighted {
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 15px var(--secondary-color);
+}
+
+.linkedListArrow {
+  margin-right: -5px;
+}
+
+/* Stack Visualization */
+.stackContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stackItem {
+  width: 120px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stackItemTop {
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 20px var(--secondary-color);
+}
+
+.stackTopLabel {
+  margin-left: 0.5rem;
+}
+
+/* Queue Visualization */
+.queueContainer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.queueLabel {
+  color: var(--text-muted);
+}
+
+.queueItem {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.queueItemFront {
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 20px var(--secondary-color);
+}
+
+/* Hash Table Visualization */
+.hashTableGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.hashItem {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hashItemIndex {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.hashItemValue {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* SVG Visualizations */
+.svgVisualization {
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .hashTableGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .arrayContainer {
+    gap: 0.3rem;
+  }
+
+  .arrayItem {
+    width: 50px;
+    height: 50px;
+    font-size: 0.85rem;
+  }
+}

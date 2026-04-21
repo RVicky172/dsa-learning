@@ -1,5 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* ============================================= */
+/* CSS IMPORTS - Organized CSS Layer System */
+/* ============================================= */
 
+@import './styles/theme.css';
+@import './styles/animations.css';
+@import './styles/utilities.css';
+
+/* ============================================= 
+   NOTE: The following old styles have been
+   refactored and moved to organized CSS files:
+   - All CSS variables → src/styles/theme.css
+   - All animations → src/styles/animations.css
+   - All utilities → src/styles/utilities.css
+   
+   Keeping legacy support below for migration.
+   ============================================= */
+
+/* @deprecated - Theme CSS moved to src/styles/theme.css */
 :root {
   /* ============================================= */
   /* DARK THEME (Default) - Arctic Aurora          */

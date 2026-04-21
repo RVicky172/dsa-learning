@@ -45,16 +45,16 @@ export default defineConfig({
           // Feature chunks
           'topics-data': ['./src/data/topicsData.ts'],
           'ui-components': [
-            './src/components/TopicCard.tsx',
-            './src/components/TopicDetail.tsx',
-            './src/components/ProblemsPage.tsx',
+            './src/components/TopicCard',
+            './src/components/TopicDetail',
+            './src/components/ProblemsPage',
           ],
           'page-components': [
-            './src/components/Hero.tsx',
+            './src/components/Hero',
             './src/pages/Home.tsx',
-            './src/components/Navbar.tsx',
-            './src/components/Roadmap.tsx',
-            './src/components/BigODetail.tsx',
+            './src/components/Navbar',
+            './src/components/Roadmap',
+            './src/components/BigODetail',
           ],
         },
         chunkFileNames: 'assets/[name]-[hash].js',
