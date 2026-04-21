@@ -226,6 +226,266 @@ export const stackQueueProblems: Problem[] = [
       'Use a map for bracket pairs',
       'Check stack emptiness at end'
     ]
+  },
+  // ── NEW BATCH (TKT-016) ──────────────────────────────────────────
+  {
+    id: 'sq-implement-queue-stacks',
+    title: 'Implement Queue using Stacks',
+    difficulty: 'Easy',
+    description: 'Implement a first-in first-out (FIFO) queue using only two stacks. The queue should support push, pop, peek, and empty operations.',
+    examples: [
+      { input: '["MyQueue","push","push","peek","pop","empty"] [[],[1],[2],[],[],[]]', output: '[null,null,null,1,1,false]' }
+    ],
+    solution: {
+      approach: 'Two stacks: pushStack for enqueue, popStack for dequeue. Transfer all from pushStack to popStack lazily when popStack is empty.',
+      code: `class MyQueue {
+  private pushStack: number[] = [];
+  private popStack: number[] = [];
+
+  push(x: number): void {
+    this.pushStack.push(x);
+  }
+
+  private transfer(): void {
+    if (this.popStack.length === 0) {
+      while (this.pushStack.length > 0) {
+        this.popStack.push(this.pushStack.pop()!);
+      }
+    }
+  }
+
+  pop(): number {
+    this.transfer();
+    return this.popStack.pop()!;
+  }
+
+  peek(): number {
+    this.transfer();
+    return this.popStack[this.popStack.length - 1];
+  }
+
+  empty(): boolean {
+    return this.pushStack.length === 0 && this.popStack.length === 0;
+  }
+}`,
+      timeComplexity: 'Amortized O(1) per operation',
+      spaceComplexity: 'O(n)',
+      stepByStep: [
+        'Push always goes to pushStack',
+        'Pop/peek: if popStack is empty, move everything from pushStack to popStack',
+        'This reversal turns LIFO into FIFO',
+        'Each element is transferred at most once',
+        'empty returns true only when both stacks are empty'
+      ]
+    },
+    hints: ['Transfer lazily: only move elements when popStack is empty.', 'Each element crosses stacks exactly once, giving amortized O(1).']
+  },
+  {
+    id: 'sq-backspace-compare',
+    title: 'Backspace String Compare',
+    difficulty: 'Easy',
+    description: 'Given two strings s and t where # means a backspace, return true if they are equal after processing all backspaces.',
+    examples: [
+      { input: 's = "ab#c", t = "ad#c"', output: 'true', explanation: 'Both become "ac".' },
+      { input: 's = "ab##", t = "c#d#"', output: 'true', explanation: 'Both become "".' }
+    ],
+    solution: {
+      approach: 'Two-pointer from the end of both strings: skip characters as needed using a backspace counter.',
+      code: `function backspaceCompare(s: string, t: string): boolean {
+  let i = s.length - 1;
+  let j = t.length - 1;
+  let skipS = 0;
+  let skipT = 0;
+  while (i >= 0 || j >= 0) {
+    while (i >= 0) {
+      if (s[i] === '#') { skipS++; i--; }
+      else if (skipS > 0) { skipS--; i--; }
+      else break;
+    }
+    while (j >= 0) {
+      if (t[j] === '#') { skipT++; j--; }
+      else if (skipT > 0) { skipT--; j--; }
+      else break;
+    }
+    if (i >= 0 && j >= 0 && s[i] !== t[j]) return false;
+    if ((i >= 0) !== (j >= 0)) return false;
+    i--;
+    j--;
+  }
+  return true;
+}`,
+      timeComplexity: 'O(n + m)',
+      spaceComplexity: 'O(1)',
+      stepByStep: [
+        'Use two pointers starting from the end of both strings',
+        'For each pointer, count # characters to skip real characters',
+        'Advance past skipped characters',
+        'Compare the current real characters from both strings',
+        'Mismatch in characters or length means not equal'
+      ]
+    },
+    hints: ['Work backwards to process backspaces without extra space.', 'Track a skip counter for each string.']
+  },
+  {
+    id: 'sq-decode-string',
+    title: 'Decode String',
+    difficulty: 'Medium',
+    description: 'Given an encoded string, return its decoded string. Encoding rule: k[encoded_string] means the encoded_string is repeated k times. k is always positive.',
+    examples: [
+      { input: 's = "3[a]2[bc]"', output: '"aaabcbc"' },
+      { input: 's = "3[a2[c]]"', output: '"accaccacc"' }
+    ],
+    solution: {
+      approach: 'Stack-based: push current string and current count when encountering [, pop and repeat when encountering ].',
+      code: `function decodeString(s: string): string {
+  const countStack: number[] = [];
+  const strStack: string[] = [];
+  let current = '';
+  let k = 0;
+  for (const ch of s) {
+    if (ch >= '0' && ch <= '9') {
+      k = k * 10 + Number(ch);
+    } else if (ch === '[') {
+      countStack.push(k);
+      strStack.push(current);
+      current = '';
+      k = 0;
+    } else if (ch === ']') {
+      const repeat = countStack.pop()!;
+      const prev = strStack.pop()!;
+      current = prev + current.repeat(repeat);
+    } else {
+      current += ch;
+    }
+  }
+  return current;
+}`,
+      timeComplexity: 'O(n * k_max)',
+      spaceComplexity: 'O(n)',
+      stepByStep: [
+        'Maintain a current string and a current number k',
+        'On [: push k and current onto stacks, reset both',
+        'On ]: pop repeat count and previous string, build current = prev + current.repeat(count)',
+        'On digit: accumulate k (handle multi-digit)',
+        'On letter: append to current'
+      ]
+    },
+    hints: ['Think of each [ as a save point and each ] as a restore-and-repeat.', 'Multi-digit numbers: k = k * 10 + digit.']
+  },
+  {
+    id: 'sq-asteroid-collision',
+    title: 'Asteroid Collision',
+    difficulty: 'Medium',
+    description: 'An array represents asteroids in a row. Each value is its size; sign indicates direction (positive = right, negative = left). When two asteroids collide, the smaller explodes. If equal, both explode. Return the state after all collisions.',
+    examples: [
+      { input: 'asteroids = [5,10,-5]', output: '[5,10]', explanation: '-5 and 10 collide; 10 survives.' },
+      { input: 'asteroids = [8,-8]', output: '[]', explanation: 'Equal size, both explode.' },
+      { input: 'asteroids = [10,2,-5]', output: '[10]', explanation: '2 and -5 collide, -5 wins; then -5 and 10 collide, 10 wins.' }
+    ],
+    solution: {
+      approach: 'Stack: push each asteroid. On each negative asteroid, compare with the top of the stack (a positive-going asteroid) and resolve.',
+      code: `function asteroidCollision(asteroids: number[]): number[] {
+  const stack: number[] = [];
+  for (const a of asteroids) {
+    let survived = true;
+    while (survived && a < 0 && stack.length > 0 && stack[stack.length - 1] > 0) {
+      const top = stack[stack.length - 1];
+      if (top < -a) {
+        stack.pop(); // top explodes
+      } else if (top === -a) {
+        stack.pop(); // both explode
+        survived = false;
+      } else {
+        survived = false; // current asteroid explodes
+      }
+    }
+    if (survived) stack.push(a);
+  }
+  return stack;
+}`,
+      timeComplexity: 'O(n)',
+      spaceComplexity: 'O(n)',
+      stepByStep: [
+        'Process each asteroid left to right',
+        'Collision only when stack top is positive and current is negative',
+        'If top < |current|, top explodes — pop and continue',
+        'If equal, both explode — pop and mark current as not survived',
+        'If top > |current|, current explodes — mark not survived'
+      ]
+    },
+    hints: ['Collisions only happen when a right-moving asteroid (top of stack) meets a left-moving one.', 'Loop to handle chain explosions.']
+  },
+  {
+    id: 'sq-next-greater-element',
+    title: 'Next Greater Element I',
+    difficulty: 'Medium',
+    description: 'Given two arrays nums1 and nums2 where nums1 is a subset of nums2, for each element in nums1 find the next greater element in nums2. Return -1 if none exists.',
+    examples: [
+      { input: 'nums1 = [4,1,2], nums2 = [1,3,4,2]', output: '[-1,3,-1]' },
+      { input: 'nums1 = [2,4], nums2 = [1,2,3,4]', output: '[3,-1]' }
+    ],
+    solution: {
+      approach: 'Monotonic stack on nums2: build a map from value to next greater element, then look up each nums1 value.',
+      code: `function nextGreaterElement(nums1: number[], nums2: number[]): number[] {
+  const nextGreater = new Map<number, number>();
+  const stack: number[] = [];
+  for (const num of nums2) {
+    while (stack.length > 0 && stack[stack.length - 1] < num) {
+      nextGreater.set(stack.pop()!, num);
+    }
+    stack.push(num);
+  }
+  return nums1.map(n => nextGreater.get(n) ?? -1);
+}`,
+      timeComplexity: 'O(n + m)',
+      spaceComplexity: 'O(n)',
+      stepByStep: [
+        'Use a monotonic decreasing stack for nums2',
+        'When a larger number is found, pop smaller numbers from stack and record them in the map',
+        'Remaining numbers in stack have no next greater element',
+        'Look up each nums1 element in the map',
+        'Return -1 if not found'
+      ]
+    },
+    hints: ['Monotonic stack processes each element at most twice.', 'Build the map from nums2 first, then answer nums1 queries.']
+  },
+  {
+    id: 'sq-largest-rectangle-histogram',
+    title: 'Largest Rectangle in Histogram',
+    difficulty: 'Hard',
+    description: 'Given an array of integers heights representing the histogram bar heights, return the area of the largest rectangle in the histogram.',
+    examples: [
+      { input: 'heights = [2,1,5,6,2,3]', output: '10', explanation: 'Largest rectangle has height 5 and spans indices 2-3.' },
+      { input: 'heights = [2,4]', output: '4' }
+    ],
+    solution: {
+      approach: 'Monotonic increasing stack: for each bar, pop shorter bars and compute the maximum rectangle they could form.',
+      code: `function largestRectangleArea(heights: number[]): number {
+  const stack: number[] = []; // indices
+  let maxArea = 0;
+  const n = heights.length;
+  for (let i = 0; i <= n; i++) {
+    const h = i === n ? 0 : heights[i];
+    while (stack.length > 0 && h < heights[stack[stack.length - 1]]) {
+      const height = heights[stack.pop()!];
+      const width = stack.length === 0 ? i : i - stack[stack.length - 1] - 1;
+      maxArea = Math.max(maxArea, height * width);
+    }
+    stack.push(i);
+  }
+  return maxArea;
+}`,
+      timeComplexity: 'O(n)',
+      spaceComplexity: 'O(n)',
+      stepByStep: [
+        'Maintain a monotonic increasing stack of bar indices',
+        'When a shorter bar is encountered, pop taller bars',
+        'For each popped bar, compute its max rectangle width using the stack top as left boundary',
+        'Append a sentinel bar of height 0 to flush remaining bars',
+        'Track and return the maximum area'
+      ]
+    },
+    hints: ['Append a 0-height bar at the end to trigger processing all remaining stack elements.', 'Width extends from the new stack top + 1 to the current index - 1.']
   }
 ];
 

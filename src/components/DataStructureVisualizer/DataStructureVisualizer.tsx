@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Play, Pause, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
+import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Play, Pause, ChevronLeft, ChevronRight, RotateCcw, Shuffle, PenLine, Check, X } from 'lucide-react';
 import ArrayVisualization from './visualizations/ArrayVisualization';
 import LinkedListVisualization from './visualizations/LinkedListVisualization';
 import StackVisualization from './visualizations/StackVisualization';
@@ -10,6 +10,7 @@ import HashTableVisualization from './visualizations/HashTableVisualization';
 import BinaryTreeVisualization from './visualizations/BinaryTreeVisualization';
 import GraphVisualization from './visualizations/GraphVisualization';
 import { getExampleData } from './utils/visualizationData';
+import { useVisualizerControls } from '../../hooks/useVisualizerControls';
 import styles from './DataStructureVisualizer.module.css';
 
 export type VisualizationType =
@@ -40,61 +41,62 @@ interface DataStructureVisualizerProps {
 
 export type VisualizerProps = DataStructureVisualizerProps;
 
+interface ComplexityInfo {
+  time: string;
+  space: string;
+  note: string;
+}
+
+const COMPLEXITY_INFO: Record<string, ComplexityInfo> = {
+  array: { time: 'O(n)', space: 'O(1)', note: 'Linear search' },
+  sorting: { time: 'O(n²)', space: 'O(1)', note: 'Bubble sort' },
+  'two-pointer': { time: 'O(n)', space: 'O(1)', note: 'Two pointer scan' },
+  'linked-list': { time: 'O(n)', space: 'O(1)', note: 'Traversal/insertion' },
+  stack: { time: 'O(1)', space: 'O(n)', note: 'Push/pop amortized' },
+  queue: { time: 'O(1)', space: 'O(n)', note: 'Enqueue/dequeue' },
+  heap: { time: 'O(log n)', space: 'O(n)', note: 'Insert/extract-min' },
+  'hash-table': { time: 'O(1) avg', space: 'O(n)', note: 'Hash insert/lookup' },
+  'binary-tree': { time: 'O(n)', space: 'O(h)', note: 'In-order traversal' },
+  graph: { time: 'O(V+E)', space: 'O(V)', note: 'BFS traversal' },
+};
+
 const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = ({
   type,
   data = [],
   title,
   description,
-  advancedSteps = []
+  advancedSteps = [],
 }) => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [playbackRate, setPlaybackRate] = useState(1);
-
-  // Get example data for the visualization type
   const exampleData = getExampleData();
-  const examples = (exampleData[type as keyof ReturnType<typeof getExampleData>]) || { data: data || [], description: '', steps: [] };
-  const maxSteps = Math.max(examples.steps.length, advancedSteps.length);
-
-  // Animation loop
-  useEffect(() => {
-    if (!isPlaying || maxSteps === 0) return;
-
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % maxSteps);
-    }, 1000 / playbackRate);
-
-    return () => clearInterval(interval);
-  }, [isPlaying, playbackRate, maxSteps]);
-
-  const handleReset = () => {
-    setCurrentStep(0);
-    setIsPlaying(false);
+  const examples = (exampleData[type as keyof ReturnType<typeof getExampleData>]) || {
+    data: data || [],
+    description: '',
+    steps: [],
   };
 
-  const handlePrevious = () => {
-    setCurrentStep((prev) => (prev - 1 + maxSteps) % maxSteps);
-  };
+  const advancedStepTexts =
+    advancedSteps.length > 0
+      ? Array.isArray(advancedSteps) && typeof advancedSteps[0] === 'object'
+        ? (advancedSteps as VisualizationStep[]).map((s) => s.text)
+        : (advancedSteps as string[])
+      : ([] as string[]);
 
-  const handleNext = () => {
-    setCurrentStep((prev) => (prev + 1) % maxSteps);
-  };
+  const steps = advancedStepTexts.length > 0 ? advancedStepTexts : examples.steps;
+  const maxSteps = steps.length;
+
+  const [state, actions] = useVisualizerControls(maxSteps, type);
+  const { currentStep, isPlaying, playbackRate, customInputMode, customInputValue, customData, operationCount } = state;
+
+  const activeData = customData ?? (data.length > 0 ? data : examples.data);
+  const complexity = COMPLEXITY_INFO[type] ?? { time: 'O(?)', space: 'O(?)', note: '' };
 
   const renderVisualization = () => {
-    const vizData = data.length > 0 ? data : examples.data;
-    const steps = advancedSteps.length > 0 
-      ? (Array.isArray(advancedSteps) && typeof advancedSteps[0] === 'object' 
-          ? (advancedSteps as VisualizationStep[]).map(s => s.text) 
-          : (advancedSteps as string[]))
-      : examples.steps;
-
     const commonProps = {
-      data: vizData,
+      data: activeData,
       currentStep,
       steps: steps as string[],
-      description: examples.description
+      description: examples.description,
     };
-
     switch (type) {
       case 'array':
       case 'sorting':
@@ -124,67 +126,162 @@ const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
       className={styles.container}
     >
       {title && <h3 className={styles.title}>{title}</h3>}
       {description && <p className={styles.description}>{description}</p>}
 
-      <div className={styles.visualization}>
-        {renderVisualization()}
+      {/* Complexity overlay */}
+      <div className={styles.complexityBar}>
+        <span className={styles.complexityItem}>
+          <span className={styles.complexityLabel}>Time</span>
+          <span className={styles.complexityValue}>{complexity.time}</span>
+        </span>
+        <span className={styles.complexityDivider} aria-hidden="true">|</span>
+        <span className={styles.complexityItem}>
+          <span className={styles.complexityLabel}>Space</span>
+          <span className={styles.complexityValue}>{complexity.space}</span>
+        </span>
+        <span className={styles.complexityDivider} aria-hidden="true">|</span>
+        <span className={styles.complexityNote}>{complexity.note}</span>
+        {operationCount > 0 && (
+          <>
+            <span className={styles.complexityDivider} aria-hidden="true">|</span>
+            <span className={styles.complexityItem}>
+              <span className={styles.complexityLabel}>Ops</span>
+              <span className={styles.complexityValue}>{operationCount}</span>
+            </span>
+          </>
+        )}
       </div>
+
+      <div className={styles.visualization}>{renderVisualization()}</div>
+
+      {/* Custom input panel */}
+      <AnimatePresence>
+        {customInputMode && (
+          <motion.div
+            key="custom-input"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className={styles.customInputPanel}
+          >
+            <label htmlFor="custom-data-input" className={styles.customInputLabel}>
+              Enter comma-separated values (numbers or strings):
+            </label>
+            <div className={styles.customInputRow}>
+              <input
+                id="custom-data-input"
+                type="text"
+                value={customInputValue}
+                onChange={(e) => actions.setCustomInputValue(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && actions.applyCustomInput()}
+                placeholder="e.g. 5, 3, 8, 1, 9"
+                className={styles.customInput}
+              />
+              <button
+                onClick={actions.applyCustomInput}
+                aria-label="Apply custom input"
+                className={`${styles.button} ${styles.buttonIcon}`}
+              >
+                {React.createElement(Check, { size: 16 })}
+              </button>
+              <button
+                onClick={actions.toggleCustomInput}
+                aria-label="Cancel custom input"
+                className={`${styles.button} ${styles.buttonIcon} ${styles.buttonCancel}`}
+              >
+                {React.createElement(X, { size: 16 })}
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Controls */}
       <div className={styles.controls}>
-        <button
-          onClick={() => setIsPlaying(!isPlaying)}
-          aria-label={isPlaying ? 'Pause visualization' : 'Play visualization'}
-          className={`${styles.button} ${isPlaying ? styles.playing : ''}`}
-        >
-          {React.createElement(isPlaying ? Pause : Play, { size: 18 })}
-          {isPlaying ? 'Pause' : 'Play'}
-        </button>
+        {/* Playback row */}
+        <div className={styles.controlsRow}>
+          <button
+            onClick={actions.togglePlay}
+            aria-label={isPlaying ? 'Pause visualization' : 'Play visualization'}
+            className={`${styles.button} ${isPlaying ? styles.playing : ''}`}
+          >
+            {React.createElement(isPlaying ? Pause : Play, { size: 18 })}
+            <span className={styles.buttonLabel}>{isPlaying ? 'Pause' : 'Play'}</span>
+          </button>
 
-        <button
-          onClick={handlePrevious}
-          aria-label="Previous step"
-          className={`${styles.button} ${styles.buttonSmall}`}
-        >
-          {React.createElement(ChevronLeft, { size: 18 })}
-        </button>
+          <button
+            onClick={actions.stepBack}
+            disabled={currentStep === 0}
+            aria-label="Previous step"
+            className={`${styles.button} ${styles.buttonSmall}`}
+          >
+            {React.createElement(ChevronLeft, { size: 18 })}
+          </button>
 
-        <span className={styles.stepCounter}>
-          Step {currentStep + 1} / {maxSteps}
-        </span>
+          <span className={styles.stepCounter}>
+            {currentStep + 1} / {maxSteps}
+          </span>
 
-        <button
-          onClick={handleNext}
-          aria-label="Next step"
-          className={`${styles.button} ${styles.buttonSmall}`}
-        >
-          {React.createElement(ChevronRight, { size: 18 })}
-        </button>
+          <button
+            onClick={actions.stepForward}
+            disabled={currentStep >= maxSteps - 1}
+            aria-label="Next step"
+            className={`${styles.button} ${styles.buttonSmall}`}
+          >
+            {React.createElement(ChevronRight, { size: 18 })}
+          </button>
 
-        <button
-          onClick={handleReset}
-          aria-label="Reset visualization"
-          className={styles.button}
-        >
-          {React.createElement(RotateCcw, { size: 18 })}
-          Reset
-        </button>
+          <button
+            onClick={actions.reset}
+            aria-label="Reset visualization"
+            className={styles.button}
+          >
+            {React.createElement(RotateCcw, { size: 18 })}
+            <span className={styles.buttonLabel}>Reset</span>
+          </button>
+        </div>
 
-        <div className={styles.speedControl}>
-          <label className={styles.speedLabel}>Speed:</label>
-          <input
-            type="range"
-            min="0.5"
-            max="3"
-            step="0.5"
-            value={playbackRate}
-            onChange={(e) => setPlaybackRate(parseFloat(e.target.value))}
-            className={styles.speedInput}
-          />
-          <span className={styles.speedValue}>{playbackRate.toFixed(1)}x</span>
+        {/* Secondary row: speed + input controls */}
+        <div className={styles.controlsRow}>
+          <div className={styles.speedControl}>
+            <label htmlFor={`speed-${type}`} className={styles.speedLabel}>Speed</label>
+            <input
+              id={`speed-${type}`}
+              type="range"
+              min="0.25"
+              max="2"
+              step="0.25"
+              value={playbackRate}
+              onChange={(e) => actions.setPlaybackRate(parseFloat(e.target.value))}
+              className={styles.speedInput}
+              aria-label={`Playback speed: ${playbackRate}x`}
+            />
+            <span className={styles.speedValue}>{playbackRate.toFixed(2)}x</span>
+          </div>
+
+          <button
+            onClick={() => actions.randomize(type)}
+            aria-label="Randomize input data"
+            className={`${styles.button} ${styles.buttonSecondary}`}
+            title="Randomize data"
+          >
+            {React.createElement(Shuffle, { size: 16 })}
+            <span className={styles.buttonLabel}>Random</span>
+          </button>
+
+          <button
+            onClick={actions.toggleCustomInput}
+            aria-label="Enter custom input"
+            className={`${styles.button} ${styles.buttonSecondary} ${customInputMode ? styles.active : ''}`}
+            title="Custom input"
+          >
+            {React.createElement(PenLine, { size: 16 })}
+            <span className={styles.buttonLabel}>Custom</span>
+          </button>
         </div>
       </div>
     </motion.div>

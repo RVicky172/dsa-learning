@@ -271,14 +271,160 @@
   display: block;
 }
 
+/* Complexity overlay bar */
+.complexityBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 8px;
+  font-size: 0.82rem;
+}
+
+.complexityItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.complexityLabel {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.complexityValue {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+.complexityNote {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.78rem;
+}
+
+.complexityDivider {
+  color: rgba(99, 102, 241, 0.3);
+  user-select: none;
+}
+
+/* Controls rows */
+.controls {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.controlsRow {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Button label for icon+text buttons (hidden on very small screens) */
+.buttonLabel {
+  margin-left: 4px;
+}
+
+/* Secondary / outline buttons */
+.buttonSecondary {
+  background-color: transparent !important;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.buttonSecondary:hover {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+}
+
+.buttonSecondary.active {
+  background-color: rgba(99, 102, 241, 0.25) !important;
+}
+
+.buttonIcon {
+  padding: 0.5rem 0.7rem !important;
+}
+
+.buttonCancel {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.4) !important;
+  color: #ef4444 !important;
+}
+
+.buttonCancel:hover {
+  background-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Custom input panel */
+.customInputPanel {
+  overflow: hidden;
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 1rem;
+  background: rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 8px;
+}
+
+.customInputLabel {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.customInputRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.customInput {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 6px;
+  color: var(--text-color, #fff);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.customInput:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Disabled button state */
+.button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
 @media (max-width: 768px) {
-  .controls {
-    flex-direction: column;
-    gap: 0.75rem;
+  .controlsRow {
+    gap: 0.4rem;
+  }
+
+  .buttonLabel {
+    display: none;
   }
 
   .button {
-    width: 100%;
+    padding: 0.55rem 0.75rem;
   }
 
   .hashTableGrid {
@@ -290,8 +436,14 @@
   }
 
   .arrayItem {
-    width: 50px;
-    height: 50px;
-    font-size: 0.85rem;
+    width: 46px;
+    height: 46px;
+    font-size: 0.82rem;
+    border-radius: 6px;
+  }
+
+  .complexityBar {
+    font-size: 0.78rem;
+    gap: 0.4rem 0.75rem;
   }
 }

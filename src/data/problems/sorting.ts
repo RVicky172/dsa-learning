@@ -602,6 +602,200 @@ export const advancedSortingProblems: Problem[] = [
       'Use array of arrays for buckets',
       'Iterate from highest frequency'
     ]
+  },
+  // ── NEW BATCH (TKT-016) ──────────────────────────────────────────
+  {
+    id: 'sort-missing-number',
+    title: 'Missing Number',
+    difficulty: 'Easy',
+    description: 'Given an array nums containing n distinct numbers in the range [0, n], return the one that is missing.',
+    examples: [
+      { input: 'nums = [3,0,1]', output: '2' },
+      { input: 'nums = [9,6,4,2,3,5,7,0,1]', output: '8' }
+    ],
+    solution: {
+      approach: 'Expected sum n*(n+1)/2 minus actual sum gives the missing number.',
+      code: `function missingNumber(nums: number[]): number {
+  const n = nums.length;
+  return (n * (n + 1)) / 2 - nums.reduce((a, b) => a + b, 0);
+}`,
+      timeComplexity: 'O(n)',
+      spaceComplexity: 'O(1)',
+      stepByStep: [
+        'The sum of 0..n is n*(n+1)/2',
+        'Subtract the actual array sum',
+        'The difference is the missing number'
+      ]
+    },
+    hints: ['Gauss sum formula gives expected sum instantly.', 'XOR trick also works without arithmetic overflow risk.']
+  },
+  {
+    id: 'sort-count-negative-matrix',
+    title: 'Count Negative Numbers in a Sorted Matrix',
+    difficulty: 'Easy',
+    description: 'Given an m×n matrix grid sorted in non-increasing order (each row and column), return the number of negative numbers.',
+    examples: [
+      { input: 'grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]', output: '8' },
+      { input: 'grid = [[3,2],[1,0]]', output: '0' }
+    ],
+    solution: {
+      approach: 'Binary search in each row to find the first negative, or staircase scan from bottom-left.',
+      code: `function countNegatives(grid: number[][]): number {
+  const m = grid.length;
+  const n = grid[0].length;
+  let count = 0;
+  let col = n - 1;
+  for (let row = 0; row < m; row++) {
+    while (col >= 0 && grid[row][col] < 0) col--;
+    count += n - 1 - col;
+  }
+  return count;
+}`,
+      timeComplexity: 'O(m + n)',
+      spaceComplexity: 'O(1)',
+      stepByStep: [
+        'Start at top-right corner',
+        'Move left while current cell is negative',
+        'All cells to the right of col are negative in this row',
+        'col only moves left — total moves bounded by m + n'
+      ]
+    },
+    hints: ['Sorted order allows a staircase traversal in O(m+n).', 'Binary search per row is O(m log n) — also valid.']
+  },
+  {
+    id: 'sort-find-peak-element',
+    title: 'Find Peak Element',
+    difficulty: 'Medium',
+    description: 'A peak element is strictly greater than its neighbours. Given nums, return the index of any peak. Solve in O(log n).',
+    examples: [
+      { input: 'nums = [1,2,3,1]', output: '2' },
+      { input: 'nums = [1,2,1,3,5,6,4]', output: '5', explanation: 'Index 5 (value 6) is also valid.' }
+    ],
+    solution: {
+      approach: 'Binary search: if nums[mid] < nums[mid+1] then a peak must exist to the right; otherwise to the left.',
+      code: `function findPeakElement(nums: number[]): number {
+  let lo = 0;
+  let hi = nums.length - 1;
+  while (lo < hi) {
+    const mid = (lo + hi) >> 1;
+    if (nums[mid] < nums[mid + 1]) lo = mid + 1;
+    else hi = mid;
+  }
+  return lo;
+}`,
+      timeComplexity: 'O(log n)',
+      spaceComplexity: 'O(1)',
+      stepByStep: [
+        'Binary search on index range',
+        'If nums[mid] < nums[mid+1], peak is in right half (lo = mid+1)',
+        'Otherwise peak is in left half including mid (hi = mid)',
+        'When lo == hi, that index is a peak'
+      ]
+    },
+    hints: ['The slope direction tells you which half contains a peak.', 'Boundaries are treated as -∞ (nums[-1] = nums[n] = -∞).']
+  },
+  {
+    id: 'sort-sort-array-parity',
+    title: 'Sort Array by Parity',
+    difficulty: 'Medium',
+    description: 'Given an integer array nums, move all even integers to the beginning and odd integers to the end. Return any valid arrangement.',
+    examples: [
+      { input: 'nums = [3,1,2,4]', output: '[2,4,3,1]' },
+      { input: 'nums = [0]', output: '[0]' }
+    ],
+    solution: {
+      approach: 'Two-pointer: left pointer advances over evens, right pointer retreats over odds; swap when both out of place.',
+      code: `function sortArrayByParity(nums: number[]): number[] {
+  let lo = 0;
+  let hi = nums.length - 1;
+  while (lo < hi) {
+    while (lo < hi && nums[lo] % 2 === 0) lo++;
+    while (lo < hi && nums[hi] % 2 === 1) hi--;
+    if (lo < hi) {
+      [nums[lo], nums[hi]] = [nums[hi], nums[lo]];
+      lo++; hi--;
+    }
+  }
+  return nums;
+}`,
+      timeComplexity: 'O(n)',
+      spaceComplexity: 'O(1)',
+      stepByStep: [
+        'lo starts at 0, hi starts at end',
+        'Advance lo while nums[lo] is even',
+        'Retreat hi while nums[hi] is odd',
+        'Swap and continue until lo >= hi'
+      ]
+    },
+    hints: ['Two-pointer partition is the classic in-place approach.', 'No need to maintain relative order — any valid split is accepted.']
+  },
+  {
+    id: 'sort-find-duplicate',
+    title: 'Find the Duplicate Number',
+    difficulty: 'Medium',
+    description: 'Given an array nums containing n+1 integers where each integer is in the range [1, n], there is exactly one repeated number. Find it without modifying the array and using O(1) extra space.',
+    examples: [
+      { input: 'nums = [1,3,4,2,2]', output: '2' },
+      { input: 'nums = [3,1,3,4,2]', output: '3' }
+    ],
+    solution: {
+      approach: 'Floyd\'s cycle detection: treat array as a linked list where nums[i] is the next node. Find the cycle entry.',
+      code: `function findDuplicate(nums: number[]): number {
+  let slow = nums[0];
+  let fast = nums[0];
+  do {
+    slow = nums[slow];
+    fast = nums[nums[fast]];
+  } while (slow !== fast);
+  slow = nums[0];
+  while (slow !== fast) {
+    slow = nums[slow];
+    fast = nums[fast];
+  }
+  return slow;
+}`,
+      timeComplexity: 'O(n)',
+      spaceComplexity: 'O(1)',
+      stepByStep: [
+        'Phase 1: find intersection of slow (1 step) and fast (2 steps)',
+        'Phase 2: reset slow to start; both move 1 step',
+        'They meet at the cycle entry = duplicate value',
+        'Works because duplicate creates two edges into the same node'
+      ]
+    },
+    hints: ['Map to a linked-list cycle problem using index as node and value as next pointer.', 'Phase 2 of Floyd\'s finds the cycle entry.']
+  },
+  {
+    id: 'sort-wiggle-sort-ii',
+    title: 'Wiggle Sort II',
+    difficulty: 'Hard',
+    description: 'Given an integer array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3].... Ensure no two adjacent elements are equal.',
+    examples: [
+      { input: 'nums = [1,5,1,1,6,4]', output: '[1,6,1,5,1,4]' },
+      { input: 'nums = [1,3,2,2,3,1]', output: '[2,3,1,3,1,2]' }
+    ],
+    solution: {
+      approach: 'Sort, split into smaller-half and larger-half, then interleave in reverse to avoid equal adjacents.',
+      code: `function wiggleSort(nums: number[]): void {
+  const sorted = [...nums].sort((a, b) => a - b);
+  const n = nums.length;
+  const mid = Math.floor((n - 1) / 2);
+  let lo = mid; // end of small half
+  let hi = n - 1; // end of large half
+  for (let i = 0; i < n; i++) {
+    nums[i] = i % 2 === 0 ? sorted[lo--] : sorted[hi--];
+  }
+}`,
+      timeComplexity: 'O(n log n)',
+      spaceComplexity: 'O(n)',
+      stepByStep: [
+        'Sort a copy of nums',
+        'Even positions (0,2,4…) take from the smaller half in reverse',
+        'Odd positions (1,3,5…) take from the larger half in reverse',
+        'Reverse interleaving prevents equal elements from being adjacent'
+      ]
+    },
+    hints: ['Simple sort + interleave fails when many duplicates exist — reverse interleave fixes this.', 'Three-way partition (Dutch flag) achieves O(n) time.']
   }
 ];
 
