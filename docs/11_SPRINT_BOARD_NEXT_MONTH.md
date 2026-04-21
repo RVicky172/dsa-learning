@@ -1,11 +1,13 @@
 # Sprint Board - Next Month
 
-## Status Snapshot (Updated: 2026-04-20)
+## Status Snapshot (Updated: 2026-04-21)
 
 - Done: TKT-001, TKT-002, TKT-003, TKT-004, TKT-005, TKT-006, TKT-007, TKT-008, TKT-009, TKT-010, TKT-011.
 - Done: TKT-012, TKT-013.
-- Done: TKT-014, TKT-015, TKT-016.
-- In Progress: TKT-017 onward (deployment hardening).
+- Done: TKT-014, TKT-015, TKT-016, TKT-017.
+- In Progress: TKT-018 onward (deployment hardening).
+- TKT-018 update (2026-04-21): CI/CD workflow implemented (checks, staging auto deploy, production tag/manual deploy, smoke checks); pending environment secrets/protection setup.
+- TKT-019 update (2026-04-21): Added readiness/metrics health endpoints and scheduled monitoring + webhook alerts workflow; pending environment monitor secret wiring and dashboard provider integration.
 - Mandatory final ticket: premium entitlement regression audit (free-vs-premium cards/details, API enforcement, and upgrade CTA paths) must be the last closure item before release signoff.
 
 ## Usage

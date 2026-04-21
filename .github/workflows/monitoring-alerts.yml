@@ -1,0 +1,110 @@
+name: Monitoring Alerts
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  monitor_staging:
+    name: Monitor Staging
+    runs-on: ubuntu-latest
+    environment: staging
+    env:
+      BACKEND_HEALTH_URL: ${{ secrets.STAGING_MONITOR_BACKEND_HEALTH_URL }}
+      FRONTEND_URL: ${{ secrets.STAGING_MONITOR_FRONTEND_URL }}
+      ALERT_WEBHOOK_URL: ${{ secrets.STAGING_ALERT_WEBHOOK_URL }}
+    steps:
+      - name: Validate monitor URLs
+        run: |
+          set -euo pipefail
+          [[ -n "$BACKEND_HEALTH_URL" ]] || { echo "Missing STAGING_MONITOR_BACKEND_HEALTH_URL"; exit 1; }
+          [[ -n "$FRONTEND_URL" ]] || { echo "Missing STAGING_MONITOR_FRONTEND_URL"; exit 1; }
+
+      - name: Run staging health checks
+        id: check
+        run: |
+          set -euo pipefail
+          failed=0
+          failures=""
+
+          if ! curl --fail --show-error --silent "$BACKEND_HEALTH_URL" >/dev/null; then
+            failed=1
+            failures="$failures backend"
+          fi
+
+          if ! curl --fail --show-error --silent "$FRONTEND_URL" >/dev/null; then
+            failed=1
+            failures="$failures frontend"
+          fi
+
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+          echo "failures=$failures" >> "$GITHUB_OUTPUT"
+
+      - name: Send staging alert webhook
+        if: ${{ steps.check.outputs.failed == '1' && env.ALERT_WEBHOOK_URL != '' }}
+        run: |
+          set -euo pipefail
+          payload=$(printf '{"text":"[staging] Health check failed for:%s. Run: %s"}' "${{ steps.check.outputs.failures }}" "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}")
+          curl --fail --show-error --silent -X POST "$ALERT_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "$payload"
+
+      - name: Fail on staging incident
+        if: ${{ steps.check.outputs.failed == '1' }}
+        run: |
+          echo "Staging health checks failed:${{ steps.check.outputs.failures }}"
+          exit 1
+
+  monitor_production:
+    name: Monitor Production
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      BACKEND_HEALTH_URL: ${{ secrets.PRODUCTION_MONITOR_BACKEND_HEALTH_URL }}
+      FRONTEND_URL: ${{ secrets.PRODUCTION_MONITOR_FRONTEND_URL }}
+      ALERT_WEBHOOK_URL: ${{ secrets.PRODUCTION_ALERT_WEBHOOK_URL }}
+    steps:
+      - name: Validate monitor URLs
+        run: |
+          set -euo pipefail
+          [[ -n "$BACKEND_HEALTH_URL" ]] || { echo "Missing PRODUCTION_MONITOR_BACKEND_HEALTH_URL"; exit 1; }
+          [[ -n "$FRONTEND_URL" ]] || { echo "Missing PRODUCTION_MONITOR_FRONTEND_URL"; exit 1; }
+
+      - name: Run production health checks
+        id: check
+        run: |
+          set -euo pipefail
+          failed=0
+          failures=""
+
+          if ! curl --fail --show-error --silent "$BACKEND_HEALTH_URL" >/dev/null; then
+            failed=1
+            failures="$failures backend"
+          fi
+
+          if ! curl --fail --show-error --silent "$FRONTEND_URL" >/dev/null; then
+            failed=1
+            failures="$failures frontend"
+          fi
+
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+          echo "failures=$failures" >> "$GITHUB_OUTPUT"
+
+      - name: Send production alert webhook
+        if: ${{ steps.check.outputs.failed == '1' && env.ALERT_WEBHOOK_URL != '' }}
+        run: |
+          set -euo pipefail
+          payload=$(printf '{"text":"[production] Health check failed for:%s. Run: %s"}' "${{ steps.check.outputs.failures }}" "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}")
+          curl --fail --show-error --silent -X POST "$ALERT_WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "$payload"
+
+      - name: Fail on production incident
+        if: ${{ steps.check.outputs.failed == '1' }}
+        run: |
+          echo "Production health checks failed:${{ steps.check.outputs.failures }}"
+          exit 1

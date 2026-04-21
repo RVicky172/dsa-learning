@@ -60,6 +60,7 @@ export interface Topic extends TopicMeta {
     delay: number;
 
     // Detailed content
+    learningOutcomes?: string[];
     introduction: string;
     whyImportant: string;
     whenToUse: string[];

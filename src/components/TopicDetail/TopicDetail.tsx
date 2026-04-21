@@ -8,6 +8,7 @@ import PatternsTab from './tabs/PatternsTab';
 import ProblemsTab from './tabs/ProblemsTab';
 import VisualizationsTab from './tabs/VisualizationsTab';
 import styles from './TopicDetail.module.css';
+import { topicLearningOutcomes } from '../../data/topicLearningOutcomes';
 
 interface TopicDetailProps {
     topicId: string;
@@ -49,7 +50,13 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
                     default: throw new Error('Unknown topic');
                 }
                 const loadedTopic = Object.values(module)[0] as Topic;
-                setTopic(loadedTopic);
+                const mergedTopic: Topic = {
+                    ...loadedTopic,
+                    learningOutcomes: loadedTopic.learningOutcomes?.length
+                        ? loadedTopic.learningOutcomes
+                        : topicLearningOutcomes[loadedTopic.id]
+                };
+                setTopic(mergedTopic);
             } catch (err) {
                 console.error("Failed to load topic", err);
             } finally {

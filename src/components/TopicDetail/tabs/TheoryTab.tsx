@@ -8,10 +8,37 @@ interface TheoryTabProps {
     toggleSection: (section: string) => void;
 }
 
+const buildFallbackLearningOutcomes = (topic: Topic): string[] => {
+    const conceptOutcomes = topic.concepts.slice(0, 3).map((concept) => `Understand ${concept.name.toLowerCase()} and apply it in DSA problems.`);
+    const operationOutcome = topic.operations.length > 0
+        ? `Compare common ${topic.title.toLowerCase()} operations by time complexity (${topic.operations[0].complexity} and beyond).`
+        : `Compare common ${topic.title.toLowerCase()} operations by time and space complexity.`;
+
+    return [
+        `Explain core ${topic.title.toLowerCase()} fundamentals and practical trade-offs.`,
+        ...conceptOutcomes,
+        operationOutcome
+    ].slice(0, 5);
+};
+
 const TheoryTab = ({ topic, expandedSection, toggleSection }: TheoryTabProps) => {
+    const learningOutcomes = topic.learningOutcomes && topic.learningOutcomes.length > 0
+        ? topic.learningOutcomes
+        : buildFallbackLearningOutcomes(topic);
+
     return (
         <div className={styles.contentGrid}>
             <div>
+                {/* What You Will Learn */}
+                <div className={`glass ${styles.theorySection}`}>
+                    <h3 className={styles.sectionTitle}>What You Will Learn</h3>
+                    <ul className={styles.listContainer}>
+                        {learningOutcomes.map((outcome, idx) => (
+                            <li key={idx} className={styles.listItem}>{outcome}</li>
+                        ))}
+                    </ul>
+                </div>
+
                 {/* Introduction */}
                 <div className={`glass ${styles.theorySection}`}>
                     <h2 className={styles.theoryTitle}>
