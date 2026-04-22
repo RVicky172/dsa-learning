@@ -108,7 +108,7 @@
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #8b5cf6, #14b8a6, #f43f5e);
+  background: linear-gradient(135deg, #06b6d4, #10b981, #f43f5e);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -117,7 +117,7 @@
 }
 
 [data-theme="light"] .gradient-text {
-  background: linear-gradient(135deg, #7c3aed, #0d9488, #e11d48);
+  background: linear-gradient(135deg, #0891b2, #059669, #e11d48);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -288,13 +288,13 @@
 /* Navbar gradient text */
 .nav-gradient-text {
   font-family: var(--font-mono);
-  background: linear-gradient(45deg, #8b5cf6, #14b8a6, #f43f5e, #38bdf8);
+  background: linear-gradient(45deg, #06b6d4, #10b981, #22d3ee, #34d399);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: navbarTitleGlow 4s ease-in-out infinite, gradientShift 5s ease infinite;
-  filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.5));
+  filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.5));
 }
 
 .nav-glowing-btn {
@@ -377,24 +377,24 @@
 
 .futuristic-title {
   font-family: var(--font-mono);
-  background: linear-gradient(45deg, #8b5cf6, #14b8a6, #f43f5e, #38bdf8);
+  background: linear-gradient(45deg, #06b6d4, #10b981, #22d3ee, #34d399);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: titleGlow 3s ease-in-out infinite, gradientShift 4s ease infinite;
-  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+  filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.5));
 }
 
 /* Enhanced glass effect for futuristic navbar */
 .futuristic-navbar.glass {
   background: 
-    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 40% 40%, rgba(244, 63, 94, 0.04) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(6, 11, 24, 0.95) 0%, rgba(10, 17, 40, 0.98) 50%, rgba(15, 23, 42, 0.95) 100%);
+    linear-gradient(135deg, rgba(2, 12, 24, 0.95) 0%, rgba(4, 22, 41, 0.98) 50%, rgba(7, 32, 53, 0.95) 100%);
   backdrop-filter: blur(25px) saturate(180%);
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  border: 1px solid rgba(6, 182, 212, 0.25);
 }
 
 .futuristic-navbar.glass::before {

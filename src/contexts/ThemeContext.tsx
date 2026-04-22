@@ -19,8 +19,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } catch (e) {
       console.error('Failed to load theme', e);
     }
-    // Default to dark since the original design is dark glassmorphism
-    return 'dark';
+    // Default to light — Clean Violet light theme
+    return 'light';
   });
 
   useEffect(() => {
