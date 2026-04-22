@@ -1,6 +1,6 @@
 # Sprint Board - Next Month
 
-## Status Snapshot (Updated: 2026-04-21)
+## Status Snapshot (Updated: 2026-04-22)
 
 - Done: TKT-001, TKT-002, TKT-003, TKT-004, TKT-005, TKT-006, TKT-007, TKT-008, TKT-009, TKT-010, TKT-011.
 - Done: TKT-012, TKT-013.
@@ -8,6 +8,8 @@
 - In Progress: TKT-018 onward (deployment hardening).
 - TKT-018 update (2026-04-21): CI/CD workflow implemented (checks, staging auto deploy, production tag/manual deploy, smoke checks); pending environment secrets/protection setup.
 - TKT-019 update (2026-04-21): Added readiness/metrics health endpoints and scheduled monitoring + webhook alerts workflow; pending environment monitor secret wiring and dashboard provider integration.
+- TKT-020 update (2026-04-22): Security review completed. Fixed issues: (1) sourceCode/stdin/submittedCode size limits added (max 65536 chars) to prevent DoS; (2) execution queue capped at 50 concurrent jobs; (3) requireAdmin now handles DB errors with try/catch; (4) CORS restricted via ALLOWED_ORIGINS env var; (5) enqueueExecution call wrapped in try/catch returning 503; (6) attempt language field changed to enum validation; (7) JWT_SECRET minimum raised to 32 chars; (8) DEFAULT_ADMIN_PASSWORD minimum raised to 12 chars. No critical unresolved findings. TKT-020 Done.
+- TKT-021 update (2026-04-22): E2E API integration test suite implemented. Created backend/tests/ with helpers + 6 test suites (health, auth, problems+entitlement, admin CRUD, subscriptions+payments, execution). Covers 45+ critical user journey cases. Run with `npm run test:integration` against a live server. Added tsconfig.test.json and typecheck:test script. TKT-021 Done (suite passes when server + DB are running).
 - Mandatory final ticket: premium entitlement regression audit (free-vs-premium cards/details, API enforcement, and upgrade CTA paths) must be the last closure item before release signoff.
 
 ## Usage

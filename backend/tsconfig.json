@@ -12,7 +12,8 @@
     "resolveJsonModule": true,
     "noUncheckedIndexedAccess": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "types": ["node"]
   },
   "include": ["src"]
 }

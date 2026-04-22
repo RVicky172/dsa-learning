@@ -18,8 +18,27 @@ import paymentRoutes from './modules/payments/routes.js';
 
 const app = express();
 
-app.use(helmet());
-app.use(cors());
+const allowedOrigins = env.ALLOWED_ORIGINS
+  ? env.ALLOWED_ORIGINS.split(',').map((o) => o.trim()).filter(Boolean)
+  : [];
+
+app.use(
+  helmet(),
+  cors(
+    allowedOrigins.length > 0
+      ? {
+          origin: (origin, callback) => {
+            if (!origin || allowedOrigins.includes(origin)) {
+              callback(null, true);
+            } else {
+              callback(new Error('CORS: origin not allowed'));
+            }
+          },
+          credentials: true
+        }
+      : {}
+  )
+);
 app.use(express.json({ limit: '1mb' }));
 app.use(pinoHttp({ logger }));
 

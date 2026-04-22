@@ -27,8 +27,8 @@ const listQuerySchema = z.object({
 const runPayloadSchema = z.object({
   problemId: z.string().uuid().optional(),
   language: z.enum(['javascript', 'js', 'python', 'py', 'typescript', 'ts']),
-  sourceCode: z.string().trim().min(1),
-  stdin: z.string().default(''),
+  sourceCode: z.string().trim().min(1).max(65536),
+  stdin: z.string().max(65536).default(''),
   timeoutMs: z.number().int().positive().optional(),
   waitForCompletion: z.boolean().default(true)
 });
@@ -232,14 +232,21 @@ router.post('/run', authenticate, async (req, res) => {
     }
   }
 
-  const queued = await enqueueExecution({
-    userId,
-    problemId: parsed.data.problemId,
-    language,
-    sourceCode: parsed.data.sourceCode,
-    stdin: parsed.data.stdin,
-    timeoutMs: sanitizeTimeoutMs(parsed.data.timeoutMs)
-  });
+  let queued: Awaited<ReturnType<typeof enqueueExecution>>;
+  try {
+    queued = await enqueueExecution({
+      userId,
+      problemId: parsed.data.problemId,
+      language,
+      sourceCode: parsed.data.sourceCode,
+      stdin: parsed.data.stdin,
+      timeoutMs: sanitizeTimeoutMs(parsed.data.timeoutMs)
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Execution queue unavailable';
+    res.status(503).json({ message });
+    return;
+  }
 
   if (!parsed.data.waitForCompletion) {
     queued.result.catch(() => {

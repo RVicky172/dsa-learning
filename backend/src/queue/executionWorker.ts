@@ -272,6 +272,7 @@ async function updateExecutionFailure(id: string, errorMessage: string): Promise
 }
 
 const jobQueue: QueueJob[] = [];
+const MAX_QUEUE_DEPTH = 50;
 let isProcessing = false;
 
 async function processQueue(): Promise<void> {
@@ -326,6 +327,10 @@ export function sanitizeTimeoutMs(timeoutMs?: number): number {
 export async function enqueueExecution(
   input: ExecutionJobInput
 ): Promise<{ executionId: string; result: Promise<ExecutionResult> }> {
+  if (jobQueue.length >= MAX_QUEUE_DEPTH) {
+    throw new Error('Execution queue is at capacity. Please try again shortly.');
+  }
+
   const executionId = await persistQueuedExecution(input);
 
   const result = new Promise<ExecutionResult>((resolve, reject) => {

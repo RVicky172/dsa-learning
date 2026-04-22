@@ -12,8 +12,8 @@ const listQuerySchema = z.object({
 });
 
 const attemptPayloadSchema = z.object({
-  language: z.string().trim().min(1),
-  submittedCode: z.string().trim().min(1)
+  language: z.enum(['javascript', 'python', 'typescript']),
+  submittedCode: z.string().trim().min(1).max(65536)
 });
 
 interface ProblemListRow {
