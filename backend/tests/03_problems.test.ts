@@ -202,4 +202,39 @@ describe('Problems journey', () => {
     assert.ok(Array.isArray((body as { topics: unknown[] }).topics));
     assert.ok(Array.isArray((body as { completedProblemIds: unknown[] }).completedProblemIds));
   });
+
+  it('GET /progress/me/recommendations returns 401 without auth', async () => {
+    const { status } = await api('/progress/me/recommendations');
+    assert.equal(status, 401);
+  });
+
+  it('GET /progress/me/recommendations excludes completed and premium-inaccessible problems for free user', async () => {
+    const markCompleted = await api(`/progress/me/problems/${freeProblem.id}`, {
+      method: 'POST',
+      token: freeTok,
+      body: JSON.stringify({ completed: true })
+    });
+    assert.equal(markCompleted.status, 200);
+
+    const { status, body } = await api<{ items: Array<{ problemId: string }> }>(
+      '/progress/me/recommendations',
+      { token: freeTok }
+    );
+
+    assert.equal(status, 200);
+    const ids = (body as { items: Array<{ problemId: string }> }).items.map((item) => item.problemId);
+    assert.equal(ids.includes(freeProblem.id), false, 'completed problems should not be recommended');
+    assert.equal(ids.includes(premiumProblem.id), false, 'premium problem should not be recommended to free users');
+  });
+
+  it('GET /progress/me/recommendations includes premium problem for admin', async () => {
+    const { status, body } = await api<{ items: Array<{ problemId: string }> }>(
+      '/progress/me/recommendations',
+      { token: adminTok }
+    );
+
+    assert.equal(status, 200);
+    const ids = (body as { items: Array<{ problemId: string }> }).items.map((item) => item.problemId);
+    assert.equal(ids.includes(premiumProblem.id), true, 'admin should receive premium recommendations');
+  });
 });

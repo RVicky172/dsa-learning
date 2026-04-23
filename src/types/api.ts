@@ -59,6 +59,22 @@ export interface UserProgressResponse {
   completedProblemIds?: string[];
 }
 
+export interface ProgressRecommendationItem {
+  problemId: string;
+  topicId: string;
+  topicTitle: string;
+  title: string;
+  difficulty: 'Easy' | 'Medium' | 'Hard';
+  isPremium: boolean;
+  canAccess: boolean;
+  description: string;
+  reason: string;
+}
+
+export interface ProgressRecommendationsResponse {
+  items: ProgressRecommendationItem[];
+}
+
 export interface UpdateProblemProgressPayload {
   completed: boolean;
 }

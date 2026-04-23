@@ -1,5 +1,9 @@
 # CI/CD Secrets and Environment Setup
 
+## Status
+
+This setup guide is currently deferred during the product-enhancement-first phase. Treat this as reference only until deployment work is reactivated.
+
 This document defines the required GitHub Actions environment configuration for TKT-018.
 
 ## Environments
@@ -48,6 +52,22 @@ Set these in each environment.
 - Push to `main`: runs checks and deploys to `staging`.
 - Push tag `v*` (for example `v1.0.0`): runs checks and deploys to `production`.
 - Manual run (`workflow_dispatch`): deploy to selected target (`staging` or `production`).
+
+## Environment Readiness Audit
+
+A dedicated workflow verifies CI/CD and monitoring environment wiring:
+
+- `.github/workflows/environment-readiness.yml`
+- Runs weekly and on manual trigger.
+- Validates required staging/production environment secrets.
+- Validates required repository variable: `RUN_DB_MIGRATIONS`.
+- Validates production environment protection rule: `required_reviewers`.
+
+Recommended usage before release windows:
+
+1. Run `Environment Readiness` with target `both`.
+2. Resolve any missing secrets, variables, or protection findings.
+3. Re-run until the workflow is green for both environments.
 
 ## Post-Deploy Verification
 

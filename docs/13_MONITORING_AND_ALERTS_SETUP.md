@@ -1,5 +1,9 @@
 # Monitoring and Alerts Setup
 
+## Status
+
+This monitoring setup is currently deferred while product enhancements are prioritized. Keep artifacts ready, but do not execute monitoring rollout as an active sprint objective right now.
+
 This document covers TKT-019 setup for dashboards and critical alerts.
 
 ## Implemented in Repository
@@ -8,6 +12,7 @@ This document covers TKT-019 setup for dashboards and critical alerts.
    - `/health` (liveness)
    - `/health/ready` (readiness with database check)
    - `/health/metrics` (runtime and db pool metrics)
+   - `/health/metrics/prometheus` (Prometheus scrape format for dashboard providers)
 2. Scheduled monitoring workflow:
    - `.github/workflows/monitoring-alerts.yml`
    - Runs every 10 minutes and on manual trigger.
@@ -44,6 +49,28 @@ To satisfy dashboard acceptance criteria, connect these into your observability 
 4. Runtime saturation
    - Source: `/health/metrics` memory and db pool signals.
 
+## Provider Integration Assets
+
+The repository now includes provider-ready assets for Prometheus + Grafana:
+
+1. Prometheus scrape baseline:
+   - `docs/monitoring/prometheus-scrape-example.yml`
+   - Scrapes `/health/metrics/prometheus` for staging and production jobs.
+2. Grafana dashboard import:
+   - `docs/monitoring/grafana-dsa-learning-dashboard.json`
+   - Includes panels for target uptime (`up`), DB pool waiting, process memory, DB pool totals, and app uptime.
+
+## Prometheus + Grafana Runbook
+
+1. Add targets from `docs/monitoring/prometheus-scrape-example.yml` into your Prometheus config.
+2. Ensure backend instances expose `/health/metrics/prometheus` through ingress/network policy.
+3. Restart/reload Prometheus and confirm the `up` metric for backend jobs is `1`.
+4. Import `docs/monitoring/grafana-dsa-learning-dashboard.json` in Grafana.
+5. Select the Prometheus datasource and the desired job(s) in dashboard variables.
+6. Configure provider alerts:
+   - `max(dsa_backend_db_pool_waiting) > 0` for 5 minutes
+   - `up == 0` for critical backend job targets
+
 ## Suggested Threshold Alerts
 
 1. Backend readiness down for 2 consecutive checks
@@ -59,3 +86,19 @@ To satisfy dashboard acceptance criteria, connect these into your observability 
    - webhook notification (if configured)
    - workflow failure signal
 4. Restore URL and verify green run.
+
+## Wiring Verification Workflow
+
+Use `.github/workflows/environment-readiness.yml` to verify that monitoring secrets are configured in both environments before relying on scheduled monitoring.
+
+Checks covered:
+
+1. `STAGING_MONITOR_BACKEND_HEALTH_URL`, `STAGING_MONITOR_FRONTEND_URL`, `STAGING_ALERT_WEBHOOK_URL`
+2. `PRODUCTION_MONITOR_BACKEND_HEALTH_URL`, `PRODUCTION_MONITOR_FRONTEND_URL`, `PRODUCTION_ALERT_WEBHOOK_URL`
+3. Production protection rule baseline (`required_reviewers`)
+
+Runbook:
+
+1. Trigger `Environment Readiness` with target `both`.
+2. Apply missing secret/protection updates from workflow output.
+3. Re-run `Monitoring Alerts` manually to confirm incident checks are live.

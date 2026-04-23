@@ -4,7 +4,8 @@
 
 - Implemented: Auth/RBAC, admin content CRUD API+UI, progress+attempt persistence, backend-driven problem listing with fallback, subscription page, mock checkout + webhook sync, API/UI premium gating, execution worker queue, and execution persistence/query APIs.
 - Implemented: frontend run-code panel integration in problem detail flows.
-- Remaining: visualization upgrades, production payment provider wiring, launch hardening.
+- Remaining: visualization upgrades and product enhancement features (recommendations, classroom mode, certificates).
+- Deployment and launch hardening tracks are deferred until product enhancement phase is complete.
 
 ## Purpose
 
@@ -128,8 +129,9 @@ Translate the roadmap into concrete implementation order mapped to the existing 
 4. Subscription entitlements + billing test mode
 5. Admin content management APIs + UI
 6. Code execution worker + API + frontend panel
-7. Observability + QA + production rollout
-8. Final mandatory last task before release signoff: run the premium entitlement regression audit across free-vs-premium problem cards/details, API enforcement, and upgrade CTA paths.
+7. Product enhancement features (recommendations, classroom mode, certificates) + QA
+8. Deployment and launch hardening (deferred)
+9. Final mandatory last task before release signoff: run the premium entitlement regression audit across free-vs-premium problem cards/details, API enforcement, and upgrade CTA paths.
 
 ## Definition of Done Per Phase
 

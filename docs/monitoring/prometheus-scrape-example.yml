@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: dsa-learning-backend-staging
+    metrics_path: /health/metrics/prometheus
+    static_configs:
+      - targets:
+          - staging-api.example.com
+
+  - job_name: dsa-learning-backend-production
+    metrics_path: /health/metrics/prometheus
+    static_configs:
+      - targets:
+          - api.example.com

@@ -1,5 +1,9 @@
 # Deployment and Operations Plan
 
+## Status
+
+This plan is currently deferred while the team executes a product-enhancement-first cycle. Keep this document updated, but do not treat its deployment tasks as active sprint work until re-enabled.
+
 ## Status Note (Updated: 2026-04-20)
 
 - Core app foundations (auth, admin CRUD, persistence, subscription sync, premium gating) are implemented and validated locally.
