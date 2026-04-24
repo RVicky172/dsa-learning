@@ -23,6 +23,7 @@ interface PremiumAccessRow {
 interface RecommendationRow {
   problem_id: string;
   topic_id: string;
+  topic_slug: string;
   topic_title: string;
   title: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
@@ -218,6 +219,7 @@ router.get('/me/recommendations', authenticate, async (req, res) => {
     SELECT
       p.id AS problem_id,
       p.topic_id,
+      t.slug AS topic_slug,
       t.title AS topic_title,
       p.title,
       p.difficulty,
@@ -250,6 +252,7 @@ router.get('/me/recommendations', authenticate, async (req, res) => {
     items: result.rows.map((row) => ({
       problemId: row.problem_id,
       topicId: row.topic_id,
+      topicSlug: row.topic_slug,
       topicTitle: row.topic_title,
       title: row.title,
       difficulty: row.difficulty,

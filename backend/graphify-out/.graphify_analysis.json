@@ -1,0 +1,228 @@
+{
+  "communities": {
+    "0": [
+      "routes_activatesubscriptionbypaymentid",
+      "routes_buildauthresponse",
+      "routes_ispgerror",
+      "routes_mapproblem",
+      "routes_maptopic",
+      "routes_updatecustommetrics",
+      "src_common_logging_logger_ts",
+      "src_config_env_ts",
+      "src_main_ts",
+      "src_modules_admin_routes_ts",
+      "src_modules_auth_routes_ts",
+      "src_modules_health_routes_ts",
+      "src_modules_payments_routes_ts",
+      "src_modules_subscriptions_routes_ts",
+      "src_modules_topics_routes_ts",
+      "src_modules_users_routes_ts"
+    ],
+    "1": [
+      "executionworker_builddockerargs",
+      "executionworker_enqueueexecution",
+      "executionworker_executeindocker",
+      "executionworker_getexecutionbyid",
+      "executionworker_getlanguageruntime",
+      "executionworker_looksliketypescript",
+      "executionworker_persistqueuedexecution",
+      "executionworker_processqueue",
+      "executionworker_sanitizetimeoutms",
+      "executionworker_transpiletypescripttonodejs",
+      "executionworker_updateexecutionfailure",
+      "executionworker_updateexecutionresult",
+      "executionworker_updateexecutionrunning",
+      "src_queue_executionworker_ts"
+    ],
+    "2": [
+      "routes_buildrecommendationreason",
+      "routes_haspremiumaccess",
+      "routes_mapexecution",
+      "routes_mapproblemdetail",
+      "routes_mapproblemlistitem",
+      "routes_recomputeusertopicprogress",
+      "src_modules_execution_routes_ts",
+      "src_modules_problems_routes_ts",
+      "src_modules_progress_routes_ts"
+    ],
+    "3": [
+      "config_env_ts",
+      "db_client_ts",
+      "db_run_migration_ts",
+      "payments_routes_ts",
+      "seed_admin_ts",
+      "seed_all_problems_ts",
+      "seed_topics_problems_ts",
+      "seeds_readme_md"
+    ],
+    "4": [
+      "admin_routes_ts",
+      "authenticate_ts",
+      "progress_routes_ts",
+      "require_admin_ts",
+      "users_routes_ts"
+    ],
+    "5": [
+      "execution_routes_ts",
+      "execution_worker_ts",
+      "logger_ts",
+      "queue_readme_md"
+    ],
+    "6": [
+      "express_d_ts",
+      "optional_authenticate_ts",
+      "problems_routes_ts",
+      "topics_routes_ts"
+    ],
+    "7": [
+      "auth_routes_ts",
+      "health_routes_ts",
+      "main_ts",
+      "subscriptions_routes_ts"
+    ],
+    "8": [
+      "runmigration_run",
+      "src_db_client_ts",
+      "src_db_runmigration_ts"
+    ],
+    "9": [
+      "seedadmin_ensureadminrole",
+      "seedadmin_run",
+      "src_db_seeds_seedadmin_ts"
+    ],
+    "10": [
+      "seedallproblems_loadproblemsfromfile",
+      "seedallproblems_seedallproblems",
+      "src_db_seeds_seedallproblems_ts"
+    ],
+    "11": [
+      "authenticate_authenticate",
+      "src_common_middleware_authenticate_ts"
+    ],
+    "12": [
+      "optionalauthenticate_optionalauthenticate",
+      "src_common_middleware_optionalauthenticate_ts"
+    ],
+    "13": [
+      "requireadmin_requireadmin",
+      "src_common_middleware_requireadmin_ts"
+    ],
+    "14": [
+      "seedtopicsandproblems_seedtopicsandproblems",
+      "src_db_seeds_seedtopicsandproblems_ts"
+    ],
+    "15": [
+      "src_types_express_d_ts"
+    ]
+  },
+  "cohesion": {},
+  "god_nodes": [
+    {
+      "id": "executionworker_executeindocker",
+      "label": "executeInDocker()",
+      "degree": 6
+    },
+    {
+      "id": "executionworker_processqueue",
+      "label": "processQueue()",
+      "degree": 5
+    },
+    {
+      "id": "routes_haspremiumaccess",
+      "label": "hasPremiumAccess()",
+      "degree": 3
+    },
+    {
+      "id": "seedadmin_ensureadminrole",
+      "label": "ensureAdminRole()",
+      "degree": 2
+    },
+    {
+      "id": "seedadmin_run",
+      "label": "run()",
+      "degree": 2
+    },
+    {
+      "id": "seedallproblems_loadproblemsfromfile",
+      "label": "loadProblemsFromFile()",
+      "degree": 2
+    },
+    {
+      "id": "seedallproblems_seedallproblems",
+      "label": "seedAllProblems()",
+      "degree": 2
+    },
+    {
+      "id": "routes_mapproblemlistitem",
+      "label": "mapProblemListItem()",
+      "degree": 2
+    },
+    {
+      "id": "routes_mapproblemdetail",
+      "label": "mapProblemDetail()",
+      "degree": 2
+    },
+    {
+      "id": "routes_recomputeusertopicprogress",
+      "label": "recomputeUserTopicProgress()",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Topics Routes (/topics)",
+      "target": "PostgreSQL Pool Client (client.ts)",
+      "source_files": [
+        "",
+        ""
+      ],
+      "confidence": "INFERRED",
+      "relation": "queries_topics_via_pool",
+      "note": "Bridges community 3 \u2192 community 6"
+    },
+    {
+      "source": "Progress Routes (/progress)",
+      "target": "PostgreSQL Pool Client (client.ts)",
+      "source_files": [
+        "",
+        ""
+      ],
+      "confidence": "INFERRED",
+      "relation": "reads_writes_progress_via_pool",
+      "note": "Bridges community 3 \u2192 community 4"
+    },
+    {
+      "source": "Subscriptions Routes (/subscriptions)",
+      "target": "PostgreSQL Pool Client (client.ts)",
+      "source_files": [
+        "",
+        ""
+      ],
+      "confidence": "INFERRED",
+      "relation": "reads_writes_subscriptions_via_pool",
+      "note": "Bridges community 3 \u2192 community 7"
+    },
+    {
+      "source": "Express App Entry (main.ts)",
+      "target": "Pino Logger (logger.ts)",
+      "source_files": [
+        "",
+        ""
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "registers_pino_http_logger",
+      "note": "Bridges community 7 \u2192 community 5"
+    },
+    {
+      "source": "Express App Entry (main.ts)",
+      "target": "Users Routes (/users)",
+      "source_files": [
+        "",
+        ""
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "mounts_route_at /users",
+      "note": "Bridges community 7 \u2192 community 4"
+    }
+  ]
+}

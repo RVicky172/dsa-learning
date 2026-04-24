@@ -1,442 +1,571 @@
 {
   "directed": false,
   "multigraph": false,
-  "graph": {},
+  "graph": {
+    "hyperedges": [
+      {
+        "members": [
+          "health_routes_ts",
+          "auth_routes_ts",
+          "users_routes_ts",
+          "topics_routes_ts",
+          "problems_routes_ts",
+          "progress_routes_ts",
+          "subscriptions_routes_ts",
+          "admin_routes_ts",
+          "execution_routes_ts",
+          "payments_routes_ts"
+        ],
+        "relation": "collectively_form_api_surface_mounted_by",
+        "hub": "main_ts"
+      },
+      {
+        "members": [
+          "authenticate_ts",
+          "optional_authenticate_ts",
+          "require_admin_ts"
+        ],
+        "relation": "collectively_guard_routes_using",
+        "hub": "express_d_ts"
+      },
+      {
+        "members": [
+          "seed_admin_ts",
+          "seed_topics_problems_ts",
+          "seed_all_problems_ts"
+        ],
+        "relation": "collectively_populate_database_via",
+        "hub": "db_client_ts"
+      }
+    ]
+  },
   "nodes": [
     {
       "label": "main.ts",
       "file_type": "code",
       "source_file": "src\\main.ts",
       "source_location": "L1",
-      "id": "src_main_ts",
-      "community": 1,
-      "norm_label": "main.ts"
+      "id": "src_main_ts"
     },
     {
       "label": "logger.ts",
       "file_type": "code",
       "source_file": "src\\common\\logging\\logger.ts",
       "source_location": "L1",
-      "id": "src_common_logging_logger_ts",
-      "community": 1,
-      "norm_label": "logger.ts"
+      "id": "src_common_logging_logger_ts"
     },
     {
       "label": "authenticate.ts",
       "file_type": "code",
       "source_file": "src\\common\\middleware\\authenticate.ts",
       "source_location": "L1",
-      "id": "src_common_middleware_authenticate_ts",
-      "community": 6,
-      "norm_label": "authenticate.ts"
+      "id": "src_common_middleware_authenticate_ts"
     },
     {
       "label": "authenticate()",
       "file_type": "code",
       "source_file": "src\\common\\middleware\\authenticate.ts",
       "source_location": "L4",
-      "id": "authenticate_authenticate",
-      "community": 6,
-      "norm_label": "authenticate()"
+      "id": "authenticate_authenticate"
     },
     {
       "label": "optionalAuthenticate.ts",
       "file_type": "code",
       "source_file": "src\\common\\middleware\\optionalAuthenticate.ts",
       "source_location": "L1",
-      "id": "src_common_middleware_optionalauthenticate_ts",
-      "community": 7,
-      "norm_label": "optionalauthenticate.ts"
+      "id": "src_common_middleware_optionalauthenticate_ts"
     },
     {
       "label": "optionalAuthenticate()",
       "file_type": "code",
       "source_file": "src\\common\\middleware\\optionalAuthenticate.ts",
       "source_location": "L4",
-      "id": "optionalauthenticate_optionalauthenticate",
-      "community": 7,
-      "norm_label": "optionalauthenticate()"
+      "id": "optionalauthenticate_optionalauthenticate"
     },
     {
       "label": "requireAdmin.ts",
       "file_type": "code",
       "source_file": "src\\common\\middleware\\requireAdmin.ts",
       "source_location": "L1",
-      "id": "src_common_middleware_requireadmin_ts",
-      "community": 8,
-      "norm_label": "requireadmin.ts"
+      "id": "src_common_middleware_requireadmin_ts"
     },
     {
       "label": "requireAdmin()",
       "file_type": "code",
       "source_file": "src\\common\\middleware\\requireAdmin.ts",
       "source_location": "L8",
-      "id": "requireadmin_requireadmin",
-      "community": 8,
-      "norm_label": "requireadmin()"
+      "id": "requireadmin_requireadmin"
     },
     {
       "label": "env.ts",
       "file_type": "code",
       "source_file": "src\\config\\env.ts",
       "source_location": "L1",
-      "id": "src_config_env_ts",
-      "community": 1,
-      "norm_label": "env.ts"
+      "id": "src_config_env_ts"
     },
     {
       "label": "client.ts",
       "file_type": "code",
       "source_file": "src\\db\\client.ts",
       "source_location": "L1",
-      "id": "src_db_client_ts",
-      "community": 4,
-      "norm_label": "client.ts"
+      "id": "src_db_client_ts"
     },
     {
       "label": "runMigration.ts",
       "file_type": "code",
       "source_file": "src\\db\\runMigration.ts",
       "source_location": "L1",
-      "id": "src_db_runmigration_ts",
-      "community": 4,
-      "norm_label": "runmigration.ts"
+      "id": "src_db_runmigration_ts"
     },
     {
       "label": "run()",
       "file_type": "code",
       "source_file": "src\\db\\runMigration.ts",
       "source_location": "L9",
-      "id": "runmigration_run",
-      "community": 4,
-      "norm_label": "run()"
+      "id": "runmigration_run"
     },
     {
       "label": "seedAdmin.ts",
       "file_type": "code",
       "source_file": "src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L1",
-      "id": "src_db_seeds_seedadmin_ts",
-      "community": 5,
-      "norm_label": "seedadmin.ts"
+      "id": "src_db_seeds_seedadmin_ts"
     },
     {
       "label": "ensureAdminRole()",
       "file_type": "code",
       "source_file": "src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L9",
-      "id": "seedadmin_ensureadminrole",
-      "community": 5,
-      "norm_label": "ensureadminrole()"
+      "id": "seedadmin_ensureadminrole"
     },
     {
       "label": "run()",
       "file_type": "code",
       "source_file": "src\\db\\seeds\\seedAdmin.ts",
       "source_location": "L29",
-      "id": "seedadmin_run",
-      "community": 5,
-      "norm_label": "run()"
+      "id": "seedadmin_run"
+    },
+    {
+      "label": "seedAllProblems.ts",
+      "file_type": "code",
+      "source_file": "src\\db\\seeds\\seedAllProblems.ts",
+      "source_location": "L1",
+      "id": "src_db_seeds_seedallproblems_ts"
+    },
+    {
+      "label": "loadProblemsFromFile()",
+      "file_type": "code",
+      "source_file": "src\\db\\seeds\\seedAllProblems.ts",
+      "source_location": "L145",
+      "id": "seedallproblems_loadproblemsfromfile"
+    },
+    {
+      "label": "seedAllProblems()",
+      "file_type": "code",
+      "source_file": "src\\db\\seeds\\seedAllProblems.ts",
+      "source_location": "L208",
+      "id": "seedallproblems_seedallproblems"
+    },
+    {
+      "label": "seedTopicsAndProblems.ts",
+      "file_type": "code",
+      "source_file": "src\\db\\seeds\\seedTopicsAndProblems.ts",
+      "source_location": "L1",
+      "id": "src_db_seeds_seedtopicsandproblems_ts"
+    },
+    {
+      "label": "seedTopicsAndProblems()",
+      "file_type": "code",
+      "source_file": "src\\db\\seeds\\seedTopicsAndProblems.ts",
+      "source_location": "L153",
+      "id": "seedtopicsandproblems_seedtopicsandproblems"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\admin\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_admin_routes_ts",
-      "community": 3,
-      "norm_label": "routes.ts"
+      "id": "src_modules_admin_routes_ts"
     },
     {
       "label": "isPgError()",
       "file_type": "code",
       "source_file": "src\\modules\\admin\\routes.ts",
       "source_location": "L64",
-      "id": "routes_ispgerror",
-      "community": 3,
-      "norm_label": "ispgerror()"
+      "id": "routes_ispgerror"
     },
     {
       "label": "mapTopic()",
       "file_type": "code",
       "source_file": "src\\modules\\admin\\routes.ts",
       "source_location": "L68",
-      "id": "routes_maptopic",
-      "community": 3,
-      "norm_label": "maptopic()"
+      "id": "routes_maptopic"
     },
     {
       "label": "mapProblem()",
       "file_type": "code",
       "source_file": "src\\modules\\admin\\routes.ts",
       "source_location": "L81",
-      "id": "routes_mapproblem",
-      "community": 3,
-      "norm_label": "mapproblem()"
+      "id": "routes_mapproblem"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\auth\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_auth_routes_ts",
-      "community": 1,
-      "norm_label": "routes.ts"
+      "id": "src_modules_auth_routes_ts"
     },
     {
       "label": "buildAuthResponse()",
       "file_type": "code",
       "source_file": "src\\modules\\auth\\routes.ts",
       "source_location": "L39",
-      "id": "routes_buildauthresponse",
-      "community": 1,
-      "norm_label": "buildauthresponse()"
+      "id": "routes_buildauthresponse"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\execution\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_execution_routes_ts",
-      "community": 2,
-      "norm_label": "routes.ts"
+      "id": "src_modules_execution_routes_ts"
     },
     {
       "label": "hasPremiumAccess()",
       "file_type": "code",
-      "source_file": "src\\modules\\problems\\routes.ts",
-      "source_location": "L65",
-      "id": "routes_haspremiumaccess",
-      "community": 2,
-      "norm_label": "haspremiumaccess()"
+      "source_file": "src\\modules\\progress\\routes.ts",
+      "source_location": "L36",
+      "id": "routes_haspremiumaccess"
     },
     {
       "label": "mapExecution()",
       "file_type": "code",
       "source_file": "src\\modules\\execution\\routes.ts",
       "source_location": "L88",
-      "id": "routes_mapexecution",
-      "community": 2,
-      "norm_label": "mapexecution()"
+      "id": "routes_mapexecution"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\health\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_health_routes_ts",
-      "community": 1,
-      "norm_label": "routes.ts"
+      "id": "src_modules_health_routes_ts"
+    },
+    {
+      "label": "updateCustomMetrics()",
+      "file_type": "code",
+      "source_file": "src\\modules\\health\\routes.ts",
+      "source_location": "L38",
+      "id": "routes_updatecustommetrics"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\payments\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_payments_routes_ts",
-      "community": 1,
-      "norm_label": "routes.ts"
+      "id": "src_modules_payments_routes_ts"
     },
     {
       "label": "activateSubscriptionByPaymentId()",
       "file_type": "code",
       "source_file": "src\\modules\\payments\\routes.ts",
       "source_location": "L24",
-      "id": "routes_activatesubscriptionbypaymentid",
-      "community": 1,
-      "norm_label": "activatesubscriptionbypaymentid()"
+      "id": "routes_activatesubscriptionbypaymentid"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\problems\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_problems_routes_ts",
-      "community": 2,
-      "norm_label": "routes.ts"
+      "id": "src_modules_problems_routes_ts"
     },
     {
       "label": "mapProblemListItem()",
       "file_type": "code",
       "source_file": "src\\modules\\problems\\routes.ts",
-      "source_location": "L43",
-      "id": "routes_mapproblemlistitem",
-      "community": 2,
-      "norm_label": "mapproblemlistitem()"
+      "source_location": "L69",
+      "id": "routes_mapproblemlistitem"
     },
     {
       "label": "mapProblemDetail()",
       "file_type": "code",
       "source_file": "src\\modules\\problems\\routes.ts",
-      "source_location": "L57",
-      "id": "routes_mapproblemdetail",
-      "community": 2,
-      "norm_label": "mapproblemdetail()"
+      "source_location": "L85",
+      "id": "routes_mapproblemdetail"
     },
     {
       "label": "recomputeUserTopicProgress()",
       "file_type": "code",
       "source_file": "src\\modules\\progress\\routes.ts",
-      "source_location": "L19",
-      "id": "routes_recomputeusertopicprogress",
-      "community": 2,
-      "norm_label": "recomputeusertopicprogress()"
+      "source_location": "L79",
+      "id": "routes_recomputeusertopicprogress"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\progress\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_progress_routes_ts",
-      "community": 2,
-      "norm_label": "routes.ts"
+      "id": "src_modules_progress_routes_ts"
+    },
+    {
+      "label": "buildRecommendationReason()",
+      "file_type": "code",
+      "source_file": "src\\modules\\progress\\routes.ts",
+      "source_location": "L63",
+      "id": "routes_buildrecommendationreason"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\subscriptions\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_subscriptions_routes_ts",
-      "community": 1,
-      "norm_label": "routes.ts"
+      "id": "src_modules_subscriptions_routes_ts"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\topics\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_topics_routes_ts",
-      "community": 1,
-      "norm_label": "routes.ts"
+      "id": "src_modules_topics_routes_ts"
     },
     {
       "label": "routes.ts",
       "file_type": "code",
       "source_file": "src\\modules\\users\\routes.ts",
       "source_location": "L1",
-      "id": "src_modules_users_routes_ts",
-      "community": 1,
-      "norm_label": "routes.ts"
+      "id": "src_modules_users_routes_ts"
     },
     {
       "label": "executionWorker.ts",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
       "source_location": "L1",
-      "id": "src_queue_executionworker_ts",
-      "community": 0,
-      "norm_label": "executionworker.ts"
+      "id": "src_queue_executionworker_ts"
+    },
+    {
+      "label": "looksLikeTypeScript()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L61",
+      "id": "executionworker_looksliketypescript"
     },
     {
       "label": "getLanguageRuntime()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L60",
-      "id": "executionworker_getlanguageruntime",
-      "community": 0,
-      "norm_label": "getlanguageruntime()"
+      "source_location": "L72",
+      "id": "executionworker_getlanguageruntime"
+    },
+    {
+      "label": "transpileTypeScriptToNodeJs()",
+      "file_type": "code",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L99",
+      "id": "executionworker_transpiletypescripttonodejs"
     },
     {
       "label": "buildDockerArgs()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L78",
-      "id": "executionworker_builddockerargs",
-      "community": 0,
-      "norm_label": "builddockerargs()"
+      "source_location": "L115",
+      "id": "executionworker_builddockerargs"
     },
     {
       "label": "executeInDocker()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L100",
-      "id": "executionworker_executeindocker",
-      "community": 0,
-      "norm_label": "executeindocker()"
+      "source_location": "L137",
+      "id": "executionworker_executeindocker"
     },
     {
       "label": "persistQueuedExecution()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L177",
-      "id": "executionworker_persistqueuedexecution",
-      "community": 0,
-      "norm_label": "persistqueuedexecution()"
+      "source_location": "L219",
+      "id": "executionworker_persistqueuedexecution"
     },
     {
       "label": "updateExecutionRunning()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L192",
-      "id": "executionworker_updateexecutionrunning",
-      "community": 0,
-      "norm_label": "updateexecutionrunning()"
+      "source_location": "L234",
+      "id": "executionworker_updateexecutionrunning"
     },
     {
       "label": "updateExecutionResult()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L196",
-      "id": "executionworker_updateexecutionresult",
-      "community": 0,
-      "norm_label": "updateexecutionresult()"
+      "source_location": "L238",
+      "id": "executionworker_updateexecutionresult"
     },
     {
       "label": "updateExecutionFailure()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L214",
-      "id": "executionworker_updateexecutionfailure",
-      "community": 0,
-      "norm_label": "updateexecutionfailure()"
+      "source_location": "L256",
+      "id": "executionworker_updateexecutionfailure"
     },
     {
       "label": "processQueue()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L235",
-      "id": "executionworker_processqueue",
-      "community": 0,
-      "norm_label": "processqueue()"
+      "source_location": "L278",
+      "id": "executionworker_processqueue"
     },
     {
       "label": "sanitizeTimeoutMs()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L276",
-      "id": "executionworker_sanitizetimeoutms",
-      "community": 0,
-      "norm_label": "sanitizetimeoutms()"
+      "source_location": "L319",
+      "id": "executionworker_sanitizetimeoutms"
     },
     {
       "label": "enqueueExecution()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L284",
-      "id": "executionworker_enqueueexecution",
-      "community": 0,
-      "norm_label": "enqueueexecution()"
+      "source_location": "L327",
+      "id": "executionworker_enqueueexecution"
     },
     {
       "label": "getExecutionById()",
       "file_type": "code",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L314",
-      "id": "executionworker_getexecutionbyid",
-      "community": 0,
-      "norm_label": "getexecutionbyid()"
+      "source_location": "L361",
+      "id": "executionworker_getexecutionbyid"
     },
     {
       "label": "express.d.ts",
       "file_type": "code",
       "source_file": "src\\types\\express.d.ts",
       "source_location": "L1",
-      "id": "src_types_express_d_ts",
-      "community": 9,
-      "norm_label": "express.d.ts"
+      "id": "src_types_express_d_ts"
+    },
+    {
+      "label": "Express App Entry (main.ts)",
+      "file_type": "code",
+      "id": "main_ts"
+    },
+    {
+      "label": "Env Config / Zod Schema (env.ts)",
+      "file_type": "code",
+      "id": "config_env_ts"
+    },
+    {
+      "label": "PostgreSQL Pool Client (client.ts)",
+      "file_type": "code",
+      "id": "db_client_ts"
+    },
+    {
+      "label": "Migration CLI Runner (runMigration.ts)",
+      "file_type": "code",
+      "id": "db_run_migration_ts"
+    },
+    {
+      "label": "Seed Admin User (seedAdmin.ts)",
+      "file_type": "code",
+      "id": "seed_admin_ts"
+    },
+    {
+      "label": "Seed Sample Topics & Problems (seedTopicsAndProblems.ts)",
+      "file_type": "code",
+      "id": "seed_topics_problems_ts"
+    },
+    {
+      "label": "Seed All Problems (seedAllProblems.ts)",
+      "file_type": "code",
+      "id": "seed_all_problems_ts"
+    },
+    {
+      "label": "Pino Logger (logger.ts)",
+      "file_type": "code",
+      "id": "logger_ts"
+    },
+    {
+      "label": "Auth Middleware (authenticate.ts)",
+      "file_type": "code",
+      "id": "authenticate_ts"
+    },
+    {
+      "label": "Optional Auth Middleware (optionalAuthenticate.ts)",
+      "file_type": "code",
+      "id": "optional_authenticate_ts"
+    },
+    {
+      "label": "Admin Guard Middleware (requireAdmin.ts)",
+      "file_type": "code",
+      "id": "require_admin_ts"
+    },
+    {
+      "label": "Health Routes (/health)",
+      "file_type": "code",
+      "id": "health_routes_ts"
+    },
+    {
+      "label": "Auth Routes (/auth)",
+      "file_type": "code",
+      "id": "auth_routes_ts"
+    },
+    {
+      "label": "Topics Routes (/topics)",
+      "file_type": "code",
+      "id": "topics_routes_ts"
+    },
+    {
+      "label": "Problems Routes (/problems)",
+      "file_type": "code",
+      "id": "problems_routes_ts"
+    },
+    {
+      "label": "Progress Routes (/progress)",
+      "file_type": "code",
+      "id": "progress_routes_ts"
+    },
+    {
+      "label": "Subscriptions Routes (/subscriptions)",
+      "file_type": "code",
+      "id": "subscriptions_routes_ts"
+    },
+    {
+      "label": "Admin Routes (/admin)",
+      "file_type": "code",
+      "id": "admin_routes_ts"
+    },
+    {
+      "label": "Execution Routes (/execution)",
+      "file_type": "code",
+      "id": "execution_routes_ts"
+    },
+    {
+      "label": "Payments Routes (/payments)",
+      "file_type": "code",
+      "id": "payments_routes_ts"
+    },
+    {
+      "label": "Users Routes (/users)",
+      "file_type": "code",
+      "id": "users_routes_ts"
+    },
+    {
+      "label": "Execution Worker / Docker Queue (executionWorker.ts)",
+      "file_type": "code",
+      "id": "execution_worker_ts"
+    },
+    {
+      "label": "Express Request Augmentation (express.d.ts)",
+      "file_type": "code",
+      "id": "express_d_ts"
+    },
+    {
+      "label": "Seeds README",
+      "file_type": "document",
+      "id": "seeds_readme_md"
+    },
+    {
+      "label": "Execution Queue README",
+      "file_type": "document",
+      "id": "queue_readme_md"
     }
   ],
-  "links": [
+  "edges": [
     {
       "relation": "imports_from",
       "confidence": "EXTRACTED",
@@ -446,8 +575,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_config_env_ts",
       "source": "src_main_ts",
-      "target": "src_config_env_ts",
-      "confidence_score": 1.0
+      "target": "src_config_env_ts"
     },
     {
       "relation": "imports_from",
@@ -458,8 +586,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_common_logging_logger_ts",
       "source": "src_main_ts",
-      "target": "src_common_logging_logger_ts",
-      "confidence_score": 1.0
+      "target": "src_common_logging_logger_ts"
     },
     {
       "relation": "imports_from",
@@ -470,8 +597,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_health_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_health_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_health_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -482,8 +608,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_auth_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_auth_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_auth_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -494,8 +619,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_users_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_users_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_users_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -506,8 +630,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_topics_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_topics_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_topics_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -518,8 +641,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_problems_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_problems_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_problems_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -530,8 +652,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_progress_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_progress_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_progress_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -542,8 +663,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_subscriptions_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_subscriptions_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_subscriptions_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -554,8 +674,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_admin_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_admin_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_admin_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -566,8 +685,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_execution_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_execution_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_execution_routes_ts"
     },
     {
       "relation": "imports_from",
@@ -578,8 +696,7 @@
       "_src": "src_main_ts",
       "_tgt": "src_modules_payments_routes_ts",
       "source": "src_main_ts",
-      "target": "src_modules_payments_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_payments_routes_ts"
     },
     {
       "relation": "contains",
@@ -590,8 +707,7 @@
       "_src": "src_common_middleware_authenticate_ts",
       "_tgt": "authenticate_authenticate",
       "source": "src_common_middleware_authenticate_ts",
-      "target": "authenticate_authenticate",
-      "confidence_score": 1.0
+      "target": "authenticate_authenticate"
     },
     {
       "relation": "contains",
@@ -602,8 +718,7 @@
       "_src": "src_common_middleware_optionalauthenticate_ts",
       "_tgt": "optionalauthenticate_optionalauthenticate",
       "source": "src_common_middleware_optionalauthenticate_ts",
-      "target": "optionalauthenticate_optionalauthenticate",
-      "confidence_score": 1.0
+      "target": "optionalauthenticate_optionalauthenticate"
     },
     {
       "relation": "contains",
@@ -614,8 +729,7 @@
       "_src": "src_common_middleware_requireadmin_ts",
       "_tgt": "requireadmin_requireadmin",
       "source": "src_common_middleware_requireadmin_ts",
-      "target": "requireadmin_requireadmin",
-      "confidence_score": 1.0
+      "target": "requireadmin_requireadmin"
     },
     {
       "relation": "imports_from",
@@ -626,8 +740,7 @@
       "_src": "src_db_runmigration_ts",
       "_tgt": "src_db_client_ts",
       "source": "src_db_client_ts",
-      "target": "src_db_runmigration_ts",
-      "confidence_score": 1.0
+      "target": "src_db_runmigration_ts"
     },
     {
       "relation": "contains",
@@ -638,8 +751,7 @@
       "_src": "src_db_runmigration_ts",
       "_tgt": "runmigration_run",
       "source": "src_db_runmigration_ts",
-      "target": "runmigration_run",
-      "confidence_score": 1.0
+      "target": "runmigration_run"
     },
     {
       "relation": "contains",
@@ -650,8 +762,7 @@
       "_src": "src_db_seeds_seedadmin_ts",
       "_tgt": "seedadmin_ensureadminrole",
       "source": "src_db_seeds_seedadmin_ts",
-      "target": "seedadmin_ensureadminrole",
-      "confidence_score": 1.0
+      "target": "seedadmin_ensureadminrole"
     },
     {
       "relation": "contains",
@@ -662,8 +773,7 @@
       "_src": "src_db_seeds_seedadmin_ts",
       "_tgt": "seedadmin_run",
       "source": "src_db_seeds_seedadmin_ts",
-      "target": "seedadmin_run",
-      "confidence_score": 1.0
+      "target": "seedadmin_run"
     },
     {
       "relation": "calls",
@@ -674,8 +784,51 @@
       "_src": "seedadmin_run",
       "_tgt": "seedadmin_ensureadminrole",
       "source": "seedadmin_ensureadminrole",
-      "target": "seedadmin_run",
-      "confidence_score": 1.0
+      "target": "seedadmin_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\db\\seeds\\seedAllProblems.ts",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_src": "src_db_seeds_seedallproblems_ts",
+      "_tgt": "seedallproblems_loadproblemsfromfile",
+      "source": "src_db_seeds_seedallproblems_ts",
+      "target": "seedallproblems_loadproblemsfromfile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\db\\seeds\\seedAllProblems.ts",
+      "source_location": "L208",
+      "weight": 1.0,
+      "_src": "src_db_seeds_seedallproblems_ts",
+      "_tgt": "seedallproblems_seedallproblems",
+      "source": "src_db_seeds_seedallproblems_ts",
+      "target": "seedallproblems_seedallproblems"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\db\\seeds\\seedAllProblems.ts",
+      "source_location": "L222",
+      "weight": 1.0,
+      "_src": "seedallproblems_seedallproblems",
+      "_tgt": "seedallproblems_loadproblemsfromfile",
+      "source": "seedallproblems_loadproblemsfromfile",
+      "target": "seedallproblems_seedallproblems"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\db\\seeds\\seedTopicsAndProblems.ts",
+      "source_location": "L153",
+      "weight": 1.0,
+      "_src": "src_db_seeds_seedtopicsandproblems_ts",
+      "_tgt": "seedtopicsandproblems_seedtopicsandproblems",
+      "source": "src_db_seeds_seedtopicsandproblems_ts",
+      "target": "seedtopicsandproblems_seedtopicsandproblems"
     },
     {
       "relation": "contains",
@@ -686,8 +839,7 @@
       "_src": "src_modules_admin_routes_ts",
       "_tgt": "routes_ispgerror",
       "source": "src_modules_admin_routes_ts",
-      "target": "routes_ispgerror",
-      "confidence_score": 1.0
+      "target": "routes_ispgerror"
     },
     {
       "relation": "contains",
@@ -698,8 +850,7 @@
       "_src": "src_modules_admin_routes_ts",
       "_tgt": "routes_maptopic",
       "source": "src_modules_admin_routes_ts",
-      "target": "routes_maptopic",
-      "confidence_score": 1.0
+      "target": "routes_maptopic"
     },
     {
       "relation": "contains",
@@ -710,8 +861,7 @@
       "_src": "src_modules_admin_routes_ts",
       "_tgt": "routes_mapproblem",
       "source": "src_modules_admin_routes_ts",
-      "target": "routes_mapproblem",
-      "confidence_score": 1.0
+      "target": "routes_mapproblem"
     },
     {
       "relation": "contains",
@@ -722,8 +872,7 @@
       "_src": "src_modules_auth_routes_ts",
       "_tgt": "routes_buildauthresponse",
       "source": "src_modules_auth_routes_ts",
-      "target": "routes_buildauthresponse",
-      "confidence_score": 1.0
+      "target": "routes_buildauthresponse"
     },
     {
       "relation": "contains",
@@ -734,8 +883,7 @@
       "_src": "src_modules_execution_routes_ts",
       "_tgt": "routes_haspremiumaccess",
       "source": "src_modules_execution_routes_ts",
-      "target": "routes_haspremiumaccess",
-      "confidence_score": 1.0
+      "target": "routes_haspremiumaccess"
     },
     {
       "relation": "contains",
@@ -746,20 +894,40 @@
       "_src": "src_modules_execution_routes_ts",
       "_tgt": "routes_mapexecution",
       "source": "src_modules_execution_routes_ts",
-      "target": "routes_mapexecution",
-      "confidence_score": 1.0
+      "target": "routes_mapexecution"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\modules\\problems\\routes.ts",
-      "source_location": "L65",
+      "source_location": "L93",
       "weight": 1.0,
       "_src": "src_modules_problems_routes_ts",
       "_tgt": "routes_haspremiumaccess",
       "source": "routes_haspremiumaccess",
-      "target": "src_modules_problems_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_problems_routes_ts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\progress\\routes.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "src_modules_progress_routes_ts",
+      "_tgt": "routes_haspremiumaccess",
+      "source": "routes_haspremiumaccess",
+      "target": "src_modules_progress_routes_ts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\health\\routes.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "src_modules_health_routes_ts",
+      "_tgt": "routes_updatecustommetrics",
+      "source": "src_modules_health_routes_ts",
+      "target": "routes_updatecustommetrics"
     },
     {
       "relation": "contains",
@@ -770,285 +938,715 @@
       "_src": "src_modules_payments_routes_ts",
       "_tgt": "routes_activatesubscriptionbypaymentid",
       "source": "src_modules_payments_routes_ts",
-      "target": "routes_activatesubscriptionbypaymentid",
-      "confidence_score": 1.0
+      "target": "routes_activatesubscriptionbypaymentid"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\modules\\problems\\routes.ts",
-      "source_location": "L43",
+      "source_location": "L69",
       "weight": 1.0,
       "_src": "src_modules_problems_routes_ts",
       "_tgt": "routes_mapproblemlistitem",
       "source": "src_modules_problems_routes_ts",
-      "target": "routes_mapproblemlistitem",
-      "confidence_score": 1.0
+      "target": "routes_mapproblemlistitem"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\modules\\problems\\routes.ts",
-      "source_location": "L57",
+      "source_location": "L85",
       "weight": 1.0,
       "_src": "src_modules_problems_routes_ts",
       "_tgt": "routes_mapproblemdetail",
       "source": "src_modules_problems_routes_ts",
-      "target": "routes_mapproblemdetail",
-      "confidence_score": 1.0
+      "target": "routes_mapproblemdetail"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\modules\\problems\\routes.ts",
-      "source_location": "L96",
+      "source_location": "L124",
       "weight": 1.0,
       "_src": "src_modules_problems_routes_ts",
       "_tgt": "routes_recomputeusertopicprogress",
       "source": "src_modules_problems_routes_ts",
-      "target": "routes_recomputeusertopicprogress",
-      "confidence_score": 1.0
+      "target": "routes_recomputeusertopicprogress"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\modules\\problems\\routes.ts",
-      "source_location": "L59",
+      "source_location": "L87",
       "weight": 1.0,
       "_src": "routes_mapproblemdetail",
       "_tgt": "routes_mapproblemlistitem",
       "source": "routes_mapproblemlistitem",
-      "target": "routes_mapproblemdetail",
-      "confidence_score": 1.0
+      "target": "routes_mapproblemdetail"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\modules\\progress\\routes.ts",
-      "source_location": "L19",
+      "source_location": "L79",
       "weight": 1.0,
       "_src": "src_modules_progress_routes_ts",
       "_tgt": "routes_recomputeusertopicprogress",
       "source": "routes_recomputeusertopicprogress",
-      "target": "src_modules_progress_routes_ts",
-      "confidence_score": 1.0
+      "target": "src_modules_progress_routes_ts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\modules\\progress\\routes.ts",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_src": "src_modules_progress_routes_ts",
+      "_tgt": "routes_buildrecommendationreason",
+      "source": "src_modules_progress_routes_ts",
+      "target": "routes_buildrecommendationreason"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L60",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_looksliketypescript",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_looksliketypescript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L72",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_getlanguageruntime",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_getlanguageruntime",
-      "confidence_score": 1.0
+      "target": "executionworker_getlanguageruntime"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L78",
+      "source_location": "L99",
+      "weight": 1.0,
+      "_src": "src_queue_executionworker_ts",
+      "_tgt": "executionworker_transpiletypescripttonodejs",
+      "source": "src_queue_executionworker_ts",
+      "target": "executionworker_transpiletypescripttonodejs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L115",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_builddockerargs",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_builddockerargs",
-      "confidence_score": 1.0
+      "target": "executionworker_builddockerargs"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L100",
+      "source_location": "L137",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_executeindocker",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_executeindocker",
-      "confidence_score": 1.0
+      "target": "executionworker_executeindocker"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L177",
+      "source_location": "L219",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_persistqueuedexecution",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_persistqueuedexecution",
-      "confidence_score": 1.0
+      "target": "executionworker_persistqueuedexecution"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L192",
+      "source_location": "L234",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_updateexecutionrunning",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_updateexecutionrunning",
-      "confidence_score": 1.0
+      "target": "executionworker_updateexecutionrunning"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L196",
+      "source_location": "L238",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_updateexecutionresult",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_updateexecutionresult",
-      "confidence_score": 1.0
+      "target": "executionworker_updateexecutionresult"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L214",
+      "source_location": "L256",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_updateexecutionfailure",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_updateexecutionfailure",
-      "confidence_score": 1.0
+      "target": "executionworker_updateexecutionfailure"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L235",
+      "source_location": "L278",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_processqueue",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_processqueue",
-      "confidence_score": 1.0
+      "target": "executionworker_processqueue"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L276",
+      "source_location": "L319",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_sanitizetimeoutms",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_sanitizetimeoutms",
-      "confidence_score": 1.0
+      "target": "executionworker_sanitizetimeoutms"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L284",
+      "source_location": "L327",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_enqueueexecution",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_enqueueexecution",
-      "confidence_score": 1.0
+      "target": "executionworker_enqueueexecution"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L314",
+      "source_location": "L361",
       "weight": 1.0,
       "_src": "src_queue_executionworker_ts",
       "_tgt": "executionworker_getexecutionbyid",
       "source": "src_queue_executionworker_ts",
-      "target": "executionworker_getexecutionbyid",
-      "confidence_score": 1.0
+      "target": "executionworker_getexecutionbyid"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L101",
+      "source_location": "L143",
+      "weight": 1.0,
+      "_src": "executionworker_executeindocker",
+      "_tgt": "executionworker_looksliketypescript",
+      "source": "executionworker_looksliketypescript",
+      "target": "executionworker_executeindocker"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L138",
       "weight": 1.0,
       "_src": "executionworker_executeindocker",
       "_tgt": "executionworker_getlanguageruntime",
       "source": "executionworker_getlanguageruntime",
-      "target": "executionworker_executeindocker",
-      "confidence_score": 1.0
+      "target": "executionworker_executeindocker"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L107",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_src": "executionworker_executeindocker",
+      "_tgt": "executionworker_transpiletypescripttonodejs",
+      "source": "executionworker_transpiletypescripttonodejs",
+      "target": "executionworker_executeindocker"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\queue\\executionWorker.ts",
+      "source_location": "L149",
       "weight": 1.0,
       "_src": "executionworker_executeindocker",
       "_tgt": "executionworker_builddockerargs",
       "source": "executionworker_builddockerargs",
-      "target": "executionworker_executeindocker",
-      "confidence_score": 1.0
+      "target": "executionworker_executeindocker"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L251",
+      "source_location": "L294",
       "weight": 1.0,
       "_src": "executionworker_processqueue",
       "_tgt": "executionworker_executeindocker",
       "source": "executionworker_executeindocker",
-      "target": "executionworker_processqueue",
-      "confidence_score": 1.0
+      "target": "executionworker_processqueue"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L287",
+      "source_location": "L334",
       "weight": 1.0,
       "_src": "executionworker_enqueueexecution",
       "_tgt": "executionworker_persistqueuedexecution",
       "source": "executionworker_persistqueuedexecution",
-      "target": "executionworker_enqueueexecution",
-      "confidence_score": 1.0
+      "target": "executionworker_enqueueexecution"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L249",
+      "source_location": "L292",
       "weight": 1.0,
       "_src": "executionworker_processqueue",
       "_tgt": "executionworker_updateexecutionrunning",
       "source": "executionworker_updateexecutionrunning",
-      "target": "executionworker_processqueue",
-      "confidence_score": 1.0
+      "target": "executionworker_processqueue"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L252",
+      "source_location": "L295",
       "weight": 1.0,
       "_src": "executionworker_processqueue",
       "_tgt": "executionworker_updateexecutionresult",
       "source": "executionworker_updateexecutionresult",
-      "target": "executionworker_processqueue",
-      "confidence_score": 1.0
+      "target": "executionworker_processqueue"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src\\queue\\executionWorker.ts",
-      "source_location": "L267",
+      "source_location": "L310",
       "weight": 1.0,
       "_src": "executionworker_processqueue",
       "_tgt": "executionworker_updateexecutionfailure",
       "source": "executionworker_updateexecutionfailure",
-      "target": "executionworker_processqueue",
-      "confidence_score": 1.0
+      "target": "executionworker_processqueue"
+    },
+    {
+      "relation": "reads_env_for_cors_origins",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "config_env_ts",
+      "source": "main_ts",
+      "target": "config_env_ts"
+    },
+    {
+      "relation": "registers_pino_http_logger",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "logger_ts",
+      "source": "main_ts",
+      "target": "logger_ts"
+    },
+    {
+      "relation": "mounts_route_at /health",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "health_routes_ts",
+      "source": "main_ts",
+      "target": "health_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /auth",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "auth_routes_ts",
+      "source": "main_ts",
+      "target": "auth_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /users",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "users_routes_ts",
+      "source": "main_ts",
+      "target": "users_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /topics",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "topics_routes_ts",
+      "source": "main_ts",
+      "target": "topics_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /problems",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "problems_routes_ts",
+      "source": "main_ts",
+      "target": "problems_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /progress",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "progress_routes_ts",
+      "source": "main_ts",
+      "target": "progress_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /subscriptions",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "subscriptions_routes_ts",
+      "source": "main_ts",
+      "target": "subscriptions_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /admin",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "admin_routes_ts",
+      "source": "main_ts",
+      "target": "admin_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /execution",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "execution_routes_ts",
+      "source": "main_ts",
+      "target": "execution_routes_ts"
+    },
+    {
+      "relation": "mounts_route_at /payments",
+      "confidence": "EXTRACTED",
+      "_src": "main_ts",
+      "_tgt": "payments_routes_ts",
+      "source": "main_ts",
+      "target": "payments_routes_ts"
+    },
+    {
+      "relation": "reads_DATABASE_URL_from_env",
+      "confidence": "EXTRACTED",
+      "_src": "db_client_ts",
+      "_tgt": "config_env_ts",
+      "source": "config_env_ts",
+      "target": "db_client_ts"
+    },
+    {
+      "relation": "reads_admin_credentials_from_env",
+      "confidence": "EXTRACTED",
+      "_src": "seed_admin_ts",
+      "_tgt": "config_env_ts",
+      "source": "config_env_ts",
+      "target": "seed_admin_ts"
+    },
+    {
+      "relation": "reads_PAYMENT_WEBHOOK_SECRET_from_env",
+      "confidence": "EXTRACTED",
+      "_src": "payments_routes_ts",
+      "_tgt": "config_env_ts",
+      "source": "config_env_ts",
+      "target": "payments_routes_ts"
+    },
+    {
+      "relation": "reads_DOCKER_BIN_images_timeouts_from_env",
+      "confidence": "EXTRACTED",
+      "_src": "execution_worker_ts",
+      "_tgt": "config_env_ts",
+      "source": "config_env_ts",
+      "target": "execution_worker_ts"
+    },
+    {
+      "relation": "runs_sql_via_pool",
+      "confidence": "EXTRACTED",
+      "_src": "db_run_migration_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "db_run_migration_ts"
+    },
+    {
+      "relation": "inserts_admin_user_via_pool",
+      "confidence": "INFERRED",
+      "_src": "seed_admin_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "seed_admin_ts"
+    },
+    {
+      "relation": "inserts_seed_data_via_pool",
+      "confidence": "INFERRED",
+      "_src": "seed_topics_problems_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "seed_topics_problems_ts"
+    },
+    {
+      "relation": "inserts_143_problems_via_pool",
+      "confidence": "INFERRED",
+      "_src": "seed_all_problems_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "seed_all_problems_ts"
+    },
+    {
+      "relation": "queries_user_roles_table",
+      "confidence": "EXTRACTED",
+      "_src": "require_admin_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "require_admin_ts"
+    },
+    {
+      "relation": "checks_db_connectivity",
+      "confidence": "EXTRACTED",
+      "_src": "health_routes_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "health_routes_ts"
+    },
+    {
+      "relation": "reads_writes_users_via_pool",
+      "confidence": "EXTRACTED",
+      "_src": "auth_routes_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "auth_routes_ts"
+    },
+    {
+      "relation": "queries_topics_via_pool",
+      "confidence": "INFERRED",
+      "_src": "topics_routes_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "topics_routes_ts"
+    },
+    {
+      "relation": "reads_writes_progress_via_pool",
+      "confidence": "INFERRED",
+      "_src": "progress_routes_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "progress_routes_ts"
+    },
+    {
+      "relation": "reads_writes_subscriptions_via_pool",
+      "confidence": "INFERRED",
+      "_src": "subscriptions_routes_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "subscriptions_routes_ts"
+    },
+    {
+      "relation": "manages_topics_and_problems_via_pool",
+      "confidence": "INFERRED",
+      "_src": "admin_routes_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "admin_routes_ts"
+    },
+    {
+      "relation": "activates_subscription_via_pool",
+      "confidence": "INFERRED",
+      "_src": "payments_routes_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "payments_routes_ts"
+    },
+    {
+      "relation": "reads_user_profile_via_pool",
+      "confidence": "INFERRED",
+      "_src": "users_routes_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "users_routes_ts"
+    },
+    {
+      "relation": "persists_execution_records_via_pool",
+      "confidence": "EXTRACTED",
+      "_src": "execution_worker_ts",
+      "_tgt": "db_client_ts",
+      "source": "db_client_ts",
+      "target": "execution_worker_ts"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "_src": "seeds_readme_md",
+      "_tgt": "seed_admin_ts",
+      "source": "seed_admin_ts",
+      "target": "seeds_readme_md"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "_src": "seeds_readme_md",
+      "_tgt": "seed_topics_problems_ts",
+      "source": "seed_topics_problems_ts",
+      "target": "seeds_readme_md"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "_src": "seeds_readme_md",
+      "_tgt": "seed_all_problems_ts",
+      "source": "seed_all_problems_ts",
+      "target": "seeds_readme_md"
+    },
+    {
+      "relation": "uses_logger",
+      "confidence": "EXTRACTED",
+      "_src": "execution_worker_ts",
+      "_tgt": "logger_ts",
+      "source": "logger_ts",
+      "target": "execution_worker_ts"
+    },
+    {
+      "relation": "sets_req_auth_userId",
+      "confidence": "EXTRACTED",
+      "_src": "authenticate_ts",
+      "_tgt": "express_d_ts",
+      "source": "authenticate_ts",
+      "target": "express_d_ts"
+    },
+    {
+      "relation": "depends_on_auth_userId",
+      "confidence": "EXTRACTED",
+      "_src": "require_admin_ts",
+      "_tgt": "authenticate_ts",
+      "source": "authenticate_ts",
+      "target": "require_admin_ts"
+    },
+    {
+      "relation": "applies_middleware_for_attempts",
+      "confidence": "EXTRACTED",
+      "_src": "problems_routes_ts",
+      "_tgt": "authenticate_ts",
+      "source": "authenticate_ts",
+      "target": "problems_routes_ts"
+    },
+    {
+      "relation": "applies_middleware",
+      "confidence": "EXTRACTED",
+      "_src": "progress_routes_ts",
+      "_tgt": "authenticate_ts",
+      "source": "authenticate_ts",
+      "target": "progress_routes_ts"
+    },
+    {
+      "relation": "applies_middleware",
+      "confidence": "EXTRACTED",
+      "_src": "subscriptions_routes_ts",
+      "_tgt": "authenticate_ts",
+      "source": "authenticate_ts",
+      "target": "subscriptions_routes_ts"
+    },
+    {
+      "relation": "applies_middleware",
+      "confidence": "EXTRACTED",
+      "_src": "admin_routes_ts",
+      "_tgt": "authenticate_ts",
+      "source": "authenticate_ts",
+      "target": "admin_routes_ts"
+    },
+    {
+      "relation": "applies_middleware",
+      "confidence": "EXTRACTED",
+      "_src": "execution_routes_ts",
+      "_tgt": "authenticate_ts",
+      "source": "authenticate_ts",
+      "target": "execution_routes_ts"
+    },
+    {
+      "relation": "applies_middleware_on_non_webhook_routes",
+      "confidence": "EXTRACTED",
+      "_src": "payments_routes_ts",
+      "_tgt": "authenticate_ts",
+      "source": "authenticate_ts",
+      "target": "payments_routes_ts"
+    },
+    {
+      "relation": "applies_middleware",
+      "confidence": "EXTRACTED",
+      "_src": "users_routes_ts",
+      "_tgt": "authenticate_ts",
+      "source": "authenticate_ts",
+      "target": "users_routes_ts"
+    },
+    {
+      "relation": "optionally_sets_req_auth_userId",
+      "confidence": "INFERRED",
+      "_src": "optional_authenticate_ts",
+      "_tgt": "express_d_ts",
+      "source": "optional_authenticate_ts",
+      "target": "express_d_ts"
+    },
+    {
+      "relation": "applies_middleware",
+      "confidence": "EXTRACTED",
+      "_src": "topics_routes_ts",
+      "_tgt": "optional_authenticate_ts",
+      "source": "optional_authenticate_ts",
+      "target": "topics_routes_ts"
+    },
+    {
+      "relation": "applies_middleware_for_list_and_detail",
+      "confidence": "EXTRACTED",
+      "_src": "problems_routes_ts",
+      "_tgt": "optional_authenticate_ts",
+      "source": "optional_authenticate_ts",
+      "target": "problems_routes_ts"
+    },
+    {
+      "relation": "applies_admin_guard",
+      "confidence": "EXTRACTED",
+      "_src": "admin_routes_ts",
+      "_tgt": "require_admin_ts",
+      "source": "require_admin_ts",
+      "target": "admin_routes_ts"
+    },
+    {
+      "relation": "calls_enqueueExecution",
+      "confidence": "EXTRACTED",
+      "_src": "problems_routes_ts",
+      "_tgt": "execution_worker_ts",
+      "source": "problems_routes_ts",
+      "target": "execution_worker_ts"
+    },
+    {
+      "relation": "calls_enqueueExecution_getExecutionById_sanitizeTimeoutMs",
+      "confidence": "EXTRACTED",
+      "_src": "execution_routes_ts",
+      "_tgt": "execution_worker_ts",
+      "source": "execution_routes_ts",
+      "target": "execution_worker_ts"
+    },
+    {
+      "relation": "documents",
+      "confidence": "EXTRACTED",
+      "_src": "queue_readme_md",
+      "_tgt": "execution_worker_ts",
+      "source": "execution_worker_ts",
+      "target": "queue_readme_md"
     }
-  ],
-  "hyperedges": []
+  ]
 }

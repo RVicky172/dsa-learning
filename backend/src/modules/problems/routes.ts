@@ -19,6 +19,8 @@ const attemptPayloadSchema = z.object({
 interface ProblemListRow {
   id: string;
   topic_id: string;
+  topic_title: string;
+  topic_slug: string;
   title: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   is_premium: boolean;
@@ -31,6 +33,30 @@ interface PremiumAccessRow {
 
 interface ProblemDetailRow extends ProblemListRow {
   constraints: string;
+}
+
+interface SolutionRow {
+  id: string;
+  language: string;
+  approach: string;
+  code: string;
+  time_complexity: string;
+  space_complexity: string;
+  is_optimal: boolean;
+}
+
+interface HintRow {
+  id: string;
+  hint_text: string;
+  sort_order: number;
+}
+
+interface ExampleRow {
+  id: string;
+  input_text: string;
+  output_text: string;
+  explanation: string;
+  sort_order: number;
 }
 
 interface AttemptRow {
@@ -46,6 +72,8 @@ function mapProblemListItem(row: ProblemListRow, canAccessPremium: boolean) {
   return {
     id: row.id,
     topicId: row.topic_id,
+    topicTitle: row.topic_title,
+    topicSlug: row.topic_slug,
     title: row.title,
     difficulty: row.difficulty,
     isPremium: row.is_premium,
@@ -147,10 +175,12 @@ router.get('/', optionalAuthenticate, async (req, res) => {
 
   db.query<ProblemListRow>(
     `
-    SELECT id, topic_id, title, difficulty, is_premium, statement
-    FROM problems
+    SELECT p.id, p.topic_id, t.title AS topic_title, t.slug AS topic_slug,
+           p.title, p.difficulty, p.is_premium, p.statement
+    FROM problems p
+    JOIN topics t ON t.id = p.topic_id
     ${whereSql}
-    ORDER BY created_at DESC
+    ORDER BY t.order_index ASC, p.created_at ASC
     `,
     values
   )
@@ -191,7 +221,63 @@ router.get('/:problemId', optionalAuthenticate, async (req, res) => {
     return;
   }
 
-  res.status(200).json(mapProblemDetail(problem, canAccessPremium));
+  // Get solutions
+  const solutionsResult = await db.query<SolutionRow>(
+    `
+    SELECT id, language, approach, code, time_complexity, space_complexity, is_optimal
+    FROM problem_solutions
+    WHERE problem_id = $1
+    ORDER BY is_optimal DESC, language ASC
+    `,
+    [problem.id]
+  );
+
+  // Get hints
+  const hintsResult = await db.query<HintRow>(
+    `
+    SELECT id, hint_text, sort_order
+    FROM problem_hints
+    WHERE problem_id = $1
+    ORDER BY sort_order ASC
+    `,
+    [problem.id]
+  );
+
+  // Get examples
+  const examplesResult = await db.query<ExampleRow>(
+    `
+    SELECT id, input_text, output_text, explanation, sort_order
+    FROM problem_examples
+    WHERE problem_id = $1
+    ORDER BY sort_order ASC
+    `,
+    [problem.id]
+  );
+
+  const problemDetail = mapProblemDetail(problem, canAccessPremium);
+
+  res.status(200).json({
+    ...problemDetail,
+    solutions: solutionsResult.rows.map(s => ({
+      id: s.id,
+      language: s.language,
+      approach: s.approach,
+      code: s.code,
+      timeComplexity: s.time_complexity,
+      spaceComplexity: s.space_complexity,
+      isOptimal: s.is_optimal
+    })),
+    hints: hintsResult.rows.map(h => ({
+      id: h.id,
+      text: h.hint_text
+    })),
+    examples: examplesResult.rows.map(e => ({
+      id: e.id,
+      input: e.input_text,
+      output: e.output_text,
+      explanation: e.explanation
+    }))
+  });
 });
 
 router.post('/:problemId/attempts', authenticate, async (req, res) => {

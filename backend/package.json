@@ -12,6 +12,8 @@
     "migrate": "tsx src/db/runMigration.ts",
     "migrate:init": "tsx src/db/runMigration.ts 001_init.sql",
     "seed:admin": "node --env-file=.env --import tsx/esm src/db/seeds/seedAdmin.ts",
+    "seed:topics": "node --env-file=.env --import tsx/esm src/db/seeds/seedTopicsAndProblems.ts",
+    "seed:all-problems": "node --env-file=.env --import tsx/esm src/db/seeds/seedAllProblems.ts",
     "test:integration": "node --env-file=.env --import tsx/esm --test --test-reporter spec tests/01_health.test.ts tests/02_auth.test.ts tests/03_problems.test.ts tests/04_admin.test.ts tests/05_subscriptions.test.ts tests/06_execution.test.ts"
   },
   "dependencies": {
