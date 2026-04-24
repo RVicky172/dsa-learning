@@ -3,7 +3,7 @@
 ## Current Delivery Snapshot (Updated: 2026-04-20)
 
 - Implemented in codebase: auth + RBAC, admin CRUD for topics/problems, progress + attempt persistence, DB migration `002_user_problem_progress.sql`, backend-driven problems view with fallback, subscription page, mock checkout + webhook sync, and API/UI premium gating with upgrade CTAs.
-- Remaining major tracks: product enhancements first (recommendations, classroom mode, certificates) and visualization upgrades.
+- Remaining major tracks: visualization improvements and performance optimization.
 - Deployment-focused tracks are currently deferred until product enhancement completion.
 
 This folder contains the complete step-by-step plan for the next month.

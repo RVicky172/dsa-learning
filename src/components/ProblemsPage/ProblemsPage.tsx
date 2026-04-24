@@ -1,13 +1,8 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
-import {
-    allProblems,
-    problemDifficulties,
-    type ProblemListItem
-} from '../../data/problems/registry';
 import { useProgress } from '../../hooks/useProgress';
 import { useAuth } from '../../hooks/useAuth';
 import { problemService } from '../../services/problemService';
-import type { ProblemListItemApi } from '../../types/api';
+import type { ApiProblemRecord } from './ProblemCard';
 import ProblemsHeader from './ProblemsHeader';
 import ProblemsFilters from './ProblemsFilters';
 import ProblemCard from './ProblemCard';
@@ -15,37 +10,11 @@ import ProblemsStats from './ProblemsStats';
 import styles from './ProblemsPage.module.css';
 
 const PAGE_SIZE = 12;
-
-interface ProblemRecord extends ProblemListItem {
-  isPremium: boolean;
-  canAccess: boolean;
-}
+const DIFFICULTIES = ['All', 'Easy', 'Medium', 'Hard'];
 
 interface ProblemsPageProps {
   onGoLogin?: () => void;
   onGoUpgrade?: () => void;
-}
-
-function buildFallbackProblem(problem: ProblemListItemApi, index: number): ProblemRecord {
-  return {
-    id: problem.id,
-    title: problem.title,
-    difficulty: problem.difficulty,
-    description: problem.description,
-    examples: [{ input: 'N/A', output: 'N/A', explanation: 'Example data not yet authored.' }],
-    solution: {
-      approach: 'No detailed editorial has been added for this imported problem yet.',
-      code: '// Add solution details in the admin content editor',
-      timeComplexity: 'N/A',
-      spaceComplexity: 'N/A',
-      stepByStep: ['Detailed solution notes will appear once authored.']
-    },
-    hints: [],
-    category: ['Imported'],
-    uniqueKey: `backend:${problem.id}:${index}`,
-    isPremium: problem.isPremium,
-    canAccess: problem.canAccess ?? !problem.isPremium
-  };
 }
 
 const ProblemsPage = ({ onGoLogin, onGoUpgrade }: ProblemsPageProps) => {
@@ -58,76 +27,43 @@ const ProblemsPage = ({ onGoLogin, onGoUpgrade }: ProblemsPageProps) => {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isSmallPhone, setIsSmallPhone] = useState(window.innerWidth <= 480);
-  const [problems, setProblems] = useState<ProblemRecord[]>(
-    allProblems.map((problem) => ({ ...problem, isPremium: false, canAccess: true }))
-  );
+  const [problems, setProblems] = useState<ApiProblemRecord[]>([]);
   const [isLoadingProblems, setIsLoadingProblems] = useState(true);
-  const [backendMode, setBackendMode] = useState(false);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const { isProblemCompleted, toggleProblem } = useProgress();
 
-  // Load problems from API or fallback to static
+  // Load problems from API
   useEffect(() => {
     let isCancelled = false;
 
-    const staticByTitle = new Map<string, ProblemListItem>();
-    allProblems.forEach((problem) => {
-      staticByTitle.set(problem.title.trim().toLowerCase(), problem);
-    });
-
     const loadProblems = async () => {
       setIsLoadingProblems(true);
-
       try {
         const apiProblems = await problemService.list(undefined, token ?? undefined);
-
-        if (apiProblems.length === 0) {
-          if (!isCancelled) {
-            setProblems(allProblems.map((problem) => ({ ...problem, isPremium: false, canAccess: true })));
-            setBackendMode(false);
-          }
-          return;
-        }
-
-        const mappedProblems = apiProblems.map((problem, index) => {
-          const staticMatch = staticByTitle.get(problem.title.trim().toLowerCase());
-
-          if (!staticMatch) {
-            return buildFallbackProblem(problem, index);
-          }
-
-          return {
-            ...staticMatch,
-            id: problem.id,
-            difficulty: problem.difficulty,
-            description: problem.description || staticMatch.description,
-            uniqueKey: `backend:${problem.id}:${index}`,
-            isPremium: problem.isPremium,
-            canAccess: problem.canAccess ?? !problem.isPremium
-          };
-        });
-
         if (!isCancelled) {
-          setProblems(mappedProblems);
-          setBackendMode(true);
+          const mapped: ApiProblemRecord[] = apiProblems.map((p, idx) => ({
+            id: p.id,
+            topicId: p.topicId,
+            topicTitle: p.topicTitle,
+            topicSlug: p.topicSlug,
+            title: p.title,
+            difficulty: p.difficulty,
+            isPremium: p.isPremium,
+            canAccess: p.canAccess ?? !p.isPremium,
+            description: p.description,
+            uniqueKey: `api:${p.id}:${idx}`
+          }));
+          setProblems(mapped);
         }
       } catch {
-        if (!isCancelled) {
-          setProblems(allProblems.map((problem) => ({ ...problem, isPremium: false, canAccess: true })));
-          setBackendMode(false);
-        }
+        // API unavailable — leave list empty so UI shows empty state
       } finally {
-        if (!isCancelled) {
-          setIsLoadingProblems(false);
-        }
+        if (!isCancelled) setIsLoadingProblems(false);
       }
     };
 
     void loadProblems();
-
-    return () => {
-      isCancelled = true;
-    };
+    return () => { isCancelled = true; };
   }, [token]);
 
   // Handle responsive resize
@@ -136,39 +72,35 @@ const ProblemsPage = ({ onGoLogin, onGoUpgrade }: ProblemsPageProps) => {
       setIsMobile(window.innerWidth <= 768);
       setIsSmallPhone(window.innerWidth <= 480);
     };
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Get available categories
+  // Build available topic categories from loaded problems
   const availableCategories = useMemo(() => {
-    const categorySet = new Set<string>();
-    problems.forEach((problem) => {
-      problem.category.forEach((category) => categorySet.add(category));
-    });
-    return ['All', ...Array.from(categorySet)];
+    const seen = new Set<string>();
+    problems.forEach((p) => seen.add(p.topicTitle));
+    return ['All', ...Array.from(seen)];
   }, [problems]);
 
   // Filter problems
-  const filteredProblems = problems.filter(problem => {
-    const matchesSearch = problem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  const filteredProblems = useMemo(() => problems.filter((problem) => {
+    const matchesSearch =
+      problem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       problem.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesDifficulty = selectedDifficulty === 'All' || problem.difficulty === selectedDifficulty;
-    const matchesCategory = selectedCategory === 'All' || problem.category.includes(selectedCategory);
+    const matchesCategory = selectedCategory === 'All' || problem.topicTitle === selectedCategory;
     return matchesSearch && matchesDifficulty && matchesCategory;
-  });
+  }), [problems, searchQuery, selectedDifficulty, selectedCategory]);
 
   const visibleProblems = filteredProblems.slice(0, visibleCount);
   const hasMoreProblems = visibleCount < filteredProblems.length;
 
-  // Infinite scroll observer
+  // Infinite scroll
   useEffect(() => {
     if (!hasMoreProblems) return;
-
     const target = loadMoreRef.current;
     if (!target) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0]?.isIntersecting) {
@@ -177,43 +109,26 @@ const ProblemsPage = ({ onGoLogin, onGoUpgrade }: ProblemsPageProps) => {
       },
       { rootMargin: '320px 0px' }
     );
-
     observer.observe(target);
     return () => observer.disconnect();
   }, [hasMoreProblems, filteredProblems.length]);
 
-  // Reset UI state on filter change
   const resetListUiState = () => {
     setVisibleCount(PAGE_SIZE);
     setExpandedProblem(null);
     setShowSolution({});
   };
 
-  const handleSearchChange = (value: string) => {
-    setSearchQuery(value);
-    resetListUiState();
-  };
+  const handleSearchChange = (value: string) => { setSearchQuery(value); resetListUiState(); };
+  const handleDifficultyChange = (d: string) => { setSelectedDifficulty(d); resetListUiState(); };
+  const handleCategoryChange = (c: string) => { setSelectedCategory(c); resetListUiState(); };
 
-  const handleDifficultyChange = (difficulty: string) => {
-    setSelectedDifficulty(difficulty);
-    resetListUiState();
-  };
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    resetListUiState();
-  };
-
-  const toggleSolution = (problemUniqueKey: string) => {
-    setShowSolution(prev => ({
-      ...prev,
-      [problemUniqueKey]: !prev[problemUniqueKey]
-    }));
-  };
+  const toggleSolution = (uniqueKey: string) =>
+    setShowSolution((prev) => ({ ...prev, [uniqueKey]: !prev[uniqueKey] }));
 
   return (
     <section id="problems" className={`container ${styles.section}`}>
-      <ProblemsHeader isLoadingProblems={isLoadingProblems} backendMode={backendMode} />
+      <ProblemsHeader isLoadingProblems={isLoadingProblems} backendMode={true} />
 
       <ProblemsFilters
         searchQuery={searchQuery}
@@ -223,14 +138,13 @@ const ProblemsPage = ({ onGoLogin, onGoUpgrade }: ProblemsPageProps) => {
         selectedCategory={selectedCategory}
         onCategoryChange={handleCategoryChange}
         availableCategories={availableCategories}
-        difficulties={problemDifficulties}
+        difficulties={DIFFICULTIES}
         isMobile={isMobile}
         isSmallPhone={isSmallPhone}
       />
 
-      {/* Problems List */}
       <div className={styles.problemsList}>
-        {filteredProblems.length === 0 ? (
+        {filteredProblems.length === 0 && !isLoadingProblems ? (
           <div className={`glass ${styles.emptyState}`}>
             <p>No problems match your filters. Try adjusting your search.</p>
           </div>
@@ -240,8 +154,10 @@ const ProblemsPage = ({ onGoLogin, onGoUpgrade }: ProblemsPageProps) => {
               key={problem.uniqueKey}
               problem={problem}
               isExpanded={expandedProblem === problem.uniqueKey}
-              onToggleExpand={() => setExpandedProblem(expandedProblem === problem.uniqueKey ? null : problem.uniqueKey)}
-              solutionVisible={showSolution[problem.uniqueKey]}
+              onToggleExpand={() =>
+                setExpandedProblem(expandedProblem === problem.uniqueKey ? null : problem.uniqueKey)
+              }
+              solutionVisible={showSolution[problem.uniqueKey] ?? false}
               onToggleSolution={() => toggleSolution(problem.uniqueKey)}
               isCompleted={isProblemCompleted(problem.id)}
               onToggleComplete={(e) => {
@@ -250,6 +166,7 @@ const ProblemsPage = ({ onGoLogin, onGoUpgrade }: ProblemsPageProps) => {
                 toggleProblem(problem.id);
               }}
               isAuthenticated={isAuthenticated}
+              token={token ?? undefined}
               onGoLogin={onGoLogin}
               onGoUpgrade={onGoUpgrade}
             />

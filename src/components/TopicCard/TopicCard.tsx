@@ -6,8 +6,8 @@ import styles from './TopicCard.module.css';
 interface TopicCardProps {
   title: string;
   description: string;
-  icon: React.ReactNode;
-  complexity: string;
+  icon?: React.ReactNode;
+  complexity?: string;
   delay?: number;
   id: string;
 }
@@ -36,7 +36,7 @@ const TopicCard = ({
   title,
   description,
   icon,
-  complexity,
+  complexity = 'O(n)',
   delay = 0,
   id,
 }: TopicCardProps) => {

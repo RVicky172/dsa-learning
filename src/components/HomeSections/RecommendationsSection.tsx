@@ -5,9 +5,10 @@ interface RecommendationsSectionProps {
   items: ProgressRecommendationItem[];
   isLoading: boolean;
   onViewProblems: () => void;
+  onProblemSelect?: (topicId: string) => void;
 }
 
-const RecommendationsSection = ({ items, isLoading, onViewProblems }: RecommendationsSectionProps) => {
+const RecommendationsSection = ({ items, isLoading, onViewProblems, onProblemSelect }: RecommendationsSectionProps) => {
   if (isLoading) {
     return (
       <section className="container" style={{ padding: 'clamp(2rem, 6vw, 4rem) 0' }}>
@@ -21,6 +22,12 @@ const RecommendationsSection = ({ items, isLoading, onViewProblems }: Recommenda
   if (items.length === 0) {
     return null;
   }
+
+  const handleProblemClick = (item: ProgressRecommendationItem) => {
+    if (onProblemSelect) {
+      onProblemSelect(item.topicId);
+    }
+  };
 
   return (
     <section className="container" style={{ padding: 'clamp(2rem, 6vw, 4rem) 0' }}>
@@ -51,13 +58,17 @@ const RecommendationsSection = ({ items, isLoading, onViewProblems }: Recommenda
           }}
         >
           {items.slice(0, 6).map((item) => (
-            <div
+            <motion.div
               key={item.problemId}
+              whileHover={{ y: -4, boxShadow: '0 12px 24px rgba(99, 102, 241, 0.15)' }}
+              onClick={() => handleProblemClick(item)}
               style={{
                 border: '1px solid var(--border-color)',
                 borderRadius: '14px',
                 padding: '1rem',
-                background: 'rgba(255,255,255,0.03)'
+                background: 'rgba(255,255,255,0.03)',
+                cursor: onProblemSelect ? 'pointer' : 'default',
+                transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)'
               }}
             >
               <p style={{ color: 'var(--secondary-color)', fontSize: '0.8rem', fontWeight: 600 }}>{item.topicTitle}</p>
@@ -65,17 +76,22 @@ const RecommendationsSection = ({ items, isLoading, onViewProblems }: Recommenda
               <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '0.5rem', minHeight: '2.8em' }}>
                 {item.reason}
               </p>
-              <div style={{ marginTop: '0.8rem', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                <span className="glass" style={{ padding: '0.2rem 0.5rem', borderRadius: '10px', fontSize: '0.75rem' }}>
+              <div style={{ marginTop: '0.8rem', display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                <span className="glass" style={{ padding: '0.2rem 0.6rem', borderRadius: '10px', fontSize: '0.75rem', fontWeight: 500 }}>
                   {item.difficulty}
                 </span>
-                {item.isPremium && (
-                  <span className="glass" style={{ padding: '0.2rem 0.5rem', borderRadius: '10px', fontSize: '0.75rem' }}>
-                    Premium
+                {item.isPremium && !item.canAccess && (
+                  <span className="glass" style={{ padding: '0.2rem 0.6rem', borderRadius: '10px', fontSize: '0.75rem', background: 'rgba(251, 146, 60, 0.1)', color: 'var(--secondary-color)', fontWeight: 500 }}>
+                    🔒 Premium
+                  </span>
+                )}
+                {item.isPremium && item.canAccess && (
+                  <span className="glass" style={{ padding: '0.2rem 0.6rem', borderRadius: '10px', fontSize: '0.75rem', background: 'rgba(34, 197, 94, 0.1)', color: 'var(--text-success)', fontWeight: 500 }}>
+                    ✓ Unlocked
                   </span>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

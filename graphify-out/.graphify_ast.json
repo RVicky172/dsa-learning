@@ -1,53 +1,11 @@
 {
   "nodes": [
     {
-      "id": "eslint_config_js",
-      "label": "eslint.config.js",
-      "file_type": "code",
-      "source_file": "eslint.config.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "extractmeta_mjs",
-      "label": "extractMeta.mjs",
-      "file_type": "code",
-      "source_file": "extractMeta.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "vite_config_ts",
-      "label": "vite.config.ts",
-      "file_type": "code",
-      "source_file": "vite.config.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "src_app_tsx",
       "label": "App.tsx",
       "file_type": "code",
       "source_file": "src\\App.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "app_handlenavigate",
-      "label": "handleNavigate()",
-      "file_type": "code",
-      "source_file": "src\\App.tsx",
-      "source_location": "L39"
-    },
-    {
-      "id": "app_handletopicselect",
-      "label": "handleTopicSelect()",
-      "file_type": "code",
-      "source_file": "src\\App.tsx",
-      "source_location": "L47"
-    },
-    {
-      "id": "app_rendercontent",
-      "label": "renderContent()",
-      "file_type": "code",
-      "source_file": "src\\App.tsx",
-      "source_location": "L115"
     },
     {
       "id": "src_main_tsx",
@@ -57,263 +15,641 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_bigo_tsx",
-      "label": "BigO.tsx",
+      "id": "src_components_admin_adminproblemsmanager_tsx",
+      "label": "AdminProblemsManager.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\BigO.tsx",
+      "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L1"
     },
     {
-      "id": "bigo_generatepath",
-      "label": "generatePath()",
+      "id": "src_components_admin_admintopicsmanager_tsx",
+      "label": "AdminTopicsManager.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\BigO.tsx",
-      "source_location": "L69"
+      "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "bigo_f_n",
-      "label": "f_n()",
+      "id": "src_components_appshell_appfooter_tsx",
+      "label": "AppFooter.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\BigO.tsx",
-      "source_location": "L82"
+      "source_file": "src\\components\\AppShell\\AppFooter.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "bigo_cg_n",
-      "label": "cg_n()",
+      "id": "src_components_appshell_loadingspinner_tsx",
+      "label": "LoadingSpinner.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\BigO.tsx",
-      "source_location": "L83"
+      "source_file": "src\\components\\AppShell\\LoadingSpinner.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "src_components_bigodetail_tsx",
+      "id": "src_components_bigodetail_bigodetail_tsx",
       "label": "BigODetail.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
       "source_location": "L1"
     },
     {
       "id": "bigodetail_toggleline",
       "label": "toggleLine()",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L252"
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L255"
     },
     {
       "id": "bigodetail_factorial",
       "label": "factorial()",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L261"
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L264"
     },
     {
       "id": "bigodetail_getcomplexityinfo",
       "label": "getComplexityInfo()",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L283"
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L285"
     },
     {
       "id": "bigodetail_formatyaxis",
       "label": "formatYAxis()",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L287"
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L289"
     },
     {
       "id": "bigodetail_togglereveal",
       "label": "toggleReveal()",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L519"
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L450"
     },
     {
       "id": "bigodetail_startanimation",
       "label": "startAnimation()",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L567"
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L473"
+    },
+    {
+      "id": "bigodetail_pauseanimation",
+      "label": "pauseAnimation()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L489"
     },
     {
       "id": "bigodetail_resetanimation",
       "label": "resetAnimation()",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L587"
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L493"
     },
     {
-      "id": "bigodetail_internalfactorial",
-      "label": "internalFactorial()",
+      "id": "bigodetail_stepbackward",
+      "label": "stepBackward()",
       "file_type": "code",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L595"
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L499"
     },
     {
-      "id": "src_components_datastructurevisualizer_tsx",
-      "label": "DataStructureVisualizer.tsx",
+      "id": "bigodetail_stepforward",
+      "label": "stepForward()",
       "file_type": "code",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L504"
+    },
+    {
+      "id": "bigodetail_selectorstyles",
+      "label": "selectorStyles()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L559"
+    },
+    {
+      "id": "bigodetail_theorycardstyle",
+      "label": "theoryCardStyle()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L576"
+    },
+    {
+      "id": "bigodetail_ishighlighted",
+      "label": "isHighlighted()",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L735"
+    },
+    {
+      "id": "src_components_bigodetail_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\BigODetail\\index.ts",
       "source_location": "L1"
     },
     {
-      "id": "datastructurevisualizer_handlereset",
-      "label": "handleReset()",
+      "id": "src_components_codeexecutionpanel_codeexecutionpanel_tsx",
+      "label": "CodeExecutionPanel.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L48"
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "datastructurevisualizer_handleprevious",
-      "label": "handlePrevious()",
+      "id": "codeexecutionpanel_getstatuscolor",
+      "label": "getStatusColor()",
       "file_type": "code",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_components_codeexecutionpanel_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\CodeExecutionPanel\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "label": "DataStructureVisualizer.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "datastructurevisualizer_datastructurevisualizer",
+      "label": "DataStructureVisualizer()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L63"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_utils_visualizationdata_ts",
+      "label": "visualizationData.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\utils\\visualizationData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "visualizationdata_getexampledata",
+      "label": "getExampleData()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\utils\\visualizationData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_visualizations_arrayvisualization_tsx",
+      "label": "ArrayVisualization.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\ArrayVisualization.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "arrayvisualization_arrayvisualization",
+      "label": "ArrayVisualization()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\ArrayVisualization.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_visualizations_binarytreevisualization_tsx",
+      "label": "BinaryTreeVisualization.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\BinaryTreeVisualization.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_visualizations_graphvisualization_tsx",
+      "label": "GraphVisualization.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\GraphVisualization.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_visualizations_hashtablevisualization_tsx",
+      "label": "HashTableVisualization.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HashTableVisualization.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "hashtablevisualization_hashtablevisualization",
+      "label": "HashTableVisualization()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HashTableVisualization.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_visualizations_heapvisualization_tsx",
+      "label": "HeapVisualization.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HeapVisualization.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_visualizations_linkedlistvisualization_tsx",
+      "label": "LinkedListVisualization.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\LinkedListVisualization.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_visualizations_queuevisualization_tsx",
+      "label": "QueueVisualization.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\QueueVisualization.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "queuevisualization_queuevisualization",
+      "label": "QueueVisualization()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\QueueVisualization.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_datastructurevisualizer_visualizations_stackvisualization_tsx",
+      "label": "StackVisualization.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\StackVisualization.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "stackvisualization_stackvisualization",
+      "label": "StackVisualization()",
+      "file_type": "code",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\StackVisualization.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_components_hero_animatedbackground_tsx",
+      "label": "AnimatedBackground.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero\\AnimatedBackground.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_hero_ctabuttons_tsx",
+      "label": "CTAButtons.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "ctabuttons_handlemouseenter",
+      "label": "handleMouseEnter()",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
       "source_location": "L54"
     },
     {
-      "id": "datastructurevisualizer_handlenext",
-      "label": "handleNext()",
+      "id": "ctabuttons_handlemouseleave",
+      "label": "handleMouseLeave()",
       "file_type": "code",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L62"
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L69"
     },
     {
-      "id": "datastructurevisualizer_getexampledata",
-      "label": "getExampleData()",
+      "id": "ctabuttons_handleaccentmouseenter",
+      "label": "handleAccentMouseEnter()",
       "file_type": "code",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L72"
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L84"
     },
     {
-      "id": "src_components_hero_tsx",
+      "id": "ctabuttons_handleaccentmouseleave",
+      "label": "handleAccentMouseLeave()",
+      "file_type": "code",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L90"
+    },
+    {
+      "id": "src_components_hero_hero_tsx",
       "label": "Hero.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\Hero.tsx",
+      "source_file": "src\\components\\Hero\\Hero.tsx",
       "source_location": "L1"
     },
     {
       "id": "hero_scrolltosection",
       "label": "scrollToSection()",
       "file_type": "code",
-      "source_file": "src\\components\\Hero.tsx",
-      "source_location": "L11"
+      "source_file": "src\\components\\Hero\\Hero.tsx",
+      "source_location": "L14"
     },
     {
-      "id": "src_components_learningpath_tsx",
-      "label": "LearningPath.tsx",
+      "id": "src_components_hero_index_ts",
+      "label": "index.ts",
       "file_type": "code",
-      "source_file": "src\\components\\LearningPath.tsx",
+      "source_file": "src\\components\\Hero\\index.ts",
       "source_location": "L1"
     },
     {
-      "id": "learningpath_updateprogress",
-      "label": "updateProgress()",
+      "id": "src_components_hero_searchbar_tsx",
+      "label": "SearchBar.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\LearningPath.tsx",
-      "source_location": "L31"
+      "source_file": "src\\components\\Hero\\SearchBar.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "learningpath_getnodestatus",
-      "label": "getNodeStatus()",
+      "id": "searchbar_searchbar",
+      "label": "SearchBar()",
       "file_type": "code",
-      "source_file": "src\\components\\LearningPath.tsx",
-      "source_location": "L45"
+      "source_file": "src\\components\\Hero\\SearchBar.tsx",
+      "source_location": "L10"
     },
     {
-      "id": "learningpath_getprogresspercentage",
-      "label": "getProgressPercentage()",
+      "id": "src_components_homesections_ctasection_tsx",
+      "label": "CTASection.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\LearningPath.tsx",
-      "source_location": "L141"
+      "source_file": "src\\components\\HomeSections\\CTASection.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "learningpath_if",
-      "label": "if()",
+      "id": "src_components_homesections_featuressection_tsx",
+      "label": "FeaturesSection.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\LearningPath.tsx",
-      "source_location": "L252"
+      "source_file": "src\\components\\HomeSections\\FeaturesSection.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "src_components_navbar_tsx",
+      "id": "src_components_homesections_recommendationssection_tsx",
+      "label": "RecommendationsSection.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\HomeSections\\RecommendationsSection.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_homesections_statssection_tsx",
+      "label": "StatsSection.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\HomeSections\\StatsSection.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_homesections_topicspreviewsection_tsx",
+      "label": "TopicsPreviewSection.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\HomeSections\\TopicsPreviewSection.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_navbar_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\Navbar\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_navbar_navbar_tsx",
       "label": "Navbar.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\Navbar.tsx",
+      "source_file": "src\\components\\Navbar\\Navbar.tsx",
       "source_location": "L1"
     },
     {
-      "id": "navbar_navbarredesigned",
-      "label": "NavbarRedesigned()",
+      "id": "src_components_problemspage_index_ts",
+      "label": "index.ts",
       "file_type": "code",
-      "source_file": "src\\components\\Navbar.tsx",
-      "source_location": "L12"
+      "source_file": "src\\components\\ProblemsPage\\index.ts",
+      "source_location": "L1"
     },
     {
-      "id": "src_components_problemspage_tsx",
+      "id": "src_components_problemspage_problemcard_tsx",
+      "label": "ProblemCard.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage\\ProblemCard.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_problemspage_problemsfilters_tsx",
+      "label": "ProblemsFilters.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsFilters.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_problemspage_problemsheader_tsx",
+      "label": "ProblemsHeader.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsHeader.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "problemsheader_problemsheader",
+      "label": "ProblemsHeader()",
+      "file_type": "code",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsHeader.tsx",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_components_problemspage_problemspage_tsx",
       "label": "ProblemsPage.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
       "source_location": "L1"
     },
     {
-      "id": "problemspage_togglesolution",
-      "label": "toggleSolution()",
+      "id": "src_components_problemspage_problemsstats_tsx",
+      "label": "ProblemsStats.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L51"
+      "source_file": "src\\components\\ProblemsPage\\ProblemsStats.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "src_components_roadmap_tsx",
+      "id": "src_components_roadmap_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_roadmap_roadmap_tsx",
       "label": "Roadmap.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\Roadmap.tsx",
+      "source_file": "src\\components\\Roadmap\\Roadmap.tsx",
       "source_location": "L1"
     },
     {
-      "id": "roadmap_getdynamicstatus",
-      "label": "getDynamicStatus()",
+      "id": "src_components_roadmap_roadmapbackground_tsx",
+      "label": "RoadmapBackground.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L177"
+      "source_file": "src\\components\\Roadmap\\RoadmapBackground.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "roadmap_getstatusicon",
-      "label": "getStatusIcon()",
+      "id": "src_components_roadmap_roadmapcard_tsx",
+      "label": "RoadmapCard.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L190"
+      "source_file": "src\\components\\Roadmap\\RoadmapCard.tsx",
+      "source_location": "L1"
     },
     {
-      "id": "roadmap_getstatuscolor",
-      "label": "getStatusColor()",
+      "id": "roadmapcard_roadmapcard",
+      "label": "RoadmapCard()",
       "file_type": "code",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L198"
+      "source_file": "src\\components\\Roadmap\\RoadmapCard.tsx",
+      "source_location": "L15"
     },
     {
-      "id": "src_components_topiccard_tsx",
+      "id": "src_components_roadmap_types_ts",
+      "label": "types.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\Roadmap\\types.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_topiccard_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicCard\\index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_topiccard_topiccard_tsx",
       "label": "TopicCard.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\TopicCard.tsx",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "topiccard_getdifficultyfromcomplexity",
+      "label": "getDifficultyFromComplexity()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L15"
     },
     {
       "id": "topiccard_topiccard",
       "label": "TopicCard()",
       "file_type": "code",
-      "source_file": "src\\components\\TopicCard.tsx",
-      "source_location": "L13"
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L35"
     },
     {
-      "id": "src_components_topicdetail_tsx",
-      "label": "TopicDetail.tsx",
+      "id": "src_components_topicdetail_index_ts",
+      "label": "index.ts",
       "file_type": "code",
-      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_file": "src\\components\\TopicDetail\\index.ts",
       "source_location": "L1"
     },
     {
-      "id": "topicdetail_loadtopic",
-      "label": "loadTopic()",
+      "id": "src_components_topicdetail_topicdetail_tsx",
+      "label": "TopicDetail.tsx",
       "file_type": "code",
-      "source_file": "src\\components\\TopicDetail.tsx",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_topicdetail_tabs_examplestab_tsx",
+      "label": "ExamplesTab.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ExamplesTab.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_topicdetail_tabs_patternstab_tsx",
+      "label": "PatternsTab.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\PatternsTab.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_topicdetail_tabs_problemstab_tsx",
+      "label": "ProblemsTab.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "problemstab_getdifficultycolor",
+      "label": "getDifficultyColor()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "problemstab_difficultybadgestyle",
+      "label": "difficultyBadgeStyle()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
       "source_location": "L24"
+    },
+    {
+      "id": "src_components_topicdetail_tabs_theorytab_tsx",
+      "label": "TheoryTab.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\TheoryTab.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "theorytab_buildfallbacklearningoutcomes",
+      "label": "buildFallbackLearningOutcomes()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\TheoryTab.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "src_components_topicdetail_tabs_visualizationstab_tsx",
+      "label": "VisualizationsTab.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\VisualizationsTab.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "visualizationstab_getvisualizationtype",
+      "label": "getVisualizationType()",
+      "file_type": "code",
+      "source_file": "src\\components\\TopicDetail\\tabs\\VisualizationsTab.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "src_contexts_authcontext_tsx",
+      "label": "AuthContext.tsx",
+      "file_type": "code",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "authcontext_getstoredtoken",
+      "label": "getStoredToken()",
+      "file_type": "code",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L28"
+    },
+    {
+      "id": "authcontext_savetoken",
+      "label": "saveToken()",
+      "file_type": "code",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L36"
+    },
+    {
+      "id": "authcontext_cleartoken",
+      "label": "clearToken()",
+      "file_type": "code",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L44"
+    },
+    {
+      "id": "authcontext_authprovider",
+      "label": "AuthProvider()",
+      "file_type": "code",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L52"
+    },
+    {
+      "id": "src_contexts_authcontextdefinition_ts",
+      "label": "AuthContextDefinition.ts",
+      "file_type": "code",
+      "source_file": "src\\contexts\\AuthContextDefinition.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_contexts_themecontext_tsx",
@@ -323,186 +659,46 @@
       "source_location": "L1"
     },
     {
-      "id": "src_data_advancedproblems_ts",
-      "label": "advancedProblems.ts",
+      "id": "src_hooks_useauth_ts",
+      "label": "useAuth.ts",
       "file_type": "code",
-      "source_file": "src\\data\\advancedProblems.ts",
+      "source_file": "src\\hooks\\useAuth.ts",
       "source_location": "L1"
     },
     {
-      "id": "src_data_newproblems_ts",
-      "label": "newProblems.ts",
+      "id": "useauth_useauth",
+      "label": "useAuth()",
       "file_type": "code",
-      "source_file": "src\\data\\newProblems.ts",
+      "source_file": "src\\hooks\\useAuth.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_hooks_usecodeexecution_ts",
+      "label": "useCodeExecution.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
       "source_location": "L1"
     },
     {
-      "id": "src_data_sortingandsearchingproblems_ts",
-      "label": "sortingAndSearchingProblems.ts",
+      "id": "usecodeexecution_usecodeexecution",
+      "label": "useCodeExecution()",
       "file_type": "code",
-      "source_file": "src\\data\\sortingAndSearchingProblems.ts",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "src_hooks_useproblem_ts",
+      "label": "useProblem.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useProblem.ts",
       "source_location": "L1"
     },
     {
-      "id": "src_data_topicsdata_fundamentals_ts",
-      "label": "topicsData.fundamentals.ts",
+      "id": "useproblem_useproblem",
+      "label": "useProblem()",
       "file_type": "code",
-      "source_file": "src\\data\\topicsData.fundamentals.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topicsdata_old_ts",
-      "label": "topicsData.old.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topicsData.old.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topicsdata_ts",
-      "label": "topicsData.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topicsData.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_design_ts",
-      "label": "design.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\design.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_dynamicprogramming_ts",
-      "label": "dynamicProgramming.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_graphs_ts",
-      "label": "graphs.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\graphs.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_greedy_ts",
-      "label": "greedy.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\greedy.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_hashtables_ts",
-      "label": "hashTables.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\hashTables.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_heaps_ts",
-      "label": "heaps.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\heaps.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_index_ts",
-      "label": "index.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_linkedlists_ts",
-      "label": "linkedLists.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\linkedLists.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_mathbitlogic_ts",
-      "label": "mathBitLogic.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\mathBitLogic.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_recursionbacktracking_ts",
-      "label": "recursionBacktracking.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_sorting_ts",
-      "label": "sorting.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\sorting.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_stacksqueues_ts",
-      "label": "stacksQueues.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\stacksQueues.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_strings_ts",
-      "label": "strings.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\strings.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_trees_ts",
-      "label": "trees.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\trees.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_tries_ts",
-      "label": "tries.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\tries.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_arrays_examples_ts",
-      "label": "examples.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\arrays\\examples.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_arrays_index_ts",
-      "label": "index.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_arrays_patterns_ts",
-      "label": "patterns.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\arrays\\patterns.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_arrays_theory_ts",
-      "label": "theory.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\arrays\\theory.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_topics_arrays_visualizations_ts",
-      "label": "visualizations.ts",
-      "file_type": "code",
-      "source_file": "src\\data\\topics\\arrays\\visualizations.ts",
-      "source_location": "L1"
+      "source_file": "src\\hooks\\useProblem.ts",
+      "source_location": "L11"
     },
     {
       "id": "src_hooks_useprogress_ts",
@@ -516,7 +712,28 @@
       "label": "useProgress()",
       "file_type": "code",
       "source_file": "src\\hooks\\useProgress.ts",
-      "source_location": "L11"
+      "source_location": "L15"
+    },
+    {
+      "id": "src_hooks_useresponsivechartconfig_ts",
+      "label": "useResponsiveChartConfig.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "useresponsivechartconfig_useresponsivechartconfig",
+      "label": "useResponsiveChartConfig()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "useresponsivechartconfig_getchartconfig",
+      "label": "getChartConfig()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
+      "source_location": "L40"
     },
     {
       "id": "src_hooks_usetheme_ts",
@@ -533,10 +750,192 @@
       "source_location": "L5"
     },
     {
+      "id": "src_hooks_usetopicbyslug_ts",
+      "label": "useTopicBySlug.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useTopicBySlug.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "usetopicbyslug_usetopicbyslug",
+      "label": "useTopicBySlug()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useTopicBySlug.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_hooks_usevisualizercontrols_ts",
+      "label": "useVisualizerControls.ts",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useVisualizerControls.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "usevisualizercontrols_usevisualizercontrols",
+      "label": "useVisualizerControls()",
+      "file_type": "code",
+      "source_file": "src\\hooks\\useVisualizerControls.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "src_pages_admindashboard_tsx",
+      "label": "AdminDashboard.tsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_pages_home_tsx",
       "label": "Home.tsx",
       "file_type": "code",
       "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "home_loadrecommendations",
+      "label": "loadRecommendations()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L40"
+    },
+    {
+      "id": "src_pages_login_tsx",
+      "label": "Login.tsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Login.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "login_handlesubmit",
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Login.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "src_pages_profile_tsx",
+      "label": "Profile.tsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Profile.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_register_tsx",
+      "label": "Register.tsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Register.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "register_handlesubmit",
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Register.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "src_pages_subscription_tsx",
+      "label": "Subscription.tsx",
+      "file_type": "code",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "subscription_handleupgrade",
+      "label": "handleUpgrade()",
+      "file_type": "code",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L57"
+    },
+    {
+      "id": "src_services_apiclient_ts",
+      "label": "apiClient.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\apiClient.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apiclient_buildheaders",
+      "label": "buildHeaders()",
+      "file_type": "code",
+      "source_file": "src\\services\\apiClient.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "apiclient_request",
+      "label": "request()",
+      "file_type": "code",
+      "source_file": "src\\services\\apiClient.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_services_authservice_ts",
+      "label": "authService.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\authService.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_services_executionservice_ts",
+      "label": "executionService.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\executionService.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "executionservice_buildexecutionlistpath",
+      "label": "buildExecutionListPath()",
+      "file_type": "code",
+      "source_file": "src\\services\\executionService.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_services_problemservice_ts",
+      "label": "problemService.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\problemService.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "problemservice_buildproblemlistpath",
+      "label": "buildProblemListPath()",
+      "file_type": "code",
+      "source_file": "src\\services\\problemService.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "src_services_problemsservice_ts",
+      "label": "problemsService.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\problemsService.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_services_progressservice_ts",
+      "label": "progressService.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\progressService.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_services_subscriptionservice_ts",
+      "label": "subscriptionService.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\subscriptionService.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_services_topicsservice_ts",
+      "label": "topicsService.ts",
+      "file_type": "code",
+      "source_file": "src\\services\\topicsService.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_types_api_ts",
+      "label": "api.ts",
+      "file_type": "code",
+      "source_file": "src\\types\\api.ts",
       "source_location": "L1"
     },
     {
@@ -545,108 +944,86 @@
       "file_type": "code",
       "source_file": "src\\types\\topic.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_utils_animations_ts",
+      "label": "animations.ts",
+      "file_type": "code",
+      "source_file": "src\\utils\\animations.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_utils_colors_ts",
+      "label": "colors.ts",
+      "file_type": "code",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "colors_getdifficultycolor",
+      "label": "getDifficultyColor()",
+      "file_type": "code",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "colors_getstatuscolor",
+      "label": "getStatusColor()",
+      "file_type": "code",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "colors_getcomplexitycolor",
+      "label": "getComplexityColor()",
+      "file_type": "code",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L56"
+    },
+    {
+      "id": "colors_getdifficultybgcolor",
+      "label": "getDifficultyBgColor()",
+      "file_type": "code",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L77"
+    },
+    {
+      "id": "colors_hextorgb",
+      "label": "hexToRgb()",
+      "file_type": "code",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L92"
+    },
+    {
+      "id": "colors_hextorgbstring",
+      "label": "hexToRgbString()",
+      "file_type": "code",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L106"
+    },
+    {
+      "id": "src_utils_constants_ts",
+      "label": "constants.ts",
+      "file_type": "code",
+      "source_file": "src\\utils\\constants.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_utils_topicicons_tsx",
+      "label": "topicIcons.tsx",
+      "file_type": "code",
+      "source_file": "src\\utils\\topicIcons.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "topicicons_gettopicicon",
+      "label": "getTopicIcon()",
+      "file_type": "code",
+      "source_file": "src\\utils\\topicIcons.tsx",
+      "source_location": "L40"
     }
   ],
   "edges": [
-    {
-      "source": "eslint_config_js",
-      "target": "js",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "eslint.config.js",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "eslint_config_js",
-      "target": "globals",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "eslint.config.js",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "eslint_config_js",
-      "target": "eslint_plugin_react_hooks",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "eslint.config.js",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "eslint_config_js",
-      "target": "eslint_plugin_react_refresh",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "eslint.config.js",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "eslint_config_js",
-      "target": "typescript_eslint",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "eslint.config.js",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "eslint_config_js",
-      "target": "config",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "eslint.config.js",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "extractmeta_mjs",
-      "target": "fs",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "extractMeta.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "extractmeta_mjs",
-      "target": "path",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "extractMeta.mjs",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "vite_config_ts",
-      "target": "vite",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "vite.config.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "vite_config_ts",
-      "target": "plugin_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "vite.config.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "vite_config_ts",
-      "target": "vite_plugin_pwa",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "vite.config.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
     {
       "source": "src_app_tsx",
       "target": "react",
@@ -694,7 +1071,7 @@
     },
     {
       "source": "src_app_tsx",
-      "target": "src_index_css",
+      "target": "src_pages_login",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\App.tsx",
@@ -703,29 +1080,74 @@
     },
     {
       "source": "src_app_tsx",
-      "target": "app_handlenavigate",
-      "relation": "contains",
+      "target": "src_pages_profile",
+      "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\App.tsx",
-      "source_location": "L39",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
       "source": "src_app_tsx",
-      "target": "app_handletopicselect",
-      "relation": "contains",
+      "target": "src_pages_register",
+      "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\App.tsx",
-      "source_location": "L47",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
       "source": "src_app_tsx",
-      "target": "app_rendercontent",
-      "relation": "contains",
+      "target": "src_pages_forgotpassword",
+      "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\App.tsx",
-      "source_location": "L115",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_pages_admindashboard",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_components_appshell_loadingspinner",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_components_appshell_appfooter",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_tsx",
+      "target": "src_index_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\App.tsx",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -774,588 +1196,1830 @@
       "weight": 1.0
     },
     {
-      "source": "src_components_bigo_tsx",
+      "source": "src_main_tsx",
+      "target": "src_contexts_authcontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\main.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_admin_adminproblemsmanager_tsx",
       "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigO.tsx",
+      "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_components_bigo_tsx",
-      "target": "framer_motion",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigO.tsx",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigo_tsx",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigO.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigo_tsx",
-      "target": "bigo_generatepath",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigO.tsx",
-      "source_location": "L69",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigo_tsx",
-      "target": "bigo_f_n",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigO.tsx",
-      "source_location": "L82",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigo_tsx",
-      "target": "bigo_cg_n",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigO.tsx",
-      "source_location": "L83",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigodetail_tsx",
+      "source": "src_components_admin_adminproblemsmanager_tsx",
       "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigodetail_tsx",
-      "target": "framer_motion",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
+      "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "src_components_bigodetail_tsx",
+      "source": "src_components_admin_adminproblemsmanager_tsx",
       "target": "lucide_react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
+      "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L3",
       "weight": 1.0
     },
     {
-      "source": "src_components_bigodetail_tsx",
-      "target": "recharts",
+      "source": "src_components_admin_adminproblemsmanager_tsx",
+      "target": "src_components_admin_services_apiclient",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
+      "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
       "source_location": "L4",
       "weight": 1.0
     },
     {
-      "source": "src_components_bigodetail_tsx",
-      "target": "bigodetail_toggleline",
-      "relation": "contains",
+      "source": "src_components_admin_adminproblemsmanager_tsx",
+      "target": "src_components_admin_types_api",
+      "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L252",
+      "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
-      "source": "src_components_bigodetail_tsx",
-      "target": "bigodetail_factorial",
-      "relation": "contains",
+      "source": "src_components_admin_adminproblemsmanager_tsx",
+      "target": "src_components_admin_adminproblemsmanager_module_css",
+      "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L261",
+      "source_file": "src\\components\\admin\\AdminProblemsManager.tsx",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
-      "source": "src_components_bigodetail_tsx",
-      "target": "bigodetail_getcomplexityinfo",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L283",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigodetail_tsx",
-      "target": "bigodetail_formatyaxis",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L287",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigodetail_tsx",
-      "target": "bigodetail_togglereveal",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L519",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigodetail_tsx",
-      "target": "bigodetail_startanimation",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L567",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigodetail_tsx",
-      "target": "bigodetail_resetanimation",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L587",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_bigodetail_tsx",
-      "target": "bigodetail_internalfactorial",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\BigODetail.tsx",
-      "source_location": "L595",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_datastructurevisualizer_tsx",
+      "source": "src_components_admin_admintopicsmanager_tsx",
       "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
       "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_components_datastructurevisualizer_tsx",
-      "target": "framer_motion",
+      "source": "src_components_admin_admintopicsmanager_tsx",
+      "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
       "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "src_components_datastructurevisualizer_tsx",
+      "source": "src_components_admin_admintopicsmanager_tsx",
       "target": "lucide_react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
+      "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
       "source_location": "L3",
       "weight": 1.0
     },
     {
-      "source": "src_components_datastructurevisualizer_tsx",
-      "target": "datastructurevisualizer_handlereset",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L48",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_datastructurevisualizer_tsx",
-      "target": "datastructurevisualizer_handleprevious",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L54",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_datastructurevisualizer_tsx",
-      "target": "datastructurevisualizer_handlenext",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L62",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_datastructurevisualizer_tsx",
-      "target": "datastructurevisualizer_getexampledata",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\DataStructureVisualizer.tsx",
-      "source_location": "L72",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_hero_tsx",
-      "target": "framer_motion",
+      "source": "src_components_admin_admintopicsmanager_tsx",
+      "target": "src_components_admin_services_apiclient",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Hero.tsx",
+      "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_admin_admintopicsmanager_tsx",
+      "target": "src_components_admin_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_admin_admintopicsmanager_tsx",
+      "target": "src_components_admin_admintopicsmanager_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\admin\\AdminTopicsManager.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
       "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_components_hero_tsx",
-      "target": "lucide_react",
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "framer_motion",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Hero.tsx",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
       "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "src_components_hero_tsx",
-      "target": "hero_scrolltosection",
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "recharts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "src_components_bigodetail_hooks_useresponsivechartconfig",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "src_components_bigodetail_bigodetail_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_toggleline",
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Hero.tsx",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L255",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_factorial",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L264",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_getcomplexityinfo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L285",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_formatyaxis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L289",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_togglereveal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L450",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_startanimation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L473",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_pauseanimation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L489",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_resetanimation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L493",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_stepbackward",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L499",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_stepforward",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L504",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_selectorstyles",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L559",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_theorycardstyle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L576",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_bigodetail_bigodetail_tsx",
+      "target": "bigodetail_ishighlighted",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BigODetail\\BigODetail.tsx",
+      "source_location": "L735",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_codeexecutionpanel_codeexecutionpanel_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_codeexecutionpanel_codeexecutionpanel_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_codeexecutionpanel_codeexecutionpanel_tsx",
+      "target": "src_components_codeexecutionpanel_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_codeexecutionpanel_codeexecutionpanel_tsx",
+      "target": "src_components_codeexecutionpanel_hooks_usecodeexecution",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_codeexecutionpanel_codeexecutionpanel_tsx",
+      "target": "src_components_codeexecutionpanel_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_codeexecutionpanel_codeexecutionpanel_tsx",
+      "target": "src_components_codeexecutionpanel_codeexecutionpanel_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_codeexecutionpanel_codeexecutionpanel_tsx",
+      "target": "codeexecutionpanel_getstatuscolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\CodeExecutionPanel\\CodeExecutionPanel.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_arrayvisualization",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_linkedlistvisualization",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_stackvisualization",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_queuevisualization",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_heapvisualization",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_hashtablevisualization",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_binarytreevisualization",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_graphvisualization",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
       "source_location": "L11",
       "weight": 1.0
     },
     {
-      "source": "src_components_learningpath_tsx",
-      "target": "react",
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_utils_visualizationdata",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\LearningPath.tsx",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_hooks_usevisualizercontrols",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "src_components_datastructurevisualizer_datastructurevisualizer_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "target": "datastructurevisualizer_datastructurevisualizer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_utils_visualizationdata_ts",
+      "target": "visualizationdata_getexampledata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\utils\\visualizationData.ts",
       "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_components_learningpath_tsx",
+      "source": "src_components_datastructurevisualizer_visualizations_arrayvisualization_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\ArrayVisualization.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_arrayvisualization_tsx",
       "target": "framer_motion",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\LearningPath.tsx",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\ArrayVisualization.tsx",
       "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "src_components_learningpath_tsx",
-      "target": "lucide_react",
+      "source": "src_components_datastructurevisualizer_visualizations_arrayvisualization_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_datastructurevisualizer_module_css",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\LearningPath.tsx",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\ArrayVisualization.tsx",
       "source_location": "L3",
       "weight": 1.0
     },
     {
-      "source": "src_components_learningpath_tsx",
-      "target": "learningpath_updateprogress",
+      "source": "src_components_datastructurevisualizer_visualizations_arrayvisualization_tsx",
+      "target": "arrayvisualization_arrayvisualization",
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\LearningPath.tsx",
-      "source_location": "L31",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\ArrayVisualization.tsx",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
-      "source": "src_components_learningpath_tsx",
-      "target": "learningpath_getnodestatus",
+      "source": "src_components_datastructurevisualizer_visualizations_binarytreevisualization_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\BinaryTreeVisualization.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_binarytreevisualization_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\BinaryTreeVisualization.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_binarytreevisualization_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_datastructurevisualizer_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\BinaryTreeVisualization.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_graphvisualization_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\GraphVisualization.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_graphvisualization_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\GraphVisualization.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_graphvisualization_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_datastructurevisualizer_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\GraphVisualization.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_hashtablevisualization_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HashTableVisualization.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_hashtablevisualization_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HashTableVisualization.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_hashtablevisualization_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_datastructurevisualizer_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HashTableVisualization.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_hashtablevisualization_tsx",
+      "target": "hashtablevisualization_hashtablevisualization",
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\LearningPath.tsx",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HashTableVisualization.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_heapvisualization_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HeapVisualization.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_heapvisualization_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HeapVisualization.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_heapvisualization_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_datastructurevisualizer_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\HeapVisualization.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_linkedlistvisualization_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\LinkedListVisualization.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_linkedlistvisualization_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\LinkedListVisualization.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_linkedlistvisualization_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_datastructurevisualizer_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\LinkedListVisualization.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_queuevisualization_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\QueueVisualization.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_queuevisualization_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\QueueVisualization.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_queuevisualization_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_datastructurevisualizer_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\QueueVisualization.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_queuevisualization_tsx",
+      "target": "queuevisualization_queuevisualization",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\QueueVisualization.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_stackvisualization_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\StackVisualization.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_stackvisualization_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\StackVisualization.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_stackvisualization_tsx",
+      "target": "src_components_datastructurevisualizer_visualizations_datastructurevisualizer_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\StackVisualization.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_datastructurevisualizer_visualizations_stackvisualization_tsx",
+      "target": "stackvisualization_stackvisualization",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\DataStructureVisualizer\\visualizations\\StackVisualization.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_animatedbackground_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\AnimatedBackground.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_ctabuttons_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_ctabuttons_tsx",
+      "target": "src_components_hero_hero_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_ctabuttons_tsx",
+      "target": "ctabuttons_handlemouseenter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_ctabuttons_tsx",
+      "target": "ctabuttons_handlemouseleave",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_ctabuttons_tsx",
+      "target": "ctabuttons_handleaccentmouseenter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_ctabuttons_tsx",
+      "target": "ctabuttons_handleaccentmouseleave",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\CTAButtons.tsx",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_hero_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\Hero.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_hero_tsx",
+      "target": "src_components_hero_animatedbackground",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\Hero.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_hero_tsx",
+      "target": "src_components_hero_searchbar",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\Hero.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_hero_tsx",
+      "target": "src_components_hero_ctabuttons",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\Hero.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_hero_tsx",
+      "target": "src_components_hero_hero_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\Hero.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_hero_tsx",
+      "target": "hero_scrolltosection",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\Hero.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_searchbar_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\SearchBar.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_searchbar_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\SearchBar.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_searchbar_tsx",
+      "target": "src_components_hero_hero_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\SearchBar.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_hero_searchbar_tsx",
+      "target": "searchbar_searchbar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Hero\\SearchBar.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_ctasection_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\CTASection.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_featuressection_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\FeaturesSection.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_featuressection_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\FeaturesSection.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_recommendationssection_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\RecommendationsSection.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_recommendationssection_tsx",
+      "target": "src_components_homesections_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\RecommendationsSection.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_statssection_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\StatsSection.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_topicspreviewsection_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\TopicsPreviewSection.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_topicspreviewsection_tsx",
+      "target": "src_components_homesections_topiccard",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\TopicsPreviewSection.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_homesections_topicspreviewsection_tsx",
+      "target": "src_components_homesections_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\HomeSections\\TopicsPreviewSection.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_navbar_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar\\Navbar.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_navbar_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar\\Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_navbar_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar\\Navbar.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_navbar_tsx",
+      "target": "src_components_navbar_hooks_usetheme",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar\\Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_navbar_tsx",
+      "target": "src_components_navbar_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar\\Navbar.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_navbar_navbar_tsx",
+      "target": "src_components_navbar_navbar_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Navbar\\Navbar.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemcard_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemCard.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemcard_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemCard.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemcard_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemcard_tsx",
+      "target": "src_components_problemspage_codeexecutionpanel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemCard.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemcard_tsx",
+      "target": "src_components_problemspage_services_problemservice",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemCard.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemcard_tsx",
+      "target": "src_components_problemspage_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemCard.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemcard_tsx",
+      "target": "src_components_problemspage_problemspage_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemCard.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemsfilters_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsFilters.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemsfilters_tsx",
+      "target": "src_components_problemspage_problemspage_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsFilters.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemsheader_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsHeader.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemsheader_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsHeader.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemsheader_tsx",
+      "target": "src_components_problemspage_problemspage_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsHeader.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemsheader_tsx",
+      "target": "problemsheader_problemsheader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsHeader.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_services_problemservice",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_problemcard",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_problemsheader",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_problemsfilters",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_problemcard",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_problemsstats",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemspage_tsx",
+      "target": "src_components_problemspage_problemspage_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsPage.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemsstats_tsx",
+      "target": "src_components_problemspage_problemcard",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsStats.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_problemspage_problemsstats_tsx",
+      "target": "src_components_problemspage_problemspage_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\ProblemsPage\\ProblemsStats.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmap_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\Roadmap.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmap_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\Roadmap.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmap_tsx",
+      "target": "src_components_roadmap_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\Roadmap.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmap_tsx",
+      "target": "src_components_roadmap_roadmapbackground",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\Roadmap.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmap_tsx",
+      "target": "src_components_roadmap_roadmapcard",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\Roadmap.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmap_tsx",
+      "target": "src_components_roadmap_roadmap_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\Roadmap.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmap_tsx",
+      "target": "src_components_roadmap_types",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\Roadmap.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmapbackground_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\RoadmapBackground.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmapcard_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\RoadmapCard.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmapcard_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\RoadmapCard.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmapcard_tsx",
+      "target": "src_components_roadmap_roadmap_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\RoadmapCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmapcard_tsx",
+      "target": "src_components_roadmap_types",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\RoadmapCard.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_roadmap_roadmapcard_tsx",
+      "target": "roadmapcard_roadmapcard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\Roadmap\\RoadmapCard.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_topiccard_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_topiccard_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_topiccard_tsx",
+      "target": "src_components_topiccard_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_topiccard_tsx",
+      "target": "src_components_topiccard_topiccard_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_topiccard_tsx",
+      "target": "topiccard_getdifficultyfromcomplexity",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topiccard_topiccard_tsx",
+      "target": "topiccard_topiccard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "topiccard_topiccard",
+      "target": "topiccard_getdifficultyfromcomplexity",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
       "source_location": "L45",
       "weight": 1.0
     },
     {
-      "source": "src_components_learningpath_tsx",
-      "target": "learningpath_getprogresspercentage",
-      "relation": "contains",
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "react",
+      "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\LearningPath.tsx",
-      "source_location": "L141",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_components_learningpath_tsx",
-      "target": "learningpath_if",
-      "relation": "contains",
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\LearningPath.tsx",
-      "source_location": "L252",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "learningpath_if",
-      "target": "learningpath_updateprogress",
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_hooks_useprogress",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_hooks_usetopicbyslug",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_tabs_theorytab",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_tabs_examplestab",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_tabs_patternstab",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_tabs_problemstab",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_tabs_visualizationstab",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_topicdetail_tsx",
+      "target": "src_components_topicdetail_topicdetail_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\TopicDetail.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_examplestab_tsx",
+      "target": "src_components_topicdetail_tabs_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ExamplesTab.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_examplestab_tsx",
+      "target": "src_components_topicdetail_tabs_topicdetail_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ExamplesTab.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_patternstab_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\PatternsTab.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_patternstab_tsx",
+      "target": "src_components_topicdetail_tabs_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\PatternsTab.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_patternstab_tsx",
+      "target": "src_components_topicdetail_tabs_topicdetail_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\PatternsTab.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_problemstab_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_problemstab_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_problemstab_tsx",
+      "target": "src_components_topicdetail_tabs_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_problemstab_tsx",
+      "target": "src_components_topicdetail_tabs_codeexecutionpanel",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_problemstab_tsx",
+      "target": "src_components_topicdetail_tabs_topicdetail_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_problemstab_tsx",
+      "target": "problemstab_getdifficultycolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_problemstab_tsx",
+      "target": "problemstab_difficultybadgestyle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "problemstab_difficultybadgestyle",
+      "target": "problemstab_getdifficultycolor",
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\LearningPath.tsx",
-      "source_location": "L253",
+      "source_file": "src\\components\\TopicDetail\\tabs\\ProblemsTab.tsx",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
-      "source": "src_components_navbar_tsx",
+      "source": "src_components_topicdetail_tabs_theorytab_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\TheoryTab.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_theorytab_tsx",
+      "target": "src_components_topicdetail_tabs_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\TheoryTab.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_theorytab_tsx",
+      "target": "src_components_topicdetail_tabs_topicdetail_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\TheoryTab.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_theorytab_tsx",
+      "target": "theorytab_buildfallbacklearningoutcomes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\TheoryTab.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_visualizationstab_tsx",
+      "target": "src_components_topicdetail_tabs_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\VisualizationsTab.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_visualizationstab_tsx",
+      "target": "src_components_topicdetail_tabs_datastructurevisualizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\VisualizationsTab.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_visualizationstab_tsx",
+      "target": "src_components_topicdetail_tabs_topicdetail_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\VisualizationsTab.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_topicdetail_tabs_visualizationstab_tsx",
+      "target": "visualizationstab_getvisualizationtype",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\TopicDetail\\tabs\\VisualizationsTab.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_contexts_authcontext_tsx",
       "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Navbar.tsx",
+      "source_file": "src\\contexts\\AuthContext.tsx",
       "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_components_navbar_tsx",
-      "target": "framer_motion",
+      "source": "src_contexts_authcontext_tsx",
+      "target": "src_contexts_services_authservice",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Navbar.tsx",
-      "source_location": "L2",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
-      "source": "src_components_navbar_tsx",
-      "target": "lucide_react",
+      "source": "src_contexts_authcontext_tsx",
+      "target": "src_contexts_types_api",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Navbar.tsx",
-      "source_location": "L3",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
-      "source": "src_components_navbar_tsx",
-      "target": "src_components_hooks_usetheme",
+      "source": "src_contexts_authcontext_tsx",
+      "target": "src_contexts_authcontextdefinition",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Navbar.tsx",
-      "source_location": "L4",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
-      "source": "src_components_navbar_tsx",
-      "target": "src_components_navbar_css",
+      "source": "src_contexts_authcontext_tsx",
+      "target": "src_contexts_authcontextdefinition",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Navbar.tsx",
-      "source_location": "L5",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
-      "source": "src_components_navbar_tsx",
-      "target": "navbar_navbarredesigned",
+      "source": "src_contexts_authcontext_tsx",
+      "target": "authcontext_getstoredtoken",
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Navbar.tsx",
-      "source_location": "L12",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
-      "source": "src_components_problemspage_tsx",
+      "source": "src_contexts_authcontext_tsx",
+      "target": "authcontext_savetoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "src_contexts_authcontext_tsx",
+      "target": "authcontext_cleartoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "src_contexts_authcontext_tsx",
+      "target": "authcontext_authprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\contexts\\AuthContext.tsx",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "src_contexts_authcontextdefinition_ts",
       "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_file": "src\\contexts\\AuthContextDefinition.ts",
       "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_components_problemspage_tsx",
-      "target": "framer_motion",
+      "source": "src_contexts_authcontextdefinition_ts",
+      "target": "src_contexts_types_api",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\components\\ProblemsPage.tsx",
+      "source_file": "src\\contexts\\AuthContextDefinition.ts",
       "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_problemspage_tsx",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_problemspage_tsx",
-      "target": "src_components_data_newproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_problemspage_tsx",
-      "target": "src_components_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L12",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_problemspage_tsx",
-      "target": "src_components_hooks_useprogress",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L13",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_problemspage_tsx",
-      "target": "problemspage_togglesolution",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\ProblemsPage.tsx",
-      "source_location": "L51",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_roadmap_tsx",
-      "target": "framer_motion",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_roadmap_tsx",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_roadmap_tsx",
-      "target": "src_components_hooks_useprogress",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_roadmap_tsx",
-      "target": "roadmap_getdynamicstatus",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L177",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_roadmap_tsx",
-      "target": "roadmap_getstatusicon",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L190",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_roadmap_tsx",
-      "target": "roadmap_getstatuscolor",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\Roadmap.tsx",
-      "source_location": "L198",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topiccard_tsx",
-      "target": "framer_motion",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicCard.tsx",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topiccard_tsx",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicCard.tsx",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topiccard_tsx",
-      "target": "src_components_hooks_useprogress",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicCard.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topiccard_tsx",
-      "target": "topiccard_topiccard",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicCard.tsx",
-      "source_location": "L13",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topicdetail_tsx",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicDetail.tsx",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topicdetail_tsx",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicDetail.tsx",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topicdetail_tsx",
-      "target": "src_components_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicDetail.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topicdetail_tsx",
-      "target": "src_components_datastructurevisualizer",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicDetail.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topicdetail_tsx",
-      "target": "src_components_hooks_useprogress",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicDetail.tsx",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_topicdetail_tsx",
-      "target": "topicdetail_loadtopic",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\components\\TopicDetail.tsx",
-      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -1368,750 +3032,111 @@
       "weight": 1.0
     },
     {
-      "source": "src_data_advancedproblems_ts",
-      "target": "src_data_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\advancedProblems.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_newproblems_ts",
-      "target": "src_data_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\newProblems.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_sortingandsearchingproblems_ts",
-      "target": "src_data_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\sortingAndSearchingProblems.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topicsdata_fundamentals_ts",
-      "target": "src_data_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.fundamentals.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topicsdata_fundamentals_ts",
+      "source": "src_hooks_useauth_ts",
       "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.fundamentals.ts",
+      "source_file": "src\\hooks\\useAuth.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useauth_ts",
+      "target": "src_hooks_contexts_authcontextdefinition",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useAuth.ts",
       "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "src_data_topicsdata_fundamentals_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
+      "source": "src_hooks_useauth_ts",
+      "target": "useauth_useauth",
+      "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.fundamentals.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topicsdata_old_ts",
-      "target": "src_data_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.old.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topicsdata_old_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.old.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topicsdata_old_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.old.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topicsdata_old_ts",
-      "target": "src_data_sortingandsearchingproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.old.ts",
+      "source_file": "src\\hooks\\useAuth.ts",
       "source_location": "L4",
       "weight": 1.0
     },
     {
-      "source": "src_data_topicsdata_old_ts",
-      "target": "src_data_newproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.old.ts",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topicsdata_ts",
+      "source": "src_hooks_usecodeexecution_ts",
       "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.ts",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
       "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_data_topicsdata_ts",
-      "target": "lucide_react",
+      "source": "src_hooks_usecodeexecution_ts",
+      "target": "src_hooks_services_executionservice",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.ts",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
       "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "src_data_topicsdata_ts",
-      "target": "src_data_types_topic",
+      "source": "src_hooks_usecodeexecution_ts",
+      "target": "src_hooks_useauth",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topicsData.ts",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
       "source_location": "L3",
       "weight": 1.0
     },
     {
-      "source": "src_data_topics_design_ts",
-      "target": "src_data_topics_types_topic",
+      "source": "src_hooks_usecodeexecution_ts",
+      "target": "src_hooks_types_api",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\design.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_design_ts",
-      "target": "src_data_topics_advancedproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\design.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_design_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\design.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_design_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\design.ts",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
       "source_location": "L4",
       "weight": 1.0
     },
     {
-      "source": "src_data_topics_dynamicprogramming_ts",
-      "target": "src_data_topics_types_topic",
+      "source": "src_hooks_usecodeexecution_ts",
+      "target": "usecodeexecution_usecodeexecution",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useCodeExecution.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useproblem_ts",
+      "target": "react",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_file": "src\\hooks\\useProblem.ts",
       "source_location": "L1",
       "weight": 1.0
     },
     {
-      "source": "src_data_topics_dynamicprogramming_ts",
-      "target": "src_data_topics_advancedproblems",
+      "source": "src_hooks_useproblem_ts",
+      "target": "src_hooks_services_problemsservice",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_file": "src\\hooks\\useProblem.ts",
       "source_location": "L2",
       "weight": 1.0
     },
     {
-      "source": "src_data_topics_dynamicprogramming_ts",
-      "target": "react",
+      "source": "src_hooks_useproblem_ts",
+      "target": "src_hooks_types_api",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
+      "source_file": "src\\hooks\\useProblem.ts",
       "source_location": "L3",
       "weight": 1.0
     },
     {
-      "source": "src_data_topics_dynamicprogramming_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
+      "source": "src_hooks_useproblem_ts",
+      "target": "useproblem_useproblem",
+      "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\dynamicProgramming.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_graphs_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\graphs.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_graphs_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\graphs.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_graphs_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\graphs.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_graphs_ts",
-      "target": "src_data_topics_newproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\graphs.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_greedy_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\greedy.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_greedy_ts",
-      "target": "src_data_topics_advancedproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\greedy.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_greedy_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\greedy.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_greedy_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\greedy.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_hashtables_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\hashTables.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_hashtables_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\hashTables.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_hashtables_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\hashTables.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_hashtables_ts",
-      "target": "src_data_topics_newproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\hashTables.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_heaps_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\heaps.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_heaps_ts",
-      "target": "src_data_topics_advancedproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\heaps.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_heaps_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\heaps.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_heaps_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\heaps.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_linkedlists_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\linkedLists.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_linkedlists_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\linkedLists.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_linkedlists_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\linkedLists.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_linkedlists_ts",
-      "target": "src_data_topics_newproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\linkedLists.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_mathbitlogic_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\mathBitLogic.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_mathbitlogic_ts",
-      "target": "src_data_topics_advancedproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\mathBitLogic.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_mathbitlogic_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\mathBitLogic.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_mathbitlogic_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\mathBitLogic.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_recursionbacktracking_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_recursionbacktracking_ts",
-      "target": "src_data_topics_advancedproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_recursionbacktracking_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_recursionbacktracking_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\recursionBacktracking.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_sorting_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\sorting.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_sorting_ts",
-      "target": "src_data_topics_advancedproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\sorting.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_sorting_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\sorting.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_sorting_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\sorting.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_sorting_ts",
-      "target": "src_data_topics_sortingandsearchingproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\sorting.ts",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_stacksqueues_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\stacksQueues.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_stacksqueues_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\stacksQueues.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_stacksqueues_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\stacksQueues.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_strings_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\strings.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_strings_ts",
-      "target": "src_data_topics_advancedproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\strings.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_strings_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\strings.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_strings_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\strings.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_trees_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\trees.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_trees_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\trees.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_trees_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\trees.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_trees_ts",
-      "target": "src_data_topics_newproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\trees.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_tries_ts",
-      "target": "src_data_topics_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\tries.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_tries_ts",
-      "target": "src_data_topics_advancedproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\tries.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_tries_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\tries.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_tries_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\tries.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_examples_ts",
-      "target": "src_data_topics_arrays_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\examples.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "src_data_topics_arrays_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "lucide_react",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "src_data_topics_arrays_newproblems",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "src_data_topics_arrays_theory",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "src_data_topics_arrays_examples",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "src_data_topics_arrays_patterns",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "src_data_topics_arrays_visualizations",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_index_ts",
-      "target": "src_data_topics_arrays_topicsdata",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\index.ts",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_patterns_ts",
-      "target": "src_data_topics_arrays_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\patterns.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_theory_ts",
-      "target": "src_data_topics_arrays_types_topic",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\theory.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "src_data_topics_arrays_visualizations_ts",
-      "target": "src_data_topics_arrays_components_datastructurevisualizer",
-      "relation": "imports_from",
-      "confidence": "EXTRACTED",
-      "source_file": "src\\data\\topics\\arrays\\visualizations.ts",
-      "source_location": "L1",
+      "source_file": "src\\hooks\\useProblem.ts",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -2134,11 +3159,65 @@
     },
     {
       "source": "src_hooks_useprogress_ts",
+      "target": "src_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
+      "target": "src_hooks_services_progressservice",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
+      "target": "src_hooks_services_problemservice",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useprogress_ts",
       "target": "useprogress_useprogress",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src\\hooks\\useProgress.ts",
-      "source_location": "L11",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useresponsivechartconfig_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useresponsivechartconfig_ts",
+      "target": "useresponsivechartconfig_useresponsivechartconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_useresponsivechartconfig_ts",
+      "target": "useresponsivechartconfig_getchartconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useResponsiveChartConfig.ts",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -2178,6 +3257,150 @@
       "weight": 1.0
     },
     {
+      "source": "src_hooks_usetopicbyslug_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTopicBySlug.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetopicbyslug_ts",
+      "target": "src_hooks_services_topicsservice",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTopicBySlug.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetopicbyslug_ts",
+      "target": "src_hooks_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTopicBySlug.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usetopicbyslug_ts",
+      "target": "usetopicbyslug_usetopicbyslug",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useTopicBySlug.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usevisualizercontrols_ts",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useVisualizerControls.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usevisualizercontrols_ts",
+      "target": "src_hooks_components_datastructurevisualizer_datastructurevisualizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useVisualizerControls.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_hooks_usevisualizercontrols_ts",
+      "target": "usevisualizercontrols_usevisualizercontrols",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\hooks\\useVisualizerControls.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "src_pages_services_apiclient",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "src_pages_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "src_pages_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "src_pages_components_admin_admintopicsmanager",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "src_pages_components_admin_adminproblemsmanager",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_admindashboard_tsx",
+      "target": "src_pages_admindashboard_module_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\AdminDashboard.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "src_pages_home_tsx",
       "target": "react",
       "relation": "imports_from",
@@ -2188,7 +3411,7 @@
     },
     {
       "source": "src_pages_home_tsx",
-      "target": "framer_motion",
+      "target": "src_pages_components_hero",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\pages\\Home.tsx",
@@ -2197,7 +3420,7 @@
     },
     {
       "source": "src_pages_home_tsx",
-      "target": "lucide_react",
+      "target": "src_pages_services_topicsservice",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\pages\\Home.tsx",
@@ -2206,7 +3429,7 @@
     },
     {
       "source": "src_pages_home_tsx",
-      "target": "src_pages_components_hero",
+      "target": "src_pages_services_topicsservice",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\pages\\Home.tsx",
@@ -2215,7 +3438,7 @@
     },
     {
       "source": "src_pages_home_tsx",
-      "target": "src_pages_components_topiccard",
+      "target": "src_pages_hooks_useprogress",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\pages\\Home.tsx",
@@ -2224,7 +3447,7 @@
     },
     {
       "source": "src_pages_home_tsx",
-      "target": "src_pages_data_topicsdata",
+      "target": "src_pages_hooks_useauth",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\pages\\Home.tsx",
@@ -2233,11 +3456,434 @@
     },
     {
       "source": "src_pages_home_tsx",
-      "target": "src_pages_hooks_useprogress",
+      "target": "src_pages_services_progressservice",
       "relation": "imports_from",
       "confidence": "EXTRACTED",
       "source_file": "src\\pages\\Home.tsx",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_homesections_featuressection",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_homesections_statssection",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_homesections_topicspreviewsection",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_homesections_recommendationssection",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_components_homesections_ctasection",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_types_topic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "src_pages_utils_topicicons",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_tsx",
+      "target": "home_loadrecommendations",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Home.tsx",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_login_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Login.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_login_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Login.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_login_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Login.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_login_tsx",
+      "target": "src_pages_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Login.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_login_tsx",
+      "target": "login_handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Login.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_profile_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Profile.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_profile_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Profile.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_profile_tsx",
+      "target": "src_pages_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Profile.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_register_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Register.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_register_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Register.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_register_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Register.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_register_tsx",
+      "target": "src_pages_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Register.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_register_tsx",
+      "target": "register_handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Register.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_subscription_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_subscription_tsx",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_subscription_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_subscription_tsx",
+      "target": "src_pages_hooks_useauth",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_subscription_tsx",
+      "target": "src_pages_services_subscriptionservice",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_subscription_tsx",
+      "target": "src_pages_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_subscription_tsx",
+      "target": "subscription_handleupgrade",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\pages\\Subscription.tsx",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_apiclient_ts",
+      "target": "src_services_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\apiClient.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_apiclient_ts",
+      "target": "apiclient_buildheaders",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\apiClient.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_apiclient_ts",
+      "target": "apiclient_request",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\apiClient.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "apiclient_request",
+      "target": "apiclient_buildheaders",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\apiClient.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_authservice_ts",
+      "target": "src_services_apiclient",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\authService.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_authservice_ts",
+      "target": "src_services_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\authService.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_executionservice_ts",
+      "target": "src_services_apiclient",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\executionService.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_executionservice_ts",
+      "target": "src_services_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\executionService.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_executionservice_ts",
+      "target": "executionservice_buildexecutionlistpath",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\executionService.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_problemservice_ts",
+      "target": "src_services_apiclient",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\problemService.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_problemservice_ts",
+      "target": "src_services_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\problemService.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_problemservice_ts",
+      "target": "problemservice_buildproblemlistpath",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\problemService.ts",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_problemsservice_ts",
+      "target": "src_services_apiclient",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\problemsService.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_progressservice_ts",
+      "target": "src_services_apiclient",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\progressService.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_progressservice_ts",
+      "target": "src_services_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\progressService.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_subscriptionservice_ts",
+      "target": "src_services_apiclient",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\subscriptionService.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_subscriptionservice_ts",
+      "target": "src_services_types_api",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\subscriptionService.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_topicsservice_ts",
+      "target": "src_services_apiclient",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\services\\topicsService.ts",
+      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -2259,13 +3905,131 @@
       "weight": 1.0
     },
     {
-      "source": "navbar_navbarredesigned",
-      "target": "usetheme_usetheme",
+      "source": "src_utils_animations_ts",
+      "target": "framer_motion",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\animations.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_colors_ts",
+      "target": "colors_getdifficultycolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_colors_ts",
+      "target": "colors_getstatuscolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_colors_ts",
+      "target": "colors_getcomplexitycolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_colors_ts",
+      "target": "colors_getdifficultybgcolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_colors_ts",
+      "target": "colors_hextorgb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_colors_ts",
+      "target": "colors_hextorgbstring",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "colors_getdifficultybgcolor",
+      "target": "colors_getdifficultycolor",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "colors_hextorgbstring",
+      "target": "colors_hextorgb",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\colors.ts",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_topicicons_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\topicIcons.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_topicicons_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\topicIcons.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_utils_topicicons_tsx",
+      "target": "topicicons_gettopicicon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\utils\\topicIcons.tsx",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "datastructurevisualizer_datastructurevisualizer",
+      "target": "visualizationdata_getexampledata",
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "src\\components\\Navbar.tsx",
-      "source_location": "L15",
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "datastructurevisualizer_datastructurevisualizer",
+      "target": "usevisualizercontrols_usevisualizercontrols",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -2274,8 +4038,28 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "src\\components\\TopicCard.tsx",
-      "source_location": "L14",
+      "source_file": "src\\components\\TopicCard\\TopicCard.tsx",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "usecodeexecution_usecodeexecution",
+      "target": "useauth_useauth",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\hooks\\useCodeExecution.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "useprogress_useprogress",
+      "target": "useauth_useauth",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\hooks\\useProgress.ts",
+      "source_location": "L16",
       "weight": 1.0
     }
   ],

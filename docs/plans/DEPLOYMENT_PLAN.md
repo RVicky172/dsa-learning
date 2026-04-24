@@ -13,9 +13,9 @@ Deployment work is intentionally deferred while product enhancements are priorit
 
 ## Reactivation Criteria
 
-1. Product enhancement MVPs (TKT-023, TKT-024, TKT-025) are complete.
-2. Enhancement QA/UAT is green.
-3. No active P0/P1 defects in enhancement scope.
+1. Personalized recommendation engine MVP (TKT-023) is complete. ✅
+2. Premium entitlement regression audit (TKT-025) is complete.
+3. No active P0/P1 defects in scope.
 
 ## Detailed Deployment Docs
 

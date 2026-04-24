@@ -45,11 +45,12 @@ export interface TopicSection {
 
 export interface TopicMeta {
     id: string;
+    slug?: string;
     title: string;
     description: string;
-    complexity: string;
-    icon: React.ReactNode;
-    delay: number;
+    complexity?: string;
+    icon?: React.ReactNode;
+    delay?: number;
 }
 
 export interface Topic extends TopicMeta {

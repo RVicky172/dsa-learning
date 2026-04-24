@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft, BookOpen, Code, Trophy, Zap, CheckCircle2, Circle } from 'lucide-react';
 import type { Topic } from '../../types/topic';
 import { useProgress } from '../../hooks/useProgress';
+import { useTopicBySlug } from '../../hooks/useTopicBySlug';
 import TheoryTab from './tabs/TheoryTab';
 import ExamplesTab from './tabs/ExamplesTab';
 import PatternsTab from './tabs/PatternsTab';
 import ProblemsTab from './tabs/ProblemsTab';
 import VisualizationsTab from './tabs/VisualizationsTab';
 import styles from './TopicDetail.module.css';
-import { topicLearningOutcomes } from '../../data/topicLearningOutcomes';
 
 interface TopicDetailProps {
     topicId: string;
@@ -16,8 +16,8 @@ interface TopicDetailProps {
 }
 
 const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
+    const { topic: fetchedTopic, loading } = useTopicBySlug(topicId);
     const [topic, setTopic] = useState<Topic | null>(null);
-    const [loading, setLoading] = useState(true);
 
     const [activeTab, setActiveTab] = useState<'theory' | 'examples' | 'patterns' | 'problems' | 'visualizations'>('theory');
     const [showSolution, setShowSolution] = useState<Record<string, boolean>>({});
@@ -26,55 +26,47 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
         applications: false
     });
     
+    // Update local topic state when fetched topic changes
     useEffect(() => {
-        const loadTopic = async () => {
-            setLoading(true);
-            try {
-                let module;
-                switch (topicId) {
-                    case 'arrays': module = await import('../../data/topics/arrays'); break;
-                    case 'linked-lists': module = await import('../../data/topics/linkedLists'); break;
-                    case 'hash-tables': module = await import('../../data/topics/hashTables'); break;
-                    case 'trees': module = await import('../../data/topics/trees'); break;
-                    case 'graphs': module = await import('../../data/topics/graphs'); break;
-                    case 'sorting-searching': module = await import('../../data/topics/sorting'); break;
-                    case 'stacks-queues': module = await import('../../data/topics/stacksQueues'); break;
-                    case 'strings': module = await import('../../data/topics/strings'); break;
-                    case 'design': module = await import('../../data/topics/design'); break;
-                    case 'math-bit-logic': module = await import('../../data/topics/mathBitLogic'); break;
-                    case 'dynamic-programming': module = await import('../../data/topics/dynamicProgramming'); break;
-                    case 'recursion-backtracking': module = await import('../../data/topics/recursionBacktracking'); break;
-                    case 'heaps': module = await import('../../data/topics/heaps'); break;
-                    case 'tries': module = await import('../../data/topics/tries'); break;
-                    case 'greedy': module = await import('../../data/topics/greedy'); break;
-                    default: throw new Error('Unknown topic');
-                }
-                const loadedTopic = Object.values(module)[0] as Topic;
-                const mergedTopic: Topic = {
-                    ...loadedTopic,
-                    learningOutcomes: loadedTopic.learningOutcomes?.length
-                        ? loadedTopic.learningOutcomes
-                        : topicLearningOutcomes[loadedTopic.id]
-                };
-                setTopic(mergedTopic);
-            } catch (err) {
-                console.error("Failed to load topic", err);
-            } finally {
-                setLoading(false);
-            }
-        };
-        loadTopic();
-    }, [topicId]);
-
-    useEffect(() => {
-        if (topic) {
-            console.log('Topic loaded:', topic.title, 'Problems count:', topic.problems?.length);
-            if (topic.problems && topic.problems.length > 0) {
-                console.log('Problem IDs:', topic.problems.map(p => p.id));
-                console.log('Full problems array:', topic.problems);
-            }
+        if (fetchedTopic) {
+            // Map API response to Topic type
+            const mappedTopic: Topic = {
+                id: fetchedTopic.id,
+                title: fetchedTopic.title,
+                description: fetchedTopic.description,
+                icon: null, // TODO: Icons from API or static mapping
+                complexity: 'Medium', // TODO: Get from API
+                delay: 0, // TODO: Get from API
+                learningOutcomes: [],
+                introduction: fetchedTopic.description,
+                whyImportant: '',
+                whenToUse: [],
+                advantages: [],
+                disadvantages: [],
+                concepts: [],
+                examples: [],
+                patterns: [],
+                applications: [],
+                operations: [],
+                problems: fetchedTopic.problems.map(p => ({
+                    id: p.id,
+                    title: p.title,
+                    difficulty: p.difficulty as 'Easy' | 'Medium' | 'Hard',
+                    description: p.description,
+                    examples: [],
+                    solution: { 
+                        approach: '', 
+                        code: '', 
+                        timeComplexity: '', 
+                        spaceComplexity: '',
+                        stepByStep: []
+                    },
+                    hints: []
+                }))
+            };
+            setTopic(mappedTopic);
         }
-    }, [topic]);
+    }, [fetchedTopic]);
 
     const { isTopicCompleted, toggleTopic, isProblemCompleted, toggleProblem } = useProgress();
 

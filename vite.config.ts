@@ -43,7 +43,6 @@ export default defineConfig({
           'vendor-lucide': ['lucide-react'],
           
           // Feature chunks
-          'topics-data': ['./src/data/topicsData.ts'],
           'ui-components': [
             './src/components/TopicCard',
             './src/components/TopicDetail',

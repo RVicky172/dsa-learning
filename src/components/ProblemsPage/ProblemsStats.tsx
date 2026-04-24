@@ -1,8 +1,8 @@
-import type { ProblemListItem } from '../../data/problems/registry';
+import type { ApiProblemRecord } from './ProblemCard';
 import styles from './ProblemsPage.module.css';
 
 interface ProblemsStatsProps {
-  problems: ProblemListItem[];
+  problems: ApiProblemRecord[];
   isMobile?: boolean;
   isSmallPhone?: boolean;
 }

@@ -1,11 +1,11 @@
 # Implementation Order and Architecture Map
 
-## Status Snapshot (Updated: 2026-04-20)
+## Status Snapshot (Updated: 2026-04-24)
 
-- Implemented: Auth/RBAC, admin content CRUD API+UI, progress+attempt persistence, backend-driven problem listing with fallback, subscription page, mock checkout + webhook sync, API/UI premium gating, execution worker queue, and execution persistence/query APIs.
+- Implemented: Auth/RBAC, admin content CRUD API+UI, progress+attempt persistence, backend-driven problem listing with fallback, subscription page, mock checkout + webhook sync, API/UI premium gating, execution worker queue, execution persistence/query APIs, and personalized recommendation engine MVP.
 - Implemented: frontend run-code panel integration in problem detail flows.
-- Remaining: visualization upgrades and product enhancement features (recommendations, classroom mode, certificates).
-- Deployment and launch hardening tracks are deferred until product enhancement phase is complete.
+- Remaining: visualization upgrades and performance optimization.
+- Deployment and launch hardening tracks are deferred until current enhancements are complete.
 
 ## Purpose
 
@@ -123,15 +123,16 @@ Translate the roadmap into concrete implementation order mapped to the existing 
 
 ## Implementation Order (Strict)
 
-1. Auth + roles + session handling
-2. Database schema + migrations + seed existing topics/problems
-3. Problems/progress APIs + frontend integration
-4. Subscription entitlements + billing test mode
-5. Admin content management APIs + UI
-6. Code execution worker + API + frontend panel
-7. Product enhancement features (recommendations, classroom mode, certificates) + QA
-8. Deployment and launch hardening (deferred)
-9. Final mandatory last task before release signoff: run the premium entitlement regression audit across free-vs-premium problem cards/details, API enforcement, and upgrade CTA paths.
+1. Auth + roles + session handling ✅
+2. Database schema + migrations + seed existing topics/problems ✅
+3. Problems/progress APIs + frontend integration ✅
+4. Subscription entitlements + billing test mode ✅
+5. Admin content management APIs + UI ✅
+6. Code execution worker + API + frontend panel ✅
+7. Personalized recommendation engine MVP ✅
+8. Visualization improvements and performance optimization
+9. Premium entitlement regression audit (final signoff requirement)
+10. Deployment and launch hardening (deferred)
 
 ## Definition of Done Per Phase
 

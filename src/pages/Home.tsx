@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Hero from '../components/Hero';
-import { topicsData } from '../data/topicsData';
+import { topicsService } from '../services/topicsService';
+import type { Topic as ApiTopic } from '../services/topicsService';
 import { useProgress } from '../hooks/useProgress';
 import { useAuth } from '../hooks/useAuth';
 import { progressService } from '../services/progressService';
@@ -10,6 +11,8 @@ import StatsSection from '../components/HomeSections/StatsSection';
 import TopicsPreviewSection from '../components/HomeSections/TopicsPreviewSection';
 import RecommendationsSection from '../components/HomeSections/RecommendationsSection';
 import CTASection from '../components/HomeSections/CTASection';
+import type { TopicMeta } from '../types/topic';
+import { getTopicIcon } from '../utils/topicIcons';
 
 interface HomeProps {
   onNavigate: (section: string) => void;
@@ -23,6 +26,13 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
   const { isAuthenticated, token } = useAuth();
   const [recommendations, setRecommendations] = useState<ProgressRecommendationItem[]>([]);
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false);
+  const [apiTopics, setApiTopics] = useState<ApiTopic[]>([]);
+
+  useEffect(() => {
+    topicsService.getAllTopics()
+      .then((res) => setApiTopics(res.topics))
+      .catch(() => setApiTopics([]));
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -57,19 +67,27 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
     };
   }, [isAuthenticated, token]);
 
+  // Map API topics to TopicMeta with icons derived from slug
+  const topicsMeta: TopicMeta[] = useMemo(
+    () => apiTopics.map((t) => ({ id: t.id, slug: t.slug, title: t.title, description: t.description, icon: getTopicIcon(t.slug) })),
+    [apiTopics]
+  );
+
   // Filter topics based on search query
-  const filteredTopics = topicsData.filter(topic =>
+  const filteredTopics = topicsMeta.filter(topic =>
     topic.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     topic.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const totalTopics = apiTopics.length || 15; // fallback for SSR / loading flash
 
   return (
     <>
       <Hero onNavigate={onNavigate} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-      <FeaturesSection totalTopics={topicsData.length} />
+      <FeaturesSection totalTopics={totalTopics} />
       <StatsSection
-        totalTopics={topicsData.length}
+        totalTopics={totalTopics}
         completedTopics={stats.totalCompletedTopics}
         completedProblems={stats.totalCompletedProblems}
       />
@@ -78,10 +96,11 @@ const Home: React.FC<HomeProps> = ({ onNavigate, onTopicSelect, searchQuery, set
           items={recommendations}
           isLoading={isLoadingRecommendations}
           onViewProblems={() => onNavigate('problems')}
+          onProblemSelect={onTopicSelect}
         />
       )}
       <TopicsPreviewSection topics={filteredTopics} onTopicSelect={onTopicSelect} />
-      <CTASection totalTopics={topicsData.length} onNavigate={onNavigate} />
+      <CTASection totalTopics={totalTopics} onNavigate={onNavigate} />
     </>
   );
 };

@@ -1,9 +1,9 @@
 # Development Plan (Product-First)
 
-## Status Snapshot (Updated: 2026-04-23)
+## Status Snapshot (Updated: 2026-04-24)
 
-- Implemented: auth + RBAC, admin CRUD for topics/problems, progress + attempt persistence, subscription + mock webhook sync, API/UI premium gating, execution worker queue, and execution persistence/query APIs.
-- Active priority: product enhancements first (recommendations, classroom mode, certificates) plus visualization improvements.
+- Implemented: auth + RBAC, admin CRUD for topics/problems, progress + attempt persistence, subscription + mock webhook sync, API/UI premium gating, execution worker queue, execution persistence/query APIs, and personalized recommendation engine MVP.
+- Active priority: visualization improvements and performance optimization.
 
 ## Goal
 
@@ -86,24 +86,27 @@ Strengthen product value first, with MVP enhancements that improve learner outco
 - Visualizer updates validated for desktop and mobile.
 - Learning outcomes available for all topics.
 
-## Week 4: Product Enhancements and QA
+## Week 4: Finalization and Optimization
 
 ### Outcomes
 
-- Product enhancement MVP features completed (recommendations, classroom, certificates).
-- QA coverage expanded for enhancement flows.
+- Personalized recommendation engine MVP completed and tested.
+- Visualization improvements and performance optimization.
+- QA coverage expanded and regression testing complete.
 
 ### Work Items
 
-1. Build personalized recommendation engine MVP and UI integration.
-2. Build certificate generation + profile sharing MVP.
-3. Add automated tests for enhancement flows.
+1. Complete personalized recommendation engine MVP and UI integration.
+2. Improve DSA visualizations (step mode, speed control, complexity overlays).
+3. Add automated tests for critical flows.
 4. Conduct UAT, bug fixes, and performance tuning.
+5. Premium entitlement regression audit.
 
 ### Exit Criteria
 
-- Product enhancement acceptance criteria validated.
-- No critical or high-severity unresolved issues in enhancement scope.
+- All critical flows tested and working end-to-end.
+- No P0/P1 defects remaining.
+- Performance benchmarks met.
 
 ## Daily Execution Checklist
 
@@ -133,14 +136,14 @@ Strengthen product value first, with MVP enhancements that improve learner outco
 
 ## Week 4
 
-- Day 16: automated tests for critical flows + bug fixes.
-- Day 17: remaining content QA + free/premium behavior validation.
-- Day 18: recommendation engine MVP + recommendation cards on dashboard.
-- Day 19: certificate generation/profile sharing MVP + regression checks.
-- Day 20: bug fixes/polish + user feedback collection.
+- Day 16: visualization improvements + performance tuning.
+- Day 20: premium entitlement regression audit + final polish.
 
 ## Active Ticket Scope
 
+1. TKT-023 (P0) - Personalized recommendation engine MVP. ✅ COMPLETE
+2. TKT-025 (P0) - Premium entitlement regression audit before release signoff.
+3. TKT-026 (P1) - Visualization improvements and performance optimization.
 1. TKT-023 (P0) - Personalized recommendation engine MVP.
 2. TKT-024 (P1) - Team classroom mode MVP.
 3. TKT-02

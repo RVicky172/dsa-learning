@@ -23,6 +23,8 @@ export interface AuthResponse {
 export interface ProblemListItemApi {
   id: string;
   topicId: string;
+  topicTitle: string;
+  topicSlug: string;
   title: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   isPremium: boolean;
@@ -30,9 +32,34 @@ export interface ProblemListItemApi {
   description: string;
 }
 
+export interface ProblemSolutionApi {
+  id: string;
+  language: string;
+  approach: string;
+  code: string;
+  timeComplexity: string;
+  spaceComplexity: string;
+  isOptimal: boolean;
+}
+
+export interface ProblemHintApi {
+  id: string;
+  text: string;
+}
+
+export interface ProblemExampleApi {
+  id: string;
+  input: string;
+  output: string;
+  explanation: string;
+}
+
 export interface ProblemDetailApi extends ProblemListItemApi {
   statement: string;
   constraints: string;
+  solutions: ProblemSolutionApi[];
+  hints: ProblemHintApi[];
+  examples: ProblemExampleApi[];
 }
 
 export interface ProblemAttemptPayload {
@@ -62,6 +89,7 @@ export interface UserProgressResponse {
 export interface ProgressRecommendationItem {
   problemId: string;
   topicId: string;
+  topicSlug: string;
   topicTitle: string;
   title: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';

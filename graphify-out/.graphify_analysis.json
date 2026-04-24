@@ -1,193 +1,415 @@
 {
   "communities": {
     "0": [
-      "lucide_react",
-      "src_components_topicdetail_tsx",
-      "src_data_topics_arrays_index_ts",
-      "src_data_topics_design_ts",
-      "src_data_topics_dynamicprogramming_ts",
-      "src_data_topics_graphs_ts",
-      "src_data_topics_greedy_ts",
-      "src_data_topics_hashtables_ts",
-      "src_data_topics_heaps_ts",
-      "src_data_topics_linkedlists_ts",
-      "src_data_topics_mathbitlogic_ts",
-      "src_data_topics_recursionbacktracking_ts",
-      "src_data_topics_sorting_ts",
-      "src_data_topics_stacksqueues_ts",
-      "src_data_topics_strings_ts",
-      "src_data_topics_trees_ts",
-      "src_data_topics_tries_ts",
-      "src_data_topicsdata_fundamentals_ts",
-      "src_data_topicsdata_old_ts",
-      "src_data_topicsdata_ts",
-      "topicdetail_loadtopic"
+      "api_client",
+      "api_types",
+      "code_execution_panel",
+      "cta_section",
+      "features_section",
+      "home_page",
+      "problem_card",
+      "problems_filters",
+      "problems_header",
+      "problems_page",
+      "problems_service",
+      "problems_stats",
+      "progress_service",
+      "recommendations_section",
+      "stats_section",
+      "topic_icons",
+      "topics_preview_section",
+      "topics_service",
+      "use_auth",
+      "use_problem",
+      "use_topic_by_slug"
     ],
     "1": [
-      "big_o_notation_guide",
-      "claude_md",
-      "dsa_learning_app",
-      "graphify",
-      "interactive_visualizers",
-      "learning_roadmap",
-      "problem_practice",
-      "react_19",
-      "readme_md",
-      "recharts",
-      "src_contexts",
-      "src_data",
-      "src_hooks",
-      "src_types",
-      "tailwind_css",
-      "typescript",
-      "vite",
-      "vite_config_ts"
-    ],
-    "2": [
-      "datastructurevisualizer_getexampledata",
-      "datastructurevisualizer_handlenext",
-      "datastructurevisualizer_handleprevious",
-      "datastructurevisualizer_handlereset",
-      "framer_motion",
-      "hero_scrolltosection",
-      "problemspage_togglesolution",
-      "src_components_datastructurevisualizer_tsx",
-      "src_components_hero_tsx",
-      "src_components_problemspage_tsx",
-      "src_pages_home_tsx"
-    ],
-    "3": [
       "bigodetail_factorial",
       "bigodetail_formatyaxis",
       "bigodetail_getcomplexityinfo",
-      "bigodetail_internalfactorial",
+      "bigodetail_ishighlighted",
+      "bigodetail_pauseanimation",
       "bigodetail_resetanimation",
+      "bigodetail_selectorstyles",
       "bigodetail_startanimation",
+      "bigodetail_stepbackward",
+      "bigodetail_stepforward",
+      "bigodetail_theorycardstyle",
       "bigodetail_toggleline",
       "bigodetail_togglereveal",
-      "src_components_bigodetail_tsx"
+      "src_components_bigodetail_bigodetail_tsx"
     ],
-    "4": [
-      "app_handlenavigate",
-      "app_handletopicselect",
-      "app_rendercontent",
-      "src_app_tsx",
-      "src_components",
-      "src_contexts_themecontext_tsx",
-      "src_main_tsx",
-      "src_pages"
-    ],
-    "5": [
-      "learningpath_getnodestatus",
-      "learningpath_getprogresspercentage",
-      "learningpath_if",
-      "learningpath_updateprogress",
-      "src_components_learningpath_tsx"
-    ],
-    "6": [
-      "idb_keyval",
-      "src_components_topiccard_tsx",
+    "2": [
+      "src_components_topiccard_topiccard_tsx",
+      "src_hooks_useauth_ts",
+      "src_hooks_usecodeexecution_ts",
       "src_hooks_useprogress_ts",
+      "topiccard_getdifficultyfromcomplexity",
       "topiccard_topiccard",
+      "useauth_useauth",
+      "usecodeexecution_usecodeexecution",
       "useprogress_useprogress"
     ],
+    "3": [
+      "examples_tab",
+      "patterns_tab",
+      "problems_tab",
+      "theory_tab",
+      "topic_card",
+      "topic_detail",
+      "topic_types",
+      "use_progress",
+      "visualizations_tab"
+    ],
+    "4": [
+      "authcontext_authprovider",
+      "authcontext_cleartoken",
+      "authcontext_getstoredtoken",
+      "authcontext_savetoken",
+      "src_app_tsx",
+      "src_contexts_authcontext_tsx",
+      "src_contexts_themecontext_tsx",
+      "src_main_tsx"
+    ],
+    "5": [
+      "colors_getcomplexitycolor",
+      "colors_getdifficultybgcolor",
+      "colors_getdifficultycolor",
+      "colors_getstatuscolor",
+      "colors_hextorgb",
+      "colors_hextorgbstring",
+      "src_utils_colors_ts"
+    ],
+    "6": [
+      "datastructurevisualizer_datastructurevisualizer",
+      "src_components_datastructurevisualizer_datastructurevisualizer_tsx",
+      "src_components_datastructurevisualizer_utils_visualizationdata_ts",
+      "src_hooks_usevisualizercontrols_ts",
+      "usevisualizercontrols_usevisualizercontrols",
+      "visualizationdata_getexampledata"
+    ],
     "7": [
-      "bigo_cg_n",
-      "bigo_f_n",
-      "bigo_generatepath",
-      "src_components_bigo_tsx"
+      "ctabuttons_handleaccentmouseenter",
+      "ctabuttons_handleaccentmouseleave",
+      "ctabuttons_handlemouseenter",
+      "ctabuttons_handlemouseleave",
+      "src_components_hero_ctabuttons_tsx"
     ],
     "8": [
-      "navbar_navbarredesigned",
-      "src_components_navbar_tsx",
+      "problemstab_difficultybadgestyle",
+      "problemstab_getdifficultycolor",
+      "src_components_topicdetail_tabs_problemstab_tsx"
+    ],
+    "9": [
+      "src_hooks_useresponsivechartconfig_ts",
+      "useresponsivechartconfig_getchartconfig",
+      "useresponsivechartconfig_useresponsivechartconfig"
+    ],
+    "10": [
+      "apiclient_buildheaders",
+      "apiclient_request",
+      "src_services_apiclient_ts"
+    ],
+    "11": [
+      "codeexecutionpanel_getstatuscolor",
+      "src_components_codeexecutionpanel_codeexecutionpanel_tsx"
+    ],
+    "12": [
+      "arrayvisualization_arrayvisualization",
+      "src_components_datastructurevisualizer_visualizations_arrayvisualization_tsx"
+    ],
+    "13": [
+      "hashtablevisualization_hashtablevisualization",
+      "src_components_datastructurevisualizer_visualizations_hashtablevisualization_tsx"
+    ],
+    "14": [
+      "queuevisualization_queuevisualization",
+      "src_components_datastructurevisualizer_visualizations_queuevisualization_tsx"
+    ],
+    "15": [
+      "src_components_datastructurevisualizer_visualizations_stackvisualization_tsx",
+      "stackvisualization_stackvisualization"
+    ],
+    "16": [
+      "hero_scrolltosection",
+      "src_components_hero_hero_tsx"
+    ],
+    "17": [
+      "searchbar_searchbar",
+      "src_components_hero_searchbar_tsx"
+    ],
+    "18": [
+      "problemsheader_problemsheader",
+      "src_components_problemspage_problemsheader_tsx"
+    ],
+    "19": [
+      "roadmapcard_roadmapcard",
+      "src_components_roadmap_roadmapcard_tsx"
+    ],
+    "20": [
+      "src_components_topicdetail_tabs_theorytab_tsx",
+      "theorytab_buildfallbacklearningoutcomes"
+    ],
+    "21": [
+      "src_components_topicdetail_tabs_visualizationstab_tsx",
+      "visualizationstab_getvisualizationtype"
+    ],
+    "22": [
+      "src_hooks_useproblem_ts",
+      "useproblem_useproblem"
+    ],
+    "23": [
       "src_hooks_usetheme_ts",
       "usetheme_usetheme"
     ],
-    "9": [
-      "roadmap_getdynamicstatus",
-      "roadmap_getstatuscolor",
-      "roadmap_getstatusicon",
-      "src_components_roadmap_tsx"
+    "24": [
+      "src_hooks_usetopicbyslug_ts",
+      "usetopicbyslug_usetopicbyslug"
     ],
-    "10": [
-      "eslint_config_js"
+    "25": [
+      "home_loadrecommendations",
+      "src_pages_home_tsx"
     ],
-    "11": [
-      "extractmeta_mjs"
+    "26": [
+      "login_handlesubmit",
+      "src_pages_login_tsx"
     ],
-    "12": [
-      "src_data_advancedproblems_ts"
+    "27": [
+      "register_handlesubmit",
+      "src_pages_register_tsx"
     ],
-    "13": [
-      "src_data_newproblems_ts"
+    "28": [
+      "src_pages_subscription_tsx",
+      "subscription_handleupgrade"
     ],
-    "14": [
-      "src_data_sortingandsearchingproblems_ts"
+    "29": [
+      "executionservice_buildexecutionlistpath",
+      "src_services_executionservice_ts"
     ],
-    "15": [
-      "src_data_topics_index_ts"
+    "30": [
+      "problemservice_buildproblemlistpath",
+      "src_services_problemservice_ts"
     ],
-    "16": [
-      "src_data_topics_arrays_examples_ts"
+    "31": [
+      "src_utils_topicicons_tsx",
+      "topicicons_gettopicicon"
     ],
-    "17": [
-      "src_data_topics_arrays_patterns_ts"
+    "32": [
+      "src_components_admin_adminproblemsmanager_tsx"
     ],
-    "18": [
-      "src_data_topics_arrays_theory_ts"
+    "33": [
+      "src_components_admin_admintopicsmanager_tsx"
     ],
-    "19": [
-      "src_data_topics_arrays_visualizations_ts"
+    "34": [
+      "src_components_appshell_appfooter_tsx"
     ],
-    "20": [
+    "35": [
+      "src_components_appshell_loadingspinner_tsx"
+    ],
+    "36": [
+      "src_components_bigodetail_index_ts"
+    ],
+    "37": [
+      "src_components_codeexecutionpanel_index_ts"
+    ],
+    "38": [
+      "src_components_datastructurevisualizer_index_ts"
+    ],
+    "39": [
+      "src_components_datastructurevisualizer_visualizations_binarytreevisualization_tsx"
+    ],
+    "40": [
+      "src_components_datastructurevisualizer_visualizations_graphvisualization_tsx"
+    ],
+    "41": [
+      "src_components_datastructurevisualizer_visualizations_heapvisualization_tsx"
+    ],
+    "42": [
+      "src_components_datastructurevisualizer_visualizations_linkedlistvisualization_tsx"
+    ],
+    "43": [
+      "src_components_hero_animatedbackground_tsx"
+    ],
+    "44": [
+      "src_components_hero_index_ts"
+    ],
+    "45": [
+      "src_components_homesections_ctasection_tsx"
+    ],
+    "46": [
+      "src_components_homesections_featuressection_tsx"
+    ],
+    "47": [
+      "src_components_homesections_recommendationssection_tsx"
+    ],
+    "48": [
+      "src_components_homesections_statssection_tsx"
+    ],
+    "49": [
+      "src_components_homesections_topicspreviewsection_tsx"
+    ],
+    "50": [
+      "src_components_navbar_index_ts"
+    ],
+    "51": [
+      "src_components_navbar_navbar_tsx"
+    ],
+    "52": [
+      "src_components_problemspage_index_ts"
+    ],
+    "53": [
+      "src_components_problemspage_problemcard_tsx"
+    ],
+    "54": [
+      "src_components_problemspage_problemsfilters_tsx"
+    ],
+    "55": [
+      "src_components_problemspage_problemspage_tsx"
+    ],
+    "56": [
+      "src_components_problemspage_problemsstats_tsx"
+    ],
+    "57": [
+      "src_components_roadmap_index_ts"
+    ],
+    "58": [
+      "src_components_roadmap_roadmap_tsx"
+    ],
+    "59": [
+      "src_components_roadmap_roadmapbackground_tsx"
+    ],
+    "60": [
+      "src_components_roadmap_types_ts"
+    ],
+    "61": [
+      "src_components_topiccard_index_ts"
+    ],
+    "62": [
+      "src_components_topicdetail_index_ts"
+    ],
+    "63": [
+      "src_components_topicdetail_topicdetail_tsx"
+    ],
+    "64": [
+      "src_components_topicdetail_tabs_examplestab_tsx"
+    ],
+    "65": [
+      "src_components_topicdetail_tabs_patternstab_tsx"
+    ],
+    "66": [
+      "src_contexts_authcontextdefinition_ts"
+    ],
+    "67": [
+      "src_pages_admindashboard_tsx"
+    ],
+    "68": [
+      "src_pages_profile_tsx"
+    ],
+    "69": [
+      "src_services_authservice_ts"
+    ],
+    "70": [
+      "src_services_problemsservice_ts"
+    ],
+    "71": [
+      "src_services_progressservice_ts"
+    ],
+    "72": [
+      "src_services_subscriptionservice_ts"
+    ],
+    "73": [
+      "src_services_topicsservice_ts"
+    ],
+    "74": [
+      "src_types_api_ts"
+    ],
+    "75": [
       "src_types_topic_ts"
+    ],
+    "76": [
+      "src_utils_animations_ts"
+    ],
+    "77": [
+      "src_utils_constants_ts"
+    ],
+    "78": [
+      "theme_context"
+    ],
+    "79": [
+      "data_readme"
     ]
   },
   "cohesion": {},
   "god_nodes": [
     {
-      "id": "src_app_tsx",
-      "label": "src/App.tsx",
-      "degree": 6
-    },
-    {
-      "id": "learningpath_updateprogress",
-      "label": "updateProgress()",
-      "degree": 2
-    },
-    {
-      "id": "learningpath_if",
-      "label": "if()",
-      "degree": 2
-    },
-    {
-      "id": "navbar_navbarredesigned",
-      "label": "NavbarRedesigned()",
-      "degree": 2
+      "id": "datastructurevisualizer_datastructurevisualizer",
+      "label": "DataStructureVisualizer()",
+      "degree": 3
     },
     {
       "id": "topiccard_topiccard",
       "label": "TopicCard()",
-      "degree": 2
+      "degree": 3
+    },
+    {
+      "id": "useauth_useauth",
+      "label": "useAuth()",
+      "degree": 3
     },
     {
       "id": "useprogress_useprogress",
       "label": "useProgress()",
+      "degree": 3
+    },
+    {
+      "id": "visualizationdata_getexampledata",
+      "label": "getExampleData()",
       "degree": 2
     },
     {
-      "id": "usetheme_usetheme",
-      "label": "useTheme()",
+      "id": "topiccard_getdifficultyfromcomplexity",
+      "label": "getDifficultyFromComplexity()",
+      "degree": 2
+    },
+    {
+      "id": "problemstab_getdifficultycolor",
+      "label": "getDifficultyColor()",
+      "degree": 2
+    },
+    {
+      "id": "problemstab_difficultybadgestyle",
+      "label": "difficultyBadgeStyle()",
+      "degree": 2
+    },
+    {
+      "id": "usecodeexecution_usecodeexecution",
+      "label": "useCodeExecution()",
+      "degree": 2
+    },
+    {
+      "id": "usevisualizercontrols_usevisualizercontrols",
+      "label": "useVisualizerControls()",
       "degree": 2
     }
   ],
   "surprises": [
     {
-      "source": "NavbarRedesigned()",
-      "target": "useTheme()",
+      "source": "DataStructureVisualizer()",
+      "target": "getExampleData()",
       "source_files": [
-        "src\\components\\Navbar.tsx",
-        "src\\hooks\\useTheme.ts"
+        "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+        "src\\components\\DataStructureVisualizer\\utils\\visualizationData.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "DataStructureVisualizer()",
+      "target": "useVisualizerControls()",
+      "source_files": [
+        "src\\components\\DataStructureVisualizer\\DataStructureVisualizer.tsx",
+        "src\\hooks\\useVisualizerControls.ts"
       ],
       "confidence": "INFERRED",
       "relation": "calls",
@@ -197,8 +419,30 @@
       "source": "TopicCard()",
       "target": "useProgress()",
       "source_files": [
-        "src\\components\\TopicCard.tsx",
+        "src\\components\\TopicCard\\TopicCard.tsx",
         "src\\hooks\\useProgress.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "useCodeExecution()",
+      "target": "useAuth()",
+      "source_files": [
+        "src\\hooks\\useCodeExecution.ts",
+        "src\\hooks\\useAuth.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "useProgress()",
+      "target": "useAuth()",
+      "source_files": [
+        "src\\hooks\\useProgress.ts",
+        "src\\hooks\\useAuth.ts"
       ],
       "confidence": "INFERRED",
       "relation": "calls",
