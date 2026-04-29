@@ -1,0 +1,275 @@
+<mxfile host="app.diagrams.net" modified="2026-04-24T00:00:00.000Z" agent="GitHub Copilot" version="21.0.0" type="device">
+  <diagram name="DSA Learning – Frontend Architecture" id="dsa-frontend-arch">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1440" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ===== TITLE ===== -->
+        <mxCell id="title" value="DSA Learning App – Frontend Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=20;fontColor=#1e4d78;" vertex="1" parent="1">
+          <mxGeometry x="20" y="5" width="1860" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ===== ENTRY POINT ===== -->
+        <mxCell id="10" value="Entry Point" style="swimlane;startSize=28;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;fontColor=#003366;" vertex="1" parent="1">
+          <mxGeometry x="20" y="50" width="1860" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="main.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e4d78;strokeColor=#1a3a5c;fontColor=#ffffff;fontStyle=1;fontSize=12;" vertex="1" parent="10">
+          <mxGeometry x="50" y="35" width="150" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="App.tsx&#xa;(State Container + Router)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e4d78;strokeColor=#1a3a5c;fontColor=#ffffff;fontStyle=1;fontSize=12;" vertex="1" parent="10">
+          <mxGeometry x="260" y="35" width="200" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#003366;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="11" target="12" parent="10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== PAGES LAYER ===== -->
+        <mxCell id="20" value="Pages (src/pages/)" style="swimlane;startSize=28;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;fontColor=#1a3a1a;" vertex="1" parent="1">
+          <mxGeometry x="20" y="170" width="1860" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="Home.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#5a8a40;fontColor=#ffffff;fontSize=11;" vertex="1" parent="20">
+          <mxGeometry x="30" y="35" width="215" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="Login.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#5a8a40;fontColor=#ffffff;fontSize=11;" vertex="1" parent="20">
+          <mxGeometry x="261" y="35" width="215" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="Register.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#5a8a40;fontColor=#ffffff;fontSize=11;" vertex="1" parent="20">
+          <mxGeometry x="492" y="35" width="215" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="ForgotPassword.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#5a8a40;fontColor=#ffffff;fontSize=11;" vertex="1" parent="20">
+          <mxGeometry x="723" y="35" width="215" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="Profile.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#5a8a40;fontColor=#ffffff;fontSize=11;" vertex="1" parent="20">
+          <mxGeometry x="954" y="35" width="215" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="Subscription.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#5a8a40;fontColor=#ffffff;fontSize=11;" vertex="1" parent="20">
+          <mxGeometry x="1185" y="35" width="215" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="AdminDashboard.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5a8a40;strokeColor=#3a6a20;fontColor=#ffffff;fontSize=11;" vertex="1" parent="20">
+          <mxGeometry x="1416" y="35" width="215" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ===== COMPONENTS LAYER ===== -->
+        <mxCell id="30" value="Components (src/components/)" style="swimlane;startSize=28;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=13;fontColor=#594a00;" vertex="1" parent="1">
+          <mxGeometry x="20" y="300" width="1860" height="300" as="geometry" />
+        </mxCell>
+
+        <!-- Row 1: Core UI -->
+        <mxCell id="31" value="Navbar/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="30" y="38" width="155" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="Hero/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="200" y="38" width="155" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="TopicCard/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="370" y="38" width="155" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="TopicDetail/&#xa;(tabs/)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="540" y="38" width="155" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="ProblemsPage/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="710" y="38" width="155" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="BigODetail/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="880" y="38" width="155" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="HomeSections/&#xa;(5 section components)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="1050" y="38" width="175" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="Roadmap/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="1240" y="38" width="155" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- Row 2: Feature components -->
+        <mxCell id="39" value="CodeExecutionPanel/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="30" y="115" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="DataStructureVisualizer/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="30">
+          <mxGeometry x="248" y="115" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- AppShell sub-group -->
+        <mxCell id="41" value="AppShell/" style="swimlane;startSize=24;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=11;fontColor=#594a00;" vertex="1" parent="30">
+          <mxGeometry x="468" y="105" width="350" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="411" value="AppFooter.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="41">
+          <mxGeometry x="10" y="28" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="412" value="LoadingSpinner.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="41">
+          <mxGeometry x="180" y="28" width="160" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Admin sub-group -->
+        <mxCell id="42" value="admin/" style="swimlane;startSize=24;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=11;fontColor=#594a00;" vertex="1" parent="30">
+          <mxGeometry x="840" y="105" width="420" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="421" value="AdminProblemsManager.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="42">
+          <mxGeometry x="10" y="28" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="422" value="AdminTopicsManager.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffc966;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="42">
+          <mxGeometry x="218" y="28" width="190" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ===== CONTEXTS LAYER ===== -->
+        <mxCell id="50" value="Contexts (src/contexts/)" style="swimlane;startSize=28;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=13;fontColor=#4d0000;" vertex="1" parent="1">
+          <mxGeometry x="20" y="620" width="450" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="51" value="AuthContext.tsx&#xa;AuthContextDefinition.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#8a3e3e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="50">
+          <mxGeometry x="25" y="50" width="190" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="52" value="ThemeContext.tsx" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#8a3e3e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="50">
+          <mxGeometry x="235" y="50" width="190" height="62" as="geometry" />
+        </mxCell>
+
+        <!-- ===== HOOKS LAYER ===== -->
+        <mxCell id="60" value="Hooks (src/hooks/)" style="swimlane;startSize=28;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;fontColor=#2d004d;" vertex="1" parent="1">
+          <mxGeometry x="490" y="620" width="1390" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="61" value="useAuth.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="60">
+          <mxGeometry x="20" y="50" width="148" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="62" value="useCodeExecution.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="60">
+          <mxGeometry x="184" y="50" width="160" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="63" value="useProblem.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="60">
+          <mxGeometry x="360" y="50" width="148" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="64" value="useProgress.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="60">
+          <mxGeometry x="524" y="50" width="148" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="65" value="useTheme.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="60">
+          <mxGeometry x="688" y="50" width="148" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="66" value="useTopicBySlug.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="60">
+          <mxGeometry x="852" y="50" width="148" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="67" value="useVisualizerControls.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="60">
+          <mxGeometry x="1016" y="50" width="170" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="68" value="useResponsiveChartConfig.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="60">
+          <mxGeometry x="1202" y="50" width="170" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ===== SERVICES LAYER ===== -->
+        <mxCell id="70" value="Services / API Layer (src/services/)" style="swimlane;startSize=28;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;fontColor=#003366;" vertex="1" parent="1">
+          <mxGeometry x="20" y="830" width="1860" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="71" value="apiClient.ts&#xa;(Axios base + interceptors)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e4d78;strokeColor=#1a3a5c;fontColor=#ffffff;fontStyle=1;fontSize=11;" vertex="1" parent="70">
+          <mxGeometry x="30" y="35" width="190" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="72" value="authService.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#4a6e9e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="70">
+          <mxGeometry x="238" y="35" width="185" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="73" value="executionService.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#4a6e9e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="70">
+          <mxGeometry x="441" y="35" width="185" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="74" value="problemService.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#4a6e9e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="70">
+          <mxGeometry x="644" y="35" width="185" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="75" value="problemsService.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#4a6e9e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="70">
+          <mxGeometry x="847" y="35" width="185" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="76" value="progressService.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#4a6e9e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="70">
+          <mxGeometry x="1050" y="35" width="185" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="77" value="subscriptionService.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#4a6e9e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="70">
+          <mxGeometry x="1253" y="35" width="185" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="78" value="topicsService.ts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#4a6e9e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="70">
+          <mxGeometry x="1456" y="35" width="185" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ===== DATA & TYPES LAYER ===== -->
+        <mxCell id="80" value="Data &amp; Types (Static)" style="swimlane;startSize=28;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="20" y="960" width="1860" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="81" value="data/topicsData.ts&#xa;(~1689 lines – static DSA content)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#555555;strokeColor=#333333;fontColor=#ffffff;fontSize=11;" vertex="1" parent="80">
+          <mxGeometry x="30" y="35" width="280" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="82" value="types/topic.ts  |  types/api.ts&#xa;(Topic, Problem, CodeExample, Pattern)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#555555;strokeColor=#333333;fontColor=#ffffff;fontSize=11;" vertex="1" parent="80">
+          <mxGeometry x="330" y="35" width="310" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="83" value="index.css&#xa;(CSS variables, design tokens, .glass)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#555555;strokeColor=#333333;fontColor=#ffffff;fontSize=11;" vertex="1" parent="80">
+          <mxGeometry x="660" y="35" width="280" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ===== BACKEND EXTERNAL SYSTEM ===== -->
+        <mxCell id="90" value="Backend API&#xa;(Express / Node.js)" style="shape=mxgraph.enterprise.servers.application_server;html=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="858" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="91" value="Backend API&#xa;(Express + Node.js)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#111111;fontColor=#ffffff;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="868" width="180" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ===== CROSS-LAYER EDGES ===== -->
+
+        <!-- App.tsx → Pages -->
+        <mxCell id="e1" value="routes to" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#003366;strokeWidth=2;fontColor=#003366;fontSize=10;fontStyle=2;" edge="1" source="12" target="20" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Pages → Components -->
+        <mxCell id="e2" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#82b366;strokeWidth=2;fontColor=#82b366;fontSize=10;fontStyle=2;" edge="1" source="20" target="30" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Components → Contexts -->
+        <mxCell id="e3" value="consumes context" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#b85450;strokeWidth=2;fontColor=#b85450;fontSize=10;fontStyle=2;" edge="1" source="30" target="50" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Components → Hooks -->
+        <mxCell id="e4" value="calls hooks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#9673a6;strokeWidth=2;fontColor=#9673a6;fontSize=10;fontStyle=2;" edge="1" source="30" target="60" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Hooks → Services -->
+        <mxCell id="e5" value="calls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#6c8ebf;fontSize=10;fontStyle=2;" edge="1" source="60" target="70" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Contexts → Services (e.g. authService in AuthContext) -->
+        <mxCell id="e6" value="calls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#6c8ebf;strokeWidth=2;fontColor=#6c8ebf;fontSize=10;fontStyle=2;" edge="1" source="50" target="70" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Data → Components (static import, dashed) -->
+        <mxCell id="e7" value="static import" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#666666;strokeWidth=2;fontColor=#666666;fontSize=10;fontStyle=2;dashed=1;" edge="1" source="80" target="30" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Services → Backend API -->
+        <mxCell id="e8" value="HTTP / REST" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=2;fontColor=#333333;fontSize=10;fontStyle=2;" edge="1" source="70" target="91" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== LEGEND ===== -->
+        <mxCell id="leg0" value="Legend" style="swimlane;startSize=24;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=12;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1090" width="900" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" value="Entry Point" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e4d78;strokeColor=#1a3a5c;fontColor=#ffffff;fontSize=11;" vertex="1" parent="leg0">
+          <mxGeometry x="10" y="32" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" value="Pages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#5a8a40;fontColor=#ffffff;fontSize=11;" vertex="1" parent="leg0">
+          <mxGeometry x="132" y="32" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3" value="Components" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#a07a00;fontColor=#ffffff;fontSize=11;" vertex="1" parent="leg0">
+          <mxGeometry x="254" y="32" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4" value="Contexts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#8a3e3e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="leg0">
+          <mxGeometry x="376" y="32" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg5" value="Hooks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#7a5a8a;fontColor=#ffffff;fontSize=11;" vertex="1" parent="leg0">
+          <mxGeometry x="498" y="32" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg6" value="Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#4a6e9e;fontColor=#ffffff;fontSize=11;" vertex="1" parent="leg0">
+          <mxGeometry x="620" y="32" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="leg7" value="Data / Types" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#555555;strokeColor=#333333;fontColor=#ffffff;fontSize=11;" vertex="1" parent="leg0">
+          <mxGeometry x="742" y="32" width="110" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

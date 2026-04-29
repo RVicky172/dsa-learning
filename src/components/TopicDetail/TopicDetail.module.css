@@ -290,6 +290,7 @@
   border: none;
   cursor: pointer;
   margin-bottom: 1.5rem;
+  color: var(--text-main);
 }
 
 .conceptsTitle {
@@ -373,6 +374,7 @@
   border: none;
   cursor: pointer;
   margin-bottom: 1.25rem;
+  color: var(--text-main);
 }
 
 .applicationsTitle {
@@ -381,6 +383,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: var(--text-main);
 }
 
 .applicationsList {

@@ -1,0 +1,98 @@
+.editorContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.8rem;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 10px;
+  background: #020c18;
+  overflow: hidden;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.editorContainer.focused {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.18);
+}
+
+.highlightLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 170px;
+  overflow: hidden;
+  pointer-events: none;
+  color: #a5f3fc;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border-radius: 10px;
+}
+
+.highlightLayer :global(pre) {
+  margin: 0 !important;
+  padding: 0.85rem !important;
+  background: transparent !important;
+  color: #a5f3fc !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  min-height: 170px;
+  width: 100%;
+}
+
+.highlightLayer :global(code) {
+  background: transparent !important;
+  color: inherit !important;
+  font-size: 0.85rem !important;
+  font-family: var(--font-mono) !important;
+  line-height: 1.5 !important;
+}
+
+/* Ensure the highlighted text doesn't scroll independently */
+.highlightLayer {
+  overflow: hidden;
+}
+
+.textarea {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 170px;
+  background: transparent;
+  color: transparent;
+  border: none;
+  border-radius: 10px;
+  padding: 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  font-family: var(--font-mono);
+  resize: vertical;
+  outline: none;
+  caret-color: #67e8f9;
+}
+
+/* Placeholder styling */
+.textarea::placeholder {
+  color: rgba(165, 243, 252, 0.35);
+}
+
+/* Scrollbar styling for both layers */
+.editorContainer ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.editorContainer ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editorContainer ::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.25);
+  border-radius: 4px;
+}
+
+.editorContainer ::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.4);
+}

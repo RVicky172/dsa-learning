@@ -74,85 +74,108 @@ const ProblemsTab = ({ topic, showSolution, toggleSolution, isProblemCompleted, 
                     </div>
 
                     {/* Examples */}
-                    <div className={styles.examplesSection}>
-                        <h4 className={styles.examplesSectionTitle}>Examples:</h4>
-                        {problem.examples.map((ex, idx) => (
-                            <div key={idx} className={styles.exampleBlock}>
-                                <div className={styles.exampleInput}>
-                                    <span className={styles.exampleInputLabel}>Input: </span>
-                                    <code className={styles.exampleInputCode}>{ex.input}</code>
+                    {problem.examples && problem.examples.length > 0 && (
+                        <div className={styles.examplesSection}>
+                            <h4 className={styles.examplesSectionTitle}>Examples:</h4>
+                            {problem.examples.map((ex, idx) => (
+                                <div key={idx} className={styles.exampleBlock}>
+                                    <div className={styles.exampleInput}>
+                                        <span className={styles.exampleInputLabel}>Input: </span>
+                                        <code className={styles.exampleInputCode}>{ex.input}</code>
+                                    </div>
+                                    <div className={styles.exampleOutput}>
+                                        <span className={styles.exampleOutputLabel}>Output: </span>
+                                        <code className={styles.exampleOutputCode}>{ex.output}</code>
+                                    </div>
+                                    {ex.explanation && (
+                                        <p className={styles.exampleExplanationText}>
+                                            {ex.explanation}
+                                        </p>
+                                    )}
                                 </div>
-                                <div className={styles.exampleOutput}>
-                                    <span className={styles.exampleOutputLabel}>Output: </span>
-                                    <code className={styles.exampleOutputCode}>{ex.output}</code>
-                                </div>
-                                {ex.explanation && (
-                                    <p className={styles.exampleExplanationText}>
-                                        {ex.explanation}
-                                    </p>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
 
                     {/* Hints */}
-                    <details className={styles.hintsDetails}>
-                        <summary className={styles.hintsSummary}>
-                            💡 Hints
-                        </summary>
-                        <ul className={styles.hintsList}>
-                            {problem.hints.map((hint, idx) => (
-                                <li key={idx} className={styles.hint}>{hint}</li>
-                            ))}
-                        </ul>
-                    </details>
+                    {problem.hints && problem.hints.length > 0 && (
+                        <details className={styles.hintsDetails}>
+                            <summary className={styles.hintsSummary}>
+                                💡 Hints
+                            </summary>
+                            <ul className={styles.hintsList}>
+                                {problem.hints.map((hint, idx) => (
+                                    <li key={idx} className={styles.hint}>{hint}</li>
+                                ))}
+                            </ul>
+                        </details>
+                    )}
 
                     {/* Run Code */}
                     <CodeExecutionPanel
                         problemId={problem.id}
-                        initialCode={problem.solution.code}
+                        initialCode={problem.solution?.code || ''}
                     />
 
-                    {/* Solution Toggle */}
-                    <button
-                        onClick={() => toggleSolution(problem.id)}
-                        className={`${styles.solutionToggle} ${showSolution[problem.id] ? styles.hidden : ''}`}
-                    >
-                        {showSolution[problem.id] ? <EyeOff size={18} /> : <Eye size={18} />}
-                        {showSolution[problem.id] ? 'Hide Solution' : 'Show Solution'}
-                    </button>
+                    {/* Solution Toggle — only show when solution data exists */}
+                    {(problem.solution?.approach || problem.solution?.code) && (
+                        <>
+                            <button
+                                onClick={() => toggleSolution(problem.id)}
+                                className={`${styles.solutionToggle} ${showSolution[problem.id] ? styles.hidden : ''}`}
+                            >
+                                {showSolution[problem.id] ? <EyeOff size={18} /> : <Eye size={18} />}
+                                {showSolution[problem.id] ? 'Hide Solution' : 'Show Solution'}
+                            </button>
 
-                    {/* Solution */}
-                    {showSolution[problem.id] && (
-                        <div className={styles.solutionContent}>
-                            <h4 className={styles.solutionApproachTitle}>Approach:</h4>
-                            <p className={styles.solutionApproach}>
-                                {problem.solution.approach}
-                            </p>
+                            {showSolution[problem.id] && (
+                                <div className={styles.solutionContent}>
+                                    {problem.solution.approach && (
+                                        <>
+                                            <h4 className={styles.solutionApproachTitle}>Approach:</h4>
+                                            <p className={styles.solutionApproach}>{problem.solution.approach}</p>
+                                        </>
+                                    )}
 
-                            <h4 className={styles.solutionCodeTitle}>Solution Code:</h4>
-                            <pre className={styles.codeBlock}>
-                                <code className={styles.codeContent}>{problem.solution.code}</code>
-                            </pre>
+                                    {problem.solution.code && (
+                                        <>
+                                            <h4 className={styles.solutionCodeTitle}>Solution Code:</h4>
+                                            <pre className={styles.codeBlock}>
+                                                <code className={styles.codeContent}>{problem.solution.code}</code>
+                                            </pre>
+                                        </>
+                                    )}
 
-                            <div className={styles.complexityInfo}>
-                                <div>
-                                    <span className={styles.complexityLabel}>Time: </span>
-                                    <code className={styles.complexityValue}>{problem.solution.timeComplexity}</code>
+                                    {(problem.solution.timeComplexity || problem.solution.spaceComplexity) && (
+                                        <div className={styles.complexityInfo}>
+                                            {problem.solution.timeComplexity && (
+                                                <div>
+                                                    <span className={styles.complexityLabel}>Time: </span>
+                                                    <code className={styles.complexityValue}>{problem.solution.timeComplexity}</code>
+                                                </div>
+                                            )}
+                                            {problem.solution.spaceComplexity && (
+                                                <div>
+                                                    <span className={styles.complexityLabel}>Space: </span>
+                                                    <code className={styles.complexityValue}>{problem.solution.spaceComplexity}</code>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {problem.solution.stepByStep && problem.solution.stepByStep.length > 0 && (
+                                        <>
+                                            <h4 className={styles.stepByStepTitle}>Step by Step:</h4>
+                                            <ol className={styles.stepByStepList}>
+                                                {problem.solution.stepByStep.map((step, idx) => (
+                                                    <li key={idx} className={styles.step}>{step}</li>
+                                                ))}
+                                            </ol>
+                                        </>
+                                    )}
                                 </div>
-                                <div>
-                                    <span className={styles.complexityLabel}>Space: </span>
-                                    <code className={styles.complexityValue}>{problem.solution.spaceComplexity}</code>
-                                </div>
-                            </div>
-
-                            <h4 className={styles.stepByStepTitle}>Step by Step:</h4>
-                            <ol className={styles.stepByStepList}>
-                                {problem.solution.stepByStep.map((step, idx) => (
-                                    <li key={idx} className={styles.step}>{step}</li>
-                                ))}
-                            </ol>
-                        </div>
+                            )}
+                        </>
                     )}
                 </div>
             ))}

@@ -12,7 +12,7 @@ const RecommendationsSection = ({ items, isLoading, onViewProblems, onProblemSel
   if (isLoading) {
     return (
       <section className="container" style={{ padding: 'clamp(2rem, 6vw, 4rem) 0' }}>
-        <div className="glass" style={{ padding: '1.5rem', borderRadius: '16px' }}>
+        <div className="glass" style={{ padding: '1.5rem' }}>
           <p style={{ color: 'var(--text-muted)' }}>Loading personalized recommendations...</p>
         </div>
       </section>
@@ -36,7 +36,7 @@ const RecommendationsSection = ({ items, isLoading, onViewProblems, onProblemSel
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="glass"
-        style={{ padding: 'clamp(1rem, 3vw, 1.5rem)', borderRadius: '20px' }}
+        style={{ padding: 'clamp(1rem, 3vw, 1.5rem)' }}
       >
         <div style={{ marginBottom: '1rem' }}>
           <p
@@ -103,7 +103,6 @@ const RecommendationsSection = ({ items, isLoading, onViewProblems, onProblemSel
             style={{
               padding: '0.7rem 1rem',
               borderRadius: '12px',
-              border: '1px solid var(--border-color)',
               color: 'var(--text-primary)',
               cursor: 'pointer'
             }}

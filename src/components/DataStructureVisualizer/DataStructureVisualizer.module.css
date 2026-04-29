@@ -271,18 +271,38 @@
   display: block;
 }
 
+/* Progress bar */
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
 /* Complexity overlay bar */
 .complexityBar {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   margin-bottom: 1rem;
-  background: rgba(99, 102, 241, 0.08);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
   border-radius: 8px;
   font-size: 0.82rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .complexityItem {

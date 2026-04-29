@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useProgress } from '../../hooks/useProgress';
@@ -50,9 +51,8 @@ const TopicCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -2, boxShadow: '0 8px 24px rgba(6, 182, 212, 0.2)' }}
+      whileHover={{ boxShadow: '0 12px 32px rgba(6, 182, 212, 0.25)' }}
       className={`glass ${styles.container}`}
-      style={{ borderRadius: '12px', border: '1px solid var(--border-color)' }}
     >
       <div className={styles.header}>
         <div className={styles.iconBox}>{icon}</div>
@@ -89,4 +89,4 @@ const TopicCard = ({
   );
 };
 
-export default TopicCard;
+export default memo(TopicCard);

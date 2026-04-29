@@ -28,7 +28,7 @@ const FeaturesSection = ({ totalTopics }: FeaturesSectionProps) => {
         viewport={{ once: true, amount: 0.2 }}
         style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'clamp(1rem, 4vw, 2rem)' }}
       >
-        <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)', borderRadius: '16px' }}>
+        <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)' }}>
           <div style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: 'clamp(1.2rem, 3vw, 1.5rem)' }}>
             <Zap size={24} />
           </div>
@@ -38,7 +38,7 @@ const FeaturesSection = ({ totalTopics }: FeaturesSectionProps) => {
           </p>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)', borderRadius: '16px' }}>
+        <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)' }}>
           <div style={{ color: 'var(--secondary-color)', marginBottom: '1rem', fontSize: 'clamp(1.2rem, 3vw, 1.5rem)' }}>
             <BookOpen size={24} />
           </div>
@@ -48,7 +48,7 @@ const FeaturesSection = ({ totalTopics }: FeaturesSectionProps) => {
           </p>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)', borderRadius: '16px' }}>
+        <motion.div variants={itemVariants} className="glass" style={{ padding: 'clamp(1rem, 4vw, 2rem)' }}>
           <div style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: 'clamp(1.2rem, 3vw, 1.5rem)' }}>
             <BarChart3 size={24} />
           </div>

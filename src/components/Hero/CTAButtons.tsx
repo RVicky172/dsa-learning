@@ -35,7 +35,8 @@ const CTAButtons: React.FC<CTAButtonsProps> = ({
     border: '2px solid var(--border-color)',
     borderRadius: '12px',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    background: 'rgba(10, 17, 40, 0.4)',
+    background: 'rgba(99, 102, 241, 0.08)',
+    backdropFilter: 'blur(12px)',
     color: 'var(--text-main)',
   };
 
@@ -105,7 +106,6 @@ const CTAButtons: React.FC<CTAButtonsProps> = ({
       </button>
       <button
         onClick={onBigOClick}
-        className="glass"
         style={secondaryButtonStyle}
         onMouseEnter={(e) => handleMouseEnter(e, false)}
         onMouseLeave={(e) => handleMouseLeave(e, false)}

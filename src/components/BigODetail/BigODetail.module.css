@@ -663,6 +663,860 @@
   margin-top: 0.5rem;
 }
 
+/* ════════════════════════════════════════════════════
+   LOGARITHMS — 4-Zone Redesign
+════════════════════════════════════════════════════ */
+
+/* ── Zone 1: Definition Hero ── */
+.logHero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(135deg, rgba(15,15,30,0.95) 0%, rgba(20,10,35,0.9) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.15);
+  border-radius: 24px;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .logHero { grid-template-columns: 1fr; }
+}
+
+.logHeroGlow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse 60% 50% at 70% 30%, rgba(249,115,22,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.logHeroLeft,
+.logHeroRight {
+  position: relative;
+  z-index: 1;
+}
+
+.logHeroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #f97316;
+  margin-bottom: 1rem;
+}
+
+.logHeroTitle {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 1.1rem;
+}
+
+.logHeroBody {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.logHeroQuote {
+  border-left: 3px solid #f97316;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: rgba(249,115,22,0.06);
+  border-radius: 0 8px 8px 0;
+}
+
+.logHeroFormula {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(249,115,22,0.3);
+  border-radius: 14px;
+  padding: 1rem 1.5rem;
+  margin: 1.25rem 0 1rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.logHeroFormulaPart {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f97316;
+}
+
+.logHeroFormulaOp {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.logHeroExample {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.logHeroCode {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(249,115,22,0.12);
+  color: #f97316;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Halving chain (right column) */
+.logChainCaption {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.logChain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.logChainRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logChainStepNum {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(249,115,22,0.15);
+  border: 1px solid rgba(249,115,22,0.3);
+  color: #f97316;
+  font-size: 0.7rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logChainBar {
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  transition: width 0.3s ease;
+  min-width: 32px;
+}
+
+.logChainBarVal {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.logChainOp {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logChainFooter {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: #f97316;
+  font-weight: 600;
+  padding: 0.6rem 0.9rem;
+  background: rgba(249,115,22,0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(249,115,22,0.2);
+}
+
+/* ── Zone 2: Scale Stat Cards ── */
+.logScaleHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logScaleHeading {
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 900;
+  margin-bottom: 0.6rem;
+}
+
+.logScaleSubtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.logScaleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 1.25rem;
+}
+
+.logScaleCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.75rem 1.25rem;
+  border-radius: 18px;
+  cursor: default;
+}
+
+.logScaleCardLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.logScaleCardNum {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #f97316;
+  line-height: 1;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 0.25rem;
+}
+
+.logScaleCardUnit {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+}
+
+.logScaleBarTrack {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.logScaleBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #f97316, #ea580c);
+  border-radius: 99px;
+}
+
+.logScaleFormula {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+/* ── Zone 3: Execution Trace Card ── */
+/* ── Log Growth Chart ── */
+.logChartCard {
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.logChartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.75rem) 0.75rem;
+}
+
+.logChartHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logChartIconBox {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #f97316, #f97316aa);
+  box-shadow: 0 4px 14px rgba(249,115,22,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logChartTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.logChartSubtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.15rem 0 0;
+}
+
+.logChartLegend {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logChartLegendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.logChartLegendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.logChartBody {
+  padding: 0.5rem clamp(0.5rem, 2vw, 1rem) 1rem;
+}
+
+.logExecCard {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.logExecHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(0,0,0,0.2);
+}
+
+.logExecHeaderLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.logExecIconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f97316, #c2410c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(249,115,22,0.35);
+}
+
+.logExecTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.logExecSubtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.logExecCode {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(249,115,22,0.12);
+  color: #f97316;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Array cell display */
+.logExecArray {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.logExecCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 7px;
+  width: 42px;
+  padding: 0.3rem 0;
+}
+
+.logExecCellTarget {
+  background: rgba(249,115,22,0.18);
+  border-color: rgba(249,115,22,0.5);
+}
+
+.logExecCellIdx {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.logExecCellVal {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.logExecCellTarget .logExecCellVal {
+  color: #f97316;
+}
+
+/* ── Trace step cards ── */
+.logExecSteps {
+  padding: clamp(1rem, 3vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Each iteration is its own card */
+.traceCard {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+  transition: border-color 0.2s;
+}
+
+.traceCard:hover {
+  border-color: rgba(249,115,22,0.25);
+}
+
+.traceCardDone {
+  border-color: rgba(34,197,94,0.3) !important;
+  background: rgba(34,197,94,0.03);
+}
+
+/* Dark header bar: step label + pointer pills */
+.traceHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0.6rem 1rem;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.traceStepNum {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+}
+
+.tracePtrs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tracePtr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.18rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Card body */
+.traceBody {
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+/* Check row: arr[mid] op target → decision */
+.traceCheckRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.traceCheckExpr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.06);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.traceOp {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.traceTarget {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.06);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.traceDecision {
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.2rem 0.7rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  margin-left: 0.25rem;
+}
+
+.traceDecisionRight {
+  color: #f97316;
+  background: rgba(249,115,22,0.13);
+  border: 1px solid rgba(249,115,22,0.3);
+}
+
+.traceDecisionFound {
+  color: #22c55e;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.35);
+}
+
+/* Remaining row */
+.traceRemainingRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.traceRemainingLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.traceRemainingArr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f97316;
+  background: rgba(249,115,22,0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.traceRemainingNote {
+  font-size: 0.78rem;
+  color: #22c55e;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.logExecFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem clamp(1rem, 3vw, 1.75rem);
+  background: rgba(0,0,0,0.25);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.83rem;
+  color: var(--text-muted);
+}
+
+.logExecFooterHighlight {
+  color: #f97316;
+  font-weight: 700;
+}
+
+/* ── Zone 4a: O(n) vs O(log n) ── */
+.logVsPanel {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .logVsPanel { grid-template-columns: 1fr; }
+  .logVsDivider { flex-direction: row; }
+}
+
+.logVsCard {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.logVsTag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.25rem 0.75rem;
+  border-radius: 7px;
+  align-self: flex-start;
+}
+
+.logVsBody {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.logVsBigNum {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+}
+
+.logVsBigLabel {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+}
+
+.logVsProgressTrack {
+  height: 6px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.logVsProgressFill {
+  height: 100%;
+  border-radius: 99px;
+  min-width: 4px;
+}
+
+.logVsCode {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  background: rgba(0,0,0,0.35);
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  color: #b0bec5;
+  line-height: 1.8;
+  overflow-x: auto;
+  white-space: pre;
+  margin-top: auto;
+}
+
+.logVsDivider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+  background: rgba(0,0,0,0.15);
+  border-left: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.logVsDividerLine {
+  flex: 1;
+  width: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.logVsVsBadge {
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  padding: 0.4rem 0.5rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  margin: 0.75rem 0.5rem;
+  white-space: nowrap;
+}
+
+/* ── Zone 4b: Algorithm Cards ── */
+.logAlgoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+}
+
+@media (max-width: 540px) {
+  .logAlgoGrid { grid-template-columns: 1fr; }
+}
+
+.logAlgoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.4rem 1.3rem 1.2rem;
+  border-radius: 16px;
+  border-top: 3px solid transparent;
+  cursor: default;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.logAlgoTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.logAlgoIconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logAlgoBadge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+.logAlgoName {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.logAlgoDs {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0;
+}
+
+.logAlgoWhy {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0.1rem 0 0.3rem;
+  flex: 1;
+}
+
+.logAlgoTrace {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  margin-top: auto;
+}
+
+.logAlgoTraceLabel {
+  font-size: 0.58rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Chip pipeline row */
+.logAlgoTraceRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.logAlgoTraceChip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.logAlgoTraceArrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 0.55;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.logAlgoTraceSummary {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+  opacity: 0.8;
+}
+
 .comparisonCard {
   padding: clamp(1.25rem, 5vw, 3rem);
   overflow-x: auto;
@@ -754,6 +1608,185 @@
   color: var(--text-muted);
   font-size: 0.85rem;
   white-space: nowrap;
+}
+
+.playbookHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.playbookDescription {
+  color: var(--text-muted);
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.playbookLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.9fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.playbookGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.playbookCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  border-radius: 18px;
+  border-top: 3px solid transparent;
+  min-height: 100%;
+}
+
+.playbookCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.playbookCardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+}
+
+.playbookBadge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.playbookCode {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  background: rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 0.8rem 0.9rem;
+  white-space: pre-wrap;
+}
+
+.playbookText {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.playbookRulesCard {
+  padding: 1.35rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.08), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(99, 102, 241, 0.18);
+}
+
+.playbookRulesHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.playbookRulesIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.playbookRulesTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.playbookRulesSubtitle {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.playbookRulesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.playbookRuleItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.8rem 0.85rem;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.playbookRuleNum {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #818cf8;
+  background: rgba(129, 140, 248, 0.14);
+  border: 1px solid rgba(129, 140, 248, 0.28);
+}
+
+.playbookRuleText {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.playbookRulesFooter {
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  color: var(--text-main);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .playbookLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .playbookGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .practiceHeader {
@@ -994,6 +2027,82 @@
   background: transparent;
   border: 1.5px solid var(--primary-color);
   color: var(--primary-color);
+}
+
+/* Comparison Mode */
+.comparisonModeToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  border: 1.5px solid rgba(99, 102, 241, 0.5);
+  background: transparent;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comparisonModeToggle:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--primary-color);
+}
+
+.comparisonModeToggle.active {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--primary-color);
+}
+
+.comparisonSelector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.comparisonSelectItem {
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comparisonSelectItem:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.comparisonSelectItem.selected {
+  border-color: var(--primary-color);
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+.comparisonSelectLabel {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.comparisonSelectComplexity {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+}
+
+.comparisonSelectName {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
 }
 
 .stepCounter {

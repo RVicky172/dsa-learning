@@ -3,6 +3,7 @@ import { ArrowLeft, BookOpen, Code, Trophy, Zap, CheckCircle2, Circle } from 'lu
 import type { Topic } from '../../types/topic';
 import { useProgress } from '../../hooks/useProgress';
 import { useTopicBySlug } from '../../hooks/useTopicBySlug';
+import { topicsBySlug } from '../../data/topics/index';
 import TheoryTab from './tabs/TheoryTab';
 import ExamplesTab from './tabs/ExamplesTab';
 import PatternsTab from './tabs/PatternsTab';
@@ -29,42 +30,57 @@ const TopicDetail = ({ topicId, onBack }: TopicDetailProps) => {
     // Update local topic state when fetched topic changes
     useEffect(() => {
         if (fetchedTopic) {
-            // Map API response to Topic type
-            const mappedTopic: Topic = {
-                id: fetchedTopic.id,
-                title: fetchedTopic.title,
-                description: fetchedTopic.description,
-                icon: null, // TODO: Icons from API or static mapping
-                complexity: 'Medium', // TODO: Get from API
-                delay: 0, // TODO: Get from API
-                learningOutcomes: [],
-                introduction: fetchedTopic.description,
-                whyImportant: '',
-                whenToUse: [],
-                advantages: [],
-                disadvantages: [],
-                concepts: [],
+            // Merge static theory content with live API problems
+            const staticTopic = topicsBySlug[fetchedTopic.slug] ?? topicsBySlug[fetchedTopic.id];
+            const apiProblems: Topic['problems'] = fetchedTopic.problems.map(p => ({
+                id: p.id,
+                title: p.title,
+                difficulty: p.difficulty as 'Easy' | 'Medium' | 'Hard',
+                description: p.description,
                 examples: [],
-                patterns: [],
-                applications: [],
-                operations: [],
-                problems: fetchedTopic.problems.map(p => ({
-                    id: p.id,
-                    title: p.title,
-                    difficulty: p.difficulty as 'Easy' | 'Medium' | 'Hard',
-                    description: p.description,
+                solution: {
+                    approach: '',
+                    code: '',
+                    timeComplexity: '',
+                    spaceComplexity: '',
+                    stepByStep: []
+                },
+                hints: []
+            }));
+
+            if (staticTopic) {
+                // Use rich static data (theory + full problems with examples/hints/solutions).
+                // API problems are bare shells without examples/hints, so prefer static ones.
+                setTopic({
+                    ...staticTopic,
+                    id: fetchedTopic.id,
+                    title: fetchedTopic.title,
+                    description: fetchedTopic.description,
+                    problems: staticTopic.problems.length > 0 ? staticTopic.problems : apiProblems,
+                });
+            } else {
+                // Fallback: API data only (theory will be empty)
+                setTopic({
+                    id: fetchedTopic.id,
+                    title: fetchedTopic.title,
+                    description: fetchedTopic.description,
+                    icon: null,
+                    complexity: '',
+                    delay: 0,
+                    learningOutcomes: [],
+                    introduction: fetchedTopic.description,
+                    whyImportant: '',
+                    whenToUse: [],
+                    advantages: [],
+                    disadvantages: [],
+                    concepts: [],
                     examples: [],
-                    solution: { 
-                        approach: '', 
-                        code: '', 
-                        timeComplexity: '', 
-                        spaceComplexity: '',
-                        stepByStep: []
-                    },
-                    hints: []
-                }))
-            };
-            setTopic(mappedTopic);
+                    patterns: [],
+                    applications: [],
+                    operations: [],
+                    problems: apiProblems,
+                });
+            }
         }
     }, [fetchedTopic]);
 

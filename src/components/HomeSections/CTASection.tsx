@@ -13,7 +13,7 @@ const CTASection = ({ totalTopics, onNavigate }: CTASectionProps) => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         className="glass"
-        style={{ padding: '4rem', borderRadius: '24px', borderColor: 'var(--primary-color)', borderWidth: '2px' }}
+        style={{ padding: '4rem', borderColor: 'var(--primary-color)', borderWidth: '2px' }}
       >
         <span style={{ color: 'var(--primary-color)', fontSize: '0.9rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
           Get Started Today

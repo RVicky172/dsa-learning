@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, ChevronLeft, ChevronRight, RotateCcw, Shuffle, PenLine, Check, X } from 'lucide-react';
 import ArrayVisualization from './visualizations/ArrayVisualization';
@@ -156,6 +156,16 @@ const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = ({
         )}
       </div>
 
+      {/* Progress bar */}
+      <div className={styles.progressBar}>
+        <motion.div
+          className={styles.progressFill}
+          initial={{ width: '0%' }}
+          animate={{ width: maxSteps > 0 ? `${((currentStep + 1) / maxSteps) * 100}%` : '0%' }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+        />
+      </div>
+
       <div className={styles.visualization}>{renderVisualization()}</div>
 
       {/* Custom input panel */}
@@ -288,4 +298,4 @@ const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = ({
   );
 };
 
-export default DataStructureVisualizer;
+export default memo(DataStructureVisualizer);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { BookOpen, Lightbulb, Code } from 'lucide-react';
 import styles from './Roadmap.module.css';
 import type { RoadmapNode } from './types';
 
@@ -70,18 +71,50 @@ const RoadmapCard: React.FC<RoadmapCardProps> = ({
       )}
 
       {isCurrent && node.topicId && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            if (onNavigate && node.topicId) {
-              onNavigate(node.topicId);
-            }
-          }}
-          className={styles.actionButton}
-          style={{ backgroundColor: 'var(--primary-color)' }}
-        >
-          Continue Learning →
-        </button>
+        <div className={styles.actionButtonGroup}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (onNavigate && node.topicId) {
+                onNavigate(node.topicId);
+              }
+            }}
+            className={styles.actionButton}
+            style={{ backgroundColor: 'var(--primary-color)' }}
+            title="View full topic with theory and examples"
+          >
+            <BookOpen size={16} />
+            Learn
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (onNavigate && node.topicId) {
+                onNavigate(`${node.topicId}-visualize`);
+              }
+            }}
+            className={styles.actionButton}
+            style={{ backgroundColor: 'var(--secondary-color)' }}
+            title="View interactive data structure visualization"
+          >
+            <Lightbulb size={16} />
+            Visualize
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (onNavigate && node.topicId) {
+                onNavigate(`${node.topicId}-practice`);
+              }
+            }}
+            className={styles.actionButton}
+            style={{ backgroundColor: '#6ee7b7' }}
+            title="Practice problems for this topic"
+          >
+            <Code size={16} />
+            Practice
+          </button>
+        </div>
       )}
 
       {isCurrent && !node.topicId && (

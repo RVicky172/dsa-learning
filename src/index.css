@@ -703,10 +703,13 @@ pre:hover {
   z-index: 1;
 }
 
+button.glass::before {
+  display: none;
+}
+
 .glass:hover {
   border-color: var(--border-hover);
   box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
 }
 
 /* Glass Small */

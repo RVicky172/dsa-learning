@@ -542,6 +542,44 @@ const BigODetail = () => {
         { c: 'O(n!)', n10: '3,628,800', n100: '∞', n1k: '∞', n10k: '∞', ex: 'TSP Brute Force', color: '#7c3aed', bg: 'rgba(124, 58, 237, 0.05)' },
     ];
 
+    const estimationPlaybook = [
+        {
+            title: 'One loop over the input',
+            complexity: 'O(n)',
+            color: '#6366f1',
+            code: 'for (let i = 0; i < n; i++)',
+            explanation: 'If every element is visited once, runtime grows in direct proportion to n.',
+        },
+        {
+            title: 'Nested loops over the same input',
+            complexity: 'O(n²)',
+            color: '#eab308',
+            code: 'for (...) {\n  for (...) { ... }\n}',
+            explanation: 'When each outer iteration triggers another full pass, the work multiplies: n × n.',
+        },
+        {
+            title: 'Halving or doubling each step',
+            complexity: 'O(log n)',
+            color: '#f97316',
+            code: 'while (n > 1) n /= 2',
+            explanation: 'Shrinking the problem by a constant factor means the step count only grows logarithmically.',
+        },
+        {
+            title: 'Split, recurse, then do linear work',
+            complexity: 'O(n log n)',
+            color: '#8b5cf6',
+            code: '2T(n/2) + O(n)',
+            explanation: 'Divide-and-conquer often creates log n levels, with O(n) work repeated on each level.',
+        },
+    ] as const;
+
+    const estimationRules = [
+        'Drop constants and smaller terms: O(3n + 20) becomes O(n).',
+        'Sequential blocks add, nested blocks multiply: O(a + b) vs O(a × b).',
+        'Always identify the real input first. Two arrays may mean O(n + m), not just O(n).',
+        'Time and space are separate. Hash maps, recursion, and helper arrays often change space complexity.',
+    ] as const;
+
     const patternData = [
         { title: 'Divide & Conquer', icon: Search, color: '#22c55e', desc: 'Break problem into smaller subproblems, solve recursively, combine solutions.', time: 'O(n log n) or O(log n)', examples: 'Merge Sort, Quick Sort' },
         { title: 'Dynamic Programming', icon: Database, color: '#6366f1', desc: 'Solve complex problems by breaking them down into simpler subproblems and storing results.', time: 'Often O(n²) or O(n³)', examples: 'Fibonacci, Knapsack' },
@@ -812,42 +850,339 @@ const BigODetail = () => {
                             </div>
                         </div>
 
+                        {/* ══════════════════════════════════════════
+                            ZONE 1 — Definition Hero (2-column)
+                        ══════════════════════════════════════════ */}
                         <div className={styles.sectionBlock}>
-                            <div className={`glass ${styles.logarithmCard}`}>
-                                <div className={styles.logarithmGlow} />
-                                <div className={styles.logarithmContent}>
-                                    <h3 className={styles.logarithmTitle}>
-                                        <div className={styles.logarithmIconBox}>
-                                            <Search size={24} color="white" />
-                                        </div>
+                            <div className={styles.logHero}>
+                                <div className={styles.logHeroGlow} />
+
+                                {/* Left: title + formula */}
+                                <div className={styles.logHeroLeft}>
+                                    <div className={styles.logHeroEyebrow}>
+                                        <Search size={14} />
+                                        <span>Foundational Concept</span>
+                                    </div>
+                                    <h2 className={styles.logHeroTitle}>
                                         Why <span className="gradient-text">Logarithms</span> Matter
-                                    </h3>
-                                    <p className={styles.logarithmText}>
-                                        Logarithms are fundamental to understanding O(log n) complexity. They describe how many times you need to divide a number by a base to get 1.
+                                    </h2>
+                                    <p className={styles.logHeroBody}>
+                                        In CS we almost always use <strong style={{ color: '#f97316' }}>base 2</strong> because computers split
+                                        problems in half. A logarithm answers one question:
                                     </p>
-                                    <div className={styles.logarithmExamplesGrid}>
-                                        <div>
-                                            <p className={styles.logarithmExampleLabel}>log₂(2) =</p>
-                                            <p className={styles.logarithmExampleValue}>1</p>
-                                            <p className={styles.logarithmExampleNote}>2 ÷ 2 = 1 (1 division)</p>
-                                        </div>
-                                        <div>
-                                            <p className={styles.logarithmExampleLabel}>log₂(8) =</p>
-                                            <p className={styles.logarithmExampleValue}>3</p>
-                                            <p className={styles.logarithmExampleNote}>8 ÷ 2 ÷ 2 ÷ 2 = 1 (3 divisions)</p>
-                                        </div>
-                                        <div>
-                                            <p className={styles.logarithmExampleLabel}>log₂(1024) =</p>
-                                            <p className={styles.logarithmExampleValue}>10</p>
-                                            <p className={styles.logarithmExampleNote}>1024 halved 10 times = 1</p>
-                                        </div>
-                                        <div>
-                                            <p className={styles.logarithmExampleLabel}>log₂(1,000,000) ≈</p>
-                                            <p className={styles.logarithmExampleValue}>20</p>
-                                            <p className={styles.logarithmExampleNote}>Only 20 divisions for a million!</p>
-                                        </div>
+                                    <blockquote className={styles.logHeroQuote}>
+                                        "How many times can you halve&nbsp;<em>n</em> before reaching&nbsp;1?"
+                                    </blockquote>
+                                    <div className={styles.logHeroFormula}>
+                                        <span className={styles.logHeroFormulaPart}>log₂(n) = k</span>
+                                        <span className={styles.logHeroFormulaOp}>↔</span>
+                                        <span className={styles.logHeroFormulaPart}>2<sup>k</sup> = n</span>
+                                    </div>
+                                    <p className={styles.logHeroExample}>
+                                        Example: &nbsp;<code className={styles.logHeroCode}>log₂(1024) = 10</code>&nbsp; because &nbsp;<code className={styles.logHeroCode}>2¹⁰ = 1024</code>
+                                    </p>
+                                </div>
+
+                                {/* Right: numbered halving chain */}
+                                <div className={styles.logHeroRight}>
+                                    <p className={styles.logChainCaption}>Halving 32 down to 1 — step by step</p>
+                                    <div className={styles.logChain}>
+                                        {([32, 16, 8, 4, 2, 1] as const).map((v, i) => (
+                                            <div key={v} className={styles.logChainRow}>
+                                                <span className={styles.logChainStepNum}>{i < 5 ? i + 1 : '✓'}</span>
+                                                <div
+                                                    className={styles.logChainBar}
+                                                    style={{
+                                                        width: `${100 - i * 14}%`,
+                                                        opacity: 1 - i * 0.08,
+                                                        background: `linear-gradient(90deg, #f97316, #ea580c${Math.round((1 - i * 0.15) * 255).toString(16).padStart(2, '0')})`,
+                                                    }}
+                                                >
+                                                    <span className={styles.logChainBarVal}>{v}</span>
+                                                </div>
+                                                {i < 5 && <span className={styles.logChainOp}>÷ 2</span>}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className={styles.logChainFooter}>
+                                        5 halvings &nbsp;∴&nbsp; <strong>log₂(32) = 5</strong>
+                                        &nbsp;&nbsp;|&nbsp;&nbsp; Verify: 2<sup>5</sup> = 32 ✓
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        {/* ══════════════════════════════════════════
+                            ZONE 2 — Scale Stat Cards
+                        ══════════════════════════════════════════ */}
+                        <div className={styles.sectionBlock}>
+                            <div className={styles.logScaleHeader}>
+                                <h3 className={styles.logScaleHeading}>
+                                    The <span className="gradient-text">Superpower</span>: Massive&nbsp;Input&nbsp;→&nbsp;Tiny&nbsp;Steps
+                                </h3>
+                                <p className={styles.logScaleSubtitle}>
+                                    Every time&nbsp;<strong>n doubles</strong>, you only add&nbsp;<strong>1 more step</strong>. Watch how little the step count grows:
+                                </p>
+                            </div>
+                            <div className={styles.logScaleGrid}>
+                                {(
+                                    [
+                                        { label: '16 items', n: '16', steps: 4, pct: 13 },
+                                        { label: '1K items', n: '1,024', steps: 10, pct: 33 },
+                                        { label: '1M items', n: '1,048,576', steps: 20, pct: 67 },
+                                        { label: '1B items', n: '1,073,741,824', steps: 30, pct: 100 },
+                                    ] as const
+                                ).map(({ label, n, steps, pct }) => (
+                                    <motion.div
+                                        key={n}
+                                        whileHover={{ y: -5, boxShadow: '0 16px 48px rgba(249,115,22,0.18)' }}
+                                        className={`glass ${styles.logScaleCard}`}
+                                    >
+                                        <p className={styles.logScaleCardLabel}>{label}</p>
+                                        <div className={styles.logScaleCardNum}>{steps}</div>
+                                        <p className={styles.logScaleCardUnit}>steps max</p>
+                                        <div className={styles.logScaleBarTrack}>
+                                            <motion.div
+                                                className={styles.logScaleBarFill}
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: `${pct}%` }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
+                                            />
+                                        </div>
+                                        <code className={styles.logScaleFormula}>log₂({n}) = {steps}</code>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* ══════════════════════════════════════════
+                            ZONE 2b — Logarithmic Growth Chart
+                        ══════════════════════════════════════════ */}
+                        <div className={styles.sectionBlock}>
+                            <div className={`glass ${styles.logChartCard}`}>
+                                <div className={styles.logChartHeader}>
+                                    <div className={styles.logChartHeaderLeft}>
+                                        <div className={styles.logChartIconBox}>
+                                            <TrendingUp size={16} color="white" />
+                                        </div>
+                                        <div>
+                                            <h3 className={styles.logChartTitle}>O(log n) vs O(n) vs O(1)</h3>
+                                            <p className={styles.logChartSubtitle}>Operations as input doubles — logarithmic barely moves</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.logChartLegend}>
+                                        {[
+                                            { label: 'O(1)',     color: '#22c55e' },
+                                            { label: 'O(log n)', color: '#f97316' },
+                                            { label: 'O(n)',     color: '#ef4444' },
+                                        ].map(({ label, color }) => (
+                                            <div key={label} className={styles.logChartLegendItem}>
+                                                <span className={styles.logChartLegendDot} style={{ background: color, boxShadow: `0 0 6px ${color}` }} />
+                                                <span style={{ color }}>{label}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className={styles.logChartBody}>
+                                    <ResponsiveContainer width="100%" height={260}>
+                                        <LineChart
+                                            data={Array.from({ length: 32 }, (_, i) => {
+                                                const n = i + 1;
+                                                return { n, 'O(1)': 1, 'O(log n)': parseFloat(Math.log2(n).toFixed(2)), 'O(n)': n };
+                                            })}
+                                            margin={{ top: 10, right: 20, bottom: 20, left: 10 }}
+                                        >
+                                            <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.05)" />
+                                            <XAxis
+                                                dataKey="n"
+                                                stroke="rgba(255,255,255,0.15)"
+                                                tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 11 }}
+                                                tickLine={false}
+                                                label={{ value: 'Input size (n)', position: 'insideBottom', offset: -10, fill: 'rgba(255,255,255,0.4)', fontSize: 11 }}
+                                            />
+                                            <YAxis
+                                                stroke="rgba(255,255,255,0.15)"
+                                                tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 11 }}
+                                                tickLine={false}
+                                                width={32}
+                                                label={{ value: 'ops', angle: -90, position: 'insideLeft', offset: 10, fill: 'rgba(255,255,255,0.4)', fontSize: 11 }}
+                                            />
+                                            <Tooltip
+                                                contentStyle={{ background: 'rgba(4,7,20,0.97)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff', fontSize: '0.82rem', padding: '10px 14px' }}
+                                                labelFormatter={(v) => `n = ${v}`}
+                                                itemStyle={{ fontWeight: 700, padding: '1px 0' }}
+                                            />
+                                            <Line type="monotone" dataKey="O(1)"     stroke="#22c55e" strokeWidth={2.5} dot={false} activeDot={{ r: 5, fill: '#22c55e', stroke: 'white', strokeWidth: 2 }} />
+                                            <Line type="monotone" dataKey="O(log n)" stroke="#f97316" strokeWidth={2.5} dot={false} activeDot={{ r: 5, fill: '#f97316', stroke: 'white', strokeWidth: 2 }} />
+                                            <Line type="monotone" dataKey="O(n)"     stroke="#ef4444" strokeWidth={2.5} dot={false} activeDot={{ r: 5, fill: '#ef4444', stroke: 'white', strokeWidth: 2 }} />
+                                        </LineChart>
+                                    </ResponsiveContainer>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ══════════════════════════════════════════
+                            ZONE 3 — Binary Search Execution Trace
+                        ══════════════════════════════════════════ */}
+                        <div className={styles.sectionBlock}>
+                            <div className={`glass ${styles.logExecCard}`}>
+                                {/* Card header */}
+                                <div className={styles.logExecHeader}>
+                                    <div className={styles.logExecHeaderLeft}>
+                                        <div className={styles.logExecIconBox}>
+                                            <Search size={18} color="white" />
+                                        </div>
+                                        <div>
+                                            <h3 className={styles.logExecTitle}>Binary Search — Execution Trace</h3>
+                                            <p className={styles.logExecSubtitle}>Finding <code className={styles.logExecCode}>target = 15</code> in a sorted array</p>
+                                        </div>
+                                    </div>
+                                    <div className={styles.logExecArray}>
+                                        {[
+                                            { val: 1, idx: 0 }, { val: 3, idx: 1 }, { val: 5, idx: 2 },
+                                            { val: 6, idx: 3 }, { val: 8, idx: 4 }, { val: 10, idx: 5 },
+                                            { val: 12, idx: 6 }, { val: 15, idx: 7 },
+                                        ].map(({ val, idx }) => (
+                                            <div key={idx} className={`${styles.logExecCell} ${val === 15 ? styles.logExecCellTarget : ''}`}>
+                                                <span className={styles.logExecCellIdx}>{idx}</span>
+                                                <span className={styles.logExecCellVal}>{val}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Iteration steps */}
+                                <div className={styles.logExecSteps}>
+                                    {(
+                                        [
+                                            { n: 1, left: 0, mid: 3, right: 7, checkVal: 6,  op: '<',   decision: 'go RIGHT', newPtr: 'left = 4', remaining: '[8, 10, 12, 15]', shrink: '8 → 4 items', done: false },
+                                            { n: 2, left: 4, mid: 5, right: 7, checkVal: 10, op: '<',   decision: 'go RIGHT', newPtr: 'left = 6', remaining: '[12, 15]',        shrink: '4 → 2 items', done: false },
+                                            { n: 3, left: 6, mid: 6, right: 7, checkVal: 12, op: '<',   decision: 'go RIGHT', newPtr: 'left = 7', remaining: '[15]',            shrink: '2 → 1 item',  done: false },
+                                            { n: 4, left: 7, mid: 7, right: 7, checkVal: 15, op: '===', decision: 'FOUND',    newPtr: 'index 7',  remaining: null,              shrink: null,          done: true  },
+                                        ] as const
+                                    ).map(({ n, left, mid, right, checkVal, op, decision, newPtr, remaining, shrink, done }) => (
+                                        <div key={n} className={`${styles.traceCard} ${done ? styles.traceCardDone : ''}`}>
+                                            {/* Header: step number + pointer pills */}
+                                            <div className={styles.traceHead}>
+                                                <span className={styles.traceStepNum}>Step {n}</span>
+                                                <div className={styles.tracePtrs}>
+                                                    <span className={styles.tracePtr} style={{ color: '#6366f1', background: 'rgba(99,102,241,0.12)', borderColor: 'rgba(99,102,241,0.3)' }}>left&nbsp;=&nbsp;{left}</span>
+                                                    <span className={styles.tracePtr} style={{ color: '#f97316', background: 'rgba(249,115,22,0.15)',  borderColor: 'rgba(249,115,22,0.4)'  }}>mid&nbsp;=&nbsp;{mid}</span>
+                                                    <span className={styles.tracePtr} style={{ color: '#8b5cf6', background: 'rgba(139,92,246,0.12)', borderColor: 'rgba(139,92,246,0.3)' }}>right&nbsp;=&nbsp;{right}</span>
+                                                </div>
+                                            </div>
+                                            {/* Body: check row + remaining row */}
+                                            <div className={styles.traceBody}>
+                                                <div className={styles.traceCheckRow}>
+                                                    <code className={styles.traceCheckExpr}>arr[{mid}]&nbsp;=&nbsp;{checkVal}</code>
+                                                    <span className={styles.traceOp}>{op}</span>
+                                                    <code className={styles.traceTarget}>15&nbsp;<span style={{ opacity: 0.55, fontWeight: 400 }}>(target)</span></code>
+                                                    <span className={`${styles.traceDecision} ${done ? styles.traceDecisionFound : styles.traceDecisionRight}`}>
+                                                        {done ? `✓ ${decision} at ${newPtr}` : `→ ${decision}  ·  ${newPtr}`}
+                                                    </span>
+                                                </div>
+                                                {remaining && (
+                                                    <div className={styles.traceRemainingRow}>
+                                                        <span className={styles.traceRemainingLabel}>Candidates</span>
+                                                        <code className={styles.traceRemainingArr}>{remaining}</code>
+                                                        <span className={styles.traceRemainingNote}>— {shrink} ÷2 ✓</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className={styles.logExecFooter}>
+                                    <span>4 iterations &nbsp;·&nbsp; n = 8 &nbsp;·&nbsp; log₂(8) = 3 worst-case</span>
+                                    <span className={styles.logExecFooterHighlight}>
+                                        Scale to 1,000,000 items → only ~20 iterations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ══════════════════════════════════════════
+                            ZONE 4 — O(n) vs O(log n) + Algo Cards
+                        ══════════════════════════════════════════ */}
+                        <div className={styles.sectionBlock}>
+                            {/* VS Panel */}
+                            <div className={styles.logVsPanel}>
+                                <div className={`${styles.logVsCard}`} style={{ borderColor: 'rgba(239,68,68,0.25)', background: 'rgba(239,68,68,0.04)' }}>
+                                    <div className={styles.logVsTag} style={{ color: '#ef4444', background: 'rgba(239,68,68,0.12)' }}>O(n) — Linear Search</div>
+                                    <p className={styles.logVsBody}>Check every element one by one. For a 1,000,000-item list, the worst case is:</p>
+                                    <div className={styles.logVsBigNum} style={{ color: '#ef4444' }}>1,000,000</div>
+                                    <p className={styles.logVsBigLabel}>comparisons</p>
+                                    <div className={styles.logVsProgressTrack}>
+                                        <div className={styles.logVsProgressFill} style={{ width: '100%', background: '#ef4444' }} />
+                                    </div>
+                                    <pre className={styles.logVsCode}>{`for (let i = 0; i < arr.length; i++) {
+  if (arr[i] === target) return i;
+}  // visits EVERY element`}</pre>
+                                </div>
+
+                                <div className={styles.logVsDivider}>
+                                    <div className={styles.logVsDividerLine} />
+                                    <div className={styles.logVsVsBadge}>VS</div>
+                                    <div className={styles.logVsDividerLine} />
+                                </div>
+
+                                <div className={`${styles.logVsCard}`} style={{ borderColor: 'rgba(249,115,22,0.25)', background: 'rgba(249,115,22,0.04)' }}>
+                                    <div className={styles.logVsTag} style={{ color: '#f97316', background: 'rgba(249,115,22,0.12)' }}>O(log n) — Binary Search</div>
+                                    <p className={styles.logVsBody}>Halve the search space each step. Same list, same target, at worst:</p>
+                                    <div className={styles.logVsBigNum} style={{ color: '#f97316' }}>~20</div>
+                                    <p className={styles.logVsBigLabel}>comparisons</p>
+                                    <div className={styles.logVsProgressTrack}>
+                                        <div className={styles.logVsProgressFill} style={{ width: '2%', background: '#f97316' }} />
+                                    </div>
+                                    <pre className={styles.logVsCode}>{`while (left <= right) {
+  const mid = (left + right) >> 1;
+  if (arr[mid] === target) return mid;
+  arr[mid] < target ? left=mid+1 : right=mid-1;
+}`}</pre>
+                                </div>
+                            </div>
+
+                            {/* Algorithm cards */}
+                            <div className={styles.logAlgoGrid}>
+                                {(
+                                    [
+                                        { Icon: Search,     color: '#6366f1', algo: 'Binary Search',       ds: 'Sorted Array',        badge: 'O(log n)',          why: 'Each comparison eliminates half the remaining elements.', trace: { steps: ['1024', '512', '256', '…', '1'], summary: '10 steps' } },
+                                        { Icon: Layers,     color: '#22c55e', algo: 'BST Lookup / Insert', ds: 'Binary Search Tree',   badge: 'O(log n) balanced', why: 'Left or right at every node. Height = log₂(n) for balanced trees.', trace: { steps: ['root', 'L/R', 'L/R', '…', 'node'], summary: '≈20 levels / 1M nodes' } },
+                                        { Icon: TrendingUp, color: '#f97316', algo: 'Heap Push / Pop',     ds: 'Min / Max Heap',       badge: 'O(log n)',          why: 'Bubble up/down the heap. Height = ⌊log₂(n)⌋ swaps max.', trace: { steps: ['1024', '512', '256', '…', 'root'], summary: '≤10 swaps' } },
+                                        { Icon: Activity,   color: '#8b5cf6', algo: 'Merge Sort',          ds: 'Any Array',            badge: 'O(n log n)',        why: 'Recursive halving creates log₂(n) levels × O(n) merge work.', trace: { steps: ['n=8', 'n=4', 'n=2', 'n=1'], summary: '3 levels · O(n) merge each' } },
+                                    ] as const
+                                ).map(({ Icon, color, algo, ds, badge, why, trace }) => (
+                                    <motion.div
+                                        key={algo}
+                                        whileHover={{ y: -4, boxShadow: `0 14px 44px ${color}22` }}
+                                        className={`glass ${styles.logAlgoCard}`}
+                                        style={{ '--algo-color': color, borderTopColor: color } as React.CSSProperties}
+                                    >
+                                        <div className={styles.logAlgoTop}>
+                                            <div className={styles.logAlgoIconBox} style={{ background: `linear-gradient(135deg, ${color}, ${color}aa)`, boxShadow: `0 4px 14px ${color}40` }}>
+                                                <Icon size={18} color="white" />
+                                            </div>
+                                            <span className={styles.logAlgoBadge} style={{ color, background: `${color}15`, border: `1px solid ${color}30` }}>{badge}</span>
+                                        </div>
+                                        <p className={styles.logAlgoName}>{algo}</p>
+                                        <p className={styles.logAlgoDs} style={{ color }}>{ds}</p>
+                                        <p className={styles.logAlgoWhy}>{why}</p>
+                                        <div className={styles.logAlgoTrace} style={{ borderColor: `${color}20`, background: `${color}06` }}>
+                                            <span className={styles.logAlgoTraceLabel}>trace</span>
+                                            <div className={styles.logAlgoTraceRow}>
+                                                {trace.steps.map((step, i) => (
+                                                    <>
+                                                        <span key={i} className={styles.logAlgoTraceChip} style={{ color, borderColor: `${color}40`, background: `${color}14` }}>{step}</span>
+                                                        {i < trace.steps.length - 1 && <span key={`arr-${i}`} className={styles.logAlgoTraceArrow} style={{ color }}>›</span>}
+                                                    </>
+                                                ))}
+                                            </div>
+                                            <span className={styles.logAlgoTraceSummary}>{trace.summary}</span>
+                                        </div>
+                                    </motion.div>
+                                ))}
                             </div>
                         </div>
 
@@ -895,6 +1230,64 @@ const BigODetail = () => {
                                         ))}
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+
+                        <div className={styles.sectionBlock}>
+                            <div className={styles.playbookHeader}>
+                                <h3 className={`${styles.heroTitle} ${styles.sectionHeadingCenter}`}>
+                                    How To <span className="gradient-text">Estimate Big O</span> From Code
+                                </h3>
+                                <p className={styles.playbookDescription}>
+                                    Before writing formal math, match the code shape to a growth pattern. This is the fastest way to build complexity intuition.
+                                </p>
+                            </div>
+
+                            <div className={styles.playbookLayout}>
+                                <div className={styles.playbookGrid}>
+                                    {estimationPlaybook.map(({ title, complexity, color, code, explanation }) => (
+                                        <motion.div
+                                            key={title}
+                                            whileHover={{ y: -4, boxShadow: `0 16px 40px ${color}18` }}
+                                            className={`glass ${styles.playbookCard}`}
+                                            style={{ borderTopColor: color }}
+                                        >
+                                            <div className={styles.playbookCardTop}>
+                                                <span className={styles.playbookCardTitle}>{title}</span>
+                                                <span className={styles.playbookBadge} style={{ color, background: `${color}15`, border: `1px solid ${color}30` }}>
+                                                    {complexity}
+                                                </span>
+                                            </div>
+                                            <code className={styles.playbookCode} style={{ color }}>{code}</code>
+                                            <p className={styles.playbookText}>{explanation}</p>
+                                        </motion.div>
+                                    ))}
+                                </div>
+
+                                <div className={`glass ${styles.playbookRulesCard}`}>
+                                    <div className={styles.playbookRulesHeader}>
+                                        <div className={styles.playbookRulesIcon}>
+                                            <Eye size={16} color="white" />
+                                        </div>
+                                        <div>
+                                            <h4 className={styles.playbookRulesTitle}>What Beginners Often Miss</h4>
+                                            <p className={styles.playbookRulesSubtitle}>Use these rules to avoid the most common wrong answers.</p>
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.playbookRulesList}>
+                                        {estimationRules.map((rule, index) => (
+                                            <div key={rule} className={styles.playbookRuleItem}>
+                                                <span className={styles.playbookRuleNum}>{index + 1}</span>
+                                                <p className={styles.playbookRuleText}>{rule}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className={styles.playbookRulesFooter}>
+                                        Ask yourself: <strong>what grows with input size, and how many times do I repeat that work?</strong>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
